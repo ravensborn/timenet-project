@@ -1,10 +1,10 @@
 <!-- ========== HEADER ========== -->
-<header id="header" class="navbar navbar-expand-lg navbar-end navbar-light bg-white navbar-shadow">
+<header id="header" class="navbar navbar-expand-lg navbar-end navbar-dark bg-dark navbar-shadow">
     <div class="container">
         <nav class="js-mega-menu navbar-nav-wrap">
             <!-- Default Logo -->
-            <a class="navbar-brand" href="../index.html" aria-label="Front">
-                <img class="navbar-brand-logo" src="{{ asset('themes/front/assets/svg/logos/logo.svg') }}" alt="Logo">
+            <a class="navbar-brand" href="{{ route('home') }}" aria-label="Front">
+                <img class="navbar-brand-logo"  src="{{ asset('images/logo.png') }}" alt="Logo">
             </a>
             <!-- End Default Logo -->
 
@@ -69,7 +69,7 @@
 
                     <!-- Button -->
                     <li class="nav-item">
-                        <a class="btn btn-primary btn-transition btn-sm" href="#" target="_blank">
+                        <a class="btn btn-light btn-transition btn-sm" href="#" target="_blank">
                             <i class="bi bi-telephone"></i>
                             &nbsp;
                             Contact Us
