@@ -1,3 +1,13 @@
+<!-- Sticky Footer -->
+
+<div style="position: fixed; bottom: 0;right: 0;width: 300px; z-index: 10000;">
+    <div style="padding: 5px;">
+        <div style="margin: 0 auto; background-color: #ffa726; color: black; border: 3px solid black; padding: 20px; border-radius: 10px;">
+            This website is undergoing to a major renovation please visit us later.
+        </div>
+    </div>
+</div>
+
 <!-- ========== FOOTER ========== -->
 <footer class="bg-dark">
     <div class="container pb-1 pb-lg-5">
@@ -14,7 +24,7 @@
                 <!-- List -->
                 <ul class="list-unstyled list-py-1">
                     <li><a class="link-sm link-light" href="#"><i class="bi-geo-alt-fill me-1"></i> Erbil, Kurdistan Region of Iraq</a></li>
-                    <li><a class="link-sm link-light" href="tel:1-062-109-9222"><i class="bi-telephone-inbound-fill me-1"></i> +964 (750) 753-4867</a></li>
+                    <li><a class="link-sm link-light" href="tel:1-062-109-9222"><i class="bi-telephone-inbound-fill me-1"></i> +964 (750) 380-7676</a></li>
                 </ul>
                 <!-- End List -->
 
