@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Post;
+use App\Models\Product;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -222,5 +223,24 @@ class DatabaseSeeder extends Seeder
 
 
         }
+
+
+
+        $productCategory1 = \App\Models\Category::factory([
+            'name' => 'Category 1',
+            'model' => Product::class,
+        ])->create();
+
+        $productCategory2 = \App\Models\Category::factory([
+            'name' => 'Category 2',
+            'model' => Product::class,
+        ])->create();
+
+        $productCategory3 = \App\Models\Category::factory([
+            'name' => 'Category 3',
+            'model' => Product::class,
+        ])->create();
+
+        Product::factory(12)->create();
     }
 }

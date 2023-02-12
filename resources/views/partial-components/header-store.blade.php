@@ -24,22 +24,12 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
 
-                    <!-- Time Net -->
-                    <li class="hs-has-sub-menu nav-item">
-                        <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link dropdown-toggle" href="#"
-                           role="button" data-bs-toggle="dropdown" aria-expanded="false">Time Net</a>
-                        <!-- Mega Menu -->
-                        <div class="hs-sub-menu dropdown-menu" aria-labelledby="pagesMegaMenu"
-                             style="min-width: 14rem;">
-                            <a class="dropdown-item" href="{{ route('posts.index', ['grid_type' => 'grid', 'slug' => 'products']) }}">Product Catalog</a>
-                            <a class="dropdown-item"
-                               href="{{ route('posts.index', ['grid_type' => 'grid', 'slug' => 'services']) }}">Services</a>
-                            <a class="dropdown-item"
-                               href="{{ route('posts.index', ['grid_type' => 'grid', 'slug' => 'solutions']) }}">Solutions</a>
-                        </div>
-                        <!-- End Mega Menu -->
+
+                    <!-- TimeNet -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('home') }}">Home</a>
                     </li>
-                    <!-- End Time Net -->
+                    <!-- End TimeNet -->
 
                     <!-- Store -->
                     <li class="nav-item">
@@ -47,12 +37,12 @@
                     </li>
                     <!-- End Store -->
 
-                    <!-- Articles -->
+                    <!-- Store -->
                     <li class="nav-item">
-                        <a class="nav-link"
-                           href="{{ route('posts.index', ['grid_type' => 'grid', 'slug' => 'articles']) }}">Articles</a>
+                        <a class="nav-link" href="{{ route('store.products.index') }}">Products</a>
                     </li>
-                    <!-- End Articles -->
+                    <!-- End Store -->
+
 
                     <!-- Support -->
                     <li class="hs-has-sub-menu nav-item">
@@ -68,22 +58,39 @@
                     </li>
                     <!-- End Support -->
 
-                    <!-- About -->
-                    <li class="nav-item">
-                        <a class="nav-link " href="{{ route('about') }}">About Us</a>
-                    </li>
-                    <!-- End About -->
-
 
                     <!-- Button -->
-                    <li class="nav-item">
-                        <a class="btn btn-light btn-transition btn-sm" href="tel:9647503807676" target="_blank">
-                            <i class="bi bi-telephone"></i>
-                            &nbsp;
-                            Contact Us
-                        </a>
-                    </li>
-                    <!-- End Button -->
+                    @if(!auth()->check())
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ 1 }}">Login</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="btn btn-light btn-transition btn-sm" href="tel:9647503807676" target="_blank">
+                                Register Now!
+                            </a>
+                        </li>
+
+                    @else
+
+                    <!-- Support -->
+                        <li class="hs-has-sub-menu nav-item">
+                            <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link dropdown-toggle" href="#"
+                               role="button" data-bs-toggle="dropdown" aria-expanded="false">My Account</a>
+                            <!-- Mega Menu -->
+                            <div class="hs-sub-menu dropdown-menu" aria-labelledby="pagesMegaMenu"
+                                 style="min-width: 14rem;">
+                                <a class="dropdown-item" href="{{ route('soon') }}">Profile</a>
+                                <a class="dropdown-item" href="{{ route('soon') }}">Orders</a>
+                                <a class="dropdown-item" href="{{ route('soon') }}">Logout</a>
+                            </div>
+                            <!-- End Mega Menu -->
+                        </li>
+                        <!-- End Support -->
+                @endif
+
+                <!-- End Button -->
                 </ul>
             </div>
             <!-- End Collapse -->

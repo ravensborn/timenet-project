@@ -5,18 +5,16 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Http\Livewire\Store\Index as LivewireStoreIndex;
+use App\Http\Livewire\Store\Products\Index as LivewireStoreProductIndex;
+use App\Http\Livewire\Store\Products\Index as LivewireStoreProductShow;
+
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::get('/store', LivewireStoreIndex::class)->name('store.index');
+Route::get('/store/products', LivewireStoreProductIndex::class)->name('store.products.index');
+Route::get('/store/products/{product}', LivewireStoreProductShow::class)->name('store.products.show');
 
 
 Route::get('/posts/{grid_type}/{slug}', [PostController::class, 'index'])->name('posts.index');
