@@ -66,7 +66,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
-        $posts = Post::whereIn('category_id', [1,3,4])->get();
+        $posts = Post::whereIn('category_id', [1,3,4, 5])->get();
 
         foreach ($posts as $post) {
 
