@@ -16,8 +16,6 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('type_id');
-
             $table->unsignedBigInteger('author_id')
             ->nullable();
 
@@ -31,7 +29,7 @@ return new class extends Migration
 
             $table->foreign('category_id')
                 ->references('id')
-                ->on('posts')
+                ->on('categories')
                 ->onDelete('restrict');
 
             $table->string('title');

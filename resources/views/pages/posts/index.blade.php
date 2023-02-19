@@ -8,7 +8,7 @@
         <div class="container py-4">
             <div class="row">
                 <div class="col-sm">
-                    <h4 class="mb-0">{{   ucfirst(request()->segment(3)) }}</h4>
+                    <h4 class="mb-0">{{  $category->name }}</h4>
                 </div>
                 <!-- End Col -->
 
@@ -20,7 +20,7 @@
                                 <a href="{{ route('home') }}">{{ config('env.APP_NAME') }}</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                {{  ucfirst(request()->segment(3)) }}
+                                {{  $category->name }}
                             </li>
                         </ol>
                     </nav>
@@ -38,7 +38,7 @@
     <div class="container content-space-2 content-space-lg-1">
         <!-- Heading -->
         <div class="w-md-75 w-lg-50 text-center mx-md-auto mb-5">
-            <h2>{{ ucfirst($post_type_name) }}</h2>
+            <h2>{{ $category->name }}</h2>
 
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur esse expedita modi nam officia

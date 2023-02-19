@@ -1,14 +1,12 @@
-<!-- ========== HEADER ========== -->
-<header id="header" class="navbar navbar-expand-lg navbar-end navbar-dark bg-dark navbar-shadow">
+<header id="header" class="py-3 navbar navbar-expand-lg navbar-end navbar-dark navbar-absolute-top navbar-shadow">
+
     <div class="container">
         <nav class="js-mega-menu navbar-nav-wrap">
-            <!-- Default Logo -->
-            <a class="navbar-brand" href="{{ route('home') }}" aria-label="Front">
-                <img class="navbar-brand-logo" src="{{ asset('images/logo.png') }}" alt="Logo">
-            </a>
-            <!-- End Default Logo -->
 
-            <!-- Toggler -->
+            <a class="navbar-brand" href="{{ route('home') }}" aria-label="Front">
+                <h3 class="text-white">TimeNet ISP</h3>
+            </a>
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                     aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-default">
@@ -18,15 +16,13 @@
           <i class="bi-x"></i>
         </span>
             </button>
-            <!-- End Toggler -->
 
-            <!-- Collapse -->
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
 
                     <!-- Time Net -->
                     <li class="hs-has-sub-menu nav-item">
-                        <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link dropdown-toggle" href="#"
+                        <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link dropdown-toggle text-white-80" href="#"
                            role="button" data-bs-toggle="dropdown" aria-expanded="false">Time Net</a>
                         <!-- Mega Menu -->
                         <div class="hs-sub-menu dropdown-menu" aria-labelledby="pagesMegaMenu"
@@ -86,8 +82,7 @@
                     <!-- End Button -->
                 </ul>
             </div>
-            <!-- End Collapse -->
+
         </nav>
     </div>
 </header>
-<!-- ========== END HEADER ========== -->

@@ -63,6 +63,14 @@
 <!-- JS Plugins Init. -->
 <script>
     (function () {
+
+
+        new HSMegaMenu('.js-mega-menu', {
+            desktop: {
+                position: 'left'
+            }
+        });
+
         var sliderThumbs = new Swiper('.js-swiper-shop-hero-thumbs', {
             watchSlidesVisibility: true,
             watchSlidesProgress: true,

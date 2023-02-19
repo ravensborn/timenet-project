@@ -26,7 +26,6 @@ class PostFactory extends Factory
 
         return [
             'author_id' => User::find(1)->id,
-            'type_id' => 0,
             'category_id' => 0,
             'title' => $this->faker->sentence,
             'content' => $paragraphs,

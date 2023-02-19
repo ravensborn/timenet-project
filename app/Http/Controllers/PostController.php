@@ -9,27 +9,46 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
 
-    public function index($grid_type, $post_type_name)
+    public function index($grid_type = 'grid', $slug = '')
     {
-        if ($post_type_name) {
 
-            $type_id = Post::convertStringToTypeId($post_type_name);
 
-            if (!$type_id) {
-                abort(404);
-            }
+        if($slug) {
 
-            $posts = Post::where('type_id', $type_id)->paginate(9);
+            $category = Category::where('slug', $slug)->first();
+
+            $posts = Post::where('category_id', $category->id)->paginate(12);
 
             return view('pages.posts.index', [
-                'grid_type' => $grid_type,
-                'post_type_name' => $post_type_name,
-                'posts' => $posts
+                'posts' => $posts,
+                'category' => $category,
+                'grid_type' => $grid_type
             ]);
         }
 
         return abort(404);
     }
+//    public function index($grid_type, $post_type_name)
+//    {
+//        if ($post_type_name) {
+//
+//            $type_id = Post::convertStringToTypeId($post_type_name);
+//
+//            if (!$type_id) {
+//                abort(404);
+//            }
+//
+//            $posts = Post::where('type_id', $type_id)->paginate(9);
+//
+//            return view('pages.posts.index', [
+//                'grid_type' => $grid_type,
+//                'post_type_name' => $post_type_name,
+//                'posts' => $posts
+//            ]);
+//        }
+//
+//        return abort(404);
+//    }
 
 
     public function show($slug)

@@ -20,26 +20,6 @@ class Post extends Model implements HasMedia
 
     protected $guarded = ['id'];
 
-    const TYPE_ARTICLE = 5;
-    const TYPE_SERVICE = 6;
-    const TYPE_SOLUTION = 7;
-    const TYPE_PRODUCT = 8;
-
-    public static function convertStringToTypeId($string): int
-    {
-        switch ($string) {
-            case 'articles':
-                return self::TYPE_ARTICLE;
-            case 'services':
-                return self::TYPE_SERVICE;
-            case 'solutions':
-                return self::TYPE_SOLUTION;
-            case 'products':
-                return self::TYPE_PRODUCT;
-            default: return 0;
-        }
-    }
-
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
