@@ -66,13 +66,24 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
-        $posts = Post::whereIn('category_id', [1,3,4, 5])->get();
+        $posts = Post::whereIn('category_id', [1,3,4])->get();
 
         foreach ($posts as $post) {
 
             $path = public_path('images/examples/900x660.jpg');
 
             $post->addMedia($path)
+                ->preservingOriginal()
+                ->toMediaCollection('cover');
+        }
+
+        $products = Product::whereIn('category_id', [5])->get();
+
+        foreach ($products as $product) {
+
+            $path = public_path('images/examples/900x660.jpg');
+
+            $product->addMedia($path)
                 ->preservingOriginal()
                 ->toMediaCollection('cover');
         }
