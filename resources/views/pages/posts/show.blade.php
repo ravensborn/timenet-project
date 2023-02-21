@@ -229,6 +229,14 @@
                                                 @endif
                                             </a>
                                         </h4>
+                                        <p>
+                                            @if(strlen($post->short_content) > 40)
+                                                {!!  substr($post->short_content, 0, 40) . '...'  !!}
+                                            @else
+                                                {!! $post->short_content !!}
+                                            @endif
+
+                                        </p>
                                     </div>
                                     <!-- End Col -->
 

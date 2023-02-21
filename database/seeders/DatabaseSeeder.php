@@ -38,6 +38,7 @@ class DatabaseSeeder extends Seeder
             'model' => Post::class,
         ])->create();
 
+        //4
         $postArticleCategory = \App\Models\Category::factory([
             'name' => 'Articles',
             'model' => Post::class,
@@ -57,16 +58,16 @@ class DatabaseSeeder extends Seeder
             'category_id' => $postProductCatalogCategory->id,
         ]);
 
-        Post::factory(14)->create([
-            'category_id' => $postArticleCategory->id,
-        ]);
+//        Post::factory(14)->create([
+//            'category_id' => $postArticleCategory->id,
+//        ]);
 
         Product::factory(12)->create([
             'category_id' => $defaultProductCategory->id,
         ]);
 
 
-        $posts = Post::whereIn('category_id', [1,3,4])->get();
+        $posts = Post::whereIn('category_id', [$postProductCatalogCategory->id, $postSolutionCategory->id])->get();
 
         foreach ($posts as $post) {
 
@@ -90,6 +91,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             TimeNetSeeder::class,
+            TimeNetArticleSeeder::class,
         ]);
 
     }

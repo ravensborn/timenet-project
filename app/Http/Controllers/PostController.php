@@ -13,7 +13,7 @@ class PostController extends Controller
     {
 
 
-        if($slug) {
+        if ($slug) {
 
             $category = Category::where('slug', $slug)->first();
 
@@ -56,10 +56,13 @@ class PostController extends Controller
 
         $post = Post::where('slug', $slug)->first();
 
-//        $related_posts = Post::where('category_id', $post->category_id)->limit(4)->inRandomOrder()->get();
-        $related_posts = Post::limit(4)->inRandomOrder()->get();
+        $related_posts = Post::where('category_id', $post->category_id)
+            ->where('id', '!=', $post->id)
+            ->limit(4)
+            ->inRandomOrder()
+            ->get();
 
-        return view('pages.posts.show', ['post' => $post , 'related_posts' => $related_posts]);
+        return view('pages.posts.show', ['post' => $post, 'related_posts' => $related_posts]);
 
     }
 }
