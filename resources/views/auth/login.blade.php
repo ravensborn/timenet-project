@@ -31,7 +31,7 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <label class="form-label" for="password">Password</label>
 
-                        <a class="form-label-link" href="{{ route('soon') }}" tabindex="-1">Forgot Password?</a>
+                        <a class="form-label-link text-dark" href="{{ route('soon') }}" tabindex="-1">Forgot Password?</a>
                     </div>
 
                     <div class="input-group input-group-merge">
@@ -49,18 +49,15 @@
                     <input type="checkbox" class="form-check-input" id="remember"
                            name="remember" checked>
                     <label class="form-check-label small" for="remember">Remember Me</label>
-                    @error('password')
-                    <small class="text-danger mt-1">{{ $message }}</small>
-                    @enderror
                 </div>
                 <!-- End Check -->
 
                 <div class="d-grid mb-3">
-                    <button type="submit" class="btn btn-primary btn-lg">Log in</button>
+                    <button type="submit" class="btn btn-dark btn-lg">Log in</button>
                 </div>
 
                 <div class="text-center">
-                    <p>Don't have an account yet? <a class="link" href="{{ route('register') }}">Sign up here</a></p>
+                    <p>Don't have an account yet? <a class="link text-dark" href="{{ route('register') }}">Sign up here</a></p>
                 </div>
             </form>
             <!-- End Form -->

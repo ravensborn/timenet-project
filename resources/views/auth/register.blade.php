@@ -19,7 +19,7 @@
                     <label class="form-label" for="name">Name</label>
                     <input type="text" class="form-control form-control-lg" name="name" id="name"
                            placeholder="Full Name" aria-label="Full Name" required="">
-                    @error('email')
+                    @error('name')
                     <small class="text-danger mt-1">{{ $message }}</small>
                     @enderror
                 </div>
@@ -62,17 +62,17 @@
 
                 <!-- Check -->
                 <p>
-                    By submitting this form you have read and acknowledged the <a href="{{ route('soon') }}">Privacy
+                    By submitting this form you have read and acknowledged the <a class="text-dark" href="{{ route('soon') }}">Privacy
                         Policy</a>
                 </p>
                 <!-- End Check -->
 
 
                 <div class="d-grid mb-3">
-                    <button type="submit" class="btn btn-primary btn-lg">Sign up</button>
+                    <button type="submit" class="btn btn-dark btn-lg">Sign up</button>
                 </div>
 
-                <div class="text-center">
+                <div class="text-center text-dark">
                     <p>Already have an account? <a class="link" href="{{ route('login') }}">Log in here</a></p>
                 </div>
             </form>

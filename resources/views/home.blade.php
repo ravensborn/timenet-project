@@ -11,8 +11,9 @@
             <div class="swiper-wrapper" id="swiper-wrapper-3275493e3eb4fb6e" aria-live="polite" style="transition-duration: 0ms;"><div class="swiper-slide gradient-y-overlay-sm-gray-900 bg-img-start swiper-slide-duplicate swiper-slide-prev swiper-slide-duplicate-next" style="background-image: url(&quot;../assets/img/1920x800/img3.jpg&quot;); width: 1519px; transition-duration: 0ms; opacity: 1; transform: translate3d(0px, 0px, 0px);" data-swiper-slide-index="1" role="group" aria-label="2 / 2">
                     <div class="container d-md-flex align-items-md-center vh-md-70 content-space-t-4 content-space-b-3 content-space-md-0">
                         <div class="w-75 w-lg-50">
-                            <h3 class="text-white">It is an</h3>
-                            <h2 class="display-4 text-white mb-0">Easy business with Front template</h2>
+                            <h3 class="text-white">TimeNet</h3>
+                            <h2 class="display-4 text-white mb-0">A network expertise company works in the fields of <br> providing internet
+                                access.</h2>
                         </div>
                     </div>
                 </div>
