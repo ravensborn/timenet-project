@@ -72,8 +72,8 @@
                     <button type="submit" class="btn btn-dark btn-lg">Sign up</button>
                 </div>
 
-                <div class="text-center text-dark">
-                    <p>Already have an account? <a class="link" href="{{ route('login') }}">Log in here</a></p>
+                <div class="text-center">
+                    <p>Already have an account? <a class="link text-dark" href="{{ route('login') }}">Log in here</a></p>
                 </div>
             </form>
             <!-- End Form -->
