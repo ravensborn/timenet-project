@@ -17,31 +17,65 @@ class TimeNetPaymentMethodSeeder extends Seeder
     public function run()
     {
 
-        PaymentMethod::factory([
-            'name' => 'Cash on Delivery',
-            'fee' => 10,
-            'fee_type' => 'fixed_amount'
-        ])->create();
+        $payments = [
+            [
+                'name' => 'Cash on Delivery',
+                'fee' => 10,
+                'fee_type' => 'fixed_amount',
+                'enabled' => true,
+                'icon_path' => public_path('seeder/payment-methods/cash-on-delivery.png'),
+            ], [
+                'name' => 'Cash on Delivery 2',
+                'fee' => 3,
+                'fee_type' => 'percentage',
+                'enabled' => true,
+                'icon_path' => public_path('seeder/payment-methods/cash-on-delivery.png'),
+            ], [
+                'name' => 'FastPay',
+                'fee' => 5,
+                'fee_type' => 'fixed_amount',
+                'enabled' => false,
+                'icon_path' => public_path('seeder/payment-methods/fastpay.png'),
+            ],
+            [
+                'name' => 'NassWallet',
+                'fee' => 5,
+                'fee_type' => 'fixed_amount',
+                'enabled' => false,
+                'icon_path' => public_path('seeder/payment-methods/nasswallet.png'),
+            ],
 
-        for ($i = 1; $i <= 5; $i++) {
+            [
+                'name' => 'ZainCash',
+                'fee' => 5,
+                'fee_type' => 'fixed_amount',
+                'enabled' => false,
+                'icon_path' => public_path('seeder/payment-methods/zaincash.png'),
+            ],
+            [
+                'name' => 'Stripe',
+                'fee' => 5,
+                'fee_type' => 'fixed_amount',
+                'enabled' => false,
+                'icon_path' => public_path('seeder/payment-methods/stripe.png'),
+            ],
+        ];
 
-            $type = ['fixed_amount', 'percentage'][array_rand(['fixed_amount', 'percentage'])];
+        foreach ($payments as $payment) {
 
-            PaymentMethod::factory()->create([
-                'fee' => rand(1, 10),
-                'fee_type' => $type
-            ]);
+            $createdPayment = PaymentMethod::factory([
+                'name' => $payment['name'],
+                'fee' => $payment['fee'],
+                'fee_type' => $payment['fee_type'],
+                'enabled' => $payment['enabled'],
+            ])->create();
+
+
+            $createdPayment->addMedia($payment['icon_path'])
+                ->preservingOriginal()
+                ->toMediaCollection('icon');
         }
 
 
-        //Random payment methods.
-        PaymentMethod::each(function ($payment) {
-
-            $path = public_path('seeder/payment-methods/cash-on-delivery.png');
-
-            $payment->addMedia($path)
-                ->preservingOriginal()
-                ->toMediaCollection('icon');
-        });
     }
 }

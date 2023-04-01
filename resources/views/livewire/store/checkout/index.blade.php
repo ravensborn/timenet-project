@@ -133,26 +133,53 @@
                             <div>
                                 @foreach($paymentMethods as $payment)
 
-                                    <div wire:click="selectPaymentMethod({{ $payment->id }})" style="cursor:pointer;"
-                                         class="rounded p-3 my-2 shadow shadow-sm @if($selectedPaymentMethod->id == $payment->id) border border-2 border-dark @endif">
+                                    @if($payment->enabled)
+                                        <div wire:click="selectPaymentMethod({{ $payment->id }})"
+                                             style="cursor:pointer;"
+                                             class="rounded p-3 my-2 shadow shadow-sm @if($selectedPaymentMethod->id == $payment->id) border border-2 border-dark @endif">
 
-                                        <div class="d-flex justify-content-between">
-                                            <div>
-                                                <img src="{{ $payment->getFirstMediaUrl('icon') }}" style="width: 32px;"
-                                                     alt="Payment Method Icon">
-                                                <span @class(['fw-bold' => ($selectedPaymentMethod->id == $payment->id)])>{{ $payment->name }}</span>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="d-flex align-items-center">
+                                                    <img src="{{ $payment->getFirstMediaUrl('icon') }}"
+                                                         style="width: 48px; height: auto;"
+                                                         alt="Payment Method Icon">
+                                                    &nbsp;
+                                                    &nbsp;
+                                                    <span @class(['fw-bold' => ($selectedPaymentMethod->id == $payment->id)])>{{ $payment->name }}</span>
+                                                </div>
+                                                <div @class(['fw-bold' => ($selectedPaymentMethod->id == $payment->id), 'text-muted text-start' => true ]) style="width: 150px;">
+                                                    Payment Fee:
+                                                    @if($payment->fee_type == \App\Models\PaymentMethod::FEE_TYPE_PERCENTAGE)
+                                                        {{ $payment->fee }}%
+                                                    @else
+                                                        ${{ $payment->fee }}
+                                                    @endif
+                                                </div>
                                             </div>
-                                            <div @class(['fw-bold' => ($selectedPaymentMethod->id == $payment->id), 'text-muted text-start' => true ]) style="width: 150px;">
-                                                Payment Fee:
-                                                @if($payment->fee_type == \App\Models\PaymentMethod::FEE_TYPE_PERCENTAGE)
-                                                    {{ $payment->fee }}%
-                                                @else
-                                                    ${{ $payment->fee }}
-                                                @endif
-                                            </div>
+
                                         </div>
+                                    @else
+                                        <div  style="cursor: not-allowed;"
+                                              class="rounded p-3 my-2 shadow shadow-sm">
 
-                                    </div>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="d-flex align-items-center">
+                                                    <div>
+                                                        <img src="{{ $payment->getFirstMediaUrl('icon') }}"
+                                                             style="width: 48px; height: auto;"
+                                                             alt="Payment Method Icon">
+                                                    </div>
+                                                    &nbsp;
+                                                    &nbsp;
+                                                    <div>{{ $payment->name }}</div>
+                                                </div>
+                                                <div class="text-danger" style="width: 150px;">
+                                                    Currently disabled
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    @endif
 
                                 @endforeach
                             </div>
@@ -276,7 +303,8 @@
                                 <p>Thank you for your order! Your order is being processed and will be completed within
                                     3-6 hours. You will receive an email confirmation when your order is completed.</p>
                             </div>
-                            <a class="btn btn-dark btn-transition rounded-pill px-6" href="{{ route('store.products.index') }}">Continue
+                            <a class="btn btn-dark btn-transition rounded-pill px-6"
+                               href="{{ route('store.products.index') }}">Continue
                                 shopping</a>
 
 

@@ -36,7 +36,16 @@ class PaymentMethod extends Model implements HasMedia
 
     protected $guarded = ['id'];
 
+    protected $casts = [
+        'enabled' => 'boolean'
+    ];
+
     CONST ITEM_CASH_ON_DELIVERY = 1;
+    //Cash on delivery 2 remove it.
+    CONST ITEM_FASTPAY = 2;
+    CONST ITEM_NASSWALLET = 3;
+    CONST ITEM_ZAINCASH = 4;
+    CONST ITEM_STRIPE = 5;
 
     CONST FEE_TYPE_FIXED_AMOUNT = 'fixed_amount';
     CONST FEE_TYPE_PERCENTAGE = 'percentage';

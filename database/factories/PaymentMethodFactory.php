@@ -19,7 +19,8 @@ class PaymentMethodFactory extends Factory
         return [
             'name' => $this->faker->word,
             'fee' => 0,
-            'fee_type' => ['fixed_amount', 'percentage'][array_rand(['fixed_amount', 'percentage'])]
+            'fee_type' => ['fixed_amount', 'percentage'][array_rand(['fixed_amount', 'percentage'])],
+            'enabled' => false,
         ];
     }
 }
