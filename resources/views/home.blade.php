@@ -211,6 +211,23 @@
     </div>
     <!-- End Who works with us -->
 
+    <div class="container">
+        <div class="bg-img-start rounded-2 p-5 mb-5" style="background-image: url({{ asset('images/wallpapers/7.jpg') }});">
+            <div class="row align-items-md-center">
+                <div class="col-sm mb-3 mb-md-0">
+                    <h1 class="h4 mb-0">Access the latest networking products at unbeatable prices.</h1>
+                </div>
+                <!-- End Col -->
+
+                <div class="col-sm-auto">
+                    <a class="btn btn-dark btn-sm btn-transition rounded-pill" href="{{ route('store.index') }}">Shop now</a>
+                </div>
+                <!-- End Col -->
+            </div>
+            <!-- End Row -->
+        </div>
+    </div>
+
     <!-- Articles -->
     <div class="container content-space-2">
         <!-- Heading -->
@@ -256,5 +273,20 @@
     </div>
     <!-- End Articles -->
 
+    <div class="container content-space-b-2">
+        <div class="bg-img-start rounded-2 p-5 mb-5" style="background-image: url({{ asset('images/wallpapers/10.jpg') }});">
+            <div class="row align-items-md-center">
+                <div class="col-sm mb-3 mb-md-0">
+                    <h1 class="h4 mb-0">Cutting-edge networking technology at competitive prices.</h1>
+                </div>
+                <!-- End Col -->
 
+                <div class="col-sm-auto">
+                    <a class="btn btn-dark btn-sm btn-transition rounded-pill" href="{{ route('store.index') }}">Shop now</a>
+                </div>
+                <!-- End Col -->
+            </div>
+            <!-- End Row -->
+        </div>
+    </div>
 @endsection

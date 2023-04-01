@@ -11,8 +11,6 @@ class PostController extends Controller
 
     public function index($grid_type = 'grid', $slug = '')
     {
-
-
         if ($slug) {
 
             $category = Category::where('slug', $slug)->first();
@@ -56,13 +54,23 @@ class PostController extends Controller
 
         $post = Post::where('slug', $slug)->first();
 
+        $comments = collect();
+
+        if ($post->is_commentable) {
+            $comments = $post->approved_comments;
+        }
+
         $related_posts = Post::where('category_id', $post->category_id)
             ->where('id', '!=', $post->id)
             ->limit(4)
             ->inRandomOrder()
             ->get();
 
-        return view('pages.posts.show', ['post' => $post, 'related_posts' => $related_posts]);
+        return view('pages.posts.show', [
+            'post' => $post,
+            'comments' => $comments,
+            'related_posts' => $related_posts,
+        ]);
 
     }
 }

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Title -->
-    <title>TimeNet Company</title>
+    <title>TimeNet Store</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('images/logo.png') }}">
@@ -14,12 +14,14 @@
     <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="{{ asset('themes/front/assets/vendor/swiper/swiper-bundle.css') }}">
+
     <!-- CSS Front Template -->
     <link rel="stylesheet" href="{{ asset('themes/front/assets/css/theme.min.css') }}">
     <link rel="stylesheet" href="{{ asset('themes/front/assets/css/snippets.min.css') }}">
     <!-- CSS Implementing Plugins -->
     <link rel="stylesheet" href="{{ asset('themes/front/assets/vendor/hs-mega-menu/dist/hs-mega-menu.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('themes/front/assets/vendor/swiper/swiper-bundle.css') }}">
+
     <link rel="stylesheet" href="{{ asset('themes/front/assets/vendor/bootstrap-icons/font/bootstrap-icons.css') }}">
 
     <style>
@@ -37,6 +39,10 @@
 
         .pagination .active span {
             background-color: #21325b;
+        }
+
+        .cart-table tbody tr td, .cart-table tbody tr th {
+            vertical-align: middle;
         }
 
     </style>
@@ -109,10 +115,46 @@
             }
         });
 
+
+        var shopProductSliderThumbs = new Swiper('.js-swiper-shop-product-thumb', {
+            slidesPerView: 3,
+            watchSlidesVisibility: true,
+            watchSlidesProgress: true,
+            history: false,
+        });
+
+        var shopProductSwiper = new Swiper('.js-swiper-shop-product',{
+
+            autoplay: true,
+            loop: true,
+            navigation: {
+                nextEl: '.js-swiper-shop-product-button-next',
+                prevEl: '.js-swiper-shop-product-button-prev',
+            },
+            thumbs: {
+                swiper: shopProductSliderThumbs
+            }
+        });
+
+
     })()
 </script>
 
 @livewireScripts
+
+<script>
+    Livewire.on('scroll-to-top', () => {
+        window.scrollTo({
+            top: 15,
+            left: 15,
+            behaviour: 'smooth'
+        })
+    })
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<x-livewire-alert::scripts/>
 
 </body>
 </html>

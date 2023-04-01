@@ -34,7 +34,11 @@ return new class extends Migration
 
             $table->string('title');
             $table->string('slug');
-            $table->text('short_content');
+
+            $table->boolean('is_commentable')->default(false);
+
+            $table->text('short_content')->nullable();
+
             $table->text('content');
             $table->timestamps();
         });

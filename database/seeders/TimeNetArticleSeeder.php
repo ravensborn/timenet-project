@@ -63,7 +63,7 @@ class TimeNetArticleSeeder extends Seeder
             $contentText = fread($content, filesize($post['content']));
             fclose($content);
 
-            $saved_post = \App\Models\Post::create(
+            $saved_post = \App\Models\Post::factory()->create(
                 [
                     'author_id' => 1,
                     'category_id' => 4,

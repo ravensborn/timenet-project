@@ -16,8 +16,12 @@
                             <li class="breadcrumb-item">
                                 <a href="{{ route('home') }}">TimeNet</a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Store</li>
-                            {{--                            <li class="breadcrumb-item active" aria-current="page">Listing</li>--}}
+                            <li class="breadcrumb-item">
+                                <a href="{{ route('store.index') }}">Store</a>
+                            </li>
+                            <li class="breadcrumb-item active">
+                                Products
+                            </li>
                         </ol>
                     </nav>
                     <!-- End Breadcrumb -->
@@ -37,27 +41,70 @@
                     <h3 class="alert-heading">Welcome to TimeNet Store!</h3>
 
                     <p>
-                        To keep your networking equipment updated, you must upgrade your components approximately every
-                        five years. With an equipment upgrade, you can take advantage of modern features that offer the
-                        ability to dramatically improve your business operations by taking advantage of new features and
-                        capabilities. With all new technologies, your budget may push you towards a particular feature
-                        set and network equipment manufacturer so we want to ensure you get the very best solution
-                        possible by offsetting your capital expenses by selling your old used networking equipment, and
-                        other office IT equipment, to TeleTraders. Let’s get started now so you can save more!
+                        Welcome to TimeNet, your one-stop-shop for all your networking needs. We are a team of
+                        networking experts dedicated to providing you with the best possible service and support. Our
+                        mission is to help you stay connected and secure, no matter what your networking needs may be.
+                        We offer a wide range of network devices, tools and services, including routers, switches,
+                        firewalls, VPNs, and more. Our products are designed to meet the highest standards of quality
+                        and reliability, and we are committed to providing you with the best possible value for your
+                        money. Whether you’re a small business owner, a home user, or an IT professional, we’ve got you
+                        covered. So why wait? Start browsing our selection today and see what TimeNet can do for you.
                     </p>
                     <hr/>
                     <p class="mb-0">Whenever you need to, you can always contact us at <a
-                                href="mailto:karzan@time-net.net" class="text-dark">karzan@time-net.net</a>.</p>
+                                href="mailto:karzan@time-net.net" class="text-dark">info@time-net.net</a>.</p>
                 </div>
             </div>
         </div>
+
+        @if(auth()->check())
+
+            <div class="row">
+                <div class="col text-center">
+
+                    <div class="alert alert-soft-dark" role="alert">
+
+
+                        @if($cartItems->count())
+
+                            <div>
+                                <i class="bi-cart fs-3 fw-bold"></i>
+                                <div>
+                                   <span class="fw-bold">
+                                       Items in cart:
+                                    {{ $cartItems->count() }}
+                                   </span>
+                                    -
+                                    <span class="fw-bold">(${{ number_format($cartTotal) }})</span>
+                                </div>
+                                <div>
+                                    <a class="btn btn-outline-dark btn-transition btn-sm rounded-pill mt-3" href="{{ route('store.cartItems.index') }}">
+                                        View your shopping cart
+                                    </a>
+                                </div>
+                            </div>
+
+                        @else
+
+                            <div>
+                                <i class="bi-cart"></i>
+                                Your shopping cart is empty.
+                            </div>
+
+                        @endif
+
+
+                    </div>
+
+                </div>
+            </div>
+
+        @endif
     </div>
 
+
     <div class="container content-space-t-1">
-
-
         <div class="row">
-
             <div class="col-lg-3">
                 <!-- Navbar -->
                 <div class="navbar-expand-lg mb-5">
@@ -88,32 +135,39 @@
                             <form>
                                 <div class="border-bottom pb-4 mb-4">
                                     <h5>Categories</h5>
-
                                     <div class="d-grid gap-2">
+
                                         <!-- Checkboxes -->
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="menCheckbox"
-                                                   checked>
-                                            <label class="form-check-label d-flex" for="menCheckbox">Category 1 <span
-                                                        class="ms-auto">(45)</span></label>
+                                            <input class="form-check-input" type="checkbox" value="all"
+                                                   id="categoryCheckbox-0"
+                                                   wire:model="selectedCategories"
+                                                   wire:change="_updateSelectedCategories">
+                                            <label class="form-check-label d-flex" for="categoryCheckbox-0">
+                                                All
+                                            </label>
                                         </div>
                                         <!-- End Checkboxes -->
+                                    @foreach($categories as $category)
+
+
+
                                         <!-- Checkboxes -->
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="menCheckbox"
-                                                   checked>
-                                            <label class="form-check-label d-flex" for="menCheckbox">Category 2 <span
-                                                        class="ms-auto">(73)</span></label>
-                                        </div>
-                                        <!-- End Checkboxes -->
-                                        <!-- Checkboxes -->
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="menCheckbox"
-                                                   checked>
-                                            <label class="form-check-label d-flex" for="menCheckbox">Category 3 <span
-                                                        class="ms-auto">(73)</span></label>
-                                        </div>
-                                        <!-- End Checkboxes -->
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox"
+                                                       value="{{ $category->id }}"
+                                                       id="categoryCheckbox-{{ $category->id }}"
+                                                       wire:model="selectedCategories"
+                                                       wire:change="_updateSelectedCategories">
+                                                <label class="form-check-label d-flex"
+                                                       for="categoryCheckbox-{{ $category->id }}">
+                                                    {{ $category->name }}
+                                                    <span class="ms-auto">({{ $category->products->count() }})</span>
+                                                </label>
+                                            </div>
+                                            <!-- End Checkboxes -->
+
+                                        @endforeach
                                     </div>
                                 </div>
 
@@ -121,33 +175,38 @@
                                     <h5>Brands</h5>
 
                                     <div class="d-grid gap-2">
-                                        <!-- Checkboxes -->
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                   id="adidasCheckbox">
-                                            <label class="form-check-label d-flex" for="adidasCheckbox">Cisco <span
-                                                        class="ms-auto">(16)</span></label>
-                                        </div>
-                                        <!-- End Checkboxes -->
 
                                         <!-- Checkboxes -->
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                   id="newBalanceCheckbox">
-                                            <label class="form-check-label d-flex" for="newBalanceCheckbox">Microtik
-                                                <span class="ms-auto">(8)</span></label>
+                                            <input class="form-check-input" type="checkbox" value="all"
+                                                   id="BrandCheckbox-0"
+                                                   wire:model="selectedBrands"
+                                                   wire:change="_updateSelectedBrands">
+                                            <label class="form-check-label d-flex" for="BrandCheckbox-0">
+                                                All
+                                            </label>
                                         </div>
                                         <!-- End Checkboxes -->
+                                    @foreach($brands as $brand)
+
+
 
                                         <!-- Checkboxes -->
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                   id="newBalanceCheckbox">
-                                            <label class="form-check-label d-flex" for="newBalanceCheckbox">Huawei <span
-                                                        class="ms-auto">(8)</span></label>
-                                        </div>
-                                        <!-- End Checkboxes -->
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox"
+                                                       value="{{ $brand->id }}"
+                                                       id="brandCheckbox-{{ $brand->id }}"
+                                                       wire:model="selectedBrands"
+                                                       wire:change="_updateSelectedBrands">
+                                                <label class="form-check-label d-flex"
+                                                       for="brandCheckbox-{{ $brand->id }}">
+                                                    {{ $brand->name }}
+                                                    <span class="ms-auto">({{ $brand->products->count() }})</span>
+                                                </label>
+                                            </div>
+                                            <!-- End Checkboxes -->
 
+                                        @endforeach
                                     </div>
 
                                     <!-- View More - Collapse -->
@@ -180,7 +239,8 @@
 
 
                                 <div class="d-grid">
-                                    <button type="button" class="btn btn-white btn-transition">Clear all</button>
+                                    <button type="button" class="btn btn-white" wire:click="resetFilters">Clear all
+                                    </button>
                                 </div>
                             </form>
                             <!-- End Form -->
@@ -195,7 +255,7 @@
 
                 <div class="row align-items-center mb-5">
                     <div class="col-sm mb-3 mb-sm-0">
-{{--                        <div class="fw-bold text-dark mb-0">{{ $products->count() }} products</div>--}}
+                        {{--                        <div class="fw-bold text-dark mb-0">{{ $products->count() }} products</div>--}}
                     </div>
 
                     <div class="col-sm-auto">
@@ -203,14 +263,18 @@
                             <!-- Select -->
                             <div class="mb-2 mb-sm-0 me-sm-2">
 
-                                <input type="text" class="form-control form-control-sm" placeholder="Search...">
+                                <input type="text" wire:model="search"
+                                       wire:keydown.a="_updateSearch($event.target.value)"
+                                       class="form-control form-control-sm"
+                                       placeholder="Search...">
 
                             </div>
                             <!-- End Select -->
 
                             <!-- Select -->
                             <div class="mb-2 mb-sm-0 me-sm-2">
-                                <select class="form-select form-select-sm" wire:model="sorting_method">
+                                <select class="form-select form-select-sm" wire:model="sorting_method"
+                                        wire:change="_updateSortingMethod">
                                     <option value="newest_top">Newest</option>
                                     <option value="price_high_to_low">Price, high to low</option>
                                     <option value="price_low_to_high">Price, low to high</option>
@@ -221,12 +285,14 @@
                             <!-- Nav -->
                             <ul class="nav nav-segment">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="../demo-shop/products-grid.html">
+                                    <a @class([ 'nav-link', 'active' => ($displayProductsType == 'grid') ]) wire:click="updateProductDisplayType('grid')"
+                                       style="cursor: pointer;">
                                         <i class="bi-grid-fill"></i>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="../demo-shop/products-list.html">
+                                    <a @class([ 'nav-link', 'active' => ($displayProductsType == 'list') ]) wire:click="updateProductDisplayType('list')"
+                                       style="cursor: pointer;">
                                         <i class="bi-list"></i>
                                     </a>
                                 </li>
@@ -236,60 +302,183 @@
                     </div>
                 </div>
 
-                <div class="row row-cols-sm-2 row-cols-md-3 mb-10">
-                    @foreach($products as $product)
-                        <div class="col mb-4">
-                            <!-- Card -->
-                            <div class="card card-bordered shadow-none text-center h-100">
-                                <div class="card-pinned">
-                                    <img class="card-img-top" src="{{ $product->getFirstMediaUrl('cover') }}"
-                                         alt="Image Description">
-
-                                    @if($product->created_at->isToday())
-                                        <div class="card-pinned-top-start">
-                                            <span class="badge bg-success rounded-pill">New arrival</span>
-                                        </div>
-                                    @endif
-
-                                    <div class="card-pinned-top-end">
-                                        <button type="button"
-                                                class="btn btn-xs btn-icon rounded-circle"
-                                                style="font-size: 20px;"
-                                                data-bs-toggle="tooltip" data-bs-placement="top" title="Save for later">
-                                            <i class="bi-heart"></i>
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <div class="card-body">
-                                    <div class="mb-2">
-                                        <a class="link-sm link-secondary" href="#">{{ $product->category->name }}</a>
-                                    </div>
-
-                                    <h4 class="card-title">
-                                        <a class="text-dark" href="../demo-shop/product-overview.html">
-                                            {{ $product->name }}
-                                        </a>
-                                    </h4>
-                                    <p class="card-text text-dark fw-bold">${{ number_format($product->price, 2) }}</p>
-                                </div>
-
-                                <div class="card-footer pt-0">
-
-                                    <button type="button" class="btn btn-outline-dark btn-sm">
-                                        <i class="bi bi-cart"></i>
-                                        &nbsp;
-                                        Add to cart
-                                    </button>
-                                </div>
-                            </div>
-                            <!-- End Card -->
-                        </div>
-                    @endforeach
-                </div>
 
                 <div class="d-flex justify-content-center">
-                    {{ $products->links() }}
+                    <div wire:loading
+                         wire:target="_updateSelectedCategories, _updateSearch, _updateSelectedBrands, _updateSortingMethod">
+                        <div class="spinner-border m-5" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div wire:loading.remove
+                     wire:target="_updateSelectedCategories, _updateSelectedBrands, _updateSearch, _updateSortingMethod">
+                    <div class="row mb-10">
+                        @forelse($products as $product)
+                            @if($displayProductsType == 'grid')
+                                <div class="col-sm-2 col-md-3 col-lg-4 mb-4">
+                                    <!-- Card -->
+                                    <div class="card card-bordered shadow-none text-center h-100">
+                                        <div class="card-pinned">
+                                            <img class="card-img-top" src="{{ $product->getFirstMediaUrl('cover') }}"
+                                                 alt="Image Description">
+
+                                            @if($product->created_at->isToday())
+                                                <div class="card-pinned-top-start">
+                                                    <span class="badge bg-success rounded-pill">New arrival</span>
+                                                </div>
+                                            @endif
+
+                                            <div class="card-pinned-top-end">
+
+                                                @if($user && $user->wishlist()->where('product_id', $product->id)->first())
+                                                    <button type="button"
+                                                            class="btn btn-icon rounded-circle"
+                                                            style="font-size: 20px;"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            title="Save for later"
+                                                            wire:click="toWishlist({{ $product->id }}, 'remove')">
+                                                        <i class="bi-heart-fill text-danger"></i>
+                                                    </button>
+                                                @else
+                                                    <button type="button"
+                                                            class="btn btn-icon rounded-circle"
+                                                            style="font-size: 20px;"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            title="Save for later"
+                                                            wire:click="toWishlist({{ $product->id }}, 'add')">
+                                                        <i class="bi-heart"></i>
+                                                    </button>
+                                                @endif
+                                            </div>
+                                        </div>
+
+                                        <div class="card-body">
+                                            <div class="mb-2">
+                                                <a class="link-sm link-secondary"
+                                                   href="{{ route('store.products.show', $product->slug) }}">{{ $product->category->name }}</a>
+                                            </div>
+
+                                            <h4 class="card-title">
+                                                <a class="text-dark" href="{{ route('store.products.show', $product->slug) }}">
+                                                    {{ $product->name }}
+                                                </a>
+                                            </h4>
+                                            <p class="card-text text-dark fw-bold">
+                                                ${{ number_format($product->price, 2) }}</p>
+                                        </div>
+
+                                        <div class="card-footer pt-0">
+
+                                            @if(auth()->check())
+                                                <button type="button" class="btn btn-outline-dark btn-sm"
+                                                        wire:key="{{ $product->id }}"
+                                                        wire:click="addToCart({{ $product->id }},1)">
+                                                    <i class="bi bi-cart"></i>
+                                                    &nbsp;
+                                                    Add to cart
+                                                </button>
+                                            @else
+                                                <div>
+                                                    You must be <a href="{{ route('login') }}">logged in</a> to add item
+                                                    to your
+                                                    cart.
+                                                </div>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <!-- End Card -->
+                                </div>
+                            @else
+                                <div class="col-12 mb-2">
+                                    <div class="card card-flush">
+                                        <div class="row align-items-md-center">
+                                            <div class="col-md-3">
+                                                <img class="card-img rounded-2"
+                                                     src="{{ $product->getFirstMediaUrl('cover') }}"
+                                                     alt="Image Cover">
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="card-body">
+
+
+                                                    <div class="row">
+                                                        <div class="col-8">
+                                                            <span class="card-subtitle">{{ $product->category->name }}</span>
+                                                            @if($product->created_at->isToday())
+                                                                <div class="card-pinned-top-start">
+                                                                    <span class="badge bg-success rounded-pill">New arrival</span>
+                                                                </div>
+                                                            @endif
+                                                            <h4 class="card-title">
+                                                                <a class="text-dark">
+                                                                    {{ $product->name }}
+                                                                </a>
+                                                            </h4>
+
+                                                            <div>
+                                                                @if(auth()->check())
+                                                                    <button type="button"
+                                                                            class="btn btn-outline-dark btn-sm"
+                                                                            wire:key="{{ $product->id }}"
+                                                                            wire:click="addToCart({{ $product->id }},1)">
+                                                                        <i class="bi bi-cart"></i>
+                                                                        &nbsp;
+                                                                        Add to cart
+                                                                    </button>
+                                                                @else
+                                                                    <div>
+                                                                        You must be <a href="{{ route('login') }}">logged
+                                                                            in</a> to add item to your
+                                                                        cart.
+                                                                    </div>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <div>
+                                                                <p class="card-text text-dark fw-bold">
+                                                                    ${{ number_format($product->price, 2) }}</p>
+                                                            </div>
+                                                            @if($user && $user->wishlist()->where('product_id', $product->id)->first())
+                                                                <a class="link-sm link-secondary small text-danger"
+                                                                   style="cursor:pointer;"
+                                                                   wire:click="toWishlist({{ $product->id }}, 'remove')">
+                                                                    <i class="bi-heart-fill text-danger me-1"></i>
+                                                                    Save for later
+                                                                </a>
+                                                            @else
+                                                                <a class="link-sm link-secondary small"
+                                                                   style="cursor:pointer;"
+                                                                   wire:click="toWishlist({{ $product->id }}, 'add')">
+                                                                    <i class="bi-heart me-1"></i> Save for later
+                                                                </a>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                        @empty
+                            <div class="row">
+                                <div class="col text-center">
+                                    <div class="alert alert-soft-dark">
+                                        No products found with your current settings.
+                                    </div>
+                                </div>
+                            </div>
+                        @endforelse
+
+                    </div>
+
+                    <div class="d-flex justify-content-center">
+                        {{ $products->links() }}
+                    </div>
                 </div>
 
             </div>
@@ -306,7 +495,7 @@
                 <div class="row justify-content-lg-between">
                     <!-- Heading -->
                     <div class="mb-5">
-{{--                        <span class="text-cap">Subscribe</span>--}}
+                        {{--                        <span class="text-cap">Subscribe</span>--}}
                         <h2>Get the latest from Front</h2>
                     </div>
                     <!-- End Heading -->
@@ -324,7 +513,8 @@
                         <!-- End Input Card -->
                     </form>
 
-                    <p class="small">You can unsubscribe at any time. Read our <a class="text-dark" href="{{ route('soon') }}">privacy
+                    <p class="small">You can unsubscribe at any time. Read our <a class="text-dark"
+                                                                                  href="{{ route('soon') }}">privacy
                             policy</a></p>
                 </div>
             </div>

@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Post;
-use App\Models\Product;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -44,11 +43,6 @@ class DatabaseSeeder extends Seeder
             'model' => Post::class,
         ])->create();
 
-        $defaultProductCategory = \App\Models\Category::factory([
-            'name' => 'Default',
-            'model' => Product::class,
-        ])->create();
-
 
         Post::factory(14)->create([
             'category_id' => $postSolutionCategory->id,
@@ -56,14 +50,6 @@ class DatabaseSeeder extends Seeder
 
         Post::factory(14)->create([
             'category_id' => $postProductCatalogCategory->id,
-        ]);
-
-//        Post::factory(14)->create([
-//            'category_id' => $postArticleCategory->id,
-//        ]);
-
-        Product::factory(12)->create([
-            'category_id' => $defaultProductCategory->id,
         ]);
 
 
@@ -78,21 +64,16 @@ class DatabaseSeeder extends Seeder
                 ->toMediaCollection('cover');
         }
 
-        $products = Product::whereIn('category_id', [5])->get();
-
-        foreach ($products as $product) {
-
-            $path = public_path('images/examples/900x660.jpg');
-
-            $product->addMedia($path)
-                ->preservingOriginal()
-                ->toMediaCollection('cover');
-        }
-
         $this->call([
-            TimeNetSeeder::class,
-            TimeNetArticleSeeder::class,
+            TimeNetPaymentMethodSeeder::class, //Payment Methods
+            TimeNetCountrySeeder::class,
+            TimeNetBrandSeeder::class, //Brands
+            TimeNetProductSeeder::class, //Products
+            TimeNetServiceSeeder::class, //Services
+            TimeNetArticleSeeder::class, //Articles
         ]);
+
+
 
     }
 }

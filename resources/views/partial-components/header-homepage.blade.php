@@ -70,6 +70,42 @@
                     </li>
                     <!-- End About -->
 
+                    <!-- Language -->
+                    <li class="hs-has-sub-menu nav-item">
+                        <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link dropdown-toggle" href="#"
+                           role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-globe2"></i>
+                        </a>
+                        <!-- Mega Menu -->
+                        <div class="hs-sub-menu dropdown-menu" aria-labelledby="pagesMegaMenu"
+                             style="min-width: 14rem;">
+                            <a class="dropdown-item" href="#">
+                               <div class="d-flex align-items-center">
+                                   <img style="width: 16px; height: auto;" src="{{ asset('themes/front/assets/vendor/flag-icon-css/flags/4x3/us.svg')  }}" alt="flag icon">
+                                   &nbsp;
+                                   English (United States)
+                               </div>
+                            </a>
+                            <a class="dropdown-item" href="{{ route('soon') }}">
+                                <div class="d-flex align-items-center">
+                                    <img style="width: 16px; height: auto;" src="{{ asset('images/kurdistan-flag.svg')  }}" alt="flag icon">
+                                    &nbsp;
+                                    Central Kurdish (کوردیی ناوەندی)
+                                </div>
+                            </a>
+                            <a class="dropdown-item" href="{{ route('soon') }}">
+                                <div class="d-flex align-items-center">
+                                    <img style="width: 16px; height: auto;" src="{{ asset('themes/front/assets/vendor/flag-icon-css/flags/4x3/iq.svg')  }}" alt="flag icon">
+                                    &nbsp;
+                                    Arabic (العربیة)
+                                </div>
+                            </a>
+
+                        </div>
+                        <!-- End Mega Menu -->
+                    </li>
+                    <!-- End Language -->
+
 
                     <!-- Button -->
                     <li class="nav-item">

@@ -40,9 +40,11 @@
             <div class="mb-5 mb-md-10">
                 <h1 class="display-4">About Us</h1>
                 <p class="lead mt-5">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda autem deserunt dolor doloribus
-                    excepturi libero, maxime molestiae? Aut consectetur deserunt dolor, earum eos iure magnam maxime
-                    vero? Enim, quis, quisquam.
+                    Welcome to TimeNet, your fast and reliable internet service provider. Our state-of-the-art network
+                    infrastructure ensures the fastest speeds and most reliable connections. We also offer a range of
+                    networking products and services, including tools and equipment. Trust us to provide hassle-free
+                    service and exceptional customer support. Choose TimeNet as your internet service provider and stay
+                    connected with ease.
                 </p>
             </div>
             <!-- End Heading -->
@@ -101,14 +103,15 @@
 
                 <h2 class="mb-4">Tools should adapt to the user, not the other way around.</h2>
 
-                <p>Since 2007, we have helped 25 companies launch over 1k incredible products. We believe the best
-                    digital solutions are built at the intersection of business strategy, available technology, and real
-                    user's needs.</p>
                 <p>Things can get really complex, really quickly, and a pragmatic, synthetic and clear vision is
                     essential to be able to create something that, after all, is meant to be used. Emotions also have a
                     big role to play and developing clear and beautiful aesthetics is of the utmost importance to create
                     a pleasant environment in which the user actually enjoys the time spent in it. In the end, we're all
                     suckers for beautiful things that just work</p>
+
+                <p>Since 2007, we have helped 25 companies launch over 1k incredible products. We believe the best
+                    digital solutions are built at the intersection of business strategy, available technology, and real
+                    user's needs.</p>
             </div>
             <!-- End Col -->
         </div>
@@ -149,9 +152,7 @@
 
             <h2>TimeNet's Team</h2>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci culpa debitis deserunt earum, et
-                exercitationem libero maiores minus modi odio placeat provident quidem ratione, totam? Earum iure maxime
-                voluptas!
+                TimeNet's team is made up of highly skilled professionals who are passionate about providing top-quality service to our customers. We pride ourselves on our friendly and knowledgeable support staff, who are always ready to assist with any issues or questions you may have. Our team is committed to ensuring that you have the best possible experience with our internet and networking services.
             </p>
         </div>
         <!-- End Heading -->

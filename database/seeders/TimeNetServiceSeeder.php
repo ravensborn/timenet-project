@@ -3,11 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use App\Models\Post;
-use App\Models\Product;
 use Illuminate\Database\Seeder;
 
-class TimeNetSeeder extends Seeder
+class TimeNetServiceSeeder extends Seeder
 {
     /**
      * Seed the application's database.
@@ -100,7 +98,7 @@ class TimeNetSeeder extends Seeder
 
         foreach ($services as $post) {
 
-            $saved_post = \App\Models\Post::create(
+            $saved_post = \App\Models\Post::factory()->create(
                 [
                     'author_id' => 1,
                     'category_id' => 2,

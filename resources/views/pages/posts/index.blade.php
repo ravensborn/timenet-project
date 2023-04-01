@@ -37,13 +37,15 @@
     <!-- Card Grid -->
     <div class="container content-space-2 content-space-lg-1">
         <!-- Heading -->
-        <div class="w-md-75 w-lg-50 text-center mx-md-auto mb-5">
+        <div class="w-75 text-center mx-md-auto mb-5">
             <h2>{{ $category->name }}</h2>
 
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur esse expedita modi nam officia
-                porro
-                soluta, vel! Aperiam, architecto error facere molestias non provident quae quos.
+                We are a network of professionals dedicated to providing you with the best
+                services and solutions. Our team of experts is committed to delivering high-quality content, including
+                posts and articles, that will help you stay informed and up-to-date on the latest trends and
+                developments in our industry. Whether you’re looking for information on our services or solutions, or
+                simply want to learn more about what we do, we’re here to help.
             </p>
 
             <hr>

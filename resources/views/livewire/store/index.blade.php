@@ -1,34 +1,5 @@
 <div>
 
-    <!-- Breadcrumb -->
-    <div class="bg-light">
-        <div class="container py-4">
-            <div class="row">
-                <div class="col-sm">
-                    <h4 class="mb-0">TimeNet Store</h4>
-                </div>
-                <!-- End Col -->
-
-                <div class="col-sm-auto">
-                    <!-- Breadcrumb -->
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb mb-0">
-                            <li class="breadcrumb-item">
-                                <a href="{{ route('home') }}">TimeNet</a>
-                            </li>
-                            <li class="breadcrumb-item active" aria-current="page">Store</li>
-                            {{--                            <li class="breadcrumb-item active" aria-current="page">Listing</li>--}}
-                        </ol>
-                    </nav>
-                    <!-- End Breadcrumb -->
-                </div>
-                <!-- End Col -->
-            </div>
-            <!-- End Row -->
-        </div>
-    </div>
-    <!-- End Breadcrumb -->
-
 
     <div class="bg-img-start"
          style="background-image: url({{ asset('images/wallpapers/6.jpg') }}); background-position: 60% 60%;">
@@ -46,11 +17,12 @@
         </div>
     </div>
 
-    <div class="container  content-space-b-1">
+    <div class="container content-space-b-1">
         <div class="position-relative">
             <!-- Swiper Main Slider -->
             <div class="js-swiper-shop-classic-hero swiper">
                 <div class="swiper-wrapper">
+
                     <!-- Slide -->
                     <div class="swiper-slide">
                         <!-- Container -->
@@ -58,11 +30,13 @@
                             <div class="row align-items-lg-center">
                                 <div class="col-lg-5 order-lg-2 mb-7 mb-lg-0">
                                     <div class="mb-6">
-                                        <h1 class="display-6 mb-4">Lorem ipsum dolor sit amet.</h1>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci aut
-                                            doloribus ex facilis fugit, incidunt labore, nam nihil officia quia
-                                            quidem quos
-                                            totam voluptatibus voluptatum. Harum nihil veritatis voluptatem!</p>
+                                        <h1 class="display-6 mb-4">Wireless Networking</h1>
+                                        <p>
+                                            Enjoy the freedom of wireless networking with our selection of wireless
+                                            routers and access points. Our wireless networking products offer fast,
+                                            reliable connections that let you work and play without being tethered to a
+                                            cable. Shop with us and experience the convenience of wireless networking.
+                                        </p>
                                     </div>
 
                                     <div class="d-flex gap-2">
@@ -73,7 +47,8 @@
 
                                 <div class="col-lg-6 order-lg-1">
                                     <div class="w-75 mx-auto">
-                                        <img class="img-fluid" src="https://dummyimage.com/900x660/dee0e7/000.jpg"
+                                        <img class="img-fluid"
+                                             src="{{ asset('images/store-slider/router.png') }}"
                                              alt="Image Description">
                                     </div>
                                 </div>
@@ -92,11 +67,13 @@
                             <div class="row align-items-lg-center">
                                 <div class="col-lg-5 order-lg-2 mb-7 mb-lg-0">
                                     <div class="mb-6">
-                                        <h1 class="display-6 mb-4">Lorem ipsum dolor sit amet.</h1>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci aut
-                                            doloribus ex facilis fugit, incidunt labore, nam nihil officia quia
-                                            quidem quos
-                                            totam voluptatibus voluptatum. Harum nihil veritatis voluptatem!</p>
+                                        <h1 class="display-6 mb-4">Security Solutions</h1>
+                                        <p>
+                                            Protect your network with our comprehensive security solutions. We offer a
+                                            range of products and services designed to keep your network safe from cyber
+                                            threats and attacks. From firewalls and antivirus software to network
+                                            monitoring and management, we've got you covered.
+                                        </p>
                                     </div>
 
                                     <div class="d-flex gap-2">
@@ -107,7 +84,8 @@
 
                                 <div class="col-lg-6 order-lg-1">
                                     <div class="w-75 mx-auto">
-                                        <img class="img-fluid" src="https://dummyimage.com/900x660/dee0e7/000.jpg"
+                                        <img class="img-fluid"
+                                             src="{{ asset('images/store-slider/RCS5516FW-front-right.png') }}"
                                              alt="Image Description">
                                     </div>
                                 </div>
@@ -119,6 +97,8 @@
                     </div>
                     <!-- End Slide -->
 
+
+
                     <!-- Slide -->
                     <div class="swiper-slide">
                         <!-- Container -->
@@ -126,11 +106,13 @@
                             <div class="row align-items-lg-center">
                                 <div class="col-lg-5 order-lg-2 mb-7 mb-lg-0">
                                     <div class="mb-6">
-                                        <h1 class="display-6 mb-4">Lorem ipsum dolor sit amet.</h1>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci aut
-                                            doloribus ex facilis fugit, incidunt labore, nam nihil officia quia
-                                            quidem quos
-                                            totam voluptatibus voluptatum. Harum nihil veritatis voluptatem!</p>
+                                        <h1 class="display-6 mb-4">Networking Essentials</h1>
+                                        <p>
+                                            Our store has everything you need to set up and maintain your home or
+                                            business network. From routers and switches to cables and connectors, we
+                                            carry a wide range of networking essentials from top brands. Shop with us
+                                            and get the tools you need to stay connected.
+                                        </p>
                                     </div>
 
                                     <div class="d-flex gap-2">
@@ -141,7 +123,8 @@
 
                                 <div class="col-lg-6 order-lg-1">
                                     <div class="w-75 mx-auto">
-                                        <img class="img-fluid" src="https://dummyimage.com/900x660/dee0e7/000.jpg"
+                                        <img class="img-fluid"
+                                             src="{{ asset('images/store-slider/fiber.png') }}"
                                              alt="Image Description">
                                     </div>
                                 </div>
@@ -164,12 +147,13 @@
             <div class="position-absolute bottom-0 start-0 end-0 mb-3">
                 <div class="js-swiper-shop-hero-thumbs swiper" style="max-width: 13rem;">
                     <div class="swiper-wrapper">
+
                         <!-- Slide -->
                         <div class="swiper-slide">
                             <a class="js-swiper-thumb-progress swiper-thumb-progress-avatar" href="javascript:;"
                                tabindex="0">
                                 <img class="swiper-thumb-progress-avatar-img"
-                                     src="https://dummyimage.com/900x660/dee0e7/000.jpg"
+                                     src="{{ asset('images/store-slider/router.png') }}"
                                      alt="Image Description">
                             </a>
                         </div>
@@ -180,18 +164,19 @@
                             <a class="js-swiper-thumb-progress swiper-thumb-progress-avatar" href="javascript:;"
                                tabindex="0">
                                 <img class="swiper-thumb-progress-avatar-img"
-                                     src="https://dummyimage.com/900x660/dee0e7/000.jpg"
+                                     src="{{ asset('images/store-slider/RCS5516FW-front-right.png') }}"
                                      alt="Image Description">
                             </a>
                         </div>
                         <!-- End Slide -->
+
 
                         <!-- Slide -->
                         <div class="swiper-slide">
                             <a class="js-swiper-thumb-progress swiper-thumb-progress-avatar" href="javascript:;"
                                tabindex="0">
                                 <img class="swiper-thumb-progress-avatar-img"
-                                     src="https://dummyimage.com/900x660/dee0e7/000.jpg"
+                                     src="{{ asset('images/store-slider/fiber.png') }}"
                                      alt="Image Description">
                             </a>
                         </div>
@@ -219,7 +204,7 @@
                     </div>
                     <div class="flex-grow-1 ms-4">
                         <h4 class="mb-1">Secure checkout</h4>
-                        <p class="small mb-0">Guaranteed safe checkout</p>
+                        <p class="small mb-0">Guaranteed safe checkout.</p>
                     </div>
                 </div>
                 <!-- End Icon Block -->
@@ -252,8 +237,8 @@
                              alt="Image Description">
                     </div>
                     <div class="flex-grow-1 ms-4">
-                        <h4 class="mb-1">Free shipping</h4>
-                        <p class="small mb-0">Automatically receive free standard shipping on every order.</p>
+                        <h4 class="mb-1">Fast shipping</h4>
+                        <p class="small mb-0">Automatically receive express shipping on every order.</p>
                     </div>
                 </div>
                 <!-- End Icon Block -->
@@ -269,7 +254,7 @@
                 <div class="row justify-content-lg-between">
                     <!-- Heading -->
                     <div class="mb-5">
-{{--                        <span class="text-cap">Subscribe</span>--}}
+                        {{--                        <span class="text-cap">Subscribe</span>--}}
                         <h2>Get the latest from TimeNet</h2>
                     </div>
                     <!-- End Heading -->

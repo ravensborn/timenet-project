@@ -30,6 +30,7 @@ class PostFactory extends Factory
             'title' => $this->faker->sentence,
             'content' => $paragraphs,
             'short_content' => $this->faker->paragraph,
+            'is_commentable' => true,
         ];
     }
 }

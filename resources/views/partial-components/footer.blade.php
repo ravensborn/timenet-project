@@ -24,7 +24,7 @@
                 <!-- List -->
                 <ul class="list-unstyled list-py-1">
                     <li><a class="link-sm link-light" href="#"><i class="bi-geo-alt-fill me-1"></i> Erbil, Kurdistan Region of Iraq</a></li>
-                    <li><a class="link-sm link-light" href="tel:1-062-109-9222"><i class="bi-telephone-inbound-fill me-1"></i> +964 (750) 380-7676</a></li>
+                    <li><a class="link-sm link-light" href="tel:+9647503807676"><i class="bi-telephone-inbound-fill me-1"></i> +964 (750) 380-7676</a></li>
                 </ul>
                 <!-- End List -->
 
@@ -36,10 +36,11 @@
 
                 <!-- List -->
                 <ul class="list-unstyled list-py-1 mb-0">
-                    <li><a class="link-sm link-light" href="#">About</a></li>
-                    <li><a class="link-sm link-light" href="#">Blog</a></li>
-                    <li><a class="link-sm link-light" href="#">Customers <i class="bi-box-arrow-up-right small ms-1"></i></a></li>
-                    <li><a class="link-sm link-light" href="#">Contact us</a></li>
+                    <li><a class="link-sm link-light" href="{{ route('about') }}">About</a></li>
+                    <li><a class="link-sm link-light" href="{{ route('posts.index', ['grid_type' => 'grid', 'slug' => 'services']) }}">Services</a></li>
+                    <li><a class="link-sm link-light" href="{{ route('posts.index', ['grid_type' => 'grid', 'slug' => 'solutions']) }}">Solutions</a></li>
+                    <li><a class="link-sm link-light" href="{{ route('posts.index', ['grid_type' => 'grid', 'slug' => 'product-catalog']) }}">Catalog</a></li>
+                    <li><a class="link-sm link-light" href="tel:9647503807676">Contact us</a></li>
                 </ul>
                 <!-- End List -->
             </div>
@@ -50,10 +51,8 @@
 
                 <!-- List -->
                 <ul class="list-unstyled list-py-1 mb-0">
-                    <li><a class="link-sm link-light" href="#">Press <i class="bi-box-arrow-up-right small ms-1"></i></a></li>
-                    <li><a class="link-sm link-light" href="#">Release Notes</a></li>
-                    <li><a class="link-sm link-light" href="#">Integrations</a></li>
-                    <li><a class="link-sm link-light" href="#">Pricing</a></li>
+                    <li><a class="link-sm link-light" href="{{ route('store.index') }}">Store</a></li>
+                    <li><a class="link-sm link-light" href="{{ route('store.products.index') }}">Available Products</a></li>
                 </ul>
                 <!-- End List -->
             </div>
@@ -64,11 +63,8 @@
 
                 <!-- List -->
                 <ul class="list-unstyled list-py-1 mb-0">
-                    <li><a class="link-sm link-light" href="#">Support</a></li>
-                    <li><a class="link-sm link-light" href="#">Docs</a></li>
-                    <li><a class="link-sm link-light" href="#">Status</a></li>
-                    <li><a class="link-sm link-light" href="#">API Reference</a></li>
-                    <li><a class="link-sm link-light" href="#">Tech Requirements</a></li>
+                    <li><a class="link-sm link-light" href="{{ route('downloads') }}">Downloads</a></li>
+                    <li><a class="link-sm link-light" href="{{ route('faq') }}">FAQ</a></li>
                 </ul>
                 <!-- End List -->
             </div>
@@ -79,8 +75,8 @@
 
                 <!-- List -->
                 <ul class="list-unstyled list-py-1 mb-5">
-                    <li><a class="link-sm link-light" href="#"><i class="bi-question-circle-fill me-1"></i> Help</a></li>
-                    <li><a class="link-sm link-light" href="#"><i class="bi-person-circle me-1"></i> Your Account</a></li>
+                    <li><a class="link-sm link-light" href="{{ route('soon') }}"><i class="bi-question-circle-fill me-1"></i> Help</a></li>
+                    <li><a class="link-sm link-light" href="{{ route('soon') }}"><i class="bi-person-circle me-1"></i> Your Account</a></li>
                 </ul>
                 <!-- End List -->
             </div>
@@ -95,13 +91,13 @@
                 <!-- Socials -->
                 <ul class="list-inline list-separator list-separator-light mb-0">
                     <li class="list-inline-item">
-                        <a class="link-sm link-light" href="#">Privacy & Policy</a>
+                        <a class="link-sm link-light" href="{{ route('soon') }}">Privacy & Policy</a>
                     </li>
                     <li class="list-inline-item">
-                        <a class="link-sm link-light" href="#">Terms</a>
+                        <a class="link-sm link-light" href="{{ route('soon') }}">Terms</a>
                     </li>
                     <li class="list-inline-item">
-                        <a class="link-sm link-light" href="#">Site Map</a>
+                        <a class="link-sm link-light" href="{{ route('soon') }}">Site Map</a>
                     </li>
                 </ul>
                 <!-- End Socials -->
@@ -110,27 +106,27 @@
             <div class="col-sm-auto">
                 <!-- Socials -->
                 <ul class="list-inline mb-0">
+
                     <li class="list-inline-item">
-                        <a class="btn btn-soft-light btn-xs btn-icon" href="#">
+                        <a class="btn btn-soft-light btn-xs btn-icon" href="https://www.linkedin.com/company/timenet/">
+                            <i class="bi-linkedin"></i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="btn btn-soft-light btn-xs btn-icon" href="https://www.facebook.com/Teknykar">
                             <i class="bi-facebook"></i>
                         </a>
                     </li>
 
                     <li class="list-inline-item">
-                        <a class="btn btn-soft-light btn-xs btn-icon" href="#">
-                            <i class="bi-google"></i>
+                        <a class="btn btn-soft-light btn-xs btn-icon" href="https://www.instagram.com/time.nett/">
+                            <i class="bi-instagram"></i>
                         </a>
                     </li>
 
                     <li class="list-inline-item">
-                        <a class="btn btn-soft-light btn-xs btn-icon" href="#">
-                            <i class="bi-twitter"></i>
-                        </a>
-                    </li>
-
-                    <li class="list-inline-item">
-                        <a class="btn btn-soft-light btn-xs btn-icon" href="#">
-                            <i class="bi-github"></i>
+                        <a class="btn btn-soft-light btn-xs btn-icon" href="mailto:info@time-net.net">
+                            <i class="bi-envelope"></i>
                         </a>
                     </li>
 
@@ -139,15 +135,23 @@
                         <div class="btn-group">
                             <button type="button" class="btn btn-soft-light btn-xs dropdown-toggle" id="footerDarkSelectLanguage" data-bs-toggle="dropdown" aria-expanded="false" data-bs-dropdown-animation>
                 <span class="d-flex align-items-center">
-                  <img class="avatar avatar-xss avatar-circle me-2" src="themes/front/assets/vendor/flag-icon-css/flags/1x1/us.svg" alt="Image description" width="16"/>
+                  <img class="avatar avatar-xss avatar-circle me-2" src="{{ asset('themes/front/assets/vendor/flag-icon-css/flags/1x1/us.svg') }}" alt="Image description" width="16"/>
                   <span>English (US)</span>
                 </span>
                             </button>
 
                             <div class="dropdown-menu" aria-labelledby="footerDarkSelectLanguage">
-                                <a class="dropdown-item d-flex align-items-center active" href="#">
+                                <a class="dropdown-item d-flex align-items-center active" href="{{ route('home') }}">
                                     <img class="avatar avatar-xss avatar-circle me-2" src="{{ asset('themes/front/assets/vendor/flag-icon-css/flags/1x1/us.svg') }}" alt="Image description" width="16"/>
                                     <span>English (US)</span>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center active" href="{{ route('soon') }}">
+                                    <img class="avatar avatar-xss avatar-circle me-2" src="{{ asset('images/kurdistan-flag.svg') }}" alt="Image description" width="16"/>
+                                    <span>Central Kurdish (کوردیی ناوەندی)</span>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center active" href="{{ route('soon') }}">
+                                    <img class="avatar avatar-xss avatar-circle me-2" src="{{ asset('themes/front/assets/vendor/flag-icon-css/flags/1x1/iq.svg') }}" alt="Image description" width="16"/>
+                                    <span>Arabic (العربیة)</span>
                                 </a>
                             </div>
                         </div>

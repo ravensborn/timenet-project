@@ -103,58 +103,106 @@
                         {!! $post->content !!}
                     </div>
 
-                    <div class="border-top pt-5">
-                        <h3>2 comments</h3>
-                    </div>
-                    <ul class="list-comment">
+                    @if($post->is_commentable)
 
-                        <li class="list-comment-item">
-                            <!-- Media -->
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="flex-shrink-0">
-                                    <img class="avatar avatar-circle" src="{{ asset('images/user.png') }}"
-                                         alt="Image Description">
-                                </div>
+                        @if(auth()->check())
 
-                                <div class="flex-grow-1 ms-3">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <h6>Hasty Yassin</h6>
-                                        <span class="d-block small text-muted">2 days ago</span>
-                                    </div>
-                                </div>
+                            <div class="border-top pt-5">
+                                @if($comments->count() == 1)
+                                    <h5>1 comment</h5>
+                                @elseif($comments->count() > 1)
+                                    <h5>{{ $comments->count() }} comments</h5>
+                                @else
+                                    <h5>Be first to share your thoughts.</h5>
+                                @endif
                             </div>
-                            <!-- End Media -->
 
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum expedita facere ipsam
-                                officiis tenetur! At debitis dignissimos impedit ipsa, minima officia porro praesentium
-                                provident vero voluptatem! Accusantium fugit inventore unde!
-                            </p>
-                        </li>
-                        <li class="list-comment-item">
-                            <!-- Media -->
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="flex-shrink-0">
-                                    <img class="avatar avatar-circle" src="{{ asset('images/user.png') }}"
-                                         alt="Image Description">
+                            @if($comments->count())
+                                <ul class="list-comment">
+
+                                    @foreach($comments as $comment)
+                                        <li class="list-comment-item">
+                                            <!-- Media -->
+                                            <div class="d-flex align-items-center mb-3">
+                                                <div class="flex-shrink-0">
+                                                    <img class="avatar avatar-circle"
+                                                         src="{{ asset('images/user.png') }}"
+                                                         alt="Image Description">
+                                                </div>
+
+                                                <div class="flex-grow-1 ms-3">
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <h6>{{ $comment->name }}</h6>
+                                                        <span class="d-block small text-muted">{{ $comment->created_at->diffForHumans() }}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End Media -->
+
+                                            <p>
+                                                {{ $comment->content }}
+                                            </p>
+                                        </li>
+                                    @endforeach
+
+                                </ul>
+                            @endif
+
+                            <hr id="comments_form">
+
+
+                            @if(session()->has('comment_created'))
+                                <div class="alert alert-soft-success">
+                                    Your comment has been sent for review, once approved it will appear publicly.
+                                </div>
+                            @endif
+
+
+                            <form method="POST" action="{{ route('posts.comments.store', ['slug' => $post->slug]) }}">
+
+                                @csrf
+
+                                <div class="mb-3">
+                                    <label class="form-label" for="name">Name</label>
+                                    <input type="text" id="name" value="{{ auth()->user()->name }}" class="form-control"
+                                           disabled>
                                 </div>
 
-                                <div class="flex-grow-1 ms-3">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <h6>Hanna Wolfe</h6>
-                                        <span class="d-block small text-muted">4 days ago</span>
+                                <div class="mb-3">
+                                    <label class="form-label" for="email">Email</label>
+                                    <input type="email" id="email" value="{{ auth()->user()->email }}"
+                                           class="form-control"
+                                           disabled>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="content">Comment</label>
+                                    <textarea id="content" class="form-control" name="content"
+                                              placeholder="Write your thoughts." rows="4"
+                                              maxlength="2500"></textarea>
+                                    @error('content')
+                                    <div class="text-danger mt-1">
+                                        {{ $message }}
                                     </div>
+                                    @enderror
                                 </div>
-                            </div>
-                            <!-- End Media -->
+                                <div class="mb-3">
+                                    <button type="submit" class="btn btn-dark btn-sm">
+                                        Post Comment
+                                    </button>
+                                </div>
+                            </form>
 
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum expedita facere ipsam
-                                officiis tenetur! At debitis dignissimos impedit ipsa.
-                            </p>
-                        </li>
 
-                    </ul>
+                        @else
+
+                            <hr class="pb-5">
+
+
+                            <h5>You need to <a href="{{ route('login') }}">login</a> or <a
+                                        href="{{ route('register') }}">register</a> to comment on this post.</h5>
+
+                        @endif
+                    @endif
 
                 </div>
             </div>
