@@ -238,44 +238,44 @@
             </div>
             <!-- End Col -->
 
-            <div class="col-sm-6 col-lg-3 mb-3">
-                <!-- Card -->
-                <div class="card card-transition h-100">
-                    <div class="card-body">
-                        <div class="avatar avatar-lg avatar-circle mb-4">
-                            <img class="avatar-img" src="{{ asset('images/wallpapers/team-members/3.png') }}"
-                                 alt="Image Description">
-                        </div>
+{{--            <div class="col-sm-6 col-lg-3 mb-3">--}}
+{{--                <!-- Card -->--}}
+{{--                <div class="card card-transition h-100">--}}
+{{--                    <div class="card-body">--}}
+{{--                        <div class="avatar avatar-lg avatar-circle mb-4">--}}
+{{--                            <img class="avatar-img" src="{{ asset('images/wallpapers/team-members/1.png') }}"--}}
+{{--                                 alt="Image Description">--}}
+{{--                        </div>--}}
 
-                        <span class="card-subtitle">Operations & Finance</span>
-                        <h4 class="card-title">Reben Kurda</h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, iste.</p>
-                    </div>
+{{--                        <span class="card-subtitle">Operations & Finance</span>--}}
+{{--                        <h4 class="card-title"></h4>--}}
+{{--                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, iste.</p>--}}
+{{--                    </div>--}}
 
-                    <div class="card-footer pt-0">
-                        <!-- Socials -->
-                        <ul class="list-inline mb-0">
-                            <li class="list-inline-item">
-                                <a class="btn btn-outline-primary btn-xs btn-icon rounded" href="#">
-                                    <i class="bi-facebook"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a class="btn btn-outline-primary btn-xs btn-icon rounded" href="#">
-                                    <i class="bi-google"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a class="btn btn-outline-primary btn-xs btn-icon rounded" href="#">
-                                    <i class="bi-twitter"></i>
-                                </a>
-                            </li>
-                        </ul>
-                        <!-- End Socials -->
-                    </div>
-                </div>
-                <!-- End Card -->
-            </div>
+{{--                    <div class="card-footer pt-0">--}}
+{{--                        <!-- Socials -->--}}
+{{--                        <ul class="list-inline mb-0">--}}
+{{--                            <li class="list-inline-item">--}}
+{{--                                <a class="btn btn-outline-primary btn-xs btn-icon rounded" href="#">--}}
+{{--                                    <i class="bi-facebook"></i>--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                            <li class="list-inline-item">--}}
+{{--                                <a class="btn btn-outline-primary btn-xs btn-icon rounded" href="#">--}}
+{{--                                    <i class="bi-google"></i>--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                            <li class="list-inline-item">--}}
+{{--                                <a class="btn btn-outline-primary btn-xs btn-icon rounded" href="#">--}}
+{{--                                    <i class="bi-twitter"></i>--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                        </ul>--}}
+{{--                        <!-- End Socials -->--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <!-- End Card -->--}}
+{{--            </div>--}}
             <!-- End Col -->
 
             <div class="col-sm-6 col-lg-3 mb-3">

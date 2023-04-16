@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\EnabledCountry;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -16,9 +17,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+
+        $this->call([
+            TimeNetPaymentMethodSeeder::class, //Payment Methods
+            TimeNetCountrySeeder::class, //Countries
+        ]);
+
         User::factory()->create([
             'name' => 'TimeNet Admin',
             'email' => 'yad@gmail.com',
+            'phone_number' => '+964750753487',
+            'lc_country_id' => EnabledCountry::COUNTRY_IRAQ,
             'password' => bcrypt('password'),
         ]);
 
@@ -65,8 +74,8 @@ class DatabaseSeeder extends Seeder
         }
 
         $this->call([
-            TimeNetPaymentMethodSeeder::class, //Payment Methods
-            TimeNetCountrySeeder::class,
+
+
             TimeNetBrandSeeder::class, //Brands
             TimeNetProductSeeder::class, //Products
             TimeNetServiceSeeder::class, //Services

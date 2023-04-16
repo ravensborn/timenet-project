@@ -12,6 +12,13 @@ use App\Http\Livewire\Store\Products\Show as LivewireStoreProductShow;
 use App\Http\Livewire\Store\CartItems\Index as LivewireStoreCartItemIndex;
 use App\Http\Livewire\Store\Checkout\Index as LivewireStoreCheckoutIndex;
 
+use App\Http\Livewire\Users\Account\Overview as LivewireUserAccountOverview;
+use App\Http\Livewire\Users\Account\Security as LivewireUserAccountSecurity;
+use App\Http\Livewire\Users\Account\Notifications as LivewireUserAccountNotifications;
+use App\Http\Livewire\Users\Account\Preferences as LivewireUserAccountPreferences;
+use App\Http\Livewire\Users\Store\OrdersIndex as LivewireUserStoreOrdersIndex;
+use App\Http\Livewire\Users\Store\OrdersShow as LivewireUserStoreOrdersShow;
+use App\Http\Livewire\Users\Store\Wishlist as LivewireUserStoreWishlist;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -29,6 +36,18 @@ Auth::routes([
     'logout' => false,
 ]);
 
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('/user/account/overview', LivewireUserAccountOverview::class)->name('users.account.overview');
+    Route::get('/user/account/security', LivewireUserAccountSecurity::class)->name('users.account.security');
+    Route::get('/user/account/notifications', LivewireUserAccountNotifications::class)->name('users.account.notifications');
+    Route::get('/user/account/preferences', LivewireUserAccountPreferences::class)->name('users.account.preferences');
+    Route::get('/user/store/orders', LivewireUserStoreOrdersIndex::class)->name('users.store.orders.index');
+    Route::get('/user/store/orders/{order}', LivewireUserStoreOrdersShow::class)->name('users.store.orders.show');
+    Route::get('/user/store/wishlist', LivewireUserStoreWishlist::class)->name('users.store.wishlist');
+
+});
+
 
 Route::get('/store', LivewireStoreIndex::class)->name('store.index');
 Route::get('/store/products', LivewireStoreProductIndex::class)->name('store.products.index');
@@ -36,9 +55,9 @@ Route::get('/store/products/{product:slug}', LivewireStoreProductShow::class)->n
 Route::get('/store/cart', LivewireStoreCartItemIndex::class)->name('store.cartItems.index');
 Route::get('/store/checkout', LivewireStoreCheckoutIndex::class)->name('store.checkout.index');
 
+
 Route::get('/posts/{grid_type}/{slug}', [PostController::class, 'index'])->name('posts.index');
 Route::get('/posts/{slug}', [PostController::class, 'show'])->name('posts.show');
-
 Route::post('/posts/{slug}/comment', [CommentController::class, 'store'])->name('posts.comments.store');
 
 

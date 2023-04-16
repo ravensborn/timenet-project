@@ -147,7 +147,7 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center active" href="{{ route('soon') }}">
                                     <img class="avatar avatar-xss avatar-circle me-2" src="{{ asset('images/kurdistan-flag.svg') }}" alt="Image description" width="16"/>
-                                    <span>Central Kurdish (کوردیی ناوەندی)</span>
+                                    <span>Kurdish (کوردی)</span>
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center active" href="{{ route('soon') }}">
                                     <img class="avatar avatar-xss avatar-circle me-2" src="{{ asset('themes/front/assets/vendor/flag-icon-css/flags/1x1/iq.svg') }}" alt="Image description" width="16"/>

@@ -14,14 +14,13 @@
     <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{ asset('themes/front/assets/vendor/swiper/swiper-bundle.css') }}">
 
     <!-- CSS Front Template -->
+    <link rel="stylesheet" href="{{ asset('themes/front/assets/vendor/swiper/swiper-bundle.css') }}">
     <link rel="stylesheet" href="{{ asset('themes/front/assets/css/theme.min.css') }}">
     <link rel="stylesheet" href="{{ asset('themes/front/assets/css/snippets.min.css') }}">
     <!-- CSS Implementing Plugins -->
     <link rel="stylesheet" href="{{ asset('themes/front/assets/vendor/hs-mega-menu/dist/hs-mega-menu.min.css') }}">
-
     <link rel="stylesheet" href="{{ asset('themes/front/assets/vendor/bootstrap-icons/font/bootstrap-icons.css') }}">
 
     <style>
@@ -45,6 +44,15 @@
             vertical-align: middle;
         }
 
+        .store-main-banner {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{ asset('images/wallpapers/6.jpg') }}');
+            background-position: center 50%;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+
+
     </style>
 
 
@@ -53,7 +61,11 @@
 
 <body>
 
-@include('partial-components.header-store')
+@if(request()->routeIs('store.index'))
+    @include('partial-components.store.header-store')
+@else
+    @include('partial-components.store.header')
+@endif
 
 @yield('content')
 

@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\EnabledCountry;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Lwwcas\LaravelCountries\Models\Country;
+use Propaganistas\LaravelPhone\Rules\Phone;
 
 class RegisterController extends Controller
 {
@@ -41,17 +44,33 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    protected string $allowedCountry = '';
+
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
+
+        $country = EnabledCountry::where('lc_country_id', $data['country_id'])->first();
+
+        $this->allowedCountry = 'IQ';
+
+        if ($country) {
+            $country = $country->country;
+            $this->allowedCountry = $country->iso_alpha_2;
+        }
+
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'phone_number' => ['required',
+                (new Phone)->country($this->allowedCountry)->type('mobile'),
+                'max:255', 'unique:users,phone_number'],
+            'country_id' => ['required', 'exists:enabled_countries,lc_country_id'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -59,14 +78,17 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param array $data
      * @return \App\Models\User
      */
     protected function create(array $data)
     {
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'phone_number' => phone($data['phone_number'], $this->allowedCountry, 'E164'),
+            'lc_country_id' => $data['country_id'],
             'password' => Hash::make($data['password']),
         ]);
     }

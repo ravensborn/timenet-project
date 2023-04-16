@@ -18,6 +18,7 @@
                 <div class="mb-3">
                     <label class="form-label" for="name">Name</label>
                     <input type="text" class="form-control form-control-lg" name="name" id="name"
+                           value="{{ old('name') }}"
                            placeholder="Full Name" aria-label="Full Name" required="">
                     @error('name')
                     <small class="text-danger mt-1">{{ $message }}</small>
@@ -25,12 +26,39 @@
                 </div>
                 <!-- End Form -->
 
-            <!-- Form -->
+                <!-- Form -->
                 <div class="mb-3">
                     <label class="form-label" for="email">Your email</label>
                     <input type="email" class="form-control form-control-lg" name="email" id="email"
+                           value="{{ old('email') }}"
                            placeholder="email@example.com" aria-label="email@example.com" required="">
                     @error('email')
+                    <small class="text-danger mt-1">{{ $message }}</small>
+                    @enderror
+                </div>
+                <!-- End Form -->
+
+                <!-- Form -->
+                <div class="mb-3">
+                    <label class="form-label" for="phone">Your phone number</label>
+                    <input type="tel" class="form-control form-control-lg" name="phone_number" id="phone"
+                           value="{{ old('phone_number') }}"
+                           placeholder="+9647507534867" aria-label="+9647507534867" required="">
+                    @error('phone_number')
+                    <small class="text-danger mt-1">{{ $message }}</small>
+                    @enderror
+                </div>
+                <!-- End Form -->
+
+                <!-- Form -->
+                <div class="mb-3">
+                    <label class="form-label" for="country_id">Country</label>
+                    <select name="country_id" id="country_id" class="form-control form-control-lg" >
+                        @foreach(\App\Models\EnabledCountry::all() as $country)
+                            <option value="{{ $country->lc_country_id }}" selected>{{ $country->country->name }}</option>
+                        @endforeach
+                    </select>
+                    @error('country_id')
                     <small class="text-danger mt-1">{{ $message }}</small>
                     @enderror
                 </div>
@@ -59,10 +87,10 @@
                 </div>
                 <!-- End Form -->
 
-
                 <!-- Check -->
                 <p>
-                    By submitting this form you have read and acknowledged the <a class="text-dark" href="{{ route('soon') }}">Privacy
+                    By submitting this form you have read and acknowledged the <a class="text-dark"
+                                                                                  href="{{ route('soon') }}">Privacy
                         Policy</a>
                 </p>
                 <!-- End Check -->
@@ -73,7 +101,8 @@
                 </div>
 
                 <div class="text-center">
-                    <p>Already have an account? <a class="link text-dark" href="{{ route('login') }}">Log in here</a></p>
+                    <p>Already have an account? <a class="link text-dark" href="{{ route('login') }}">Log in here</a>
+                    </p>
                 </div>
             </form>
             <!-- End Form -->

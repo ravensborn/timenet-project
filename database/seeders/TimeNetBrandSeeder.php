@@ -18,6 +18,7 @@ class TimeNetBrandSeeder extends Seeder
     {
 
         $brands = [
+            'TimeNet',
             'Cisco Systems',
             'MikroTik',
             'Huawei',

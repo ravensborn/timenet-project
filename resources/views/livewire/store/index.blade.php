@@ -1,28 +1,24 @@
 <div>
 
 
-    <div class="bg-img-start"
-         style="background-image: url({{ asset('images/wallpapers/6.jpg') }}); background-position: 60% 60%;">
-        <div class="container content-space-2 content-space-lg-3 me-4">
-            <div class="w-md-65 w-lg-35">
-                <div class="mb-3">
-                    <h1 class="text-white">TimeNet Store</h1>
-                    <p class="text-white-70" style="font-size: 16.5px;">
-                        A network expertise company works in the fields<br>of providing internet access.
-                    </p>
-                </div>
+    <div class="content-space-b-1 store-main-banner">
+        <div class="container d-md-flex align-items-md-center vh-md-70 content-space-t-4 content-space-b-3 content-space-md-0">
+            <div class="mt-5">
+                <h1 class="text-white">TimeNet Store</h1>
+                <p class="text-white-70 w-75" style="font-size: 16.5px;">
+                    A network expertise company works in the fields of providing internet access.
+                </p>
                 <a class="btn btn-dark text-white btn-transition" href="{{ route('store.products.index') }}"
                    style="font-size: 16.5px;">Browse Available Products</a>
             </div>
         </div>
     </div>
 
-    <div class="container content-space-b-1">
+    <div class="container content-space-b-1" wire:ignore>
         <div class="position-relative">
             <!-- Swiper Main Slider -->
             <div class="js-swiper-shop-classic-hero swiper">
                 <div class="swiper-wrapper">
-
                     <!-- Slide -->
                     <div class="swiper-slide">
                         <!-- Container -->
@@ -59,7 +55,6 @@
                         <!-- End Container -->
                     </div>
                     <!-- End Slide -->
-
                     <!-- Slide -->
                     <div class="swiper-slide">
                         <!-- Container -->
@@ -96,9 +91,6 @@
                         <!-- End Container -->
                     </div>
                     <!-- End Slide -->
-
-
-
                     <!-- Slide -->
                     <div class="swiper-slide">
                         <!-- Container -->
@@ -136,13 +128,8 @@
                     </div>
                     <!-- End Slide -->
                 </div>
-
-                <!-- Arrows -->
-                {{--                <div class="js-swiper-shop-classic-hero-button-next swiper-button-next"></div>--}}
-                {{--                <div class="js-swiper-shop-classic-hero-button-prev swiper-button-prev"></div>--}}
             </div>
             <!-- End Swiper Main Slider -->
-
             <!-- Swiper Thumbs Slider -->
             <div class="position-absolute bottom-0 start-0 end-0 mb-3">
                 <div class="js-swiper-shop-hero-thumbs swiper" style="max-width: 13rem;">
@@ -259,18 +246,7 @@
                     </div>
                     <!-- End Heading -->
 
-                    <form method="get" action="{{ route('soon') }}">
-                        <!-- Input Card -->
-                        <div class="input-card input-card-pill input-card-sm border mb-3">
-                            <div class="input-card-form">
-                                <label for="subscribeForm" class="form-label visually-hidden">Enter email</label>
-                                <input type="text" class="form-control form-control-lg" id="subscribeForm"
-                                       placeholder="Enter email" aria-label="Enter email">
-                            </div>
-                            <button type="submit" class="btn btn-dark btn-lg">Subscribe</button>
-                        </div>
-                        <!-- End Input Card -->
-                    </form>
+                    @livewire('global-components.subscribe-box', ['type' => 2])
 
                     <p class="small">You can unsubscribe at any time. Read our <a class="text-dark"
                                                                                   href="{{ route('soon') }}">privacy

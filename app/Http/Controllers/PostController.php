@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -66,10 +67,13 @@ class PostController extends Controller
             ->inRandomOrder()
             ->get();
 
+        $categories = Category::whereIn('model', [Post::class,Product::class])->get();
+
         return view('pages.posts.show', [
             'post' => $post,
             'comments' => $comments,
             'related_posts' => $related_posts,
+            'categories' => $categories,
         ]);
 
     }

@@ -14,6 +14,7 @@
         "laravel/ui": "^4.2",
         "livewire/livewire": "^2.11",
         "lwwcas/laravel-countries": "^3.3",
+        "propaganistas/laravel-phone": "^5.0",
         "shetabit/visitor": "^4.0",
         "spatie/laravel-medialibrary": "^10.0.0",
         "spatie/laravel-sluggable": "^3.4",

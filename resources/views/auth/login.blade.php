@@ -19,6 +19,7 @@
                 <div class="mb-4">
                     <label class="form-label" for="email">E-Mail Address</label>
                     <input type="email" class="form-control form-control-lg" name="email" id="email"
+                           value="{{ old('email') }}"
                            placeholder="email@example.com" aria-label="email@example.com" required="">
                     @error('email')
                     <small class="text-danger mt-1">{{ $message }}</small>

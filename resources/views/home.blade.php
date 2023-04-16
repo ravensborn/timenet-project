@@ -3,76 +3,18 @@
 
 @section('content')
 
+    <div class="content-space-b-1 homepage-main-banner">
 
-
-    <div class="content-space-b-1">
-        <!-- Main Slider -->
-        <div class="js-swiper-main swiper swiper-fade swiper-initialized swiper-horizontal swiper-pointer-events swiper-watch-progress swiper-backface-hidden">
-            <div class="swiper-wrapper" id="swiper-wrapper-3275493e3eb4fb6e" aria-live="polite" style="transition-duration: 0ms;"><div class="swiper-slide gradient-y-overlay-sm-gray-900 bg-img-start swiper-slide-duplicate swiper-slide-prev swiper-slide-duplicate-next" style="background-image: url(&quot;../assets/img/1920x800/img3.jpg&quot;); width: 1519px; transition-duration: 0ms; opacity: 1; transform: translate3d(0px, 0px, 0px);" data-swiper-slide-index="1" role="group" aria-label="2 / 2">
-                    <div class="container d-md-flex align-items-md-center vh-md-70 content-space-t-4 content-space-b-3 content-space-md-0">
-                        <div class="w-75 w-lg-50">
-                            <h3 class="text-white">TimeNet</h3>
-                            <h2 class="display-4 text-white mb-0">A network expertise company works in the fields of <br> providing internet
-                                access.</h2>
-                        </div>
-                    </div>
-                </div>
-                <!-- Slide -->
-                <div class="swiper-slide gradient-y-overlay-sm-gray-900 bg-img-start swiper-slide-visible swiper-slide-active" style="background-image: url({{ asset('images/wallpapers/6.jpg') }}); background-position: center; width: 100%; transition-duration: 0ms; opacity: 1; transform: translate3d(-1519px, 0px, 0px);" data-swiper-slide-index="0" role="group" aria-label="1 / 2">
-                    <div class="container d-md-flex align-items-md-center vh-md-70 content-space-t-4 content-space-b-3 content-space-md-0">
-                        <div class="mt-5">
-                            <img width="350px" src="{{ asset('images/logo.png') }}"
-                                 alt="Logo Dark">
-                            <p class="lead text-white">A network expertise company works in the fields of <br> providing internet
-                                access.</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Slide -->
-
+        <div class="container d-md-flex align-items-md-center vh-md-70 content-space-t-4 content-space-b-3 content-space-md-0">
+            <div class="mt-5">
+                <img width="350px" src="{{ asset('images/logo.png') }}"
+                     alt="Logo Dark">
+                <p class="lead text-white">A network expertise company works in the fields of <br> providing internet
+                    access.</p>
             </div>
-
-            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
-        <!-- End Main Slider -->
+        </div>
     </div>
 
-    <!-- Hero -->
-{{--    <div class="overflow-hidden">--}}
-{{--        <div class="container content-space-t-2 content-space-b-1">--}}
-{{--            <div class="row justify-content-lg-between align-items-md-center">--}}
-{{--                <div class="col-md-6 col-lg-5 mb-7 mb-md-0">--}}
-{{--                    <!-- Heading -->--}}
-{{--                    <div class="mb-5">--}}
-{{--                        <span class="text-cap">Who we are?</span>--}}
-{{--                        --}}{{--                        <h1 class="display-4 mb-3">TimeNet</h1>--}}
-{{--                        <img width="350px" style="margin-bottom: 30px;" src="{{ asset('images/logo-dark.png') }}"--}}
-{{--                             alt="Logo Dark">--}}
-{{--                        <p class="lead">A network expertise company works in the fields of providing internet--}}
-{{--                            access.</p>--}}
-{{--                    </div>--}}
-{{--                    <!-- End Title & Description -->--}}
-
-{{--                    <div class="d-grid d-sm-flex gap-3">--}}
-{{--                        <a class="btn btn-dark btn-transition" href="{{ route('soon') }}">Case studies</a>--}}
-{{--                        <a class="btn btn-link" href="{{ route('soon') }}">Learn more <i class="bi-chevron-right small ms-1"></i></a>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <!-- End Col -->--}}
-
-{{--                <div class="col-md-6">--}}
-{{--                    <div class="w-100 bg-soft-primary rounded-2">--}}
-{{--                        <img class="img-fluid rounded-2"--}}
-{{--                             src="{{ asset('images/wallpapers/12.jpg') }}"--}}
-{{--                             alt="Image Description">--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <!-- End Col -->--}}
-{{--            </div>--}}
-{{--            <!-- End Row -->--}}
-{{--        </div>--}}
-
-{{--    </div>--}}
-    <!-- End Hero -->
 
     <!-- Services -->
     <div class="container content-space-1">
@@ -213,7 +155,8 @@
     <!-- End Who works with us -->
 
     <div class="container">
-        <div class="bg-img-start rounded-2 p-5 mb-5" style="background-image: url({{ asset('images/wallpapers/7.jpg') }});">
+        <div class="bg-img-start rounded-2 p-5 mb-5"
+             style="background-image: url({{ asset('images/wallpapers/7.jpg') }});">
             <div class="row align-items-md-center">
                 <div class="col-sm mb-3 mb-md-0">
                     <h1 class="h4 mb-0">Access the latest networking products at unbeatable prices.</h1>
@@ -221,7 +164,8 @@
                 <!-- End Col -->
 
                 <div class="col-sm-auto">
-                    <a class="btn btn-dark btn-sm btn-transition rounded-pill" href="{{ route('store.index') }}">Shop now</a>
+                    <a class="btn btn-dark btn-sm btn-transition rounded-pill" href="{{ route('store.index') }}">Shop
+                        now</a>
                 </div>
                 <!-- End Col -->
             </div>
@@ -243,7 +187,8 @@
                 @foreach($articles as $post)
                     <div class="col-sm-6 col-lg-4 mb-5">
                         <!-- Card -->
-                        <a class="card card-flush h-100 aos-init aos-animate" href="{{ route('posts.show', $post->slug) }}" data-aos="fade-up">
+                        <a class="card card-flush h-100 aos-init aos-animate"
+                           href="{{ route('posts.show', $post->slug) }}" data-aos="fade-up">
                             <img class="card-img"
                                  src="{{ $post->getFirstMediaUrl('cover') }}"
                                  alt="Image Description">
@@ -265,7 +210,9 @@
         <div class="text-center">
             <div class="card card-info-link card-sm">
                 <div class="card-body">
-                    Want to read more? <a class="card-link ms-2" href="{{ route('posts.index', ['grid_type' => 'grid', 'slug' => 'articles']) }}">Go here <span
+                    Want to read more? <a class="card-link ms-2"
+                                          href="{{ route('posts.index', ['grid_type' => 'grid', 'slug' => 'articles']) }}">Go
+                        here <span
                                 class="bi-chevron-right small ms-1"></span></a>
                 </div>
             </div>
@@ -275,7 +222,8 @@
     <!-- End Articles -->
 
     <div class="container content-space-b-2">
-        <div class="bg-img-start rounded-2 p-5 mb-5" style="background-image: url({{ asset('images/wallpapers/10.jpg') }});">
+        <div class="bg-img-start rounded-2 p-5 mb-5"
+             style="background-image: url({{ asset('images/wallpapers/10.jpg') }});">
             <div class="row align-items-md-center">
                 <div class="col-sm mb-3 mb-md-0">
                     <h1 class="h4 mb-0">Cutting-edge networking technology at competitive prices.</h1>
@@ -283,7 +231,8 @@
                 <!-- End Col -->
 
                 <div class="col-sm-auto">
-                    <a class="btn btn-dark btn-sm btn-transition rounded-pill" href="{{ route('store.index') }}">Shop now</a>
+                    <a class="btn btn-dark btn-sm btn-transition rounded-pill" href="{{ route('store.index') }}">Shop
+                        now</a>
                 </div>
                 <!-- End Col -->
             </div>

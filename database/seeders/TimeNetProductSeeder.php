@@ -20,6 +20,7 @@ class TimeNetProductSeeder extends Seeder
     {
 
         $arrayOfCategories = [
+            'TimeNet Services',
             'Routers',
             'Switches',
             'Firewalls',

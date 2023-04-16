@@ -79,6 +79,34 @@
                                 </div>
                                 <!-- End Col -->
 
+                                <div class="col-sm-6">
+                                    <label for="checkoutPrimaryPhoneNumber" class="form-label">First Phone
+                                        Number</label>
+                                    <input type="tel" class="form-control form-control-lg"
+                                           id="checkoutPrimaryPhoneNumber"
+                                           placeholder="+9647501234567" wire:model="checkoutPrimaryPhoneNumber">
+                                    @error('checkoutPrimaryPhoneNumber')
+                                    <small class="text-danger mt-1">
+                                        {{ $message }}
+                                    </small>
+                                    @enderror
+                                </div>
+                                <!-- End Col -->
+
+                                <div class="col-sm-6">
+                                    <label for="checkoutSecondaryPhoneNumber" class="form-label">Second Phone
+                                        Number</label>
+                                    <input type="tel" class="form-control form-control-lg"
+                                           id="checkoutSecondaryPhoneNumber"
+                                           placeholder="+9647507654321" wire:model="checkoutSecondaryPhoneNumber">
+                                    @error('checkoutSecondaryPhoneNumber')
+                                    <small class="text-danger mt-1">
+                                        {{ $message }}
+                                    </small>
+                                    @enderror
+                                </div>
+                                <!-- End Col -->
+
                                 <div class="col-12">
                                     <label for="checkoutAddress" class="form-label">Address</label>
                                     <input type="text" class="form-control form-control-lg" id="checkoutAddress"
@@ -131,9 +159,21 @@
                             <h4 class="mb-3">Payment</h4>
 
                             <div>
+
+
+                                <div wire:loading wire:target="selectPaymentMethod">
+                                      <span class="spinner-border spinner-border-sm me-1" role="status"
+                                            aria-hidden="true"></span>
+                                    <span class="visually-hidden">Loading...</span>
+                                    Switching payment method please wait...
+                                </div>
+
                                 @foreach($paymentMethods as $payment)
 
+
+
                                     @if($payment->enabled)
+
                                         <div wire:click="selectPaymentMethod({{ $payment->id }})"
                                              style="cursor:pointer;"
                                              class="rounded p-3 my-2 shadow shadow-sm @if($selectedPaymentMethod->id == $payment->id) border border-2 border-dark @endif">
@@ -147,7 +187,8 @@
                                                     &nbsp;
                                                     <span @class(['fw-bold' => ($selectedPaymentMethod->id == $payment->id)])>{{ $payment->name }}</span>
                                                 </div>
-                                                <div @class(['fw-bold' => ($selectedPaymentMethod->id == $payment->id), 'text-muted text-start' => true ]) style="width: 150px;">
+
+                                                <div  class="badge text-body" @class(['fw-bold' => ($selectedPaymentMethod->id == $payment->id), 'text-muted text-start' => true ]) style="width: 150px;">
                                                     Payment Fee:
                                                     @if($payment->fee_type == \App\Models\PaymentMethod::FEE_TYPE_PERCENTAGE)
                                                         {{ $payment->fee }}%
@@ -159,8 +200,8 @@
 
                                         </div>
                                     @else
-                                        <div  style="cursor: not-allowed;"
-                                              class="rounded p-3 my-2 shadow shadow-sm">
+                                        <div style="cursor: not-allowed;"
+                                             class="rounded p-3 my-2 shadow shadow-sm">
 
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <div class="d-flex align-items-center">
@@ -173,7 +214,7 @@
                                                     &nbsp;
                                                     <div>{{ $payment->name }}</div>
                                                 </div>
-                                                <div class="text-danger" style="width: 150px;">
+                                                <div class="badge text-danger" style="width: 150px;">
                                                     Currently disabled
                                                 </div>
                                             </div>
@@ -251,9 +292,18 @@
                                         </div>
 
                                         <div class="d-grid">
-                                            <button wire:click="placeOrder" type="button" class="btn btn-dark btn-lg">
-                                                Place
-                                                Order
+
+                                            <button wire:click="placeOrder" wire:loading.attr="disabled"
+                                                    wire:target="placeOrder" type="button" class="btn btn-dark btn-lg">
+                                                <span wire:loading wire:target="placeOrder">
+                                                    <span class="spinner-grow spinner-grow-sm me-1" role="status"
+                                                          aria-hidden="true"></span>
+                                                    <span class="visually-hidden">Loading...</span>
+                                                    Placing Order
+                                                </span>
+                                                <span wire:loading.remove wire:target="placeOrder">
+                                                    Place Order
+                                                </span>
                                             </button>
                                         </div>
                                     </form>

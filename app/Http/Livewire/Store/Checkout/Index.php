@@ -28,6 +28,8 @@ class Index extends Component
     public string $checkoutFirstName = '';
     public string $checkoutLastName = '';
     public string $checkoutEmail = '';
+    public string $checkoutPrimaryPhoneNumber = '';
+    public string $checkoutSecondaryPhoneNumber = '';
     public string $checkoutAddress = '';
     public int $checkoutCountry = 105;
 
@@ -42,12 +44,15 @@ class Index extends Component
     public function placeOrder()
     {
 
+        sleep(3);
         if ($this->user) {
 
             $validated = $this->validate([
                 'checkoutFirstName' => 'required|min:2|max:15',
                 'checkoutLastName' => 'required|min:2|max:15',
                 'checkoutEmail' => 'required|email',
+                'checkoutPrimaryPhoneNumber' => 'required',
+                'checkoutSecondaryPhoneNumber' => 'nullable',
                 'checkoutAddress' => 'required|max:1000',
                 'checkoutCountry' => 'required|exists:enabled_countries,lc_country_id',
             ]);
@@ -56,6 +61,8 @@ class Index extends Component
                 'first_name' => $validated['checkoutFirstName'],
                 'last_name' => $validated['checkoutLastName'],
                 'email' => $validated['checkoutEmail'],
+                'primary_phone_number' => $validated['checkoutPrimaryPhoneNumber'],
+                'secondary_phone_number' => $validated['checkoutSecondaryPhoneNumber'],
                 'lc_country_id' => $validated['checkoutCountry'],
             ];
 
@@ -85,6 +92,7 @@ class Index extends Component
             $this->clearCartItems();
             $this->success = true;
 
+            $this->emit('refresh-header-cart');
             $this->emit('scroll-to-top');
 
         }
@@ -114,6 +122,8 @@ class Index extends Component
 
     public function selectPaymentMethod($value)
     {
+
+        sleep(1);
 
         $paymentMethod = PaymentMethod::find($value);
 

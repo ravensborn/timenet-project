@@ -26,15 +26,24 @@
         :root {
             /*--bs-body-bg: #f7faff !important;*/
         }
+
+        .homepage-main-banner {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{ asset('images/wallpapers/6.jpg') }}');
+            background-position: center 50%;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
     </style>
+
+    @livewireStyles
 </head>
 
 <body>
 
 @if(request()->routeIs('home'))
-    @include('partial-components.header-homepage')
+    @include('partial-components.home.header-homepage')
 @else
-    @include('partial-components.header')
+    @include('partial-components.home.header')
 @endif
 
 @yield('content')
@@ -97,5 +106,11 @@
         });
     })()
 </script>
+
+@livewireScripts
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<x-livewire-alert::scripts/>
 </body>
 </html>

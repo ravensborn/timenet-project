@@ -52,6 +52,7 @@ class Index extends Component
                 $cartItem->delete();
             }
 
+            $this->emit('refresh-header-cart');
             $this->getCartItems();
 
         } else {

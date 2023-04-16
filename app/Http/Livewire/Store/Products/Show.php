@@ -108,8 +108,6 @@ class Show extends Component
 
                 $existingInCart->increment('quantity', 1);
 
-                $this->alert('success', 'Item added to cart.');
-
             } else {
 
                 $cartItem = new CartItem;
@@ -120,9 +118,10 @@ class Show extends Component
                     'quantity' => $quantity,
                 ]);
 
-                $this->alert('success', 'Item added to cart.');
-
             }
+
+            $this->emit('refresh-header-cart');
+            $this->alert('success', 'Item added to cart.');
         }
 
         $this->getUserCart();

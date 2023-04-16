@@ -212,34 +212,31 @@
                         <h3>Newsletter</h3>
                     </div>
 
-                    <!-- Form -->
-                    <form action="{{ route('soon') }}" method="get">
-                        <div class="mb-2">
-                            <input type="text" class="form-control" placeholder="Enter email" aria-label="Enter email">
-                        </div>
-                        <div class="d-grid">
-                            <button type="submit" class="btn btn-primary">Subscribe</button>
-                        </div>
-                    </form>
-                    <!-- End Form -->
+                    @livewire('global-components.subscribe-box')
 
-                    <p class="form-text">Get special offers on the latest developments from Front.</p>
+                    <p class="form-text">Get special offers on the latest developments from TimeNet.</p>
                 </div>
 
                 <div class="mb-7">
                     <div class="mb-3">
-                        <h3>Tags</h3>
+                        <h3>Categories</h3>
                     </div>
 
-                    <a class="btn btn-soft-secondary btn-xs mb-1" href="{{ route('soon') }}">Business</a>
-                    <a class="btn btn-soft-secondary btn-xs mb-1" href="{{ route('soon') }}">Adventure</a>
-                    <a class="btn btn-soft-secondary btn-xs mb-1" href="{{ route('soon') }}">Community</a>
-                    <a class="btn btn-soft-secondary btn-xs mb-1" href="{{ route('soon') }}">Announcements</a>
-                    <a class="btn btn-soft-secondary btn-xs mb-1" href="{{ route('soon') }}">Tutorials</a>
-                    <a class="btn btn-soft-secondary btn-xs mb-1" href="{{ route('soon') }}">Resources</a>
-                    <a class="btn btn-soft-secondary btn-xs mb-1" href="{{ route('soon') }}">Classic</a>
-                    <a class="btn btn-soft-secondary btn-xs mb-1" href="{{ route('soon') }}">Photography</a>
-                    <a class="btn btn-soft-secondary btn-xs mb-1" href="{{ route('soon') }}">Interview</a>
+                    @foreach($categories as $category)
+                        @if($category->model == \App\Models\Post::class)
+                            <a class="btn btn-soft-secondary btn-xs mb-1"
+                               href="{{ route('posts.index', ['grid_type' => 'grid', 'slug' => $category->slug]) }}">
+                                {{ $category->name }}
+                            </a>
+                        @else
+                            <a class="btn btn-soft-secondary btn-xs mb-1"
+                               href="{{ route('store.products.index')  }}">
+                                {{ $category->name }}
+                            </a>
+                        @endif
+
+                    @endforeach
+
                 </div>
             </div>
         </div>
