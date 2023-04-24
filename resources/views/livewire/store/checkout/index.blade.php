@@ -110,7 +110,7 @@
                                 <div class="col-12">
                                     <label for="checkoutAddress" class="form-label">Address</label>
                                     <input type="text" class="form-control form-control-lg" id="checkoutAddress"
-                                           placeholder="KRI, Erbil, 44001, Main Area" wire:model="checkoutAddress">
+                                           placeholder="Main Area, 44001, Erbil, KRI" wire:model="checkoutAddress">
                                     @error('checkoutAddress')
                                     <small class="text-danger mt-1">
                                         {{ $message }}
@@ -361,14 +361,14 @@
                             <div class="mt-4"></div>
 
                             <span class="text-muted fw-bold">
-                                   Order #{{ $orderNumber }}
+                                   Order #{{ $order->number }}
                             </span>
 
-                            <a class="link text-muted d-block" href="{{ route('soon') }}">
+                            <a class="link text-muted d-block" href="{{ route('users.store.orders.invoice', $order->id) }}">
                                 <i class="bi-chevron-left small ms-1"></i>
                                 View Invoice
                             </a>
-                            <a class="link text-muted d-block" href="{{ route('soon') }}">
+                            <a class="link text-muted d-block" href="{{ route('users.store.orders.index') }}">
                                 <i class="bi-chevron-left small ms-1"></i>
                                 Navigate to my orders
                             </a>

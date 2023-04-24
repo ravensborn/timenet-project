@@ -19,8 +19,55 @@
                         </div>
 
                         <div class="card-body">
-                            <div>
-                                <div class="alert alert-soft-dark">No new notifications at this moment.</div>
+                            @if($items->count())
+                                <h5>Items</h5>
+                            @endif
+                            <ul class="list-group">
+                                @forelse($items as $item)
+                                    <li class="list-group-item">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="d-flex justify-content-start align-items-center">
+
+                                                <a href="{{ route('store.products.show', $item->product->slug) }}">
+                                                    <img src="{{ $item->product->getFirstMediaUrl('cover') }}"
+                                                         style="width: 64px;" alt="Item image"
+                                                         class="img-thumbnail">
+                                                </a>
+                                                &nbsp;
+                                                <div class="fw-bold text-truncate" style="width: 250px">
+                                                    <a class="text-dark"
+                                                       href="{{ route('store.products.show', $item->product->slug) }}">
+                                                        {{ $item->product->name }}
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div>
+
+                                                <span class="text-danger small d-flex align-items-center"
+                                                      style="cursor:pointer;"
+                                                        wire:click="removeFromWishlist({{ $item->id }})">
+                                                    <i class="d-block bi bi-trash me-1"></i>
+                                                    <div>
+                                                        Remove
+                                                    </div>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                @empty
+                                    <div>
+                                        <p>
+                                            We're sorry, but currently, our wishlist page does not have any products
+                                            available. However, we are always working to provide you with the latest and
+                                            greatest items that will meet your needs and exceed your expectations.
+                                            <a class="d-block mt-3" href="{{ route('store.index') }}">Click to navigate
+                                                to available products.</a>
+                                        </p>
+                                    </div>
+                                @endforelse
+                            </ul>
+                            <div class="mt-4">
+                                {{ $items->links() }}
                             </div>
                         </div>
                     </div>

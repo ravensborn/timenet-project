@@ -5,12 +5,14 @@ namespace App\Http\Livewire\Store\Checkout;
 use App\Models\CartItem;
 use App\Models\EnabledCountry;
 use App\Models\Order;
+use App\Models\OrderItem;
 use App\Models\PaymentMethod;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
+use Lwwcas\LaravelCountries\Models\Country;
 
 
 class Index extends Component
@@ -39,10 +41,15 @@ class Index extends Component
     public PaymentMethod $selectedPaymentMethod;
 
     public bool $success = false;
-    public string $orderNumber = '';
+    public Order $order;
 
     public function placeOrder()
     {
+
+        if ($this->isCartEmpty()) {
+            $this->alert('error', 'An error while creating order, please contact support.');
+            return false;
+        }
 
         sleep(3);
         if ($this->user) {
@@ -57,17 +64,19 @@ class Index extends Component
                 'checkoutCountry' => 'required|exists:enabled_countries,lc_country_id',
             ]);
 
+            $country = Country::find($validated['checkoutCountry']);
+
             $shipping_address = [
                 'first_name' => $validated['checkoutFirstName'],
                 'last_name' => $validated['checkoutLastName'],
                 'email' => $validated['checkoutEmail'],
                 'primary_phone_number' => $validated['checkoutPrimaryPhoneNumber'],
                 'secondary_phone_number' => $validated['checkoutSecondaryPhoneNumber'],
-                'lc_country_id' => $validated['checkoutCountry'],
+                'address' => $validated['checkoutAddress'],
+                'country' => $country->iso_alpha_3,
             ];
 
             $number = $this->generateNumber();
-            $this->orderNumber = $number;
 
             $order = new Order();
             $order = $order->create([
@@ -82,7 +91,8 @@ class Index extends Component
             ]);
 
             foreach ($this->cartItems as $item) {
-                $order->orderItems->add([
+                OrderItem::create([
+                    'order_id' => $order->id,
                     'product_id' => $item->product_id,
                     'price' => $item->product->price,
                     'quantity' => $item->quantity,
@@ -90,6 +100,7 @@ class Index extends Component
             }
 
             $this->clearCartItems();
+            $this->order = $order;
             $this->success = true;
 
             $this->emit('refresh-header-cart');
@@ -202,6 +213,11 @@ class Index extends Component
         $this->cartItems = collect();
         $this->cartTotal = 0;
 
+    }
+
+    public function isCartEmpty(): bool
+    {
+        return CartItem::where('user_id', $this->user->id)->count() == 0;
     }
 
     public function getCartItems()

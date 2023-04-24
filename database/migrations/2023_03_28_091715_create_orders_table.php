@@ -38,6 +38,8 @@ return new class extends Migration {
 
             $table->double('total');
 
+            $table->longText('note')->nullable();
+
             $table->timestamps();
         });
     }

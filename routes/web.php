@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +19,7 @@ use App\Http\Livewire\Users\Account\Notifications as LivewireUserAccountNotifica
 use App\Http\Livewire\Users\Account\Preferences as LivewireUserAccountPreferences;
 use App\Http\Livewire\Users\Store\OrdersIndex as LivewireUserStoreOrdersIndex;
 use App\Http\Livewire\Users\Store\OrdersShow as LivewireUserStoreOrdersShow;
+use App\Http\Livewire\Users\Store\OrdersInvoice as LivewireUserStoreOrdersInvoice;
 use App\Http\Livewire\Users\Store\Wishlist as LivewireUserStoreWishlist;
 
 
@@ -44,6 +46,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/user/account/preferences', LivewireUserAccountPreferences::class)->name('users.account.preferences');
     Route::get('/user/store/orders', LivewireUserStoreOrdersIndex::class)->name('users.store.orders.index');
     Route::get('/user/store/orders/{order}', LivewireUserStoreOrdersShow::class)->name('users.store.orders.show');
+    Route::get('/user/store/orders/{order}/invoice', [InvoiceController::class, 'show'])->name('users.store.orders.invoice');
     Route::get('/user/store/wishlist', LivewireUserStoreWishlist::class)->name('users.store.wishlist');
 
 });

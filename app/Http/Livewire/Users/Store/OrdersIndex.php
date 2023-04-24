@@ -13,12 +13,14 @@ class OrdersIndex extends Component
 
     use WithPagination;
 
+    protected $paginationTheme = 'bootstrap';
+
     protected Builder $orders;
     public Authenticatable $user;
 
     public function loadOrders()
     {
-        $this->orders = Order::where('user_id', $this->user->id);
+        $this->orders = Order::where('user_id', $this->user->id)->latest();
     }
 
     public function mount()

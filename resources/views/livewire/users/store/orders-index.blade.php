@@ -27,6 +27,10 @@
                                 support team and we will do our best to assist you.
                             </p>
 
+                            <h5>
+                                Latest orders
+                            </h5>
+
                             @forelse($orders as $order)
 
                                 <div class="p-3 rounded mb-2 shadow-sm border border-opacity-10">
@@ -37,22 +41,27 @@
                                                 <div class="fw-bold me-2">
                                                     <i class="bi bi-box fs-3 me-1"></i>
                                                 </div>
-                                                <div class="fw-bold me-2">
+                                                <div class=" me-2">
                                                     #{{ $order->number }}
                                                 </div>
                                                 <div>
-                                                    /
-                                                    {{ $order->created_at->format('Y-m-d') }}
+                                                    <div class="badge bg-secondary">{{ $order->created_at->format('Y-m-d') }}</div>
                                                 </div>
                                             </a>
                                         </div>
                                         <div class="d-flex align-items-center">
-                                            <div class="me-2">
-                                                <a href="">
-                                                    <i class="bi bi-receipt"></i>
-                                                    Invoice
-                                                </a>
+                                            <a href="{{  route('users.store.orders.invoice', ['order' => $order->id])  }}" class="d-flex align-items-center text-dark">
+                                            <div class="badge bg-secondary d-flex align-items-center me-2">
+                                                <small class="me-1">
+                                                    <i class="fw-bold bi bi-receipt"></i>
+                                                </small>
+                                                <div>
+                                                    <span class="text-capitalize">
+                                                        Invoice
+                                                    </span>
+                                                </div>
                                             </div>
+                                            </a>
                                             <div class="badge bg-secondary d-flex align-items-center">
                                                 <small class="me-1">
                                                     <i class="fw-bold bi bi-{{ $order->getStatusColorAndIcon()['icon'] }}"></i>
@@ -61,7 +70,6 @@
                                                     <span class="text-capitalize">
                                                         {{ $order->getStatusName() }}
                                                     </span>
-
                                                 </div>
                                             </div>
 
@@ -78,6 +86,10 @@
                                         our products.</a>
                                 </p>
                             @endforelse
+
+                            <div class="d-flex justify-content-center mt-5">
+                                {{ $orders->links() }}
+                            </div>
                         </div>
                     </div>
                     <!-- End Card -->

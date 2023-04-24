@@ -66,7 +66,7 @@
                             <div class="hs-sub-menu dropdown-menu" aria-labelledby="pagesMegaMenu"
                                  style="min-width: 14rem;">
                                 <a class="dropdown-item" href="{{ route('users.account.overview') }}">Profile</a>
-                                <a class="dropdown-item" href="{{ route('soon') }}">Orders</a>
+                                <a class="dropdown-item" href="{{ route('users.store.orders.index') }}">Orders</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
                             </div>
                             <!-- End Mega Menu -->

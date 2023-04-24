@@ -13,12 +13,14 @@ class OrdersShow extends Component
     use WithPagination;
 
     public $order;
+    public $orderItems;
     public Authenticatable $user;
 
     public function mount($order)
     {
         $this->user = auth()->user();
         $this->order = $this->user->orders()->find($order);
+        $this->orderItems = $this->order->orderItems;
     }
 
 
