@@ -20,6 +20,11 @@ class SubscribeBox extends Component
 
         $lastSubscriber = SubscriberList::latest()->first();
 
+        if(!$lastSubscriber) {
+
+            return true;
+        }
+
         $timeDifference = $lastSubscriber->created_at->diffInSeconds(now());
 
         if ($timeDifference > 60) {
