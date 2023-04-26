@@ -93,7 +93,7 @@ class RegisterController extends Controller
             'phone_number' => phone($data['phone_number'], $this->allowedCountry, 'E164'),
             'lc_country_id' => $data['country_id'],
             'password' => Hash::make($data['password']),
-            'email_verified_at' => now(),
+//            'email_verified_at' => now(),
         ]);
     }
 }
