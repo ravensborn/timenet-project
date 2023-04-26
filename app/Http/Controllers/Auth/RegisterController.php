@@ -64,8 +64,8 @@ class RegisterController extends Controller
             $this->allowedCountry = $country->iso_alpha_2;
         }
 
-        $phone = phone($data['phone_number'], $this->allowedCountry)->formatE164();
-        $data['phone_number'] = $phone;
+//        $phone = phone($data['phone_number'], $this->allowedCountry)->formatE164();
+//        $data['phone_number'] = $phone;
 
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
@@ -90,7 +90,7 @@ class RegisterController extends Controller
         return User::create([
             'name' => ucwords($data['name']),
             'email' => $data['email'],
-            'phone_number' => phone($data['phone_number'], $this->allowedCountry, 'E164'),
+            'phone_number' => phone($data['phone_number'], $this->allowedCountry, 'E164')z,
             'lc_country_id' => $data['country_id'],
             'password' => Hash::make($data['password']),
         ]);
