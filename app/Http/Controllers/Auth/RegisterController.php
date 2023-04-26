@@ -90,9 +90,10 @@ class RegisterController extends Controller
         return User::create([
             'name' => ucwords($data['name']),
             'email' => $data['email'],
-            'phone_number' => phone($data['phone_number'], $this->allowedCountry, 'E164')z,
+            'phone_number' => phone($data['phone_number'], $this->allowedCountry, 'E164'),
             'lc_country_id' => $data['country_id'],
             'password' => Hash::make($data['password']),
+            'email_verified_at' => now(),
         ]);
     }
 }
