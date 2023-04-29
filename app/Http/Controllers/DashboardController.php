@@ -14,23 +14,23 @@ class DashboardController extends Controller
         return view('pages.dashboard.overview');
     }
 
-    public function users()
+    public function usersIndex()
     {
-        return view('pages.dashboard.users');
+        return view('pages.dashboard.users.index');
     }
 
-    public function orders()
+    public function ordersIndex()
     {
-        return view('pages.dashboard.orders');
+        return view('pages.dashboard.orders.index');
     }
 
-    public function products()
+    public function productsIndex()
     {
-        return view('pages.dashboard.products');
+        return view('pages.dashboard.products.index');
     }
 
-    public function posts() {
-        return view('pages.dashboard.posts');
+    public function postsIndex() {
+        return view('pages.dashboard.posts.index');
     }
 
 }

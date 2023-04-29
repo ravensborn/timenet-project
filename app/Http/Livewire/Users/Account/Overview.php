@@ -45,7 +45,7 @@ class Overview extends Component
 
         if ($this->user->update([
             'name' => $validated['userName'],
-            'user' => $validated['userEmail'],
+            'email' => $validated['userEmail'],
             'phone_number' => phone($validated['userPhoneNumber'], $this->user->country->iso_alpha_2, 'E164'),
         ])) {
 

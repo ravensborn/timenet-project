@@ -10,6 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Lwwcas\LaravelCountries\Models\Country;
 use Propaganistas\LaravelPhone\Casts\E164PhoneNumberCast;
 
+ use Qirolab\Laravel\Bannable\Traits\Bannable;
  use Spatie\Permission\Traits\HasRoles;
 
 /**
@@ -49,7 +50,7 @@ use Propaganistas\LaravelPhone\Casts\E164PhoneNumberCast;
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles, Bannable;
 
     /**
      * The attributes that are mass assignable.
@@ -85,6 +86,11 @@ class User extends Authenticatable implements MustVerifyEmail
         'phone_number' => E164PhoneNumberCast::class,
     ];
 
+    public function disableBannedAtScope()
+    {
+        return true;
+    }
+
     public function comments(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Comment::class);
@@ -108,6 +114,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsTo(Country::class, 'lc_country_id');
     }
+
 
 
 }

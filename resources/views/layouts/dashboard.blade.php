@@ -1,108 +1,293 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <meta name="description" content="Dashboard of TimeNet Websie"/>
-    <meta name="author" content="Yad Hoshyar"/>
-    <title>TimeNet | Dashboard</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="shortcut icon" href="{{ asset('images/logo.png') }}"/>
 
-    <link href="{{ asset('dashboard-assets/css/styles.css') }}" rel="stylesheet"/>
-    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+    <title>{{ config('env.APP_NAME') }}</title>
+
+    <link href="{{ asset('dashboard-assets/css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        .pagination {
+            --bs-pagination-padding-x: 0.75rem;
+            --bs-pagination-padding-y: 0.375rem;
+            --bs-pagination-font-size: 1rem;
+            --bs-pagination-color: var(--bs-link-color);
+            --bs-pagination-bg: var(--bs-body-bg);
+            --bs-pagination-border-width: var(--bs-border-width);
+            --bs-pagination-border-color: var(--bs-border-color);
+            --bs-pagination-border-radius: var(--bs-border-radius);
+            --bs-pagination-hover-color: var(--bs-link-hover-color);
+            --bs-pagination-hover-bg: var(--bs-tertiary-bg);
+            --bs-pagination-hover-border-color: var(--bs-border-color);
+            --bs-pagination-focus-color: var(--bs-link-hover-color);
+            --bs-pagination-focus-bg: var(--bs-secondary-bg);
+            --bs-pagination-focus-box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+            --bs-pagination-active-color: #fff;
+            --bs-pagination-active-bg: #0d6efd;
+            --bs-pagination-active-border-color: #0d6efd;
+            --bs-pagination-disabled-color: var(--bs-secondary-color);
+            --bs-pagination-disabled-bg: var(--bs-secondary-bg);
+            --bs-pagination-disabled-border-color: var(--bs-border-color);
+            display: flex;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .page-link {
+            position: relative;
+            display: block;
+            padding: var(--bs-pagination-padding-y) var(--bs-pagination-padding-x);
+            font-size: var(--bs-pagination-font-size);
+            color: var(--bs-pagination-color);
+            text-decoration: none;
+            background-color: var(--bs-pagination-bg);
+            border: var(--bs-pagination-border-width) solid var(--bs-pagination-border-color);
+            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .page-link {
+                transition: none;
+            }
+        }
+        .page-link:hover {
+            z-index: 2;
+            color: var(--bs-pagination-hover-color);
+            background-color: var(--bs-pagination-hover-bg);
+            border-color: var(--bs-pagination-hover-border-color);
+        }
+        .page-link:focus {
+            z-index: 3;
+            color: var(--bs-pagination-focus-color);
+            background-color: var(--bs-pagination-focus-bg);
+            outline: 0;
+            box-shadow: var(--bs-pagination-focus-box-shadow);
+        }
+        .page-link.active, .active > .page-link {
+            z-index: 3;
+            color: var(--bs-pagination-active-color);
+            background-color: var(--bs-pagination-active-bg);
+            border-color: var(--bs-pagination-active-border-color);
+        }
+        .page-link.disabled, .disabled > .page-link {
+            color: var(--bs-pagination-disabled-color);
+            pointer-events: none;
+            background-color: var(--bs-pagination-disabled-bg);
+            border-color: var(--bs-pagination-disabled-border-color);
+        }
+
+        .page-item:not(:first-child) .page-link {
+            margin-left: calc(var(--bs-border-width) * -1);
+        }
+        .page-item:first-child .page-link {
+            border-top-left-radius: var(--bs-pagination-border-radius);
+            border-bottom-left-radius: var(--bs-pagination-border-radius);
+        }
+        .page-item:last-child .page-link {
+            border-top-right-radius: var(--bs-pagination-border-radius);
+            border-bottom-right-radius: var(--bs-pagination-border-radius);
+        }
+
+        .pagination-lg {
+            --bs-pagination-padding-x: 1.5rem;
+            --bs-pagination-padding-y: 0.75rem;
+            --bs-pagination-font-size: 1.25rem;
+            --bs-pagination-border-radius: var(--bs-border-radius-lg);
+        }
+
+        .pagination-sm {
+            --bs-pagination-padding-x: 0.5rem;
+            --bs-pagination-padding-y: 0.25rem;
+            --bs-pagination-font-size: 0.875rem;
+            --bs-pagination-border-radius: var(--bs-border-radius-sm);
+        }
+
+        td, th {
+            white-space: nowrap;
+            text-align: center;
+        }
+    </style>
+
+    @livewireStyles
 </head>
-<body class="sb-nav-fixed">
-<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-    <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3" href="{{ route('dashboard.overview') }}">{{ config('env.APP_NAME') }}</a>
-    <!-- Sidebar Toggle-->
-    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
-            class="fas fa-bars"></i></button>
 
-    <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-               aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="{{ route('home') }}">View Website</a></li>
-                <li>
-                    <hr class="dropdown-divider"/>
+<body>
+<div class="wrapper">
+    <nav id="sidebar" class="sidebar js-sidebar">
+        <div class="sidebar-content js-simplebar">
+            <a class="sidebar-brand" href="{{ route('dashboard.overview') }}">
+                <span class="align-middle">TimeNet</span>
+            </a>
+
+            <ul class="sidebar-nav">
+                <li class="sidebar-header">
+                    Modules
                 </li>
-                <li><a class="dropdown-item" href="{{ route('logout') }}">Logout</a></li>
+
+                <li class="sidebar-item @if(request()->is('dashboard')) active @endif">
+                    <a class="sidebar-link" href="{{ route('dashboard.overview') }}">
+                        <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">
+                            Overview
+                        </span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item @if(request()->is('dashboard/users')) active @endif">
+                    <a class="sidebar-link" href="{{ route('dashboard.users') }}">
+                        <i class="align-middle" data-feather="users"></i> <span class="align-middle">Users</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item @if(request()->is('dashboard/orders')) active @endif">
+                    <a class="sidebar-link" href="{{ route('dashboard.orders') }}">
+                        <i class="align-middle" data-feather="shopping-cart"></i> <span class="align-middle">
+                            Orders
+                        </span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item @if(request()->is('dashboard/products')) active @endif">
+                    <a class="sidebar-link" href="{{ route('dashboard.products') }}">
+                        <i class="align-middle" data-feather="file-text"></i> <span class="align-middle">
+                            Products
+                        </span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item @if(request()->is('dashboard/posts')) active @endif">
+                    <a class="sidebar-link" href="{{ route('dashboard.posts') }}">
+                        <i class="align-middle" data-feather="package"></i> <span class="align-middle">
+                            Posts
+                        </span>
+                    </a>
+                </li>
+
+
+                <li class="sidebar-header">
+                    Settings
+                </li>
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#">
+                        <i class="align-middle" data-feather="list"></i> <span class="align-middle">
+                           Categories
+                        </span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#">
+                        <i class="align-middle" data-feather="list"></i> <span class="align-middle">
+                           Brands
+                        </span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#">
+                        <i class="align-middle" data-feather="list"></i> <span class="align-middle">
+                            Download Center
+                        </span>
+                    </a>
+                </li>
+
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#">
+                        <i class="align-middle" data-feather="list"></i> <span class="align-middle">
+                            Subscriber List
+                        </span>
+                    </a>
+                </li>
+
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#">
+                        <i class="align-middle" data-feather="list"></i> <span class="align-middle">
+                            FAQ
+                        </span>
+                    </a>
+                </li>
+
             </ul>
-        </li>
-    </ul>
-</nav>
-<div id="layoutSidenav">
-    <div id="layoutSidenav_nav">
-        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-            <div class="sb-sidenav-menu">
-                <div class="nav">
-                    <div class="sb-sidenav-menu-heading">Core</div>
-                    <a class="nav-link" href="{{ route('dashboard.overview') }}">
-                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                        Dashboard
-                    </a>
-                    <div class="sb-sidenav-menu-heading">Interface</div>
 
+        </div>
+    </nav>
 
-                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
-                       aria-expanded="false" aria-controls="collapsePages">
-                        <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                        Pages
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                    </a>
-                    <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
-                         data-bs-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                            <a class="nav-link" href="{{ route('dashboard.users') }}">
-                                <div class="sb-nav-link-icon"><i class="fas fa-arrow-right-long"></i></div>
-                                Users
-                            </a>
-                            <a class="nav-link" href="{{ route('dashboard.orders') }}">
-                                <div class="sb-nav-link-icon"><i class="fas fa-arrow-right-long"></i></div>
-                                Orders
-                            </a>
-                            <a class="nav-link" href="{{ route('dashboard.products') }}">
-                                <div class="sb-nav-link-icon"><i class="fas fa-arrow-right-long"></i></div>
-                                Products
-                            </a>
-                            <a class="nav-link" href="{{ route('dashboard.posts') }}">
-                                <div class="sb-nav-link-icon"><i class="fas fa-arrow-right-long"></i></div>
-                                Posts
-                            </a>
-                        </nav>
-                    </div>
+    <div class="main">
+        <nav class="navbar navbar-expand navbar-light navbar-bg">
+            <a class="sidebar-toggle js-sidebar-toggle">
+                <i class="hamburger align-self-center"></i>
+            </a>
 
-                </div>
-            </div>
-            <div class="sb-sidenav-footer">
-                <div class="small">Logged in as:</div>
-                {{ ucfirst(auth()->user()->name) }}
+            <div class="navbar-collapse collapse">
+                <ul class="navbar-nav navbar-align">
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
+                            <i class="align-middle" data-feather="settings"></i>
+                        </a>
+
+                        <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
+                            <img src="{{ asset('images/user.png') }}" class="avatar img-fluid rounded me-1"
+                                 alt="Charles Hall"/>
+                            <span class="text-dark">{{ ucwords(auth()->user()->name) }}</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <a class="dropdown-item" href="{{ route('users.account.overview') }}">
+                                <i class="align-middle me-1" data-feather="user"></i> Account</a>
+                            <a class="dropdown-item" href="{{ route('home') }}">
+                                <i class="align-middle me-1" data-feather="log-in"></i> View Website</a>
+                            <a class="dropdown-item" href="{{ route('store.index') }}">
+                                <i class="align-middle me-1" data-feather="log-in"></i> View Store</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{ route('logout') }}">Log out</a>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </nav>
-    </div>
-    <div id="layoutSidenav_content">
-        <main>
-            @yield('content')
+
+        <main class="content">
+            <div class="container-fluid p-0">
+
+               @yield('content')
+
+            </div>
         </main>
-        <footer class="py-4 bg-light mt-auto">
-            <div class="container-fluid px-4">
-                <div class="d-flex align-items-center justify-content-between small">
-                    <div class="text-muted">Copyright &copy; {{ config('env.APP_NAME') . ' ' . date('Y') }}</div>
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="row text-muted">
+                    <div class="col-6 text-start">
+                        <p class="mb-0">
+                            <span class="text-muted"><strong>{{ config('env.APP_NAME') }}</strong></span>
+                            - <strong>Dashboard</strong> &copy;
+                        </p>
+                    </div>
+                    <div class="col-6 text-end">
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <a class="text-muted" href="{{ route('soon') }}" target="_blank">Dev Team</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </footer>
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        crossorigin="anonymous"></script>
-<script src="{{ asset('dashboard-assets/js/scripts.js') }}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-<script src="{{ asset('dashboard-assets/assets/demo/chart-area-demo.js') }}"></script>
-<script src="{{ asset('dashboard-assets/assets/demo/chart-bar-demo.js') }}"></script>
-<script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
-        crossorigin="anonymous"></script>
-<script src="{{ asset('dashboard-assets/js/datatables-simple-demo.js') }}"></script>
+
+<script src="{{ asset('dashboard-assets/js/app.js') }}"></script>
+@livewireScripts
 </body>
+
 </html>

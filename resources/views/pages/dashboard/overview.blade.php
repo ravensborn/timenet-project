@@ -2,19 +2,14 @@
 
 @section('content')
 
+   <div class="mb-3">
+       <img src="{{ asset('images/logo-dark.png') }}" alt="TimeNet Logo" width="200px">
+   </div>
+    <h1 class="h3 mb-3">Welcome back, {{ ucwords(auth()->user()->name) }}</h1>
 
-    <div class="container-fluid px-4">
-        <h1 class="mt-4">Dashboard</h1>
-        <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item active">Dashboard</li>
-        </ol>
+   <p>
+       TimeNet Control Panel, that helps you manage the website modules, including users, posts, products, and orders.
+   </p>
 
-        <div class="row">
-            <div class="col">
-                Processing update...
-            </div>
-        </div>
-
-    </div>
 
 @endsection

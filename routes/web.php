@@ -39,6 +39,11 @@ Route::get('/coming-soon', [PageController::class, 'soon'])
 Route::get('/about-us', [PageController::class, 'about'])
     ->name('about');
 
+Route::get('/banned', [PageController::class, 'banned'])
+    ->middleware('auth')
+    ->name('user-banned');
+
+
 
 //Register, login, and logout
 Auth::routes([
@@ -114,23 +119,25 @@ Route::post('/posts/{slug}/comment', [CommentController::class, 'store'])
 
 Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
 
+
     //Dashboard routes
     Route::get('/dashboard', [DashboardController::class, 'index'])
         ->name('dashboard.overview');
 
-    Route::get('/dashboard/users', [DashboardController::class, 'users'])
+    Route::get('/dashboard/users', [DashboardController::class, 'usersIndex'])
         ->name('dashboard.users');
 
-    Route::get('/dashboard/orders', [DashboardController::class, 'orders'])
+    Route::get('/dashboard/orders', [DashboardController::class, 'ordersIndex'])
         ->name('dashboard.orders');
 
-    Route::get('/dashboard/products', [DashboardController::class, 'products'])
+    Route::get('/dashboard/products', [DashboardController::class, 'productsIndex'])
         ->name('dashboard.products');
 
-    Route::get('/dashboard/posts', [DashboardController::class, 'posts'])
+    Route::get('/dashboard/posts', [DashboardController::class, 'postsIndex'])
         ->name('dashboard.posts');
 
 
 });
+
 
 

@@ -15,6 +15,8 @@
         "livewire/livewire": "^2.11",
         "lwwcas/laravel-countries": "^3.3",
         "propaganistas/laravel-phone": "^5.0",
+        "qirolab/laravel-bannable": "^3.0",
+        "rappasoft/laravel-livewire-tables": "^2.12",
         "shetabit/visitor": "^4.0",
         "spatie/laravel-medialibrary": "^10.0.0",
         "spatie/laravel-permission": "^5.10",
