@@ -1,4 +1,4 @@
-<!-- Sticky Footer -->
+ <!-- Sticky Footer -->
 
 <div style="position: fixed; bottom: 0;right: 0;width: 300px; z-index: 10000;">
     <div style="padding: 5px;">
@@ -76,7 +76,8 @@
                 <!-- List -->
                 <ul class="list-unstyled list-py-1 mb-5">
                     <li><a class="link-sm link-light" href="{{ route('soon') }}"><i class="bi-question-circle-fill me-1"></i> Help</a></li>
-                    <li><a class="link-sm link-light" href="{{ route('soon') }}"><i class="bi-person-circle me-1"></i> Your Account</a></li>
+                    <li><a class="link-sm link-light" href="{{ route('users.account.overview') }}"><i class="bi-person-circle me-1"></i> Your Account</a></li>
+                    <li><a class="link-sm link-light" href="{{ route('dashboard.overview') }}"><i class="bi-person-circle me-1"></i> Administrator</a></li>
                 </ul>
                 <!-- End List -->
             </div>

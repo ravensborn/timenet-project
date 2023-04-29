@@ -10,6 +10,8 @@ use Laravel\Sanctum\HasApiTokens;
 use Lwwcas\LaravelCountries\Models\Country;
 use Propaganistas\LaravelPhone\Casts\E164PhoneNumberCast;
 
+ use Spatie\Permission\Traits\HasRoles;
+
 /**
  * App\Models\User
  *
@@ -47,7 +49,7 @@ use Propaganistas\LaravelPhone\Casts\E164PhoneNumberCast;
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.

@@ -7,6 +7,7 @@ use App\Models\EnabledCountry;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,13 +24,17 @@ class DatabaseSeeder extends Seeder
             TimeNetCountrySeeder::class, //Countries
         ]);
 
-        User::factory()->create([
+        $role = Role::create(['name' => 'admin']);
+
+        $user = User::factory()->create([
             'name' => 'TimeNet Admin',
             'email' => 'yad@gmail.com',
             'phone_number' => '+964750753487',
             'lc_country_id' => EnabledCountry::COUNTRY_IRAQ,
             'password' => bcrypt('password'),
         ]);
+
+        $user->assignRole($role);
 
         $postProductCatalogCategory = \App\Models\Category::factory([
             'name' => 'Product Catalog',

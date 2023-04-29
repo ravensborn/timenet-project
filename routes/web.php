@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\PostController;
@@ -109,5 +110,27 @@ Route::get('/posts/{slug}', [PostController::class, 'show'])
 Route::post('/posts/{slug}/comment', [CommentController::class, 'store'])
     ->name('posts.comments.store')
     ->middleware(['auth', 'verified']);
+
+
+Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
+
+    //Dashboard routes
+    Route::get('/dashboard', [DashboardController::class, 'index'])
+        ->name('dashboard.overview');
+
+    Route::get('/dashboard/users', [DashboardController::class, 'users'])
+        ->name('dashboard.users');
+
+    Route::get('/dashboard/orders', [DashboardController::class, 'orders'])
+        ->name('dashboard.orders');
+
+    Route::get('/dashboard/products', [DashboardController::class, 'products'])
+        ->name('dashboard.products');
+
+    Route::get('/dashboard/posts', [DashboardController::class, 'posts'])
+        ->name('dashboard.posts');
+
+
+});
 
 
