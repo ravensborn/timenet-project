@@ -64,7 +64,7 @@
                                             </a>
                                             <div class="badge bg-secondary d-flex align-items-center">
                                                 <small class="me-1">
-                                                    <i class="fw-bold bi bi-{{ $order->getStatusColorAndIcon()['icon'] }}"></i>
+                                                    <i class="fw-bold bi bi-{{ 'hourglass' }}"></i>
                                                 </small>
                                                 <div>
                                                     <span class="text-capitalize">
