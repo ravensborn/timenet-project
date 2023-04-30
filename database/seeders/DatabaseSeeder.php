@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
         User::factory(100)->create([
             'lc_country_id' => EnabledCountry::COUNTRY_IRAQ,
         ]);
-        Order::factory(100)->create();
+//        Order::factory(100)->create();
 
         $user->assignRole($role);
 
