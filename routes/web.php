@@ -23,6 +23,7 @@ use App\Http\Livewire\Users\Store\OrdersIndex as LivewireUserStoreOrdersIndex;
 use App\Http\Livewire\Users\Store\OrdersShow as LivewireUserStoreOrdersShow;
 use App\Http\Livewire\Users\Store\Wishlist as LivewireUserStoreWishlist;
 
+
 //Home route
 
 Route::get('/', [HomeController::class, 'index'])
@@ -43,6 +44,19 @@ Route::get('/banned', [PageController::class, 'banned'])
     ->middleware('auth')
     ->name('user-banned');
 
+
+//Set Locale
+use Illuminate\Support\Facades\App;
+
+Route::get('/greeting/{locale}', function (string $locale) {
+    if (!in_array($locale, ['en', 'es', 'fr'])) {
+        abort(400);
+    }
+
+    App::setLocale($locale);
+
+    return redirect()->back();
+});
 
 
 //Register, login, and logout
@@ -126,6 +140,12 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
 
     Route::get('/dashboard/users', [DashboardController::class, 'usersIndex'])
         ->name('dashboard.users');
+
+    Route::get('/dashboard/users/{user}', [DashboardController::class, 'usersShow'])
+        ->name('dashboard.users.show');
+
+    Route::get('/dashboard/users/{user}/edit', [DashboardController::class, 'usersEdit'])
+        ->name('dashboard.users.edit');
 
     Route::get('/dashboard/orders', [DashboardController::class, 'ordersIndex'])
         ->name('dashboard.orders');

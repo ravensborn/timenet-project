@@ -3,12 +3,16 @@
 namespace App\Http\Livewire\Dashboard\Users;
 
 use App\Models\User;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Lwwcas\LaravelCountries\Models\Country;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 
 class UsersTable extends DataTableComponent
 {
+
+    use LivewireAlert;
+
     protected $model = User::class;
 
 
@@ -50,28 +54,33 @@ class UsersTable extends DataTableComponent
                     return '';
                 })->html()
                 ->sortable(),
-//            Column::make("Created at", "created_at")
-//                ->format(function ($value, $row, $column) {
-//                    if ($value) {
-//                        return $value->format('d-m-Y / h:i A');
-//                    }
-//                    return '';
-//                })->html()
-//                ->sortable(),
-            Column::make("Actions", "id")->format(function ($value, $row, $column) {
 
-                $deleteBtn = '<button class="btn btn-danger btn-sm me-1"><i class="bi bi-trash"></i></button>';
-                $editBtn = '<button class="btn btn-warning btn-sm me-1"><i class="bi bi-pen"></i></button>';
-                $viewBtn = '<button class="btn btn-info btn-sm me-1"><i class="bi bi-list"></i> View</button>';
+            Column::make("Actions", "id")->format(function ($id, $row, $column) {
+
+                $user = User::find($id);
+
+                if ($user->isBanned()) {
+
+                    $banBtn = '<button wire:click="toggleBan(' . $id . ')" class="btn btn-danger btn-sm me-1"><i class="bi bi-lock"></i></button>';
+                } else {
+
+                    $banBtn = '<button wire:click="toggleBan(' . $id . ')" class="btn btn-success btn-sm me-1"><i class="bi bi-unlock"></i></button>';
+                }
+                $editBtn = '<a href="' . route('dashboard.users.edit', $id) . '" class="btn btn-warning btn-sm me-1"><i class="bi bi-pen"></i></a>';
+                $viewBtn = '<a href="'. route('dashboard.users.show', $id) .'" class="btn btn-info btn-sm me-1"><i class="bi bi-list"></i> View</a>';
                 $ordersBtn = '<button class="btn btn-info btn-sm me-1"><i class="bi bi-list"></i> Orders</button>';
 
-                return $ordersBtn . $viewBtn . $editBtn . $deleteBtn;
+                return $ordersBtn . $viewBtn . $editBtn . $banBtn;
+
             })->html(),
 
         ];
     }
 
-
+    public function toggleBan(User $user): void
+    {
+        $user->isBanned() ? $user->unban() : $user->ban();
+    }
 
 
 }

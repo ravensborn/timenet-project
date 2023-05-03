@@ -16,7 +16,7 @@
                     <div class="row">
                         <div class="col">
 
-                            <livewire:dashboard.users.users-table />
+                            <livewire:dashboard.users.index />
                         </div>
                     </div>
 

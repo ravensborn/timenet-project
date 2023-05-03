@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -17,15 +16,16 @@ return new class extends Migration
             $table->id();
 
             $table->unsignedBigInteger('author_id')
-            ->nullable();
+                ->nullable();
 
             $table->foreign('author_id')
                 ->references('id')
                 ->on('users')
                 ->onDelete('SET NULL');
 
-
             $table->unsignedBigInteger('category_id');
+
+            $table->string('locale')->default(config()->get('app.available_locales')[0]);
 
             $table->foreign('category_id')
                 ->references('id')

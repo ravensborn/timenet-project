@@ -77,7 +77,9 @@
                 <ul class="list-unstyled list-py-1 mb-5">
                     <li><a class="link-sm link-light" href="{{ route('soon') }}"><i class="bi-question-circle-fill me-1"></i> Help</a></li>
                     <li><a class="link-sm link-light" href="{{ route('users.account.overview') }}"><i class="bi-person-circle me-1"></i> Your Account</a></li>
-                    <li><a class="link-sm link-light" href="{{ route('dashboard.overview') }}"><i class="bi-person-circle me-1"></i> Administrator</a></li>
+                    @if(auth()->check() && auth()->user()->hasRole('admin'))
+                        <li><a class="link-sm link-light" href="{{ route('dashboard.overview') }}"><i class="bi-person-circle me-1"></i> Administrator</a></li>
+                    @endif
                 </ul>
                 <!-- End List -->
             </div>

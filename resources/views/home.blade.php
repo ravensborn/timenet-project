@@ -47,25 +47,33 @@
             @foreach($services as $post)
                 <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0 mt-3">
                     <!-- Card -->
-                    <div class="card card-sm h-100">
-                        <div class="p-2">
+                    <a class="text-decoration-none text-dark" href="{{ route('posts.show', $post->slug) }}">
+                    <div class=" card-sm h-100">
+                        <div class="p-2 text-center">
                             <img class="card-img"
-
+                                style="width: 64px;"
                                  src="{{ $post->getFirstMediaUrl('cover') }}"
                                  alt="Image Description">
+
+{{--                            <i class="bi bi-shield-shaded display-2 text-center"></i>--}}
                         </div>
 
                         <div class="card-body">
-                            <h4 class="card-title">{{ $post->title }}</h4>
+                            <h4 class="card-title text-center">
+
+                                    {{ $post->title }}
+
+                            </h4>
                             <p class="card-text">
-                                {{ $post->short_content }}
+{{--                                {{ $post->short_content }}--}}
                             </p>
 
                         </div>
 
-                        <a class="card-footer card-link border-top" href="{{ route('posts.show', $post->slug) }}">Learn
-                            more <i class="bi-chevron-right small ms-1"></i></a>
+{{--                        <a class="card-footer card-link border-top text-center" href="{{ route('posts.show', $post->slug) }}">Learn--}}
+{{--                            more <i class="bi-chevron-right small ms-1"></i></a>--}}
                     </div>
+                    </a>
                     <!-- End Card -->
                 </div>
             @endforeach

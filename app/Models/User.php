@@ -11,6 +11,8 @@ use Lwwcas\LaravelCountries\Models\Country;
 use Propaganistas\LaravelPhone\Casts\E164PhoneNumberCast;
 
  use Qirolab\Laravel\Bannable\Traits\Bannable;
+ use Spatie\Activitylog\LogOptions;
+ use Spatie\Activitylog\Traits\LogsActivity;
  use Spatie\Permission\Traits\HasRoles;
 
 /**
@@ -50,7 +52,7 @@ use Propaganistas\LaravelPhone\Casts\E164PhoneNumberCast;
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles, Bannable;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles, Bannable, LogsActivity;
 
     /**
      * The attributes that are mass assignable.
@@ -85,6 +87,12 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
         'phone_number' => E164PhoneNumberCast::class,
     ];
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logUnguarded();
+    }
 
     public function disableBannedAtScope()
     {
