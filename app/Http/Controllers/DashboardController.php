@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Order;
 use App\Models\Post;
 use App\Models\Product;
 use App\Models\User;
@@ -46,6 +47,12 @@ class DashboardController extends Controller
     public function ordersIndex()
     {
         return view('pages.dashboard.orders.index');
+    }
+
+    public function ordersShow(Order $order) {
+        return view('pages.dashboard.orders.show', [
+            'order' => $order
+        ]);
     }
 
     public function productsIndex()

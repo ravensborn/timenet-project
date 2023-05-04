@@ -28,6 +28,11 @@ class UsersTable extends DataTableComponent
 
     }
 
+    public function builder(): \Illuminate\Database\Eloquent\Builder
+    {
+        return User::query()->orderBy('created_at', 'desc');
+    }
+
     public function columns(): array
     {
         return [
@@ -57,7 +62,11 @@ class UsersTable extends DataTableComponent
 
             Column::make("Actions", "id")->format(function ($id, $row, $column) {
 
+
+
                 $user = User::find($id);
+
+                $userOrdersUrl = route('dashboard.orders.index') . '?table[search]=' . urlencode($user->email);
 
                 if ($user->isBanned()) {
 
@@ -68,7 +77,7 @@ class UsersTable extends DataTableComponent
                 }
                 $editBtn = '<a href="' . route('dashboard.users.edit', $id) . '" class="btn btn-warning btn-sm me-1"><i class="bi bi-pen"></i></a>';
                 $viewBtn = '<a href="'. route('dashboard.users.show', $id) .'" class="btn btn-info btn-sm me-1"><i class="bi bi-list"></i> View</a>';
-                $ordersBtn = '<button class="btn btn-info btn-sm me-1"><i class="bi bi-list"></i> Orders</button>';
+                $ordersBtn = '<a href="'. $userOrdersUrl .'" class="btn btn-info btn-sm me-1"><i class="bi bi-list"></i> Orders</a>';
 
                 return $ordersBtn . $viewBtn . $editBtn . $banBtn;
 

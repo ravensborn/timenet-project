@@ -15,16 +15,15 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class OrderFactory extends Factory
 {
 
-    private $orderTotal = 0;
+
     /**
      * Define the model's default state.
      *
      * @return array<string, mixed>
      */
 
-    public function definition()
+    public function definition(): array
     {
-        $this->orderTotal = $this->faker->randomNumber(4, true);
 
         $address = [
             'first_name' => 'Yad',
@@ -33,18 +32,24 @@ class OrderFactory extends Factory
             'primary_phone_number' => '+9647507534867',
             'secondary_phone_number' => '+964757534867',
             'address' => 'Rasty St, Erbil, 44001, KRI',
-            'country' => EnabledCountry::COUNTRY_IRAQ,
         ];
 
         return [
             'number' => 'T_' . fake()->randomNumber(5, true),
             'name' => $this->faker->sentence,
-            'status' => Order::STATUS_PENDING,
             'user_id' => 1,
+            'status' => Order::STATUS_PENDING,
+            'lc_country_id' => EnabledCountry::COUNTRY_IRAQ,
             'payment_method_id' => PaymentMethod::ITEM_CASH_ON_DELIVERY,
             'shipping_address' => $address,
             'billing_address' => $address,
-            'total' => $this->orderTotal,
+            'discount_type' => NULL,
+            'discount_amount' => 0,
+            'shipping_rate' => 0,
+            'exchange_rate' => 0,
+            'promo_code' => NULL,
+            'promo_code_discount_value' => 0,
+            'total' => $this->faker->randomNumber(4, true),
             'note' => $this->faker->paragraph,
         ];
     }
@@ -56,7 +61,7 @@ class OrderFactory extends Factory
                OrderItem::create([
                    'order_id' => $order->id,
                    'product_id' => $this->faker->randomElement(Product::limit(10)->pluck('id')),
-                   'price' => $this->orderTotal / 3,
+                   'price' => $order->total / 3,
                    'quantity' => $this->faker->randomNumber(1, true),
                ]);
            }

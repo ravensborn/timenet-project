@@ -22,7 +22,7 @@ return new class extends Migration {
                 ->on('lc_countries');
 
             $table->double('exchange_rate')->default(0);
-            $table->double('delivery_fee')->default(0);
+            $table->double('shipping_rate')->default(0);
 
             $table->timestamps();
         });

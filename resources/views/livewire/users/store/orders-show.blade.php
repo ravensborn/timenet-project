@@ -63,7 +63,7 @@
                                 </li>
                                 <li class="list-group-item">
                                     <span class="fw-bold">Address:</span>
-                                    {{ $order->shipping_address['country'] }},
+                                    {{ $order->country->iso_alpha_3 }},
                                     {{ $order->shipping_address['address'] }}
                                 </li>
                             </ul>

@@ -24,7 +24,7 @@ class TimeNetCountrySeeder extends Seeder
 
         $iraq = EnabledCountry::create([
             'lc_country_id' => 105, //Iraq
-            'delivery_fee' => 10
+            'shipping_rate' => 10
         ]);
 
         $iraq->paymentMethods()->attach(PaymentMethod::ITEM_CASH_ON_DELIVERY);

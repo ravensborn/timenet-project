@@ -26,6 +26,10 @@
                                     <td class="text-start">{{ $user->email }}</td>
                                 </tr>
                                 <tr>
+                                    <th class="text-start">Country</th>
+                                    <td class="text-start">{{ $user->country->iso_alpha_3 }}</td>
+                                </tr>
+                                <tr>
                                     <th class="text-start">E-Mail Verified</th>
                                     @if($user->email_verified_at)
                                         <td class="text-start">{{ $user->email_verified_at }}</td>
@@ -70,7 +74,7 @@
                         </thead>
 
                         <tbody>
-                        @foreach($activity as $item)
+                        @forelse($activity as $item)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->subject_type }}</td>
@@ -79,7 +83,11 @@
                                 <td>{{ $item->event }}</td>
                                 <td>{{ $item->description }}</td>
                             </tr>
-                        @endforeach
+                        @empty
+                            <tr>
+                                <td colspan="6">This user does not have any activity yet.</td>
+                            </tr>
+                        @endforelse
 
                         </tbody>
 

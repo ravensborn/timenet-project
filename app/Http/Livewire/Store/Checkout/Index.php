@@ -25,7 +25,7 @@ class Index extends Component
     public float $totalPay = 0;
     public $user = null;
 
-    public float $deliveryFee = 0;
+    public float $shippingRate = 0;
 
     public string $checkoutFirstName = '';
     public string $checkoutLastName = '';
@@ -33,7 +33,7 @@ class Index extends Component
     public string $checkoutPrimaryPhoneNumber = '';
     public string $checkoutSecondaryPhoneNumber = '';
     public string $checkoutAddress = '';
-    public int $checkoutCountry = 105;
+//    public int $checkoutCountry = 105;
 
     public Collection $paymentMethods;
     public Collection $enabledCountries;
@@ -61,20 +61,23 @@ class Index extends Component
                 'checkoutPrimaryPhoneNumber' => 'required',
                 'checkoutSecondaryPhoneNumber' => 'nullable',
                 'checkoutAddress' => 'required|max:1000',
-                'checkoutCountry' => 'required|exists:enabled_countries,lc_country_id',
             ]);
 
-            $country = Country::find($validated['checkoutCountry']);
-
-            $shipping_address = [
+            $shippingAddress = [
                 'first_name' => $validated['checkoutFirstName'],
                 'last_name' => $validated['checkoutLastName'],
                 'email' => $validated['checkoutEmail'],
                 'primary_phone_number' => $validated['checkoutPrimaryPhoneNumber'],
                 'secondary_phone_number' => $validated['checkoutSecondaryPhoneNumber'],
                 'address' => $validated['checkoutAddress'],
-                'country' => $country->iso_alpha_3,
             ];
+
+            $shippingRate = 0;
+            $country = $this->user->country;
+            $enabledCountry = EnabledCountry::where('lc_country_id', $country->id)->first();
+            if ($enabledCountry) {
+                $shippingRate = $enabledCountry->shipping_rate;
+            }
 
             $number = $this->generateNumber();
 
@@ -83,11 +86,13 @@ class Index extends Component
                 'number' => $number,
                 'name' => $number,
                 'status' => Order::STATUS_PENDING,
+                'lc_country_id' => $this->user->lc_country_id,
                 'user_id' => $this->user->id,
                 'payment_method_id' => $this->selectedPaymentMethod->id,
-                'shipping_address' => $shipping_address,
-                'billing_address' => $shipping_address,
+                'shipping_address' => $shippingAddress,
+                'billing_address' => $shippingAddress,
                 'total' => $this->totalPay,
+                'shipping_rate' => $shippingRate,
             ]);
 
             foreach ($this->cartItems as $item) {
@@ -115,7 +120,7 @@ class Index extends Component
         $this->getCartItems();
 
         $cart = $this->cartTotal;
-        $deliveryFee = $this->deliveryFee;
+        $shippingRate = $this->shippingRate;
         $paymentFee = 0;
 
         if ($this->selectedPaymentMethod->fee_type == PaymentMethod::FEE_TYPE_PERCENTAGE) {
@@ -127,7 +132,7 @@ class Index extends Component
             $paymentFee = $this->selectedPaymentMethod->fee;
         }
 
-        $this->totalPay = ($cart + $deliveryFee + $paymentFee);
+        $this->totalPay = ($cart + $shippingRate + $paymentFee);
 
     }
 
@@ -145,7 +150,7 @@ class Index extends Component
     {
 
 
-        $country = EnabledCountry::where('lc_country_id', $this->checkoutCountry)->first();
+        $country = EnabledCountry::where('lc_country_id', $this->user->lc_country_id)->first();
 
         if ($country) {
 
@@ -157,25 +162,19 @@ class Index extends Component
 
     }
 
-    public function calculateDeliveryFee()
+    public function calculateShippingRate(): void
     {
 
 
-        $country = EnabledCountry::where('lc_country_id', $this->checkoutCountry)->first();
+        $country = EnabledCountry::where('lc_country_id', $this->user->lc_country_id)->first();
 
         if ($country) {
 
-            $this->deliveryFee = $country->delivery_fee;
+            $this->shippingRate = $country->shipping_rate;
 
         }
     }
 
-    public function updatedCheckoutCountry()
-    {
-
-        $this->calculateDeliveryFee();
-        $this->loadPaymentMethods();
-    }
 
     public function mount()
     {
@@ -195,7 +194,7 @@ class Index extends Component
 
         $this->enabledCountries = EnabledCountry::all();
 
-        $this->calculateDeliveryFee();
+        $this->calculateShippingRate();
         $this->loadPaymentMethods();
         $this->getCartItems();
 

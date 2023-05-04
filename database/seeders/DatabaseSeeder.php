@@ -38,7 +38,6 @@ class DatabaseSeeder extends Seeder
         User::factory(100)->create([
             'lc_country_id' => EnabledCountry::COUNTRY_IRAQ,
         ]);
-        Order::factory(100)->create();
 
         $user->assignRole($role);
 
@@ -92,6 +91,8 @@ class DatabaseSeeder extends Seeder
             TimeNetServiceSeeder::class, //Services
             TimeNetArticleSeeder::class, //Articles
         ]);
+
+        Order::factory(100)->create();
 
 
 

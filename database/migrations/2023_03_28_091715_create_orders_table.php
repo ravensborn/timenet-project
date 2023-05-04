@@ -33,8 +33,23 @@ return new class extends Migration {
                 ->on('payment_methods')
                 ->cascadeOnDelete();
 
+            $table->integer('lc_country_id')
+                ->unsigned();
+            $table->foreign('lc_country_id')
+                ->references('id')
+                ->on('lc_countries');
+
             $table->json('shipping_address');
             $table->json('billing_address');
+
+            $table->string('discount_type')->nullable();
+            $table->double('discount_amount')->default(0);
+
+            $table->double('shipping_rate')->default(0);
+            $table->double('exchange_rate')->default(0);
+
+            $table->string('promo_code')->nullable();
+            $table->double('promo_code_discount_value')->default(0);
 
             $table->double('total');
 

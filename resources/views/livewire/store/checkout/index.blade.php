@@ -121,21 +121,9 @@
 
                                 <div class="col-md-5">
                                     <label for="checkoutCountry" class="form-label">Country</label>
-
-                                    <!-- Select -->
-                                    <select class="form-select" id="countryShopCheckout" wire:model="checkoutCountry">
-                                        @foreach($enabledCountries as $country)
-                                            <option value="{{ $country->id }}">{{ $country->country->name }}</option>
-                                        @endforeach
-                                    </select>
-
-                                    @error('checkoutCountry')
-                                    <small class="text-danger mt-1">
-                                        {{ $message }}
-                                    </small>
-                                @enderror
-                                <!-- End Select -->
+                                    <input type="text" class="form-control form-control-lg" id="checkoutCountry" value="{{ $user->country->name }}" readonly>
                                 </div>
+
                                 <!-- End Col -->
 
                             </div>
@@ -146,7 +134,7 @@
                                 <!-- Check -->
                                 <div class="form-check">
                                     <input type="checkbox" class="form-check-input" id="sameAddressShopCheckout" checked
-                                           onclick="event.preventDefault();">
+                                           onclick="event.preventDefault();" readonly>
                                     <label class="form-check-label" for="sameAddressShopCheckout">Shipping address is
                                         the
                                         same as my billing address</label>
@@ -252,9 +240,9 @@
                                                 <!-- End Row -->
 
                                                 <dl class="row">
-                                                    <dt class="col-sm-6">Delivery</dt>
-                                                    @if($deliveryFee)
-                                                        <dd class="col-sm-6 text-sm-end mb-0">${{ $deliveryFee }}</dd>
+                                                    <dt class="col-sm-6">Shipping Rate</dt>
+                                                    @if($shippingRate)
+                                                        <dd class="col-sm-6 text-sm-end mb-0">${{ $shippingRate }}</dd>
                                                     @else
                                                         <dd class="col-sm-6 text-sm-end mb-0">Free</dd>
                                                     @endif

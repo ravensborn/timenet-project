@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Lwwcas\LaravelCountries\Models\Country;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
 
@@ -24,6 +25,10 @@ class Order extends Model
     const STATUS_DELIVERING = 4;
     const STATUS_COMPLETED = 5;
     const STATUS_CANCELLED = 6;
+
+
+    const DISCOUNT_TYPE_PERCENTAGE = 'percentage';
+    const DISCOUNT_TYPE_FIXED_RATE = 'fixed_rate';
 
     public function getActivitylogOptions(): LogOptions
     {
@@ -62,9 +67,14 @@ class Order extends Model
 
     public function getStatusName(): string
     {
+        return self::processStatusName($this->status);
+    }
+
+    public static function processStatusName($status): string
+    {
         $result = 'Pending';
 
-        switch ($this->status) {
+        switch ($status) {
             case self::STATUS_PENDING :
                 $result = 'Pending';
                 break;
@@ -88,6 +98,12 @@ class Order extends Model
         return $result;
     }
 
+    public static function getStatusAsArray(): array
+    {
+        return [self::STATUS_PENDING, self::STATUS_APPROVED, self::STATUS_PROCESSING, self::STATUS_DELIVERING, self::STATUS_COMPLETED, self::STATUS_CANCELLED];
+    }
+
+
     public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -103,4 +119,25 @@ class Order extends Model
         return $this->hasMany(OrderItem::class);
     }
 
+    public function country(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Country::class, 'lc_country_id');
+    }
+
+    public function enabledCountry(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(EnabledCountry::class, 'lc_country_id');
+    }
+
+    public function getShippingRate()
+    {
+        $enabledCountry = $this->enabledCountry;
+
+        if ($enabledCountry) {
+            return $enabledCountry->delivery_fee;
+        }
+
+        return 0;
+
+    }
 }

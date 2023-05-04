@@ -18,7 +18,7 @@ class EnabledCountryFactory extends Factory
     {
         return [
             'lc_country_id' => null,
-            'delivery_fee' => 0,
+            'shipping_rate' => 0,
             'exchange_rate' => 0,
         ];
     }

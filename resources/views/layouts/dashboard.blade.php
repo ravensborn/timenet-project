@@ -112,7 +112,7 @@
 
         td, th {
             white-space: nowrap;
-            text-align: center;
+            text-align: center !important;
         }
     </style>
 
@@ -141,13 +141,13 @@
                 </li>
 
                 <li class="sidebar-item @if(request()->is('dashboard/users')) active @endif">
-                    <a class="sidebar-link" href="{{ route('dashboard.users') }}">
+                    <a class="sidebar-link" href="{{ route('dashboard.users.index') }}">
                         <i class="align-middle" data-feather="users"></i> <span class="align-middle">Users</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item @if(request()->is('dashboard/orders')) active @endif">
-                    <a class="sidebar-link" href="{{ route('dashboard.orders') }}">
+                    <a class="sidebar-link" href="{{ route('dashboard.orders.index') }}">
                         <i class="align-middle" data-feather="shopping-cart"></i> <span class="align-middle">
                             Orders
                         </span>
@@ -155,7 +155,7 @@
                 </li>
 
                 <li class="sidebar-item @if(request()->is('dashboard/products')) active @endif">
-                    <a class="sidebar-link" href="{{ route('dashboard.products') }}">
+                    <a class="sidebar-link" href="{{ route('dashboard.products.index') }}">
                         <i class="align-middle" data-feather="file-text"></i> <span class="align-middle">
                             Products
                         </span>
@@ -163,7 +163,7 @@
                 </li>
 
                 <li class="sidebar-item @if(request()->is('dashboard/posts')) active @endif">
-                    <a class="sidebar-link" href="{{ route('dashboard.posts') }}">
+                    <a class="sidebar-link" href="{{ route('dashboard.posts.index') }}">
                         <i class="align-middle" data-feather="package"></i> <span class="align-middle">
                             Posts
                         </span>

@@ -140,10 +140,8 @@
             box-shadow: none;
         }
 
-        @media print
-        {
-            .no-print, .no-print *
-            {
+        @media print {
+            .no-print, .no-print * {
                 display: none !important;
             }
         }
@@ -154,7 +152,7 @@
 <div class="invoice-box">
     <table cellpadding="0" cellspacing="0">
         <tr class="top">
-            <td colspan="2">
+            <td colspan="4">
                 <table>
                     <tr>
                         <td class="title">
@@ -172,7 +170,7 @@
         </tr>
 
         <tr class="information">
-            <td colspan="2">
+            <td colspan="4">
                 <table>
                     <tr>
                         <td>
@@ -185,7 +183,7 @@
                         <td>
                             {{ ucwords($order->user->name) }}<br/>
                             {{ $order->billing_address['address'] }},<br>
-                            {{ $order->billing_address['country'] }}<br>
+                            {{ $order->country->alpha_iso_3 }}<br>
                         </td>
                     </tr>
                 </table>
@@ -205,17 +203,33 @@
         </tr>
 
         <tr class="heading">
+            <td>Shipping Rate</td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        <tr class="details">
+            <td>TimeNet Shipping</td>
+            <td></td>
+            @if(!$order->shipping_rate)
+                <td>{{ 'Free Shipping' }}</td>
+            @else
+                <td>{{ $order->shipping_rate }}</td>
+            @endif
+        </tr>
+
+        <tr class="heading">
             <td>Item</td>
 
-            <td>Quantity</td>
-            <td>Price</td>
+            <td style="text-align: center">Quantity</td>
+            <td style="text-align: center">Price</td>
         </tr>
 
         @foreach($order->orderItems as $item)
             <tr class="item @if($loop->last) last  @endif">
-                <td class="text-truncate">{{ $item->product->name }}</td>
-                <td>{{ $item->quantity }}</td>
-                <td class="table-text-end">${{ number_format($item->price, 2) }}</td>
+                <td>{{ $item->product->name }}</td>
+                <td style="text-align: center;">{{ $item->quantity }}</td>
+                <td style="text-align: center;" class="table-text-end">${{ number_format($item->price, 2) }}</td>
             </tr>
         @endforeach
 
@@ -228,7 +242,8 @@
 
 <div class="no-print" style="margin-left: auto; text-align: center; margin-top: 20px; margin-bottom: 100px;">
     <button style="width: 200px;" class="button-7" onclick="window.print();return false;">Print</button>
-    <a style="width: 200px;" class="button-7" href="{{ route('users.store.orders.show', $order->id) }}">Back to order</a>
+    <a style="width: 200px;" class="button-7" href="{{ route('users.store.orders.show', $order->id) }}">Back to
+        order</a>
 </div>
 
 </body>

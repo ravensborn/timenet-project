@@ -139,7 +139,7 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
         ->name('dashboard.overview');
 
     Route::get('/dashboard/users', [DashboardController::class, 'usersIndex'])
-        ->name('dashboard.users');
+        ->name('dashboard.users.index');
 
     Route::get('/dashboard/users/{user}', [DashboardController::class, 'usersShow'])
         ->name('dashboard.users.show');
@@ -148,13 +148,16 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
         ->name('dashboard.users.edit');
 
     Route::get('/dashboard/orders', [DashboardController::class, 'ordersIndex'])
-        ->name('dashboard.orders');
+        ->name('dashboard.orders.index');
+
+    Route::get('/dashboard/orders/{order}', [DashboardController::class, 'ordersShow'])
+        ->name('dashboard.orders.show');
 
     Route::get('/dashboard/products', [DashboardController::class, 'productsIndex'])
-        ->name('dashboard.products');
+        ->name('dashboard.products.index');
 
     Route::get('/dashboard/posts', [DashboardController::class, 'postsIndex'])
-        ->name('dashboard.posts');
+        ->name('dashboard.posts.index');
 
 
 });
