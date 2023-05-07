@@ -66,6 +66,9 @@
                 <div>
                     <label for="description">Description</label>
                     <textarea id="description" cols="30" rows="5" class="form-control" wire:model="description"></textarea>
+                    @error('description')
+                    <small class="text-danger">{{ $message }}</small>
+                    @enderror
                 </div>
             </div>
         </div>
