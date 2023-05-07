@@ -42,6 +42,8 @@ class PostsTable extends DataTableComponent
                 ->searchable(),
             Column::make("Author", "author.name")
                 ->searchable(),
+            Column::make("Category", "category.name")
+                ->searchable(),
             Column::make("Hidden", "is_hidden")
                 ->format(function ($value, $row, $column) {
                     return $value ? 'Yes' : 'No';
