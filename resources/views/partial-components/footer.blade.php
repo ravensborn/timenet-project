@@ -1,12 +1,12 @@
  <!-- Sticky Footer -->
 
-<div style="position: fixed; bottom: 0;right: 0;width: 300px; z-index: 10000;">
-    <div style="padding: 5px;">
-        <div style="margin: 0 auto; background-color: #ffa726; color: black; border: 3px solid black; padding: 20px; border-radius: 10px;">
-            This website is undergoing to a major renovation please visit us later.
-        </div>
-    </div>
-</div>
+{{--<div style="position: fixed; bottom: 0;right: 0;width: 300px; z-index: 10000;">--}}
+{{--    <div style="padding: 5px;">--}}
+{{--        <div style="margin: 0 auto; background-color: #ffa726; color: black; border: 3px solid black; padding: 20px; border-radius: 10px;">--}}
+{{--            This website is undergoing to a major renovation please visit us later.--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--</div>--}}
 
 <!-- ========== FOOTER ========== -->
 <footer class="bg-dark">
