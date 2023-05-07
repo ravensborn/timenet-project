@@ -52,7 +52,7 @@
                     </p>
                     <hr/>
                     <p class="mb-0">Whenever you need to, you can always contact us at <a
-                                href="mailto:karzan@time-net.net" class="text-dark">info@time-net.net</a>.</p>
+                            href="mailto:karzan@time-net.net" class="text-dark">info@time-net.net</a>.</p>
                 </div>
             </div>
         </div>
@@ -78,7 +78,8 @@
                                     <span class="fw-bold">(${{ number_format($cartTotal) }})</span>
                                 </div>
                                 <div>
-                                    <a class="btn btn-outline-dark btn-transition btn-sm rounded-pill mt-3" href="{{ route('store.cartItems.index') }}">
+                                    <a class="btn btn-outline-dark btn-transition btn-sm rounded-pill mt-3"
+                                       href="{{ route('store.cartItems.index') }}">
                                         View your shopping cart
                                     </a>
                                 </div>
@@ -148,11 +149,9 @@
                                             </label>
                                         </div>
                                         <!-- End Checkboxes -->
-                                    @foreach($categories as $category)
+                                        @foreach($categories as $category)
 
-
-
-                                        <!-- Checkboxes -->
+                                            <!-- Checkboxes -->
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox"
                                                        value="{{ $category->id }}"
@@ -187,11 +186,9 @@
                                             </label>
                                         </div>
                                         <!-- End Checkboxes -->
-                                    @foreach($brands as $brand)
+                                        @foreach($brands as $brand)
 
-
-
-                                        <!-- Checkboxes -->
+                                            <!-- Checkboxes -->
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox"
                                                        value="{{ $brand->id }}"
@@ -319,10 +316,13 @@
                         @forelse($products as $product)
                             @if($displayProductsType == 'grid')
                                 <div class="col-sm-2 col-md-3 col-lg-4 mb-4">
+
                                     <!-- Card -->
                                     <div class="card card-bordered shadow-none text-center h-100">
                                         <div class="card-pinned">
-                                            <img class="card-img-top" src="{{ $product->getFirstMediaUrl('cover') }}"
+
+                                            <img style="height: 200px; object-fit: cover;" class="card-img-top"
+                                                 src="{{ $product->getCover() }}"
                                                  alt="Image Description">
 
                                             @if($product->created_at->isToday())
@@ -362,12 +362,26 @@
                                             </div>
 
                                             <h4 class="card-title">
-                                                <a class="text-dark" href="{{ route('store.products.show', $product->slug) }}">
+                                                <a class="text-dark"
+                                                   href="{{ route('store.products.show', $product->slug) }}">
                                                     {{ $product->name }}
                                                 </a>
                                             </h4>
-                                            <p class="card-text text-dark fw-bold">
-                                                ${{ number_format($product->price, 2) }}</p>
+                                            @if($product->previous_price)
+                                                <p class="card-text">
+                                                <span class="text-decoration-line-through text-muted me-1">
+                                                    ${{ number_format($product->previous_price, 2) }}
+                                                </span>
+                                                <span class="fw-bold text-dark">
+                                                    ${{ number_format($product->price, 2) }}
+                                                </span>
+                                                </p>
+                                            @else
+                                                <p class="card-text text-dark fw-bold">
+
+                                                    ${{ number_format($product->price, 2) }}
+                                                </p>
+                                            @endif
                                         </div>
 
                                         <div class="card-footer pt-0">
@@ -406,7 +420,8 @@
 
                                                     <div class="row">
                                                         <div class="col-8">
-                                                            <span class="card-subtitle">{{ $product->category->name }}</span>
+                                                            <span
+                                                                class="card-subtitle">{{ $product->category->name }}</span>
                                                             @if($product->created_at->isToday())
                                                                 <div class="card-pinned-top-start">
                                                                     <span class="badge bg-success rounded-pill">New arrival</span>

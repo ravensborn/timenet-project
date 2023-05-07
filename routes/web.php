@@ -155,6 +155,14 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
 
     Route::get('/dashboard/products', [DashboardController::class, 'productsIndex'])
         ->name('dashboard.products.index');
+    Route::get('/dashboard/products/create', [DashboardController::class, 'productsCreate'])
+        ->name('dashboard.products.create');
+
+    Route::get('/dashboard/products/{slug}/edit', [DashboardController::class, 'productsEdit'])
+        ->name('dashboard.products.edit');
+
+    Route::get('/dashboard/products/{product}/media-manager', [DashboardController::class, 'productsMediaManager'])
+        ->name('dashboard.products.media-manager');
 
     Route::get('/dashboard/posts', [DashboardController::class, 'postsIndex'])
         ->name('dashboard.posts.index');

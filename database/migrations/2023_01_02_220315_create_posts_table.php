@@ -36,6 +36,7 @@ return new class extends Migration {
             $table->string('slug');
 
             $table->boolean('is_commentable')->default(false);
+            $table->boolean('is_hidden')->default(false);
 
             $table->text('short_content')->nullable();
 

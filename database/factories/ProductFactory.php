@@ -23,10 +23,14 @@ class ProductFactory extends Factory
         return [
             'name' => $this->faker->sentence(3),
             'description' => $this->faker->paragraph,
-            'price' => $this->faker->numberBetween(100, 1000),
+            'is_hidden' => false,
+            'lc_country_id' => EnabledCountry::COUNTRY_IRAQ,
             'category_id' => 1,
             'brand_id' => 1,
-            'lc_country_id' => EnabledCountry::COUNTRY_IRAQ,
+            'promo_code_id' => null,
+            'price' => $this->faker->numberBetween(100, 1000),
+            'previous_price' => 0,
+            'additional_fees' => [],
             'properties' => [],
         ];
     }

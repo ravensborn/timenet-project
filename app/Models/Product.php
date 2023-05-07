@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-use JetBrains\PhpStorm\Pure;
 use Shetabit\Visitor\Traits\Visitable;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
@@ -48,17 +48,18 @@ use Spatie\Sluggable\SlugOptions;
  */
 class Product extends Model implements HasMedia
 {
-    use InteractsWithMedia;
-    use HasFactory;
-    use HasSlug;
-    use Visitable;
+    use InteractsWithMedia, HasFactory, HasSlug, Visitable;
 
     protected $casts = [
         'properties' => 'array',
         'additional_fees' => 'array',
+        'is_hidden' => 'boolean',
+        'is_promo_code_active' => 'boolean',
     ];
 
-    public function getSlugOptions() : SlugOptions
+    protected $guarded = ['id'];
+
+    public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
             ->generateSlugsFrom('name')
@@ -68,7 +69,7 @@ class Product extends Model implements HasMedia
 
     public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-       return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class);
     }
 
     public function brands(): \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -78,16 +79,29 @@ class Product extends Model implements HasMedia
 
     public function getFeatures(): array
     {
-        if($this->properties == null) {
+        if ($this->properties == null) {
             return [];
         }
 
-        if(array_key_exists('features', $this->properties)) {
+        if (array_key_exists('features', $this->properties)) {
             return $this->properties['features'];
         }
         return [];
     }
 
+    public function getCover()
+    {
+
+        $media = $this->getMedia('images')
+            ->where('uuid', $this->cover_image)
+            ->first();
+        if ($media) {
+            return $media->getFullUrl();
+        }
+
+
+        return 'https://dummyimage.com/1000x700/ccc/111';
+    }
 
 
 }

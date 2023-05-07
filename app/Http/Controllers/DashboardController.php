@@ -60,6 +60,25 @@ class DashboardController extends Controller
         return view('pages.dashboard.products.index');
     }
 
+    public function productsCreate()
+    {
+        return view('pages.dashboard.products.create');
+    }
+
+    public function productsEdit($slug)
+    {
+        $product = Product::where('slug', $slug)->firstOrFail();
+        return view('pages.dashboard.products.edit', [
+            'product' => $product
+        ]);
+    }
+
+    public function productsMediaManager(Product $product) {
+        return view('pages.dashboard.products.media-manager', [
+            'product' => $product,
+        ]);
+    }
+
     public function postsIndex()
     {
         return view('pages.dashboard.posts.index');

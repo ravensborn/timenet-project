@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use Shetabit\Visitor\Traits\Visitable;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
@@ -54,10 +55,12 @@ class Post extends Model implements HasMedia
     use HasFactory;
     use InteractsWithMedia;
     use HasSlug;
+    use Visitable;
 
     protected $guarded = ['id'];
     protected $casts = [
-        'is_commentable' => 'boolean'
+        'is_commentable' => 'boolean',
+        'is_hidden' => 'is_hidden',
     ];
 
     public function getSlugOptions(): SlugOptions

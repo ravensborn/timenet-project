@@ -18,6 +18,9 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug');
             $table->longText('description')->nullable();
+            $table->string('cover_image')->nullable();
+
+            $table->boolean('is_hidden')->default(false);
 
             $table->integer('lc_country_id')->unsigned();
             $table->foreign('lc_country_id')
@@ -32,7 +35,16 @@ return new class extends Migration
             $table->foreign('brand_id')->references('id')
                 ->on('brands')->onDelete('restrict');
 
+
+            $table->unsignedBigInteger('promo_code_id')->nullable();
+            $table->foreign('promo_code_id')
+                ->references('id')
+                ->on('promo_codes')
+                ->onDelete('set null');
+
             $table->double('price');
+            $table->double('previous_price')->default(0);
+
             $table->json('additional_fees')->nullable();
             $table->json('properties')->nullable();
 

@@ -16,7 +16,7 @@ class Order extends Model
 
     protected $casts = [
         'shipping_address' => 'array',
-        'billing_address' => 'array',
+        'billing_address' => 'array'
     ];
 
     const STATUS_PENDING = 1;

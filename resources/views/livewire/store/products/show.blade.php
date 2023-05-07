@@ -49,8 +49,8 @@
                         <!-- Swiper Main Slider -->
                         <div class="js-swiper-shop-product swiper">
                             <div class="swiper-wrapper">
-                            @foreach($product->getMedia('images') as $image)
-                                <!-- Slide -->
+                                @foreach($product->getMedia('images') as $image)
+                                    <!-- Slide -->
                                     <div class="swiper-slide">
                                         <div class="card card-bordered shadow-none">
                                             <img class="card-img" src="{{ $image->getFullUrl() }}"
@@ -73,8 +73,8 @@
                             <div class="js-swiper-shop-product-thumb swiper" style="max-width: 15rem;">
                                 <div class="swiper-wrapper">
 
-                                @foreach($product->getMedia('images') as $image)
-                                    <!-- Slide -->
+                                    @foreach($product->getMedia('images') as $image)
+                                        <!-- Slide -->
                                         <div class="swiper-slide">
                                             <a class="avatar avatar-circle" href="javascript:;">
                                                 <img class="avatar-img" src="{{ $image->getFullUrl() }}"
@@ -140,8 +140,12 @@
                 <div class="mb-5">
                     <span class="d-block mb-2">Total price:</span>
                     <div class="d-flex align-items-center">
-                        <h3 class="mb-0">${{ number_format($product->price, 2) }}</h3>
-                        <span class="ms-2"><del>{{ number_format($product->price + (strlen($product->name) * 2), 2) }}</del></span>
+                       @if($product->previous_price)
+                            <h3 class="mb-0">${{ number_format($product->price, 2) }}</h3>
+                            <span class="ms-2"><del>{{ number_format($product->previous_price, 2) }}</del></span>
+                        @else
+                            <h3 class="mb-0">${{ number_format($product->price, 2) }}</h3>
+                        @endif
                     </div>
                 </div>
                 <!-- End Price -->
@@ -161,16 +165,18 @@
                                wire:click="adjustQuantity('decrement')">
                                 <svg width="8" height="2" viewBox="0 0 8 2" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M0 1C0 0.723858 0.223858 0.5 0.5 0.5H7.5C7.77614 0.5 8 0.723858 8 1C8 1.27614 7.77614 1.5 7.5 1.5H0.5C0.223858 1.5 0 1.27614 0 1Z"
-                                          fill="currentColor"/>
+                                    <path
+                                        d="M0 1C0 0.723858 0.223858 0.5 0.5 0.5H7.5C7.77614 0.5 8 0.723858 8 1C8 1.27614 7.77614 1.5 7.5 1.5H0.5C0.223858 1.5 0 1.27614 0 1Z"
+                                        fill="currentColor"/>
                                 </svg>
                             </a>
                             <a class="js-plus btn btn-outline-secondary btn-xs btn-icon rounded-circle"
                                wire:click="adjustQuantity('increment')">
                                 <svg width="8" height="8" viewBox="0 0 8 8" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4 0C4.27614 0 4.5 0.223858 4.5 0.5V3.5H7.5C7.77614 3.5 8 3.72386 8 4C8 4.27614 7.77614 4.5 7.5 4.5H4.5V7.5C4.5 7.77614 4.27614 8 4 8C3.72386 8 3.5 7.77614 3.5 7.5V4.5H0.5C0.223858 4.5 0 4.27614 0 4C0 3.72386 0.223858 3.5 0.5 3.5H3.5V0.5C3.5 0.223858 3.72386 0 4 0Z"
-                                          fill="currentColor"/>
+                                    <path
+                                        d="M4 0C4.27614 0 4.5 0.223858 4.5 0.5V3.5H7.5C7.77614 3.5 8 3.72386 8 4C8 4.27614 7.77614 4.5 7.5 4.5H4.5V7.5C4.5 7.77614 4.27614 8 4 8C3.72386 8 3.5 7.77614 3.5 7.5V4.5H0.5C0.223858 4.5 0 4.27614 0 4C0 3.72386 0.223858 3.5 0.5 3.5H3.5V0.5C3.5 0.223858 3.72386 0 4 0Z"
+                                        fill="currentColor"/>
                                 </svg>
                             </a>
                         </div>
@@ -180,33 +186,47 @@
                 </div>
                 <!-- End Quantity -->
 
-            @if($product->getFeatures())
+                @if($product->getFeatures())
 
-                <!-- Accordion -->
+                    <!-- Accordion -->
                     <div class="accordion mb-5" id="shopCartAccordion">
-                    @foreach($product->getFeatures() as $key => $feature)
-                        <!-- Collapse -->
-                            <div class="accordion-item">
-                                <a class="accordion-button collapsed" href="#" role="button" data-bs-toggle="collapse"
-                                   data-bs-target="#shopCartAccordionCollapse-{{ $key }}" aria-expanded="false"
-                                   aria-controls="shopCartAccordionCollapse-{{ $key }}">
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <i class="bi  bi-check-lg text-dark" style="font-size: 16px;"></i>
-                                        </div>
-                                        <div class="ms-2">
-                                            {{ $feature['name'] }}
-                                        </div>
-                                    </div>
-                                </a>
+                        @foreach($product->getFeatures() as $key => $feature)
 
-                                <div id="shopCartAccordionCollapse-{{ $key }}" class="accordion-collapse collapse"
-                                     data-bs-parent="#shopCartAccordion">
-                                    <div class="accordion-body">
-                                        <p class="mb-0">{{ $feature['description'] }}</p>
-                                    </div>
-                                </div>
-                            </div>
+                           <div class="p-2">
+                               <span class="text-dark fw-bold">
+                                   <div class="d-flex align-items-center">
+                                       <div>
+                                           <i class="bi bi-check-lg text-dark" style="font-size: 20px;"></i>
+                                       </div>
+                                       <div class="ms-2">
+                                           {{ $feature['name'] }}
+                                       </div>
+                                   </div>
+                               </span>
+                           </div>
+
+                            <!-- Collapse -->
+                            {{--                            <div class="accordion-item">--}}
+                            {{--                                <a class="accordion-button collapsed" href="#" role="button" data-bs-toggle="collapse"--}}
+                            {{--                                   data-bs-target="#shopCartAccordionCollapse-{{ $key }}" aria-expanded="false"--}}
+                            {{--                                   aria-controls="shopCartAccordionCollapse-{{ $key }}">--}}
+                            {{--                                    <div class="d-flex align-items-center">--}}
+                            {{--                                        <div>--}}
+                            {{--                                            <i class="bi  bi-check-lg text-dark" style="font-size: 16px;"></i>--}}
+                            {{--                                        </div>--}}
+                            {{--                                        <div class="ms-2">--}}
+                            {{--                                            {{ $feature['name'] }}--}}
+                            {{--                                        </div>--}}
+                            {{--                                    </div>--}}
+                            {{--                                </a>--}}
+
+                            {{--                                <div id="shopCartAccordionCollapse-{{ $key }}" class="accordion-collapse collapse"--}}
+                            {{--                                     data-bs-parent="#shopCartAccordion">--}}
+                            {{--                                    <div class="accordion-body">--}}
+                            {{--                                        <p class="mb-0">{{ $feature['description'] }}</p>--}}
+                            {{--                                    </div>--}}
+                            {{--                                </div>--}}
+                            {{--                            </div>--}}
                             <!-- End Collapse -->
                         @endforeach
                     </div>
@@ -216,20 +236,26 @@
 
                 <div class="d-grid mb-2">
                     @if(auth()->check())
-                        <button type="button" class="btn btn-dark btn-transition rounded-pill" wire:click="addToCart()">Add to cart @if($userCart) ({{ $userCart }}) @endif</button>
+                        <button type="button" class="btn btn-dark btn-transition rounded-pill" wire:click="addToCart()">
+                            Add to cart @if($userCart)
+                                ({{ $userCart }})
+                            @endif</button>
 
                     @else
-                        <a href="{{ route('login') }}" class="btn btn-dark btn-transition rounded-pill" wire:click="addToCart(0, 'add')">Login or register to add item to cart</a>
+                        <a href="{{ route('login') }}" class="btn btn-dark btn-transition rounded-pill"
+                           wire:click="addToCart(0, 'add')">Login or register to add item to cart</a>
 
                     @endif
                 </div>
 
                 @if(auth()->check() && $userCart > 0)
                     <div class="d-grid mb-4">
-                        <a href="{{ route('store.cartItems.index') }}" class="btn btn-outline-dark btn-transition rounded-pill" wire:click="addToCart(0, 'add')">View shopping cart</a>
+                        <a href="{{ route('store.cartItems.index') }}"
+                           class="btn btn-outline-dark btn-transition rounded-pill" wire:click="addToCart(0, 'add')">View
+                            shopping cart</a>
 
                     </div>
-                    @endif
+                @endif
 
                 <!-- Media -->
                 <div class="d-flex align-items-center">

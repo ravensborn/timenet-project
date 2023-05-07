@@ -9,6 +9,8 @@ class HomeController extends Controller
 {
     public function index() {
 
+        visitor()->visit();
+
         $services = Post::where('category_id' , 2)->limit(6)->get();
         $articles = Post::where('category_id' , 4)->limit(3)->get();
 

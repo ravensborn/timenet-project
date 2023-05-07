@@ -30,7 +30,7 @@
             </button>
         </div>
         <div class="mt-3">
-            <a href="{{ route('dashboard.users') }}">Return to list of users.</a>
+            <a href="{{ route('dashboard.users.index') }}">Return to list of users.</a>
         </div>
     </form>
 
