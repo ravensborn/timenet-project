@@ -16,7 +16,9 @@ class PostController extends Controller
 
             $category = Category::where('slug', $slug)->first();
 
-            $posts = Post::where('category_id', $category->id)->paginate(12);
+            $posts = Post::where('category_id', $category->id)
+                ->where('is_hidden', false)
+                ->paginate(12);
 
             return view('pages.posts.index', [
                 'posts' => $posts,
@@ -34,7 +36,13 @@ class PostController extends Controller
 
 
 
-        $post = Post::where('slug', $slug)->first();
+        if (auth()->check() && auth()->user()->hasRole('admin')) {
+
+            $post = Post::where('slug', $slug)->firstOrFail();
+        } else {
+            $post = Post::where('slug', $slug)->where('is_hidden', false)->firstOrFail();
+        }
+
 
         visitor()->visit($post);
 
@@ -50,7 +58,7 @@ class PostController extends Controller
             ->inRandomOrder()
             ->get();
 
-        $categories = Category::whereIn('model', [Post::class,Product::class])->get();
+        $categories = Category::whereIn('model', [Post::class, Product::class])->get();
 
         return view('pages.posts.show', [
             'post' => $post,

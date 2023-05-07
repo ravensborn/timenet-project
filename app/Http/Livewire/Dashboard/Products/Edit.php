@@ -18,6 +18,8 @@ class Edit extends Component
 
     public Authenticatable $user;
 
+    public $product;
+
     public Collection $brands;
     public Collection $categories;
     public Collection $countries;
@@ -34,6 +36,7 @@ class Edit extends Component
     public bool $is_hidden = false;
     public string $productFeature = '';
     public array $productFeaturesArray = [];
+
 
     public function updateProduct()
     {
@@ -53,8 +56,8 @@ class Edit extends Component
         $validated['properties'] = [];
         $validated['additional_fees'] = [];
 
-        $product = new Product;
-        $product = $product->create($validated);
+        $product = $this->product;
+        $product->update($validated);
 
         if (count($this->productFeaturesArray) > 0) {
             $productFeatures = [];
@@ -103,6 +106,7 @@ class Edit extends Component
 
         $this->user = auth()->user();
 
+        $this->product = $product;
         $this->name = $product->name;
         $this->lc_country_id = $product->lc_country_id;
         $this->category_id = $product->category_id;

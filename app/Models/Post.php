@@ -60,7 +60,7 @@ class Post extends Model implements HasMedia
     protected $guarded = ['id'];
     protected $casts = [
         'is_commentable' => 'boolean',
-        'is_hidden' => 'is_hidden',
+        'is_hidden' => 'boolean',
     ];
 
     public function getSlugOptions(): SlugOptions
@@ -72,7 +72,10 @@ class Post extends Model implements HasMedia
 
     public function author(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class)->withDefault([
+            'name' => 'TimeNet Admin',
+            'email' => 'info@time-net.net'
+        ]);
     }
 
     public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo

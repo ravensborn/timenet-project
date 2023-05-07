@@ -146,10 +146,24 @@ class Show extends Component
         return false;
     }
 
-    public function mount(Product $product)
+    public function mount($slug): void
     {
+        $product = Product::where('slug', $slug)
+            ->firstOrFail();
 
         $user = auth()->user();
+
+        if (auth()->check() && $user->hasRole('admin')) {
+
+            $product = Product::where('slug', $slug)
+                ->firstOrFail();
+        } else {
+            $product = Product::where('slug', $slug)
+                ->where('is_hidden', false)
+                ->firstOrFail();
+        }
+
+        $this->product = $product;
 
        if($user) {
            $this->getWishlistStatus($user);
@@ -158,7 +172,7 @@ class Show extends Component
 
         visitor()->visit($product);
 
-        $this->product = $product;
+
 
     }
 

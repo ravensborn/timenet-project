@@ -7,14 +7,19 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index() {
+    public function index()
+    {
 
         visitor()->visit();
 
-        $services = Post::where('category_id' , 2)->limit(6)->get();
-        $articles = Post::where('category_id' , 4)->limit(3)->get();
+        $services = Post::where('category_id', 2)
+            ->where('is_hidden', false)
+            ->limit(6)->get();
+        $articles = Post::where('category_id', 4)
+            ->where('is_hidden', false)
+            ->limit(3)->get();
 
-        return view('home',[
+        return view('home', [
             'services' => $services,
             'articles' => $articles
         ]);

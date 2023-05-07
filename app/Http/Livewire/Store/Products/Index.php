@@ -149,10 +149,12 @@ class Index extends Component
         $this->cartTotal = $cartTotal;
     }
 
-    public function getProducts()
+    public function getProducts(): void
     {
 
         $products = Product::query();
+
+        $products->where('is_hidden', false);
 
         if ($this->search) {
             $products->where('name', 'like', '%' . $this->search . '%');

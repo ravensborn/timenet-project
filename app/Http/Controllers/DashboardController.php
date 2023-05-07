@@ -8,6 +8,7 @@ use App\Models\Post;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Spatie\Activitylog\Models\Activity;
 
 class DashboardController extends Controller
@@ -82,6 +83,41 @@ class DashboardController extends Controller
     public function postsIndex()
     {
         return view('pages.dashboard.posts.index');
+    }
+
+    public function postsCreate()
+    {
+        return view('pages.dashboard.posts.create');
+    }
+
+    public function postsEdit($slug)
+    {
+        $post = Post::where('slug', $slug)->firstOrFail();
+
+        return view('pages.dashboard.posts.edit', [
+            'post' => $post
+        ]);
+    }
+
+    public function postsMediaUpload($slug): \Illuminate\Http\JsonResponse
+    {
+
+        request()->validate([
+            'file' => 'required|image|max:2048'
+        ]);
+
+        $file = \request()->file('file');
+
+        $post = Post::where('slug', $slug)->firstOrFail();
+        $name = time() . '_' . Str::random(5);
+        $media = $post->addMedia($file)
+            ->usingName($name)
+            ->usingFileName($name . '.' . $file->getClientOriginalExtension())
+            ->toMediaCollection('images');
+
+        return response()->json([
+            'location' => $media->getFullUrl()
+        ], 200);
     }
 
 }

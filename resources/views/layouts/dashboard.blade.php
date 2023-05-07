@@ -11,6 +11,8 @@
 
     <title>{{ config('env.APP_NAME') }}</title>
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <link href="{{ asset('dashboard-assets/css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -120,6 +122,8 @@
         }
 
     </style>
+
+    <script src="https://cdn.tiny.cloud/1/ycbz6be5vk3fikr7hmwobxq2skbcb0jhs31tk3aos1965ss2/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 
     @livewireStyles
 </head>

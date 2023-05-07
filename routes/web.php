@@ -96,7 +96,7 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/store', LivewireStoreIndex::class)->name('store.index');
 Route::get('/store/products', LivewireStoreProductIndex::class)->name('store.products.index');
-Route::get('/store/products/{product:slug}', LivewireStoreProductShow::class)->name('store.products.show');
+Route::get('/store/products/{slug}', LivewireStoreProductShow::class)->name('store.products.show');
 
 
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -155,6 +155,7 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
 
     Route::get('/dashboard/products', [DashboardController::class, 'productsIndex'])
         ->name('dashboard.products.index');
+
     Route::get('/dashboard/products/create', [DashboardController::class, 'productsCreate'])
         ->name('dashboard.products.create');
 
@@ -166,6 +167,16 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
 
     Route::get('/dashboard/posts', [DashboardController::class, 'postsIndex'])
         ->name('dashboard.posts.index');
+
+
+    Route::get('/dashboard/posts/create', [DashboardController::class, 'postsCreate'])
+        ->name('dashboard.posts.create');
+
+    Route::get('/dashboard/posts/{slug}/edit', [DashboardController::class, 'postsEdit'])
+        ->name('dashboard.posts.edit');
+
+    Route::post('/dashboard/posts/{slug}/upload', [DashboardController::class, 'postsMediaUpload'])
+        ->name('dashboard.posts.upload');
 
 
 });
