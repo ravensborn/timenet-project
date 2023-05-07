@@ -25,12 +25,6 @@ class TimeNetPaymentMethodSeeder extends Seeder
                 'enabled' => true,
                 'icon_path' => public_path('seeder/payment-methods/cash-on-delivery.png'),
             ], [
-                'name' => 'Cash on Delivery 2',
-                'fee' => 3,
-                'fee_type' => 'percentage',
-                'enabled' => true,
-                'icon_path' => public_path('seeder/payment-methods/cash-on-delivery.png'),
-            ], [
                 'name' => 'FastPay',
                 'fee' => 5,
                 'fee_type' => 'fixed_amount',

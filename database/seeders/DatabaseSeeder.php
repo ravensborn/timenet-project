@@ -32,12 +32,12 @@ class DatabaseSeeder extends Seeder
             'email' => 'yad@gmail.com',
             'phone_number' => '+9647507534867',
             'lc_country_id' => EnabledCountry::COUNTRY_IRAQ,
-            'password' => bcrypt('password'),
+            'password' => bcrypt('newpassword'),
         ]);
 
-        User::factory(100)->create([
-            'lc_country_id' => EnabledCountry::COUNTRY_IRAQ,
-        ]);
+//        User::factory(100)->create([
+//            'lc_country_id' => EnabledCountry::COUNTRY_IRAQ,
+//        ]);
 
         $user->assignRole($role);
 
@@ -63,25 +63,25 @@ class DatabaseSeeder extends Seeder
         ])->create();
 
 
-        Post::factory(14)->create([
-            'category_id' => $postSolutionCategory->id,
-        ]);
+//        Post::factory(14)->create([
+//            'category_id' => $postSolutionCategory->id,
+//        ]);
 
-        Post::factory(14)->create([
-            'category_id' => $postProductCatalogCategory->id,
-        ]);
+//        Post::factory(14)->create([
+//            'category_id' => $postProductCatalogCategory->id,
+//        ]);
 
 
-        $posts = Post::whereIn('category_id', [$postProductCatalogCategory->id, $postSolutionCategory->id])->get();
-
-        foreach ($posts as $post) {
-
-            $path = public_path('images/examples/900x660.jpg');
-
-            $post->addMedia($path)
-                ->preservingOriginal()
-                ->toMediaCollection('cover');
-        }
+//        $posts = Post::whereIn('category_id', [$postProductCatalogCategory->id, $postSolutionCategory->id])->get();
+//
+//        foreach ($posts as $post) {
+//
+//            $path = public_path('images/examples/900x660.jpg');
+//
+//            $post->addMedia($path)
+//                ->preservingOriginal()
+//                ->toMediaCollection('cover');
+//        }
 
         $this->call([
 
@@ -92,7 +92,7 @@ class DatabaseSeeder extends Seeder
             TimeNetArticleSeeder::class, //Articles
         ]);
 
-        Order::factory(100)->create();
+//        Order::factory(100)->create();
 
 
 
