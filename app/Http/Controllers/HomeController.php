@@ -12,7 +12,7 @@ class HomeController extends Controller
 
         visitor()->visit();
 
-        $services = Post::where('category_id', 2)
+        $features = Post::where('category_id', 5)
             ->where('is_hidden', false)
             ->limit(6)->get();
         $articles = Post::where('category_id', 4)
@@ -20,7 +20,7 @@ class HomeController extends Controller
             ->limit(3)->get();
 
         return view('home', [
-            'services' => $services,
+            'features' => $features,
             'articles' => $articles
         ]);
     }

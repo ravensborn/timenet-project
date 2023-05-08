@@ -40,7 +40,7 @@ return new class extends Migration {
 
             $table->text('short_content')->nullable();
 
-            $table->text('content');
+            $table->text('content')->nullable();
             $table->timestamps();
         });
     }

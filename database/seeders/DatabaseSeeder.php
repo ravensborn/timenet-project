@@ -40,17 +40,18 @@ class DatabaseSeeder extends Seeder
 //        ]);
 
         $user->assignRole($role);
-
+        //1
         $postProductCatalogCategory = \App\Models\Category::factory([
             'name' => 'Product Catalog',
             'model' => Post::class,
         ])->create();
-
+        //2
         $postServiceCategory = \App\Models\Category::factory([
             'name' => 'Services',
             'model' => Post::class,
         ])->create();
 
+        //3
         $postSolutionCategory = \App\Models\Category::factory([
             'name' => 'Solutions',
             'model' => Post::class,
@@ -59,6 +60,12 @@ class DatabaseSeeder extends Seeder
         //4
         $postArticleCategory = \App\Models\Category::factory([
             'name' => 'Articles',
+            'model' => Post::class,
+        ])->create();
+
+        //5
+        $postFeaturesCategory = \App\Models\Category::factory([
+            'name' => 'Features',
             'model' => Post::class,
         ])->create();
 
@@ -89,6 +96,7 @@ class DatabaseSeeder extends Seeder
             TimeNetBrandSeeder::class, //Brands
             TimeNetProductSeeder::class, //Products
             TimeNetServiceSeeder::class, //Services
+            TimeNetFeatureSeeder::class, //Services
             TimeNetArticleSeeder::class, //Articles
         ]);
 

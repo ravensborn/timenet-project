@@ -57,7 +57,6 @@
 
                 @foreach($posts as $post)
 
-
                     <div class="card card-flush">
                         <div class="row align-items-md-center">
                             <div class="col-md-3">
@@ -70,14 +69,15 @@
                                     <h4 class="card-title"><a class="text-dark"
                                                               href="{{ route('posts.show', $post->slug) }}">{{ $post->title }}</a>
                                     </h4>
-                                    <p class="card-text small">{{ $post->short_content }}</p>
+                                    @if(!in_array($post->category->id, [\App\Models\Category::CATEGORY_SERVICE]))
+                                        <p class="card-text small">{{ $post->short_content }}</p>
+                                    @endif
                                     <a class="card-link small" href="{{ route('posts.show', $post->slug) }}">Read more
                                         <i class="bi-chevron-right small ms-1"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
-
 
                 @endforeach
                 {{ $posts->links() }}
@@ -106,7 +106,10 @@
                                         {{ $post->author->name }}
                                     </span>
                                     <h4 class="card-title text-inherit mt-2">{{ $post->title }}</h4>
-                                    <p class="card-text text-body">{{ $post->short_content }}</p>
+
+                                    @if(!in_array($post->category->id, [\App\Models\Category::CATEGORY_SERVICE]))
+                                        <p class="card-text text-body">{{ $post->short_content }}</p>
+                                    @endif
                                 </div>
                             </a>
                             <!-- End Card -->
