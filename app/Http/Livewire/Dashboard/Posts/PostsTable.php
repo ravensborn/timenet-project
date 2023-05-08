@@ -65,9 +65,10 @@ class PostsTable extends DataTableComponent
 
                 $deleteBtn = '<button wire:click="triggerDeleteItem(' . $value . ')"  class="btn btn-danger btn-sm me-1"><i class="bi bi-trash"></i></button>';
                 $editBtn = '<a href="'. route('dashboard.posts.edit', $post->slug) .'" class="btn btn-warning btn-sm me-1"><i class="bi bi-pen"></i></a>';
+                $mediaManagerBtn = '<a href="'. route('dashboard.posts.media-manager', $post->slug) .'" class="btn btn-info btn-sm me-1"><i class="bi bi-list"></i> Media Manager</a>';
                 $viewBtn = '<a target="_bank" href="'. route('posts.show', $post->slug) .'" class="btn btn-info btn-sm me-1"><i class="bi bi-list"></i> View on website</a>';
 
-                return $viewBtn . $editBtn . $deleteBtn;
+                return $viewBtn . $mediaManagerBtn . $editBtn . $deleteBtn;
             })->html(),
 
         ];

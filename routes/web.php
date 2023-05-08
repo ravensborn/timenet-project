@@ -175,6 +175,9 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
     Route::get('/dashboard/posts/{slug}/edit', [DashboardController::class, 'postsEdit'])
         ->name('dashboard.posts.edit');
 
+    Route::get('/dashboard/posts/{slug}/media-manager', [DashboardController::class, 'postsMediaManager'])
+        ->name('dashboard.posts.media-manager');
+
     Route::post('/dashboard/posts/{slug}/upload', [DashboardController::class, 'postsMediaUpload'])
         ->name('dashboard.posts.upload');
 

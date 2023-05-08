@@ -99,6 +99,15 @@ class DashboardController extends Controller
         ]);
     }
 
+    public function postsMediaManager($slug) {
+
+        $post = Post::where('slug', $slug)->firstOrFail();
+
+        return view('pages.dashboard.posts.media-manager', [
+            'post' => $post,
+        ]);
+    }
+
     public function postsMediaUpload($slug): \Illuminate\Http\JsonResponse
     {
 
