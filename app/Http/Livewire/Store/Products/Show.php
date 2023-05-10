@@ -28,13 +28,14 @@ class Show extends Component
         }
     }
 
-    public function adjustQuantity($mode = 'increment')
+    public function adjustQuantity($mode = 'increment'): void
     {
 
         if ($mode == 'increment') {
-            if ($this->quantity <= 49) {
+            if ($this->product->checkIfPurchasable($this->quantity)) {
                 $this->quantity = $this->quantity + 1;
             }
+
         }
         if ($mode == 'decrement') {
             if ($this->quantity >= 2) {
@@ -43,14 +44,14 @@ class Show extends Component
         }
     }
 
-    public function toWishlist()
+    public function toWishlist(): void
     {
 
         if (auth()->check()) {
 
             $user = auth()->user();
 
-            if($this->getWishlistStatus($user)) {
+            if ($this->getWishlistStatus($user)) {
 
                 $existInWishList = $user->wishlist()->where('product_id', $this->product->id)->first();
 
@@ -93,12 +94,12 @@ class Show extends Component
 
         if (auth()->check()) {
 
-            if ($quantity > 100) {
-                $this->alert('error', 'An issue with processing cart.');
+            $product = Product::findOrFail($this->product->id);
+
+            if (!$product->checkIfPurchasable($this->quantity - 1)) {
+                $this->alert('error', 'Cannot add item to cart, there is no available stock.');
                 return false;
             }
-
-            $product = Product::findOrFail($this->product->id);
 
             $existingInCart = CartItem::where('user_id', auth()->user()->id)
                 ->where('product_id', $product->id)
@@ -106,7 +107,7 @@ class Show extends Component
 
             if ($existingInCart) {
 
-                $existingInCart->increment('quantity', 1);
+                $existingInCart->increment('quantity', $this->quantity);
 
             } else {
 
@@ -122,13 +123,14 @@ class Show extends Component
 
             $this->emit('refresh-header-cart');
             $this->alert('success', 'Item added to cart.');
+            $this->quantity = 1;
         }
 
         $this->getUserCart();
 
     }
 
-    public function getUserCart()
+    public function getUserCart(): void
     {
         $this->userCart = auth()->user()->cartItems->count();
     }
@@ -165,13 +167,12 @@ class Show extends Component
 
         $this->product = $product;
 
-       if($user) {
-           $this->getWishlistStatus($user);
-           $this->getUserCart();
-       }
+        if ($user) {
+            $this->getWishlistStatus($user);
+            $this->getUserCart();
+        }
 
         visitor()->visit($product);
-
 
 
     }

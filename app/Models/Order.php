@@ -30,6 +30,7 @@ class Order extends Model
     const DISCOUNT_TYPE_PERCENTAGE = 'percentage';
     const DISCOUNT_TYPE_FIXED_RATE = 'fixed_rate';
 
+
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()

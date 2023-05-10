@@ -60,8 +60,14 @@
                                             <div class="flex-grow-1 ms-3">
                                                 <div class="row">
                                                     <div class="col-12 col-md-6 mb-3 mb-sm-0">
-                                                        <h5><a class="text-dark" href="#">{{ $item->product->name }}</a>
+                                                        <h5>
+                                                            <a class="text-dark" href="#">{{ $item->product->name }}</a>
                                                         </h5>
+                                                        @if($item->checkStockAvailability())
+                                                            <h6 class="text-success">Available in stock</h6>
+                                                        @else
+                                                            <h6 class="text-danger">Item out of stock</h6>
+                                                        @endif
 
                                                         <div class="d-block d-sm-none">
                                                             <h5 class="mb-1">{{ $item->quantity }} X
@@ -195,7 +201,7 @@
                                         </div>
 
                                         <div class="d-grid">
-                                            <a class="btn btn-dark btn-lg" href="{{ route('store.checkout.index') }}">Checkout</a>
+                                            <a class="btn btn-dark btn-lg" wire:click.prevent="checkout()">Checkout</a>
                                         </div>
                                     </form>
                                 </div>

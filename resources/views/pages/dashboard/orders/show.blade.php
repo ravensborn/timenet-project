@@ -97,10 +97,7 @@
 
                             <table class="table table-sm">
                                 <tbody>
-                                <tr>
-                                    <th class="text-start">Total</th>
-                                    <td class="text-start">${{ $order->total }}</td>
-                                </tr>
+
                                 <tr>
                                     <th class="text-start">Shipping Rate</th>
                                     <td class="text-start">${{ $order->shipping_rate }}</td>
@@ -119,16 +116,16 @@
 
                                 <tr>
                                     <th class="text-start">Payment Method Fee Type</th>
-                                    <td class="text-start">{{ $order->paymentMethod->fee_type }}</td>
+                                    <td class="text-start">{{ $order->payment_method_fee_type }}</td>
                                 </tr>
 
                                 <tr>
                                     <th class="text-start">Payment Method Fee Amount</th>
-                                    @if($order->paymentMethod->fee_type == \App\Models\PaymentMethod::FEE_TYPE_PERCENTAGE)
-                                        <td class="text-start">%{{ $order->paymentMethod->fee }}</td>
+                                    @if($order->payment_method_fee_type == \App\Models\PaymentMethod::FEE_TYPE_PERCENTAGE)
+                                        <td class="text-start">%{{ $order->payment_method_fee_amount }}</td>
                                     @endif
-                                    @if($order->paymentMethod->fee_type == \App\Models\PaymentMethod::FEE_TYPE_FIXED_AMOUNT)
-                                        <td class="text-start">${{ $order->paymentMethod->fee }}</td>
+                                    @if($order->payment_method_fee_type == \App\Models\PaymentMethod::FEE_TYPE_FIXED_AMOUNT)
+                                        <td class="text-start">${{ $order->payment_method_fee_amount }}</td>
                                     @endif
                                 </tr>
 
@@ -171,7 +168,10 @@
                                         <td class="text-start">{{ 'No promo code' }}</td>
                                     @endif
                                 </tr>
-
+                                <tr>
+                                    <th class="text-start">Total</th>
+                                    <th class="text-start">${{ $order->total }}</th>
+                                </tr>
                                 </tbody>
                             </table>
 

@@ -39,14 +39,14 @@ class Index extends Component
 
     public string $displayProductsType = 'grid';
 
-    public function updateProductDisplayType($value)
+    public function updateProductDisplayType($value): void
     {
         if (in_array($value, ['grid', 'list'])) {
             $this->displayProductsType = $value;
         }
     }
 
-    public function toWishlist($product_id, $mode = 'add')
+    public function toWishlist($product_id, $mode = 'add'): void
     {
 
         if (auth()->check()) {
@@ -81,7 +81,7 @@ class Index extends Component
 
     }
 
-    public function mount()
+    public function mount(): void
     {
         $this->categories = Category::where('model', Product::class)->get();
         $this->brands = Brand::all();
@@ -103,12 +103,14 @@ class Index extends Component
     public function addToCart($product_id, $quantity = 1)
     {
         if (auth()->check()) {
-            if ($quantity > 100) {
-                $this->alert('error', 'An issue with processing cart.');
+
+            $product = Product::findOrFail($product_id);
+
+            if (!$product->checkIfPurchasable()) {
+                $this->alert('error', 'Cannot add item to cart, there is no available stock.');
                 return false;
             }
 
-            $product = Product::findOrFail($product_id);
 
             $existingInCart = CartItem::where('user_id', $this->user->id)
                 ->where('product_id', $product->id)
@@ -116,7 +118,9 @@ class Index extends Component
 
             if ($existingInCart) {
 
+
                 $existingInCart->increment('quantity', 1);
+
 
             } else {
 
@@ -138,7 +142,7 @@ class Index extends Component
 
     }
 
-    public function getCartItems()
+    public function getCartItems(): void
     {
         $this->cartItems = CartItem::where('user_id', $this->user->id)->get();
 
@@ -186,7 +190,7 @@ class Index extends Component
 
     }
 
-    public function _updateSelectedCategories()
+    public function _updateSelectedCategories(): void
     {
 //        if(in_array('all', $this->selectedCategories)) {
 //            $this->selectedCategories = [
@@ -197,24 +201,24 @@ class Index extends Component
         $this->resetPage();
     }
 
-    public function _updateSelectedBrands()
+    public function _updateSelectedBrands(): void
     {
         $this->resetPage();
     }
 
-    public function _updateSearch($search)
+    public function _updateSearch($search): void
     {
 //        $this->search= $search;
         sleep(1);
         $this->resetPage();
     }
 
-    public function _updateSortingMethod()
+    public function _updateSortingMethod(): void
     {
         $this->resetPage();
     }
 
-    public function resetFilters()
+    public function resetFilters(): void
     {
         $this->search = '';
         $this->sorting_method = 'newest_top';

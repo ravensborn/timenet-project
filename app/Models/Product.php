@@ -104,4 +104,26 @@ class Product extends Model implements HasMedia
     }
 
 
+    public function calculateAvailableStock()
+    {
+
+        $stock = $this->stock;
+
+
+        if (auth()->check()) {
+            $productInCart = CartItem::where('user_id', auth()->user()->id)
+                ->where('product_id', $this->id)
+                ->first();
+            if($productInCart) {
+                $stock = $stock - $productInCart->quantity;
+            }
+        }
+
+        return $stock;
+    }
+    public function checkIfPurchasable($extraQuantity = 0): bool
+    {
+        return ($this->calculateAvailableStock() - $extraQuantity) > 0;
+    }
+
 }

@@ -387,7 +387,7 @@
                                         <div class="card-footer pt-0">
 
                                             @if(auth()->check())
-                                                @if($product->stock)
+                                                @if($product->checkIfPurchasable())
                                                     <button type="button" class="btn btn-outline-dark btn-sm"
                                                             wire:key="{{ $product->id }}"
                                                             wire:click="addToCart({{ $product->id }},1)">

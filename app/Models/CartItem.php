@@ -42,4 +42,9 @@ class CartItem extends Model
     {
         return $this->belongsTo(Product::class);
     }
+
+    public function checkStockAvailability(): bool
+    {
+       return $this->product->stock >= $this->quantity;
+    }
 }

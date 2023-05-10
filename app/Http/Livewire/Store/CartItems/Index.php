@@ -9,7 +9,6 @@ use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Collection;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
-use Livewire\WithPagination;
 
 
 class Index extends Component
@@ -23,7 +22,36 @@ class Index extends Component
 
     public string $promoCode = '';
 
-    public function updateQuantity($product_id, $mode = 'increment')
+    public function checkout(): void
+    {
+
+        if (!$this->checkStockAvailability()) {
+
+            $this->alert('error', 'One or more items is out of stock, please check your cart again.');
+
+        } else {
+
+            redirect()->route('store.checkout.index');
+        }
+
+    }
+
+    public function checkStockAvailability(): bool
+    {
+        $this->getCartItems();
+
+        $cartItems = $this->cartItems;
+
+        foreach ($cartItems as $item) {
+            if (!$item->checkStockAvailability()) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public function updateQuantity($product_id, $mode = 'increment'): void
     {
 
         $cartItem = CartItem::where('user_id', $this->user->id)
@@ -33,7 +61,16 @@ class Index extends Component
         if ($cartItem) {
 
             if ($mode == 'increment') {
-                $cartItem->increment('quantity', 1);
+
+                $product = Product::find($product_id);
+
+                if (!$product->checkIfPurchasable()) {
+                    $this->alert('error', 'Cannot add item to cart, there is no available stock.');
+
+                } else {
+                    $cartItem->increment('quantity', 1);
+                }
+
             }
 
             if ($mode == 'decrement') {
@@ -63,11 +100,12 @@ class Index extends Component
 
     }
 
-    public function toWishlist($product_id, $mode = 'add') {
+    public function toWishlist($product_id, $mode = 'add'): void
+    {
 
 
         if (auth()->check()) {
-            if($mode == 'add') {
+            if ($mode == 'add') {
                 $wishlist = new Wishlist;
                 $wishlist->create([
                     'user_id' => $this->user->id,
@@ -78,11 +116,11 @@ class Index extends Component
             }
 
 
-            if($mode == 'remove') {
+            if ($mode == 'remove') {
 
                 $wishlist = $this->user->wishlist()->where('product_id', $product_id)->first();
 
-                if($wishlist) {
+                if ($wishlist) {
                     $wishlist->delete();
                 }
 
@@ -96,7 +134,7 @@ class Index extends Component
 
     }
 
-    public function mount()
+    public function mount(): void
     {
 
         if (auth()->check()) {
@@ -110,7 +148,7 @@ class Index extends Component
     public function getCartItems()
     {
 
-        if(!auth()->check()) {
+        if (!auth()->check()) {
             return false;
         }
 

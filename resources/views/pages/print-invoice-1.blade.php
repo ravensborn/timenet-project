@@ -199,7 +199,16 @@
         <tr class="details">
             <td>{{ $order->paymentMethod->name }}</td>
             <td></td>
-            <td></td>
+            @if($order->payment_method_fee_amount == 0)
+                <td>{{ 'Free Shipping' }}</td>
+            @else
+                @if($order->payment_method_fee_type == \App\Models\PaymentMethod::FEE_TYPE_FIXED_AMOUNT)
+                    <td>${{ $order->payment_method_fee_amount }}</td>
+                @endif
+                    @if($order->payment_method_fee_type == \App\Models\PaymentMethod::FEE_TYPE_PERCENTAGE)
+                        <td>%{{ $order->payment_method_fee_amount }}</td>
+                    @endif
+            @endif
         </tr>
 
         <tr class="heading">
@@ -214,7 +223,7 @@
             @if(!$order->shipping_rate)
                 <td>{{ 'Free Shipping' }}</td>
             @else
-                <td>{{ $order->shipping_rate }}</td>
+                <td>${{ $order->shipping_rate }}</td>
             @endif
         </tr>
 

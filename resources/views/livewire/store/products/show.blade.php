@@ -140,7 +140,7 @@
                 <div class="mb-5">
                     <span class="d-block mb-2">Total price:</span>
                     <div class="d-flex align-items-center">
-                       @if($product->previous_price)
+                        @if($product->previous_price)
                             <h3 class="mb-0">${{ number_format($product->price, 2) }}</h3>
                             <span class="ms-2"><del>{{ number_format($product->previous_price, 2) }}</del></span>
                         @else
@@ -192,7 +192,7 @@
                     <div class="accordion mb-5" id="shopCartAccordion">
                         @foreach($product->getFeatures() as $key => $feature)
 
-                           <div class="p-2">
+                            <div class="p-2">
                                <span class="text-dark fw-bold">
                                    <div class="d-flex align-items-center">
                                        <div>
@@ -203,7 +203,7 @@
                                        </div>
                                    </div>
                                </span>
-                           </div>
+                            </div>
 
                             <!-- Collapse -->
                             {{--                            <div class="accordion-item">--}}
@@ -236,10 +236,22 @@
 
                 <div class="d-grid mb-2">
                     @if(auth()->check())
-                        <button type="button" class="btn btn-dark btn-transition rounded-pill" wire:click="addToCart()">
-                            Add to cart @if($userCart)
-                                ({{ $userCart }})
-                            @endif</button>
+                        @if($product->checkIfPurchasable())
+                            <button type="button" class="btn btn-dark btn-transition rounded-pill"
+                                    wire:click="addToCart()">
+                                <i class="bi bi-cart me-1"></i>
+                                Add to cart
+                                @if($userCart)
+                                    ({{ $userCart }})
+                                @endif
+                            </button>
+                        @else
+                            <button type="button" class="btn btn-dark btn-transition rounded-pill"
+                                    wire:click="addToCart()">
+                                <i class="bi bi-box me-1"></i>
+                                Available soon
+                            </button>
+                        @endif
 
                     @else
                         <a href="{{ route('login') }}" class="btn btn-dark btn-transition rounded-pill"

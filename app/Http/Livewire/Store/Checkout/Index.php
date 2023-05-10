@@ -7,6 +7,7 @@ use App\Models\EnabledCountry;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\PaymentMethod;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
@@ -51,7 +52,15 @@ class Index extends Component
             return false;
         }
 
+        if (!$this->checkStockAvailability()) {
+
+            $this->alert('error', 'One or more items is out of stock, please check your cart again.');
+
+            return false;
+        }
+
         sleep(3);
+
         if ($this->user) {
 
             $validated = $this->validate([
@@ -89,6 +98,8 @@ class Index extends Component
                 'lc_country_id' => $this->user->lc_country_id,
                 'user_id' => $this->user->id,
                 'payment_method_id' => $this->selectedPaymentMethod->id,
+                'payment_method_fee_type' => $this->selectedPaymentMethod->fee_type,
+                'payment_method_fee_amount' => $this->selectedPaymentMethod->fee,
                 'shipping_address' => $shippingAddress,
                 'billing_address' => $shippingAddress,
                 'total' => $this->totalPay,
@@ -96,6 +107,11 @@ class Index extends Component
             ]);
 
             foreach ($this->cartItems as $item) {
+
+                $product = Product::find($item->product_id);
+                $product->update([
+                    'stock' => ($product->stock - $item->quantity)
+                ]);
                 OrderItem::create([
                     'order_id' => $order->id,
                     'product_id' => $item->product_id,
@@ -114,7 +130,22 @@ class Index extends Component
         }
     }
 
-    public function calculateTotal()
+    public function checkStockAvailability(): bool
+    {
+        $this->getCartItems();
+
+        $cartItems = $this->cartItems;
+
+        foreach ($cartItems as $item) {
+            if (!$item->checkStockAvailability()) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public function calculateTotal(): void
     {
 
         $this->getCartItems();
@@ -136,7 +167,7 @@ class Index extends Component
 
     }
 
-    public function selectPaymentMethod($value)
+    public function selectPaymentMethod($value): void
     {
 
         sleep(1);
@@ -146,7 +177,7 @@ class Index extends Component
         $this->selectedPaymentMethod = $paymentMethod;
     }
 
-    public function loadPaymentMethods()
+    public function loadPaymentMethods(): void
     {
 
 
@@ -204,7 +235,7 @@ class Index extends Component
 
     }
 
-    public function clearCartItems()
+    public function clearCartItems(): void
     {
 
         CartItem::where('user_id', $this->user->id)->delete();
@@ -219,7 +250,7 @@ class Index extends Component
         return CartItem::where('user_id', $this->user->id)->count() == 0;
     }
 
-    public function getCartItems()
+    public function getCartItems(): void
     {
         $this->cartItems = CartItem::where('user_id', $this->user->id)->get();
 
