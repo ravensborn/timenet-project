@@ -55,6 +55,7 @@ class Product extends Model implements HasMedia
         'additional_fees' => 'array',
         'is_hidden' => 'boolean',
         'is_promo_code_active' => 'boolean',
+        'is_purchasable_online' => 'boolean',
     ];
 
     protected $guarded = ['id'];

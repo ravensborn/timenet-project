@@ -367,39 +367,52 @@
                                                     {{ $product->name }}
                                                 </a>
                                             </h4>
-                                            @if($product->previous_price)
-                                                <p class="card-text">
+                                            @if($product->is_purchasable_online && $product->checkIfPurchasable())
+                                                @if($product->previous_price)
+                                                    <p class="card-text">
                                                 <span class="text-decoration-line-through text-muted me-1">
                                                     ${{ number_format($product->previous_price, 2) }}
                                                 </span>
-                                                    <span class="fw-bold text-dark">
+                                                        <span class="fw-bold text-dark">
                                                     ${{ number_format($product->price, 2) }}
                                                 </span>
-                                                </p>
-                                            @else
-                                                <p class="card-text text-dark fw-bold">
+                                                    </p>
+                                                @else
+                                                    <p class="card-text text-dark fw-bold">
 
-                                                    ${{ number_format($product->price, 2) }}
-                                                </p>
+                                                        ${{ number_format($product->price, 2) }}
+                                                    </p>
+                                                @endif
                                             @endif
                                         </div>
 
                                         <div class="card-footer pt-0">
 
                                             @if(auth()->check())
-                                                @if($product->checkIfPurchasable())
-                                                    <button type="button" class="btn btn-outline-dark btn-sm"
-                                                            wire:key="{{ $product->id }}"
-                                                            wire:click="addToCart({{ $product->id }},1)">
-                                                        <i class="bi bi-cart me-1"></i>
-                                                        Add to cart
-                                                    </button>
+                                                @if($product->is_purchasable_online)
+                                                    @if($product->checkIfPurchasable())
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                                wire:key="{{ $product->id }}"
+                                                                wire:click="addToCart({{ $product->id }},1)">
+                                                            <i class="bi bi-cart me-1"></i>
+                                                            Add to cart
+                                                        </button>
+                                                    @else
+                                                        <div>
+                                                            <button type="button"
+                                                                    class="btn btn-outline-dark btn-sm">
+                                                                <i class="bi bi-box me-1"></i>
+                                                                Available Soon
+                                                            </button>
+                                                        </div>
+                                                    @endif
                                                 @else
                                                     <div>
-                                                        <button type="button" class="btn btn-outline-dark btn-sm disabled">
-                                                            <i class="bi bi-box me-1"></i>
-                                                           Available Soon
-                                                        </button>
+                                                        <a href="mailto:info@time-net.net"
+                                                           class="btn btn-outline-dark btn-sm">
+                                                            <i class="bi bi-envelope me-1"></i>
+                                                            Contact Us
+                                                        </a>
                                                     </div>
                                                 @endif
                                             @else

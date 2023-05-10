@@ -122,6 +122,13 @@
                             Hidden product
                         </label>
                     </div>
+                    <div class="form-check">
+                        <input class="form-check-input" name="isPurchasableOnlineProduct" type="checkbox" value=""
+                               id="isPurchasableOnlineProductPCheckbox" wire:model="is_purchasable_online">
+                        <label class="form-check-label" for="isPurchasableOnlineProductPCheckbox">
+                            Purchasable Online
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>

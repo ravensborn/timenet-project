@@ -35,6 +35,7 @@ class Edit extends Component
     public $stock = 0;
     public $promo_code = '';
     public bool $is_hidden = false;
+    public bool $is_purchasable_online = true;
     public string $productFeature = '';
     public array $productFeaturesArray = [];
 
@@ -45,6 +46,7 @@ class Edit extends Component
             'name' => 'required|string|min:3|max:100',
             'description' => 'required|string|min:3|max:2000',
             'is_hidden' => 'required|boolean',
+            'is_purchasable_online' => 'required|boolean',
             'lc_country_id' => 'required|integer|exists:enabled_countries,lc_country_id',
             'category_id' => 'required|integer|exists:categories,id',
             'brand_id' => 'required|integer|exists:brands,id',
@@ -79,6 +81,13 @@ class Edit extends Component
 
         return redirect()->route('dashboard.products.index');
 
+    }
+
+    public function updatedIsPurchasableOnline(): void
+    {
+        if(!$this->is_purchasable_online) {
+            $this->stock = 0;
+        }
     }
 
     public function addToProductFeatures(): void
@@ -119,6 +128,7 @@ class Edit extends Component
         $this->stock = $product->stock;
         $this->promo_code = $product->promo_code;
         $this->is_hidden = $product->is_hidden;
+        $this->is_purchasable_online = $product->is_purchasable_online;
 
         if (array_key_exists('features', $product->properties)) {
             $productArray = [];
