@@ -50,7 +50,7 @@ class Edit extends Component
             'brand_id' => 'required|integer|exists:brands,id',
             'stock' => 'required|integer',
             'promo_code' => 'nullable|int|exists:promo_codes,code',
-            'price' => 'required|numeric|gt:0|max:100000',
+            'price' => 'required|numeric|gt:-1|max:100000',
             'previous_price' => 'required|numeric|gt:-1|max:100000',
         ];
 
