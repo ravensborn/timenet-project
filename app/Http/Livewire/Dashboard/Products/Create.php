@@ -30,6 +30,7 @@ class Create extends Component
     public string $description = '';
     public float $price = 0.0;
     public float $previous_price = 0.0;
+    public int $stock = 0;
     public string $promo_code = '';
     public bool $is_hidden = false;
     public string $productFeature = '';
@@ -44,8 +45,9 @@ class Create extends Component
             'lc_country_id' => 'required|integer|exists:enabled_countries,lc_country_id',
             'category_id' => 'required|integer|exists:categories,id',
             'brand_id' => 'required|integer|exists:brands,id',
+            'stock' => 'required|integer',
             'promo_code' => 'nullable|int|exists:promo_codes,code',
-            'price' => 'required|numeric|gt:0|max:100000',
+            'price' => 'required|numeric|gt:-1|max:100000',
             'previous_price' => 'required|numeric|gt:-1|max:100000',
         ];
 
@@ -56,21 +58,20 @@ class Create extends Component
         $product = new Product;
         $product = $product->create($validated);
 
-       if(count($this->productFeaturesArray) > 0) {
-           $productFeatures = [];
-           foreach ($this->productFeaturesArray as $item) {
-               $productFeatures[] = [
-                   'name' => $item,
-                   'description' => '',
-               ];
-           }
-          $product->update([
-               'properties' => [
-                   'features' => $productFeatures
-               ]
-           ]);
-       }
-
+        if (count($this->productFeaturesArray) > 0) {
+            $productFeatures = [];
+            foreach ($this->productFeaturesArray as $item) {
+                $productFeatures[] = [
+                    'name' => $item,
+                    'description' => '',
+                ];
+            }
+            $product->update([
+                'properties' => [
+                    'features' => $productFeatures
+                ]
+            ]);
+        }
 
 
         return redirect()->route('dashboard.products.index');
@@ -98,7 +99,7 @@ class Create extends Component
         $this->brands = Brand::all();
         $this->categories = Category::where('model', Product::class)->get();
         $this->countries = EnabledCountry::all();
-        if($this->countries->count() > 0) {
+        if ($this->countries->count() > 0) {
             $this->lc_country_id = $this->countries->first()->lc_country_id;
         }
 

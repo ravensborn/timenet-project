@@ -372,7 +372,7 @@
                                                 <span class="text-decoration-line-through text-muted me-1">
                                                     ${{ number_format($product->previous_price, 2) }}
                                                 </span>
-                                                <span class="fw-bold text-dark">
+                                                    <span class="fw-bold text-dark">
                                                     ${{ number_format($product->price, 2) }}
                                                 </span>
                                                 </p>
@@ -387,13 +387,21 @@
                                         <div class="card-footer pt-0">
 
                                             @if(auth()->check())
-                                                <button type="button" class="btn btn-outline-dark btn-sm"
-                                                        wire:key="{{ $product->id }}"
-                                                        wire:click="addToCart({{ $product->id }},1)">
-                                                    <i class="bi bi-cart"></i>
-                                                    &nbsp;
-                                                    Add to cart
-                                                </button>
+                                                @if($product->stock)
+                                                    <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            wire:key="{{ $product->id }}"
+                                                            wire:click="addToCart({{ $product->id }},1)">
+                                                        <i class="bi bi-cart me-1"></i>
+                                                        Add to cart
+                                                    </button>
+                                                @else
+                                                    <div>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm disabled">
+                                                            <i class="bi bi-box me-1"></i>
+                                                           Available Soon
+                                                        </button>
+                                                    </div>
+                                                @endif
                                             @else
                                                 <div>
                                                     You must be <a href="{{ route('login') }}">logged in</a> to add item

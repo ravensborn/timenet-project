@@ -95,6 +95,15 @@
         <div class="row mt-3">
             <div class="col-6">
                 <div>
+                    <label for="stock" class="form-label">Available Stock</label>
+                    <input type="number" id="stock" class="form-control" wire:model="stock">
+                    @error('stock')
+                    <small class="text-danger">{{ $message }}</small>
+                    @enderror
+                </div>
+            </div>
+            <div class="col-6">
+                <div>
                     <label for="promo_code" class="form-label">Activate Promo Code</label>
                     <input type="number" id="promo_code" class="form-control" wire:model="promo_code">
                     @error('promo_code')

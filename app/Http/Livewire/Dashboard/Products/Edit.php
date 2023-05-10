@@ -32,6 +32,7 @@ class Edit extends Component
     public string $description = '';
     public $price = 0.0;
     public $previous_price = 0.0;
+    public $stock = 0;
     public $promo_code = '';
     public bool $is_hidden = false;
     public string $productFeature = '';
@@ -47,6 +48,7 @@ class Edit extends Component
             'lc_country_id' => 'required|integer|exists:enabled_countries,lc_country_id',
             'category_id' => 'required|integer|exists:categories,id',
             'brand_id' => 'required|integer|exists:brands,id',
+            'stock' => 'required|integer',
             'promo_code' => 'nullable|int|exists:promo_codes,code',
             'price' => 'required|numeric|gt:0|max:100000',
             'previous_price' => 'required|numeric|gt:-1|max:100000',
@@ -114,6 +116,7 @@ class Edit extends Component
         $this->description = $product->description;
         $this->price = $product->price;
         $this->previous_price = $product->previous_price;
+        $this->stock = $product->stock;
         $this->promo_code = $product->promo_code;
         $this->is_hidden = $product->is_hidden;
 
