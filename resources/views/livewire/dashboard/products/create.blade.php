@@ -126,7 +126,7 @@
                         <input class="form-check-input" name="isPurchasableOnlineProduct" type="checkbox" value=""
                                id="isPurchasableOnlineProductPCheckbox" wire:model="is_purchasable_online">
                         <label class="form-check-label" for="isPurchasableOnlineProductPCheckbox">
-                            Purchasable Online
+                            Purchasable online
                         </label>
                     </div>
                 </div>
