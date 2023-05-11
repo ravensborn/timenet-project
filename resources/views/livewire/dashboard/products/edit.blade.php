@@ -143,7 +143,7 @@
                 <div class="mt-3">
                     @foreach($productFeaturesArray as $item)
 
-                        <span class="rounded bg-light tag-btn-hover me-2 mb-1 p-2 px-3"
+                        <span class="rounded bg-light tag-btn-hover me-2 mb-3 p-2 px-3"
                               style="cursor: pointer;"
                               wire:click="removeProgramFeature('{{ $item }}')">
                             <i class="bi bi-x"></i>
