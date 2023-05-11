@@ -236,21 +236,30 @@
 
                 <div class="d-grid mb-2">
                     @if(auth()->check())
-                        @if($product->checkIfPurchasable())
-                            <button type="button" class="btn btn-dark btn-transition rounded-pill"
-                                    wire:click="addToCart()">
-                                <i class="bi bi-cart me-1"></i>
-                                Add to cart
-                                @if($userCart)
-                                    ({{ $userCart }})
-                                @endif
-                            </button>
+
+                        @if($product->is_purchasable_online)
+                            @if($product->checkIfPurchasable())
+                                <button type="button" class="btn btn-dark btn-transition rounded-pill"
+                                        wire:click="addToCart()">
+                                    <i class="bi bi-cart me-1"></i>
+                                    Add to cart
+                                    @if($userCart)
+                                        ({{ $userCart }})
+                                    @endif
+                                </button>
+                            @else
+                                <button type="button" class="btn btn-dark btn-transition rounded-pill"
+                                        wire:click="addToCart()">
+                                    <i class="bi bi-box me-1"></i>
+                                    Available soon
+                                </button>
+                            @endif
                         @else
-                            <button type="button" class="btn btn-dark btn-transition rounded-pill"
-                                    wire:click="addToCart()">
-                                <i class="bi bi-box me-1"></i>
-                                Available soon
-                            </button>
+                            <a class="btn btn-dark btn-transition rounded-pill"
+                                    href="mailto:info@time-net.net">
+                                <i class="bi bi-envelope me-1"></i>
+                                Contact Us
+                            </a>
                         @endif
 
                     @else

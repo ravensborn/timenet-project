@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Store\CartItems;
 
 use App\Models\CartItem;
 use App\Models\Product;
+use App\Models\PromoCode;
 use App\Models\Wishlist;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Collection;
@@ -18,9 +19,81 @@ class Index extends Component
 
     public Collection $cartItems;
     public float $cartTotal = 0;
+    public float $totalPay = 0;
     public Authenticatable $user;
 
     public string $promoCode = '';
+    public string $promoCodeStatus = 'not-checked';
+    public $promoCodeData = null;
+
+    public function updatedPromoCode(): void
+    {
+        $this->promoCodeProcess();
+    }
+
+    public function promoCodeProcess(): bool
+    {
+        if ($this->promoCode) {
+            if ($this->validatePromoCode($this->promoCode)) {
+
+                $this->promoCodeStatus = 'valid';
+
+                $this->totalPay = $this->totalPay - $this->calculatePromoCodeAmount($this->cartTotal);
+
+                return true;
+            } else {
+                $this->promoCodeStatus = 'invalid';
+                return false;
+            }
+        }
+
+        return false;
+    }
+
+    public function validatePromoCode($code): bool
+    {
+        $this->promoCodeData = null;
+        $promoCode = PromoCode::where('code', $code)->first();
+
+        if ($promoCode) {
+
+            $validateMaxUsed = $promoCode->uses < $promoCode->max_uses;
+            $validateUsageByCurrentUser = !$this->user->usedPromoCodes()->find($promoCode->id);
+
+            if ($validateMaxUsed && $validateUsageByCurrentUser) {
+
+                $this->promoCodeData = $promoCode;
+
+                return true;
+            }
+
+        }
+
+        return false;
+    }
+
+    public function calculatePromoCodeAmount($total): int
+    {
+        if ($this->promoCodeData) {
+
+            if ($this->promoCodeData->discount_type == PromoCode::DISCOUNT_TYPE_FIXED && $total > 0) {
+
+                $discountAmount = $this->promoCodeData->discount_amount;
+
+            } elseif ($this->promoCodeData->discount_type == PromoCode::DISCOUNT_TYPE_PERCENTAGE && $total > 0) {
+
+                $discountAmount = ($this->promoCodeData->discount_amount / 100) * $total;
+
+            } else {
+
+                $discountAmount = 0;
+            }
+
+            $newTotal = $discountAmount;
+            return max($newTotal, 0);
+
+        }
+    }
 
     public function checkout(): void
     {
@@ -31,7 +104,12 @@ class Index extends Component
 
         } else {
 
-            redirect()->route('store.checkout.index');
+            if ($this->promoCodeData) {
+                redirect()->route('store.checkout.index', ['promo_code' => $this->promoCodeData->code]);
+            } else {
+
+                redirect()->route('store.checkout.index',);
+            }
         }
 
     }
@@ -90,7 +168,7 @@ class Index extends Component
             }
 
             $this->emit('refresh-header-cart');
-            $this->getCartItems();
+
 
         } else {
 
@@ -102,8 +180,6 @@ class Index extends Component
 
     public function toWishlist($product_id, $mode = 'add'): void
     {
-
-
         if (auth()->check()) {
             if ($mode == 'add') {
                 $wishlist = new Wishlist;
@@ -127,7 +203,7 @@ class Index extends Component
                 $this->alert('success', 'Successfully removed from wishlist.');
             }
 
-            $this->getCartItems();
+
         } else {
             $this->alert('info', 'You need to be logged in first.');
         }
@@ -159,10 +235,15 @@ class Index extends Component
         });
 
         $this->cartTotal = $cartTotal;
+        $this->totalPay = $cartTotal;
     }
 
     public function render()
     {
+
+        $this->getCartItems();
+        $this->promoCodeProcess();
+
         return view('livewire.store.cart-items.index')->extends('layouts.store')->section('content');
     }
 

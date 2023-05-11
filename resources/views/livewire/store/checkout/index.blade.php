@@ -121,7 +121,8 @@
 
                                 <div class="col-md-5">
                                     <label for="checkoutCountry" class="form-label">Country</label>
-                                    <input type="text" class="form-control form-control-lg" id="checkoutCountry" value="{{ $user->country->name }}" readonly>
+                                    <input type="text" class="form-control form-control-lg" id="checkoutCountry"
+                                           value="{{ $user->country->name }}" readonly>
                                 </div>
 
                                 <!-- End Col -->
@@ -158,8 +159,6 @@
 
                                 @foreach($paymentMethods as $payment)
 
-
-
                                     @if($payment->enabled)
 
                                         <div wire:click="selectPaymentMethod({{ $payment->id }})"
@@ -176,7 +175,8 @@
                                                     <span @class(['fw-bold' => ($selectedPaymentMethod->id == $payment->id)])>{{ $payment->name }}</span>
                                                 </div>
 
-                                                <div  class="badge text-body" @class(['fw-bold' => ($selectedPaymentMethod->id == $payment->id), 'text-muted text-start' => true ]) style="width: 150px;">
+                                                <div class="badge text-body"
+                                                     @class(['fw-bold' => ($selectedPaymentMethod->id == $payment->id), 'text-muted text-start' => true ]) style="width: 150px;">
                                                     Payment Fee:
                                                     @if($payment->fee_type == \App\Models\PaymentMethod::FEE_TYPE_PERCENTAGE)
                                                         {{ $payment->fee }}%
@@ -263,9 +263,23 @@
                                                             </dd>
                                                         @endif
                                                     </dl>
-                                            @endif
+                                                @endif
 
-                                            <!-- End Row -->
+                                                @if($promoCodeData)
+                                                    <dl class="row">
+                                                        <dt class="col-sm-6">Promo Code
+                                                        </dt>
+                                                        <dd class="col-sm-6 text-sm-end mb-0 text-danger">
+                                                            @if($promoCodeData->discount_type == \App\Models\PromoCode::DISCOUNT_TYPE_FIXED)
+                                                                - ${{ number_format($promoCodeData->discount_amount, 2) }}
+                                                            @endif
+                                                            @if($promoCodeData->discount_type == \App\Models\PromoCode::DISCOUNT_TYPE_PERCENTAGE)
+                                                                - %{{ $promoCodeData->discount_amount }} (${{ ($promoCodeData->discount_amount / 100) * $cartTotal }})
+                                                            @endif
+                                                        </dd>
+                                                    </dl>
+                                                    <!-- End Row -->
+                                                @endif
                                             </div>
                                         </div>
 
@@ -352,7 +366,8 @@
                                    Order #{{ $order->number }}
                             </span>
 
-                            <a class="link text-muted d-block" href="{{ route('users.store.orders.invoice', $order->id) }}">
+                            <a class="link text-muted d-block"
+                               href="{{ route('users.store.orders.invoice', $order->id) }}">
                                 <i class="bi-chevron-left small ms-1"></i>
                                 View Invoice
                             </a>

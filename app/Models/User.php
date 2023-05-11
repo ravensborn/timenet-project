@@ -124,5 +124,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsTo(Country::class, 'lc_country_id');
     }
 
+    public function usedPromoCodes(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(PromoCode::class);
+    }
+
 
 }

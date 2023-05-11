@@ -179,13 +179,30 @@
                     </a>
                 </li>
 
+                <li class="sidebar-item @if(request()->is('dashboard/comments')) active @endif">
+                    <a class="sidebar-link" href="{{ route('dashboard.comments.index') }}">
+                        <i class="align-middle" data-feather="message-square"></i> <span class="align-middle">
+                            Comments
+                        </span>
+                    </a>
+                </li>
+
 
                 <li class="sidebar-header">
-                    Settings
+                    Module Settings
                 </li>
 
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="#">
+                    <a class="sidebar-link" href="{{ route('dashboard.promo-codes.index') }}">
+                        <i class="align-middle" data-feather="percent"></i> <span class="align-middle">
+                           Promo Codes
+                        </span>
+                    </a>
+                </li>
+
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{ route('dashboard.categories.index') }}">
                         <i class="align-middle" data-feather="list"></i> <span class="align-middle">
                            Categories
                         </span>
@@ -193,7 +210,7 @@
                 </li>
 
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="#">
+                    <a class="sidebar-link" href="{{ route('dashboard.brands.index') }}">
                         <i class="align-middle" data-feather="list"></i> <span class="align-middle">
                            Brands
                         </span>

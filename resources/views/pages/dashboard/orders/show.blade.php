@@ -102,12 +102,12 @@
                                     <th class="text-start">Shipping Rate</th>
                                     <td class="text-start">${{ $order->shipping_rate }}</td>
                                 </tr>
-                                <tr>
-                                    <th class="text-start">
-                                        Exchange Rate
-                                    </th>
-                                    <td class="text-start">${{ $order->exchange_rate }}</td>
-                                </tr>
+{{--                                <tr>--}}
+{{--                                    <th class="text-start">--}}
+{{--                                        Exchange Rate--}}
+{{--                                    </th>--}}
+{{--                                    <td class="text-start">${{ $order->exchange_rate }}</td>--}}
+{{--                                </tr>--}}
 
                                 <tr>
                                     <th class="text-start">Payment Method</th>
@@ -129,27 +129,27 @@
                                     @endif
                                 </tr>
 
-                                <tr>
-                                    <th class="text-start">Discount Type</th>
-                                    @if($order->discount_type)
-                                        <td class="text-start">{{ $order->discount_type }}</td>
-                                    @else
-                                        <td class="text-start">{{ 'No discount type' }}</td>
-                                    @endif
-                                </tr>
+{{--                                <tr>--}}
+{{--                                    <th class="text-start">Special Discount Type</th>--}}
+{{--                                    @if($order->discount_type)--}}
+{{--                                        <td class="text-start">{{ $order->discount_type }}</td>--}}
+{{--                                    @else--}}
+{{--                                        <td class="text-start">{{ 'No discount type' }}</td>--}}
+{{--                                    @endif--}}
+{{--                                </tr>--}}
 
-                                <tr>
-                                    <th class="text-start">Discount Rate</th>
-                                    @if($order->discount_type == NULL )
-                                        <td class="text-start">{{ 'No discount rate' }}</td>
-                                    @endif
-                                    @if($order->discount_type == \App\Models\Order::DISCOUNT_TYPE_PERCENTAGE )
-                                        <td class="text-start">%{{ $order->discount_amount }}</td>
-                                    @endif
-                                    @if($order->discount_type == \App\Models\Order::DISCOUNT_TYPE_FIXED_RATE )
-                                        <td class="text-start">${{ $order->discount_amount }}</td>
-                                    @endif
-                                </tr>
+{{--                                <tr>--}}
+{{--                                    <th class="text-start">Special Discount Rate</th>--}}
+{{--                                    @if($order->discount_type == NULL )--}}
+{{--                                        <td class="text-start">{{ 'No discount rate' }}</td>--}}
+{{--                                    @endif--}}
+{{--                                    @if($order->discount_type == \App\Models\Order::DISCOUNT_TYPE_PERCENTAGE )--}}
+{{--                                        <td class="text-start">%{{ $order->discount_amount }}</td>--}}
+{{--                                    @endif--}}
+{{--                                    @if($order->discount_type == \App\Models\Order::DISCOUNT_TYPE_FIXED_RATE )--}}
+{{--                                        <td class="text-start">${{ $order->discount_amount }}</td>--}}
+{{--                                    @endif--}}
+{{--                                </tr>--}}
 
                                 <tr>
                                     <th class="text-start">Used Promo Code</th>
@@ -159,9 +159,16 @@
                                         <td class="text-start">{{ 'No promo code' }}</td>
                                     @endif
                                 </tr>
-
                                 <tr>
-                                    <th class="text-start">Promo Code Discounted Amount</th>
+                                    <th class="text-start">Promo Code Discount Type</th>
+                                    @if($order->promo_code)
+                                        <td class="text-start">{{ $order->promo_code_discount_type }}</td>
+                                    @else
+                                        <td class="text-start">{{ 'No promo code' }}</td>
+                                    @endif
+                                </tr>
+                                <tr>
+                                    <th class="text-start">Promo Code Discount Amount</th>
                                     @if($order->promo_code)
                                         <td class="text-start">${{ $order->promo_code_discount_value }}</td>
                                     @else

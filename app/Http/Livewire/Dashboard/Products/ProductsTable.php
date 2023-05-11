@@ -43,6 +43,10 @@ class ProductsTable extends DataTableComponent
                 ->format(function ($value, $row, $column) {
                     return count($row->visitLogs);
                 }),
+            Column::make("Purchasable Online", "is_purchasable_online")
+                ->format(function ($value, $row, $column) {
+                    return $value ? 'Yes' : 'No';
+                })->searchable(),
             Column::make("Created at", "created_at")
                 ->format(function ($value, $row, $column) {
                     if ($value) {

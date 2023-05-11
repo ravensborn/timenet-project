@@ -49,7 +49,7 @@ class Comment extends Model
 
     public function post(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(Comment::class);
+        return $this->belongsTo(Post::class);
     }
 
     public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo

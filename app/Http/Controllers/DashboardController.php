@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Order;
 use App\Models\Post;
@@ -50,7 +51,8 @@ class DashboardController extends Controller
         return view('pages.dashboard.orders.index');
     }
 
-    public function ordersShow(Order $order) {
+    public function ordersShow(Order $order)
+    {
         return view('pages.dashboard.orders.show', [
             'order' => $order
         ]);
@@ -74,7 +76,8 @@ class DashboardController extends Controller
         ]);
     }
 
-    public function productsMediaManager(Product $product) {
+    public function productsMediaManager(Product $product)
+    {
         return view('pages.dashboard.products.media-manager', [
             'product' => $product,
         ]);
@@ -99,7 +102,8 @@ class DashboardController extends Controller
         ]);
     }
 
-    public function postsMediaManager($slug) {
+    public function postsMediaManager($slug)
+    {
 
         $post = Post::where('slug', $slug)->firstOrFail();
 
@@ -127,6 +131,61 @@ class DashboardController extends Controller
         return response()->json([
             'location' => $media->getFullUrl()
         ], 200);
+    }
+
+
+    public function categoriesIndex()
+    {
+        return view('pages.dashboard.categories.index');
+    }
+
+    public function categoriesCreate()
+    {
+        return view('pages.dashboard.categories.create');
+    }
+
+    public function categoriesEdit($slug)
+    {
+        $category = Category::where('slug', $slug)->firstOrFail();
+
+        return view('pages.dashboard.categories.edit', [
+            'category' => $category
+        ]);
+    }
+
+
+    public function brandsIndex()
+    {
+        return view('pages.dashboard.brands.index');
+    }
+
+    public function brandsCreate()
+    {
+        return view('pages.dashboard.brands.create');
+    }
+
+    public function brandsEdit($slug)
+    {
+        $brand = Brand::where('slug', $slug)->firstOrFail();
+
+        return view('pages.dashboard.brands.edit', [
+            'brand' => $brand
+        ]);
+    }
+
+    public function commentsIndex()
+    {
+        return view('pages.dashboard.comments.index');
+    }
+
+    public function promoCodeIndex()
+    {
+        return view('pages.dashboard.promo-codes.index');
+    }
+
+    public function promoCodeCreate()
+    {
+        return view('pages.dashboard.promo-codes.create');
     }
 
 }

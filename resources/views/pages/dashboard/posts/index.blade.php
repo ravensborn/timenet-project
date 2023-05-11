@@ -11,7 +11,7 @@
 
                     <div class="row">
                         <div class="col-6">
-                            <h5 class="card-title mb-0">Products List</h5>
+                            <h5 class="card-title mb-0">Posts List</h5>
                         </div>
                         <div class="col-6 text-end">
                             <a class="btn btn-sm btn-info" href="{{ route('dashboard.posts.create') }}">

@@ -168,7 +168,6 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
     Route::get('/dashboard/posts', [DashboardController::class, 'postsIndex'])
         ->name('dashboard.posts.index');
 
-
     Route::get('/dashboard/posts/create', [DashboardController::class, 'postsCreate'])
         ->name('dashboard.posts.create');
 
@@ -180,6 +179,41 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
 
     Route::post('/dashboard/posts/{slug}/upload', [DashboardController::class, 'postsMediaUpload'])
         ->name('dashboard.posts.upload');
+
+
+    Route::get('/dashboard/categories', [DashboardController::class, 'categoriesIndex'])
+        ->name('dashboard.categories.index');
+
+    Route::get('/dashboard/categories/create', [DashboardController::class, 'categoriesCreate'])
+        ->name('dashboard.categories.create');
+
+    Route::get('/dashboard/categories/{slug}/edit', [DashboardController::class, 'categoriesEdit'])
+        ->name('dashboard.categories.edit');
+
+    Route::get('/dashboard/brands', [DashboardController::class, 'brandsIndex'])
+        ->name('dashboard.brands.index');
+
+    Route::get('/dashboard/brands/create', [DashboardController::class, 'brandsCreate'])
+        ->name('dashboard.brands.create');
+
+    Route::get('/dashboard/brands/{slug}/edit', [DashboardController::class, 'brandsEdit'])
+        ->name('dashboard.brands.edit');
+
+
+    Route::get('/dashboard/comments', [DashboardController::class, 'commentsIndex'])
+        ->name('dashboard.comments.index');
+
+    Route::get('/dashboard/comments/create', [DashboardController::class, 'commentsCreate'])
+        ->name('dashboard.comments.create');
+
+    Route::get('/dashboard/comments/{slug}/edit', [DashboardController::class, 'commentsEdit'])
+        ->name('dashboard.comments.edit');
+
+    Route::get('/dashboard/promo-codes', [DashboardController::class, 'promoCodeIndex'])
+        ->name('dashboard.promo-codes.index');
+
+    Route::get('/dashboard/promo-codes/create', [DashboardController::class, 'promoCodeCreate'])
+        ->name('dashboard.promo-codes.create');
 
 
 });

@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
@@ -29,12 +31,15 @@ use Spatie\Sluggable\SlugOptions;
  * @method static \Illuminate\Database\Eloquent\Builder|Brand whereUpdatedAt($value)
  * @mixin \Eloquent
  */
-class Brand extends Model
+class Brand extends Model implements HasMedia
 {
-    use HasFactory;
-    use HasSlug;
+    use HasFactory, HasSlug, InteractsWithMedia;
 
     protected $guarded = ['id'];
+
+    protected $casts = [
+        'is_displayable_on_website' => 'boolean'
+    ];
 
     public function getSlugOptions() : SlugOptions
     {

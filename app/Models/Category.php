@@ -42,9 +42,11 @@ class Category extends Model
     use HasFactory;
     use HasSlug;
 
+    protected $guarded = ['id'];
+
     const CATEGORY_SERVICE = 2;
 
-    public function getSlugOptions() : SlugOptions
+    public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
             ->generateSlugsFrom('name')

@@ -132,7 +132,7 @@
 
                                                 <div class="flex-grow-1 ms-3">
                                                     <div class="d-flex justify-content-between align-items-center">
-                                                        <h6>{{ $comment->name }}</h6>
+                                                        <h6>{{ $comment->user->name }}</h6>
                                                         <span class="d-block small text-muted">{{ $comment->created_at->diffForHumans() }}</span>
                                                     </div>
                                                 </div>

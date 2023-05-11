@@ -205,9 +205,9 @@
                 @if($order->payment_method_fee_type == \App\Models\PaymentMethod::FEE_TYPE_FIXED_AMOUNT)
                     <td>${{ $order->payment_method_fee_amount }}</td>
                 @endif
-                    @if($order->payment_method_fee_type == \App\Models\PaymentMethod::FEE_TYPE_PERCENTAGE)
-                        <td>%{{ $order->payment_method_fee_amount }}</td>
-                    @endif
+                @if($order->payment_method_fee_type == \App\Models\PaymentMethod::FEE_TYPE_PERCENTAGE)
+                    <td>%{{ $order->payment_method_fee_amount }}</td>
+                @endif
             @endif
         </tr>
 
@@ -226,6 +226,25 @@
                 <td>${{ $order->shipping_rate }}</td>
             @endif
         </tr>
+
+        @if($order->promo_code)
+            <tr class="heading">
+                <td>Promo Code</td>
+                <td></td>
+                <td></td>
+            </tr>
+
+            <tr class="details">
+                <td>{{ $order->promo_code }}</td>
+                <td></td>
+                @if($order->promo_code_discount_type == \App\Models\PromoCode::DISCOUNT_TYPE_FIXED)
+                    <td>${{ $order->payment_method_fee_amount }}</td>
+                @endif
+                @if($order->promo_code_discount_type == \App\Models\PromoCode::DISCOUNT_TYPE_PERCENTAGE)
+                    <td>%{{ $order->payment_method_fee_amount }}</td>
+                @endif
+            </tr>
+        @endif
 
         <tr class="heading">
             <td>Item</td>

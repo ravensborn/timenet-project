@@ -4,7 +4,6 @@ namespace App\Http\Livewire\Dashboard\Posts;
 
 use App\Models\Post;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
-use Lwwcas\LaravelCountries\Models\Country;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 

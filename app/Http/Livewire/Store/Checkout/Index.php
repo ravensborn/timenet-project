@@ -8,6 +8,8 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\PaymentMethod;
 use App\Models\Product;
+use App\Models\PromoCode;
+use App\Models\PromoCodeUser;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
@@ -43,6 +45,10 @@ class Index extends Component
 
     public bool $success = false;
     public Order $order;
+
+    public bool $promoCodeCalculationEnabled = false;
+    public string $promoCode = '';
+    public $promoCodeData = null;
 
     public function placeOrder()
     {
@@ -90,6 +96,14 @@ class Index extends Component
 
             $number = $this->generateNumber();
 
+            if($this->promoCodeData) {
+                $this->promoCodeData->increment('uses');
+                PromoCodeUser::create([
+                    'promo_code_id' => $this->promoCodeData->id,
+                    'user_id' => $this->user->id
+                ]);
+            }
+
             $order = new Order();
             $order = $order->create([
                 'number' => $number,
@@ -102,6 +116,9 @@ class Index extends Component
                 'payment_method_fee_amount' => $this->selectedPaymentMethod->fee,
                 'shipping_address' => $shippingAddress,
                 'billing_address' => $shippingAddress,
+                'promo_code' => $this->promoCodeData ?  $this->promoCodeData->code : NULL,
+                'promo_code_discount_type' => $this->promoCodeData ?  $this->promoCodeData->discount_type : NULL,
+                'promo_code_discount_value' => $this->promoCodeData ?  $this->promoCodeData->discount_amount : 0,
                 'total' => $this->totalPay,
                 'shipping_rate' => $shippingRate,
             ]);
@@ -145,6 +162,60 @@ class Index extends Component
         return true;
     }
 
+    public function calculatePromoCode(): void
+    {
+        if($this->promoCodeCalculationEnabled) {
+
+            if($this->validatePromoCode($this->promoCode)) {
+                $total = $this->calculatePromoCodeAmount($this->totalPay);
+                $this->totalPay = $this->totalPay - $total;
+            }
+
+        }
+    }
+    public function validatePromoCode($code): bool
+    {
+        $this->promoCodeData = null;
+        $promoCode = PromoCode::where('code', $code)->first();
+
+        if ($promoCode) {
+
+            $validateMaxUsed = $promoCode->uses < $promoCode->max_uses;
+            $validateUsageByCurrentUser = !$this->user->usedPromoCodes()->find($promoCode->id);
+
+            if ($validateMaxUsed && $validateUsageByCurrentUser) {
+
+                $this->promoCodeData = $promoCode;
+
+                return true;
+            }
+
+        }
+
+        return false;
+    }
+    public function calculatePromoCodeAmount($total): int
+    {
+        if ($this->promoCodeData) {
+
+            if ($this->promoCodeData->discount_type == PromoCode::DISCOUNT_TYPE_FIXED && $total > 0) {
+
+                $discountAmount = $this->promoCodeData->discount_amount;
+
+            } elseif ($this->promoCodeData->discount_type == PromoCode::DISCOUNT_TYPE_PERCENTAGE && $total > 0) {
+
+                $discountAmount = ($this->promoCodeData->discount_amount / 100) * $total;
+
+            } else {
+
+                $discountAmount = 0;
+            }
+
+            $newTotal = $discountAmount;
+            return max($newTotal, 0);
+
+        }
+    }
     public function calculateTotal(): void
     {
 
@@ -210,6 +281,13 @@ class Index extends Component
     public function mount()
     {
 
+        $promoCode = request()->input('promo_code', null);
+
+        if($promoCode) {
+            $this->promoCode = $promoCode;
+            $this->promoCodeCalculationEnabled = true;
+        }
+
         if (auth()->check()) {
             $this->user = auth()->user();
         } else {
@@ -266,6 +344,7 @@ class Index extends Component
     {
 
         $this->calculateTotal();
+        $this->calculatePromoCode();
 
         return view('livewire.store.checkout.index')->extends('layouts.store')->section('content');
     }

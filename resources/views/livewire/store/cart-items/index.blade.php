@@ -47,8 +47,8 @@
                         <form>
                             <!-- List Group -->
                             <ul class="list-group list-group-flush list-group-no-gutters mb-5">
-                            @foreach($cartItems as $item)
-                                <!-- Item -->
+                                @foreach($cartItems as $item)
+                                    <!-- Item -->
                                     <li class="list-group-item">
                                         <div class="d-flex">
                                             <div class="flex-shrink-0">
@@ -127,7 +127,8 @@
 
                                                     <div class="col-6 col-md-3 d-none d-sm-inline-block text-right">
                                                         <span class="h5 d-block mb-1 text-muted">{{ $item->quantity }} X ${{ number_format($item->product->price, 2) }}</span>
-                                                        <span class="h5 d-block mb-1">${{ number_format($item->quantity * $item->product->price, 2) }}</span>
+                                                        <span
+                                                            class="h5 d-block mb-1">${{ number_format($item->quantity * $item->product->price, 2) }}</span>
                                                     </div>
                                                     <!-- End Col -->
                                                 </div>
@@ -163,12 +164,16 @@
 
                                     <form>
                                         <div class="border-bottom pb-4 mb-3">
-                                            <input type="text" class="form-control @if($promoCode) is-invalid @endif"
+                                            <input type="text"
+                                                   class="form-control @if($promoCodeStatus == 'invalid') is-invalid @endif  @if($promoCodeStatus == 'invalid') is-valid @endif"
                                                    name="name"
                                                    wire:model="promoCode"
                                                    placeholder="Enter promo code" aria-label="Enter promo code">
-                                            @if($promoCode)
+                                            @if($promoCodeStatus == 'invalid')
                                                 <small class="text-danger">Invalid code.</small>
+                                            @endif
+                                            @if($promoCodeStatus == 'valid')
+                                                <small class="text-success">Promo Code Applied!</small>
                                             @endif
                                         </div>
 
@@ -180,6 +185,22 @@
                                                         ${{ number_format($cartTotal, 2) }}</dd>
                                                 </dl>
                                                 <!-- End Row -->
+
+                                                @if($promoCodeData)
+                                                    <dl class="row">
+                                                        <dt class="col-sm-6">Promo Code
+                                                        </dt>
+                                                        <dd class="col-sm-6 text-sm-end mb-0 text-danger">
+                                                            @if($promoCodeData->discount_type == \App\Models\PromoCode::DISCOUNT_TYPE_FIXED)
+                                                               - ${{ number_format($promoCodeData->discount_amount, 2) }}
+                                                            @endif
+                                                            @if($promoCodeData->discount_type == \App\Models\PromoCode::DISCOUNT_TYPE_PERCENTAGE)
+                                                                    - %{{ $promoCodeData->discount_amount }} (${{ ($promoCodeData->discount_amount / 100) * $cartTotal }})
+                                                            @endif
+                                                        </dd>
+                                                    </dl>
+                                                    <!-- End Row -->
+                                                @endif
 
                                                 <dl class="row">
                                                     <dt class="col-sm-6">Delivery</dt>
@@ -195,7 +216,7 @@
                                             <dl class="row">
                                                 <dt class="col-sm-6">Total</dt>
                                                 <dd class="col-sm-6 text-sm-end mb-0">
-                                                    ${{  number_format($cartTotal, 2) }}</dd>
+                                                    ${{  number_format($totalPay, 2) }}</dd>
                                             </dl>
                                             <!-- End Row -->
                                         </div>

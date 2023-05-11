@@ -13,4 +13,5 @@ class PromoCode extends Model
 
     const DISCOUNT_TYPE_PERCENTAGE = 'percentage';
     const DISCOUNT_TYPE_FIXED = 'fixed_amount';
+
 }

@@ -60,6 +60,10 @@ class Edit extends Component
         $validated['properties'] = [];
         $validated['additional_fees'] = [];
 
+        if(!$validated['is_purchasable_online']) {
+            $validated['stock'] = 0;
+        }
+
         $product = $this->product;
         $product->update($validated);
 
