@@ -140,15 +140,15 @@
                 <input type="text" id="productFeatures" class="form-control" wire:keydown.enter="addToProductFeatures"
                        wire:model="productFeature">
 
-                <div class="mt-3">
+                <div class="mt-3 d-flex flex-row">
                     @foreach($productFeaturesArray as $item)
 
-                        <span class="rounded bg-light tag-btn-hover me-2 mb-3 p-2 px-3"
+                        <div class="rounded bg-light tag-btn-hover me-2 mb-2 p-2 px-3"
                               style="cursor: pointer;"
                               wire:click="removeProgramFeature('{{ $item }}')">
                             <i class="bi bi-x"></i>
                             {{ $item }}
-                        </span>
+                        </div>
 
                     @endforeach
                 </div>
