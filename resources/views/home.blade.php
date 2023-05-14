@@ -5,7 +5,8 @@
 
     <div class="content-space-b-1 homepage-main-banner">
 
-        <div class="container d-md-flex align-items-md-center vh-md-70 content-space-t-4 content-space-b-3 content-space-md-0">
+        <div
+            class="container d-md-flex align-items-md-center vh-md-70 content-space-t-4 content-space-b-3 content-space-md-0">
             <div class="mt-5">
                 <img width="350px" src="{{ asset('images/logo.png') }}"
                      alt="Logo Dark">
@@ -45,18 +46,18 @@
         </div>
         <div class="row mb-5 mb-md-0">
             @foreach($features as $post)
-                <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0 mt-3">
+                <div class="col-6 col-lg-4 mb-4 mb-lg-0 mt-3">
                     <!-- Card -->
                     <div class=" card-sm h-100">
                         <div class="p-2 text-center">
                             <img class="card-img"
-                                style="width: 64px;"
+                                 style="width: 64px;"
                                  src="{{ $post->getFirstMediaUrl('cover') }}"
                                  alt="Image Description">
                         </div>
                         <div class="card-body">
                             <h4 class="card-title text-center">
-                                    {{ $post->title }}
+                                {{ $post->title }}
                             </h4>
                         </div>
                     </div>
@@ -79,71 +80,78 @@
         <!-- End Heading -->
 
         <div class="row justify-content-center text-center">
-            <div class="col-4 col-sm-3 col-md-2 py-3">
-                <img class="avatar avatar-lg avatar-4x3 avatar-centered"
-                     src="{{ asset('themes/front/assets/svg/brands/amazon-dark.svg') }}" alt="Logo">
-            </div>
-            <!-- End Col -->
+            @foreach($brands as $brand)
+                <div class="col-4 col-sm-3 col-md-2 py-3">
+                    <img class="avatar avatar-lg avatar-4x3 avatar-centered"
+                         src="{{ $brand->getFirstMediaUrl('icon') }}" alt="Logo">
+                </div>
+            @endforeach
 
-            <div class="col-4 col-sm-3 col-md-2 py-3">
-                <img class="avatar avatar-lg avatar-4x3 avatar-centered"
-                     src="{{ asset('themes/front/assets/svg/brands/kaplan-dark.svg') }}" alt="Logo">
-            </div>
-            <!-- End Col -->
+            {{--            <div class="col-4 col-sm-3 col-md-2 py-3">--}}
+            {{--                <img class="avatar avatar-lg avatar-4x3 avatar-centered"--}}
+            {{--                     src="{{ asset('themes/front/assets/svg/brands/amazon-dark.svg') }}" alt="Logo">--}}
+            {{--            </div>--}}
+            {{--            <!-- End Col -->--}}
 
-            <div class="col-4 col-sm-3 col-md-2 py-3">
-                <img class="avatar avatar-lg avatar-4x3 avatar-centered"
-                     src="{{ asset('themes/front/assets/svg/brands/google-dark.svg') }}" alt="Logo">
-            </div>
-            <!-- End Col -->
+            {{--            <div class="col-4 col-sm-3 col-md-2 py-3">--}}
+            {{--                <img class="avatar avatar-lg avatar-4x3 avatar-centered"--}}
+            {{--                     src="{{ asset('themes/front/assets/svg/brands/kaplan-dark.svg') }}" alt="Logo">--}}
+            {{--            </div>--}}
+            {{--            <!-- End Col -->--}}
 
-            <div class="col-4 col-sm-3 col-md-2 py-3">
-                <img class="avatar avatar-lg avatar-4x3 avatar-centered"
-                     src="{{ asset('themes/front/assets/svg/brands/airbnb-dark.svg') }}" alt="Logo">
-            </div>
-            <!-- End Col -->
+            {{--            <div class="col-4 col-sm-3 col-md-2 py-3">--}}
+            {{--                <img class="avatar avatar-lg avatar-4x3 avatar-centered"--}}
+            {{--                     src="{{ asset('themes/front/assets/svg/brands/google-dark.svg') }}" alt="Logo">--}}
+            {{--            </div>--}}
+            {{--            <!-- End Col -->--}}
 
-            <div class="col-4 col-sm-3 col-md-2 py-3">
-                <img class="avatar avatar-lg avatar-4x3 avatar-centered"
-                     src="{{ asset('themes/front/assets/svg/brands/shopify-dark.svg') }}" alt="Logo">
-            </div>
-            <!-- End Col -->
+            {{--            <div class="col-4 col-sm-3 col-md-2 py-3">--}}
+            {{--                <img class="avatar avatar-lg avatar-4x3 avatar-centered"--}}
+            {{--                     src="{{ asset('themes/front/assets/svg/brands/airbnb-dark.svg') }}" alt="Logo">--}}
+            {{--            </div>--}}
+            {{--            <!-- End Col -->--}}
 
-            <div class="col-4 col-sm-3 col-md-2 py-3">
-                <img class="avatar avatar-lg avatar-4x3 avatar-centered"
-                     src="{{ asset('themes/front/assets/svg/brands/vidados-dark.svg') }}" alt="Logo">
-            </div>
-            <!-- End Col -->
+            {{--            <div class="col-4 col-sm-3 col-md-2 py-3">--}}
+            {{--                <img class="avatar avatar-lg avatar-4x3 avatar-centered"--}}
+            {{--                     src="{{ asset('themes/front/assets/svg/brands/shopify-dark.svg') }}" alt="Logo">--}}
+            {{--            </div>--}}
+            {{--            <!-- End Col -->--}}
 
-            <div class="col-4 col-sm-3 col-md-2 py-3">
-                <img class="avatar avatar-lg avatar-4x3 avatar-centered"
-                     src="{{ asset('themes/front/assets/svg/brands/capsule-dark.svg') }}" alt="Logo">
-            </div>
-            <!-- End Col -->
+            {{--            <div class="col-4 col-sm-3 col-md-2 py-3">--}}
+            {{--                <img class="avatar avatar-lg avatar-4x3 avatar-centered"--}}
+            {{--                     src="{{ asset('themes/front/assets/svg/brands/vidados-dark.svg') }}" alt="Logo">--}}
+            {{--            </div>--}}
+            {{--            <!-- End Col -->--}}
 
-            <div class="col-4 col-sm-3 col-md-2 py-3">
-                <img class="avatar avatar-lg avatar-4x3 avatar-centered"
-                     src="{{ asset('themes/front/assets/svg/brands/forbes-dark.svg') }}" alt="Logo">
-            </div>
-            <!-- End Col -->
+            {{--            <div class="col-4 col-sm-3 col-md-2 py-3">--}}
+            {{--                <img class="avatar avatar-lg avatar-4x3 avatar-centered"--}}
+            {{--                     src="{{ asset('themes/front/assets/svg/brands/capsule-dark.svg') }}" alt="Logo">--}}
+            {{--            </div>--}}
+            {{--            <!-- End Col -->--}}
 
-            <div class="col-4 col-sm-3 col-md-2 py-3">
-                <img class="avatar avatar-lg avatar-4x3 avatar-centered"
-                     src="{{ asset('themes/front/assets/svg/brands/business-insider-dark.svg') }}" alt="Logo">
-            </div>
-            <!-- End Col -->
+            {{--            <div class="col-4 col-sm-3 col-md-2 py-3">--}}
+            {{--                <img class="avatar avatar-lg avatar-4x3 avatar-centered"--}}
+            {{--                     src="{{ asset('themes/front/assets/svg/brands/forbes-dark.svg') }}" alt="Logo">--}}
+            {{--            </div>--}}
+            {{--            <!-- End Col -->--}}
 
-            <div class="col-4 col-sm-3 col-md-2 py-3">
-                <img class="avatar avatar-lg avatar-4x3 avatar-centered"
-                     src="{{ asset('themes/front/assets/svg/brands/hubspot-dark.svg') }}" alt="Logo">
-            </div>
-            <!-- End Col -->
+            {{--            <div class="col-4 col-sm-3 col-md-2 py-3">--}}
+            {{--                <img class="avatar avatar-lg avatar-4x3 avatar-centered"--}}
+            {{--                     src="{{ asset('themes/front/assets/svg/brands/business-insider-dark.svg') }}" alt="Logo">--}}
+            {{--            </div>--}}
+            {{--            <!-- End Col -->--}}
 
-            <div class="col-4 col-sm-3 col-md-2 py-3">
-                <img class="avatar avatar-lg avatar-4x3 avatar-centered"
-                     src="{{ asset('themes/front/assets/svg/brands/layar-dark.svg') }}" alt="Logo">
-            </div>
-            <!-- End Col -->
+            {{--            <div class="col-4 col-sm-3 col-md-2 py-3">--}}
+            {{--                <img class="avatar avatar-lg avatar-4x3 avatar-centered"--}}
+            {{--                     src="{{ asset('themes/front/assets/svg/brands/hubspot-dark.svg') }}" alt="Logo">--}}
+            {{--            </div>--}}
+            {{--            <!-- End Col -->--}}
+
+            {{--            <div class="col-4 col-sm-3 col-md-2 py-3">--}}
+            {{--                <img class="avatar avatar-lg avatar-4x3 avatar-centered"--}}
+            {{--                     src="{{ asset('themes/front/assets/svg/brands/layar-dark.svg') }}" alt="Logo">--}}
+            {{--            </div>--}}
+            {{--            <!-- End Col -->--}}
         </div>
         <!-- End Row -->
     </div>
@@ -208,7 +216,7 @@
                     Want to read more? <a class="card-link ms-2"
                                           href="{{ route('posts.index', ['grid_type' => 'grid', 'slug' => 'articles']) }}">Go
                         here <span
-                                class="bi-chevron-right small ms-1"></span></a>
+                            class="bi-chevron-right small ms-1"></span></a>
                 </div>
             </div>
         </div>

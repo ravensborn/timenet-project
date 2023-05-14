@@ -258,41 +258,12 @@
 
     <div class="container content-space-2">
         <div class="row">
-            <div class="col text-center py-3">
-                <img class="avatar avatar-lg avatar-4x3"
-                     src="{{ asset('themes/front/assets/svg/brands/google-dark.svg') }}" alt="Logo">
-            </div>
-            <!-- End Col -->
-
-            <div class="col text-center py-3">
-                <img class="avatar avatar-lg avatar-4x3"
-                     src="{{ asset('themes/front/assets/svg/brands/amazon-dark.svg') }}" alt="Logo">
-            </div>
-            <!-- End Col -->
-
-            <div class="col text-center py-3">
-                <img class="avatar avatar-lg avatar-4x3"
-                     src="{{ asset('themes/front/assets/svg/brands/new-balance-dark.svg') }}" alt="Logo">
-            </div>
-            <!-- End Col -->
-
-            <div class="col text-center py-3">
-                <img class="avatar avatar-lg avatar-4x3"
-                     src="{{ asset('themes/front/assets/svg/brands/forbes-dark.svg') }}" alt="Logo">
-            </div>
-            <!-- End Col -->
-
-            <div class="col text-center py-3">
-                <img class="avatar avatar-lg avatar-4x3"
-                     src="{{ asset('themes/front/assets/svg/brands/layar-dark.svg') }}" alt="Logo">
-            </div>
-            <!-- End Col -->
-
-            <div class="col text-center py-3">
-                <img class="avatar avatar-lg avatar-4x3"
-                     src="{{ asset('themes/front/assets/svg/brands/tnf-dark.svg') }}" alt="Logo">
-            </div>
-            <!-- End Col -->
+            @foreach($brands as $brand)
+                <div class="col-4 col-sm-3 col-md-2 py-3">
+                    <img class="avatar avatar-lg avatar-4x3 avatar-centered"
+                         src="{{ $brand->getFirstMediaUrl('icon') }}" alt="Logo">
+                </div>
+            @endforeach
         </div>
         <!-- End Row -->
     </div>
