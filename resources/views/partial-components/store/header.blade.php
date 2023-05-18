@@ -22,67 +22,8 @@
             <!-- Collapse -->
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
-
-
-                    <!-- TimeNet -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('home') }}">Home</a>
-                    </li>
-                    <!-- End TimeNet -->
-
-                    <!-- Store -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('store.index') }}">Store</a>
-                    </li>
-                    <!-- End Store -->
-
-                    <!-- Products -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('store.products.index') }}">Products</a>
-                    </li>
-                    <!-- End Products -->
-
-                    <!-- Cart -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('store.cartItems.index') }}">
-                            @livewire('store.cart-items.header-cart-component')
-                        </a>
-                    </li>
-                    <!-- End Cart -->
-
-
-                    <!-- Button -->
-                    @if(!auth()->check())
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">Login</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="btn btn-light btn-transition btn-sm" href="{{ route('register') }}">
-                                Register
-                            </a>
-                        </li>
-
-                @else
-
-                    <!-- Support -->
-                        <li class="hs-has-sub-menu nav-item">
-                            <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link dropdown-toggle" href="#"
-                               role="button" data-bs-toggle="dropdown" aria-expanded="false">My Account</a>
-                            <!-- Mega Menu -->
-                            <div class="hs-sub-menu dropdown-menu" aria-labelledby="pagesMegaMenu"
-                                 style="min-width: 14rem;">
-                                <a class="dropdown-item" href="{{ route('users.account.overview') }}">Profile</a>
-                                <a class="dropdown-item" href="{{ route('users.store.orders.index') }}">Orders</a>
-                                <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
-                            </div>
-                            <!-- End Mega Menu -->
-                        </li>
-                        <!-- End Support -->
-                @endif
-
-                <!-- End Button -->
+                    @php $menu = \App\Models\Menu::where('code', 'store_menu')->first(); @endphp
+                    @include('partial-components.menu', ['items' => $menu['items']])
                 </ul>
             </div>
             <!-- End Collapse -->

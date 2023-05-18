@@ -216,6 +216,13 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
         ->name('dashboard.promo-codes.create');
 
 
+    Route::get('/dashboard/menu-builder', [DashboardController::class, 'menuBuilderIndex'])
+        ->name('dashboard.menu-builder.index');
+
+    Route::get('/dashboard/menu-builder/{menu}/edit', [DashboardController::class, 'menuBuilderEdit'])
+        ->name('dashboard.menu-builder.edit');
+
+
 });
 
 

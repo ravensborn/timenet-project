@@ -98,6 +98,7 @@ class DatabaseSeeder extends Seeder
             TimeNetServiceSeeder::class, //Services
             TimeNetFeatureSeeder::class, //Services
             TimeNetArticleSeeder::class, //Articles
+            TimeNetMenuSeeder::class, //Articles
         ]);
 
 //        Order::factory(100)->create();

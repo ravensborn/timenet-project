@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Dashboard\Products;
 
+use App\Models\CartItem;
 use App\Models\Product;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
@@ -94,6 +95,7 @@ class ProductsTable extends DataTableComponent
     public function deleteItem(): void
     {
         if ($this->itemToBeDeleted) {
+            CartItem::where('product_id', $this->itemToBeDeleted->id)->delete();
             $this->itemToBeDeleted->delete();
         }
 

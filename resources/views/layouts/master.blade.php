@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Required Meta Tags Always Come First -->
+
     <meta charset="utf-8">
+    <meta name="description"
+          content="TimeNet Company a network expertise company works in the fields of providing internet access">
+    <meta name="keywords" content="TimeNet, Internet, ISP, Store, Network Store, Network Devices, Switch, Router, Hub, Cable, Fiber">
+    <meta name="author" content="Yad Hoshyar">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Title -->
-    <title>TimeNet Company</title>
+    <title>{{ isset($title) ? 'TimeNet | ' . $title : 'TimeNet Company' }}</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('images/logo.png') }}">

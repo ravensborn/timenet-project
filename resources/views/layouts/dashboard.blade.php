@@ -192,6 +192,17 @@
                     Module Settings
                 </li>
 
+
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{ route('dashboard.menu-builder.index') }}">
+                        <i class="align-middle" data-feather="menu"></i> <span class="align-middle">
+                           Menu Builder
+                        </span>
+                    </a>
+                </li>
+
+
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ route('dashboard.promo-codes.index') }}">
                         <i class="align-middle" data-feather="percent"></i> <span class="align-middle">

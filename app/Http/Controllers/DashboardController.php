@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Menu;
 use App\Models\Order;
 use App\Models\Post;
 use App\Models\Product;
@@ -186,6 +187,16 @@ class DashboardController extends Controller
     public function promoCodeCreate()
     {
         return view('pages.dashboard.promo-codes.create');
+    }
+
+    public function menuBuilderIndex() {
+        return view('pages.dashboard.menu-builder.index');
+    }
+
+    public function menuBuilderEdit(Menu $menu) {
+        return view('pages.dashboard.menu-builder.edit', [
+            'menu' => $menu
+        ]);
     }
 
 }

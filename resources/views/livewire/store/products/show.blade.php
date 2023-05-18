@@ -142,7 +142,7 @@
                     <div class="d-flex align-items-center">
                         @if($product->previous_price)
                             <h3 class="mb-0">${{ number_format($product->price, 2) }}</h3>
-                            <span class="ms-2"><del>{{ number_format($product->previous_price, 2) }}</del></span>
+                            <span class="ms-2"><del>${{ number_format($product->previous_price, 2) }}</del></span>
                         @else
                             <h3 class="mb-0">${{ number_format($product->price, 2) }}</h3>
                         @endif

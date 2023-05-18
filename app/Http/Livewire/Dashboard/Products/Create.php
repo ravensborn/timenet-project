@@ -48,7 +48,6 @@ class Create extends Component
             'category_id' => 'required|integer|exists:categories,id',
             'brand_id' => 'required|integer|exists:brands,id',
             'stock' => 'required|integer',
-            'promo_code' => 'nullable|int|exists:promo_codes,code',
             'price' => 'required|numeric|gt:-1|max:100000',
             'previous_price' => 'required|numeric|gt:-1|max:100000',
         ];

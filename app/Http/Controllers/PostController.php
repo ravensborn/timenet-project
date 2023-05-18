@@ -34,8 +34,6 @@ class PostController extends Controller
     public function show($slug)
     {
 
-
-
         if (auth()->check() && auth()->user()->hasRole('admin')) {
 
             $post = Post::where('slug', $slug)->firstOrFail();
