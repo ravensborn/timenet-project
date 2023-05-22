@@ -32,8 +32,9 @@
         }
 
         .homepage-main-banner {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{ asset('images/wallpapers/6.jpg') }}');
-            background-position: center 50%;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{ asset('images/wallpapers/RUT200-social-alt-share.png') }}');
+            {{--background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{ asset('images/wallpapers/6.jpg') }}');--}}
+            background-position: center 70%;
             background-repeat: no-repeat;
             background-size: cover;
         }

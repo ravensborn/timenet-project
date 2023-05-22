@@ -100,12 +100,17 @@
                                 <img class="card-img" src="{{ $post->getFirstMediaUrl('cover') }}"
                                      alt="Image Description">
                                 <div class="card-body pt-3">
-                                    <span class="text-body">
+
+                                    @if(!in_array($post->category->id, [\App\Models\Category::CATEGORY_SERVICE]))
+                                        <span class="text-body">
                                         {{ $post->created_at->format('d-m-Y') }}
                                         by
                                         {{ $post->author->name }}
                                     </span>
-                                    <h4 class="card-title text-inherit mt-2">{{ $post->title }}</h4>
+                                        <h4 class="card-title text-inherit mt-2">{{ $post->title }}</h4>
+                                    @else
+                                        <h4 class="card-title text-inherit text-center mt-2">{{ $post->title }}</h4>
+                                    @endif
 
                                     @if(!in_array($post->category->id, [\App\Models\Category::CATEGORY_SERVICE]))
                                         <p class="card-text text-body">{{ $post->short_content }}</p>

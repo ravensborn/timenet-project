@@ -37,7 +37,7 @@ class Edit extends Component
             'title' => 'required|string|min:3|max:100',
             'is_hidden' => 'required|boolean',
             'is_commentable' => 'required|boolean',
-            'content' => 'nullable|max:10000',
+            'content' => 'nullable|max:100000',
         ];
 
         $validated = $this->validate($rules);

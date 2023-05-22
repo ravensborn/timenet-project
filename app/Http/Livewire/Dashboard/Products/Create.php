@@ -41,7 +41,7 @@ class Create extends Component
     {
         $rules = [
             'name' => 'required|string|min:3|max:100',
-            'description' => 'required|string|min:3|max:2000',
+            'description' => 'required|string|min:3|max:50000',
             'is_hidden' => 'required|boolean',
             'is_purchasable_online' => 'required|boolean',
             'lc_country_id' => 'required|integer|exists:enabled_countries,lc_country_id',
