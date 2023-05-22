@@ -102,15 +102,6 @@
                     @enderror
                 </div>
             </div>
-            <div class="col-6">
-                <div>
-                    <label for="promo_code" class="form-label">Activate Promo Code</label>
-                    <input type="number" id="promo_code" class="form-control" wire:model="promo_code">
-                    @error('promo_code')
-                    <small class="text-danger">{{ $message }}</small>
-                    @enderror
-                </div>
-            </div>
         </div>
         <div class="row mt-3">
             <div class="col-6">
