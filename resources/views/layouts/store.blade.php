@@ -45,7 +45,7 @@
         }
 
         .store-main-banner {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{ asset('images/wallpapers/6.jpg') }}');
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{ asset('images/wallpapers/store-wallpaper.jpg') }}');
             background-position: center 50%;
             background-repeat: no-repeat;
             background-size: cover;

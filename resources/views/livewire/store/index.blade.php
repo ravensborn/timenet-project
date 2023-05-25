@@ -2,7 +2,8 @@
 
 
     <div class="content-space-b-1 store-main-banner">
-        <div class="container d-md-flex align-items-md-center vh-md-70 content-space-t-4 content-space-b-3 content-space-md-0">
+        <div
+            class="container d-md-flex align-items-md-center vh-md-70 content-space-t-4 content-space-b-3 content-space-md-0">
             <div class="mt-5">
                 <h1 class="text-white">TimeNet Store</h1>
                 <p class="text-white-70 w-75" style="font-size: 16.5px;">
@@ -26,12 +27,13 @@
                             <div class="row align-items-lg-center">
                                 <div class="col-lg-5 order-lg-2 mb-7 mb-lg-0">
                                     <div class="mb-6">
-                                        <h1 class="display-6 mb-4">Wireless Networking</h1>
+                                        <h1 class="display-6 mb-4">RUTXR1</h1>
                                         <p>
-                                            Enjoy the freedom of wireless networking with our selection of wireless
-                                            routers and access points. Our wireless networking products offer fast,
-                                            reliable connections that let you work and play without being tethered to a
-                                            cable. Shop with us and experience the convenience of wireless networking.
+                                            The first rack-mountable LTE Cat 6 router in the Teltonika Networks
+                                            portfolio comes with redundant power supplies, WAN failover, dual-SIM, SFP,
+                                            USB, and dedicated console ports. This feature-rich device with highly
+                                            customizable and powerful RutOS is perfect where a fast and ultra-reliable
+                                            connection is needed.
                                         </p>
                                     </div>
 
@@ -44,7 +46,7 @@
                                 <div class="col-lg-6 order-lg-1">
                                     <div class="w-75 mx-auto">
                                         <img class="img-fluid"
-                                             src="{{ asset('images/store-slider/router.png') }}"
+                                             src="{{ asset('images/store-slider/RUTXR1.png') }}"
                                              alt="Image Description">
                                     </div>
                                 </div>
@@ -62,12 +64,13 @@
                             <div class="row align-items-lg-center">
                                 <div class="col-lg-5 order-lg-2 mb-7 mb-lg-0">
                                     <div class="mb-6">
-                                        <h1 class="display-6 mb-4">Security Solutions</h1>
+                                        <h1 class="display-6 mb-4">TRB140</h1>
                                         <p>
-                                            Protect your network with our comprehensive security solutions. We offer a
-                                            range of products and services designed to keep your network safe from cyber
-                                            threats and attacks. From firewalls and antivirus software to network
-                                            monitoring and management, we've got you covered.
+                                            TRB140 is an ultra-small, lightweight, and energy-efficient IoT device with
+                                            mission-critical LTE Cat 4 and Gigabit Ethernet connectivity options. Linux
+                                            environment offers a high degree of customization. This gateway is perfect
+                                            for projects and applications where a single device must be upgraded with
+                                            reliable and secure internet connectivity.
                                         </p>
                                     </div>
 
@@ -80,7 +83,7 @@
                                 <div class="col-lg-6 order-lg-1">
                                     <div class="w-75 mx-auto">
                                         <img class="img-fluid"
-                                             src="{{ asset('images/store-slider/RCS5516FW-front-right.png') }}"
+                                             src="{{ asset('images/store-slider/TRB140.png') }}"
                                              alt="Image Description">
                                     </div>
                                 </div>
@@ -98,12 +101,12 @@
                             <div class="row align-items-lg-center">
                                 <div class="col-lg-5 order-lg-2 mb-7 mb-lg-0">
                                     <div class="mb-6">
-                                        <h1 class="display-6 mb-4">Networking Essentials</h1>
+                                        <h1 class="display-6 mb-4">RUT901</h1>
                                         <p>
-                                            Our store has everything you need to set up and maintain your home or
-                                            business network. From routers and switches to cables and connectors, we
-                                            carry a wide range of networking essentials from top brands. Shop with us
-                                            and get the tools you need to stay connected.
+                                            The RUT901 cellular router delivers the top-rated features of its
+                                            predecessors, the RUT950 and RUT951, to the market. The device ensures
+                                            high-performance, providing automatic WAN failover to an available backup
+                                            connection, guaranteeing network continuity and eliminating downtime.
                                         </p>
                                     </div>
 
@@ -116,7 +119,7 @@
                                 <div class="col-lg-6 order-lg-1">
                                     <div class="w-75 mx-auto">
                                         <img class="img-fluid"
-                                             src="{{ asset('images/store-slider/fiber.png') }}"
+                                             src="{{ asset('images/store-slider/RUT901.png') }}"
                                              alt="Image Description">
                                     </div>
                                 </div>
@@ -140,7 +143,7 @@
                             <a class="js-swiper-thumb-progress swiper-thumb-progress-avatar" href="javascript:;"
                                tabindex="0">
                                 <img class="swiper-thumb-progress-avatar-img"
-                                     src="{{ asset('images/store-slider/router.png') }}"
+                                     src="{{ asset('images/store-slider/RUTXR1.png') }}"
                                      alt="Image Description">
                             </a>
                         </div>
@@ -151,7 +154,7 @@
                             <a class="js-swiper-thumb-progress swiper-thumb-progress-avatar" href="javascript:;"
                                tabindex="0">
                                 <img class="swiper-thumb-progress-avatar-img"
-                                     src="{{ asset('images/store-slider/RCS5516FW-front-right.png') }}"
+                                     src="{{ asset('images/store-slider/TRB140.png') }}"
                                      alt="Image Description">
                             </a>
                         </div>
@@ -163,7 +166,7 @@
                             <a class="js-swiper-thumb-progress swiper-thumb-progress-avatar" href="javascript:;"
                                tabindex="0">
                                 <img class="swiper-thumb-progress-avatar-img"
-                                     src="{{ asset('images/store-slider/fiber.png') }}"
+                                     src="{{ asset('images/store-slider/RUT901.png') }}"
                                      alt="Image Description">
                             </a>
                         </div>
