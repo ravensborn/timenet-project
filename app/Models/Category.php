@@ -44,6 +44,7 @@ class Category extends Model
 
     protected $guarded = ['id'];
 
+    const CATEGORY_ARTICLE = 4;
     const CATEGORY_SERVICE = 2;
 
     public function getSlugOptions(): SlugOptions

@@ -69,9 +69,9 @@
                                     <h4 class="card-title"><a class="text-dark"
                                                               href="{{ route('posts.show', $post->slug) }}">{{ $post->title }}</a>
                                     </h4>
-                                    @if(!in_array($post->category->id, [\App\Models\Category::CATEGORY_SERVICE]))
-                                        <p class="card-text small">{{ $post->short_content }}</p>
-                                    @endif
+{{--                                    @if(!in_array($post->category->id, [\App\Models\Category::CATEGORY_SERVICE]))--}}
+{{--                                        <p class="card-text small">{{ $post->short_content }}</p>--}}
+{{--                                    @endif--}}
                                     <a class="card-link small" href="{{ route('posts.show', $post->slug) }}">Read more
                                         <i class="bi-chevron-right small ms-1"></i></a>
                                 </div>
@@ -101,7 +101,7 @@
                                      alt="Image Description">
                                 <div class="card-body pt-3">
 
-                                    @if(!in_array($post->category->id, [\App\Models\Category::CATEGORY_SERVICE]))
+                                    @if(in_array($post->category->id, [\App\Models\Category::CATEGORY_ARTICLE]))
                                         <span class="text-body">
                                         {{ $post->created_at->format('d-m-Y') }}
                                         by
@@ -112,9 +112,9 @@
                                         <h4 class="card-title text-inherit text-center mt-2">{{ $post->title }}</h4>
                                     @endif
 
-                                    @if(!in_array($post->category->id, [\App\Models\Category::CATEGORY_SERVICE]))
-                                        <p class="card-text text-body">{{ $post->short_content }}</p>
-                                    @endif
+{{--                                    @if(!in_array($post->category->id, [\App\Models\Category::CATEGORY_SERVICE]))--}}
+{{--                                        <p class="card-text text-body">{{ $post->short_content }}</p>--}}
+{{--                                    @endif--}}
                                 </div>
                             </a>
                             <!-- End Card -->
