@@ -161,6 +161,10 @@
       <path value="$PROJECT_DIR$/vendor/rappasoft/laravel-livewire-tables" />
       <path value="$PROJECT_DIR$/vendor/qirolab/laravel-bannable" />
       <path value="$PROJECT_DIR$/vendor/spatie/laravel-activitylog" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php83" />
+      <path value="$PROJECT_DIR$/vendor/league/flysystem-local" />
+      <path value="$PROJECT_DIR$/vendor/rap2hpoutre/fast-excel" />
+      <path value="$PROJECT_DIR$/vendor/openspout/openspout" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0" />

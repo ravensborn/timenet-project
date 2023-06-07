@@ -6,6 +6,7 @@ use App\Models\Brand;
 use App\Models\CartItem;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\User;
 use App\Models\Wishlist;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Collection;
@@ -39,6 +40,17 @@ class Index extends Component
     public array $selectedBrands = [];
 
     public string $displayProductsType = 'grid';
+
+    public function dismissMessage(): void
+    {
+        if (auth()->check()) {
+
+            $this->user->update([
+                'store_welcome_message' => false,
+            ]);
+        }
+
+    }
 
     public function updateProductDisplayType($value): void
     {
@@ -194,12 +206,12 @@ class Index extends Component
 
     public function _updateSelectedCategories(): void
     {
+
 //        if(in_array('all', $this->selectedCategories)) {
 //            $this->selectedCategories = [
 //                0 => 'all'
 //            ];
 //        }
-
         $this->resetPage();
     }
 

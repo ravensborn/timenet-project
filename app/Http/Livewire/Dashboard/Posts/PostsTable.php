@@ -2,10 +2,12 @@
 
 namespace App\Http\Livewire\Dashboard\Posts;
 
+use App\Models\Category;
 use App\Models\Post;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
+use Rappasoft\LaravelLivewireTables\Views\Filters\MultiSelectFilter;
 
 class PostsTable extends DataTableComponent
 {
@@ -13,6 +15,22 @@ class PostsTable extends DataTableComponent
     use LivewireAlert;
 
     protected $model = Post::class;
+
+    public function filters(): array
+    {
+        return [
+            MultiSelectFilter::make('Category')
+                ->options(
+                    Category::query()
+                        ->where('model', $this->model)
+                        ->orderBy('name')
+                        ->get()
+                        ->keyBy('id')
+                        ->map(fn($category) => $category->name)
+                        ->toArray()
+                ),
+        ];
+    }
 
     public function configure(): void
     {

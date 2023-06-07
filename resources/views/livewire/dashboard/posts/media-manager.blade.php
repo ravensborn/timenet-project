@@ -11,8 +11,8 @@
                 >
                     <form>
                         <div wire:loading.remove wire:target="photo">
-                            <label for="photo">Photos</label>
-                            <input type="file" id="photo" wire:model="photo">
+                            <label for="photo" class="form-label">Photos</label>
+                            <input type="file" class="form-control" id="photo" wire:model="photo">
                             @error('photo')
                             <div class="text-danger mt-3">{{ $message }}</div>
                             @enderror

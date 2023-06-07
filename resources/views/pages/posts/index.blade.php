@@ -37,7 +37,7 @@
     <!-- Card Grid -->
     <div class="container content-space-2 content-space-lg-1">
         <!-- Heading -->
-        <div class="w-75 text-center mx-md-auto mb-5">
+        <div class="text-center mx-md-auto mb-5">
             <h2>{{ $category->name }}</h2>
 
             <p>

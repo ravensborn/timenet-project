@@ -9,11 +9,10 @@
                 </div>
                 <div class="card-body"
                 >
-
                     <form>
                         <div wire:loading.remove wire:target="photos">
-                            <label for="photos">Photos</label>
-                            <input type="file" id="photos" wire:model="photos" multiple>
+                            <label for="photos" class="form-label">Select images</label>
+                            <input type="file" class="form-control" id="photos" wire:model="photos" multiple>
                             @error('photos.*')
                             <div class="text-danger mt-3">{{ $message }}</div>
                             @enderror

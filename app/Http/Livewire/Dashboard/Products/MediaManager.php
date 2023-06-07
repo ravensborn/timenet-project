@@ -25,7 +25,7 @@ class MediaManager extends Component
     public function updatedPhotos(): void
     {
         $this->validate([
-            'photos.*' => 'image|max:2048', // 2MB Max
+            'photos.*' => 'image|mimes:jpeg,jpg,png|max:2048', // 2MB Max
         ]);
 
         foreach ($this->photos as $photo) {

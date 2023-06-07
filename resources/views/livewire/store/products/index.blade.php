@@ -34,11 +34,22 @@
     <!-- End Breadcrumb -->
 
     <div class="container content-space-t-1">
-
+        @if(!$user || ($user && $user->store_welcome_message))
         <div class="row">
             <div class="col">
                 <div class="alert alert-soft-dark" role="alert">
-                    <h3 class="alert-heading">Welcome to TimeNet Store!</h3>
+
+
+                        <div class="d-flex justify-content-between">
+                            <h3 class="alert-heading">Welcome to TimeNet Store!</h3>
+                            <div class="col-6 text-end">
+                                <div style="cursor:pointer;" class="pb-2 pe-2" wire:click="dismissMessage">
+                                    <i class="bi bi-x-lg"></i>
+                                </div>
+                            </div>
+                        </div>
+
+
 
                     <p>
                         Welcome to TimeNet, your one-stop-shop for all your networking needs. We are a team of
@@ -56,7 +67,7 @@
                 </div>
             </div>
         </div>
-
+        @endif
         @if(auth()->check())
 
             <div class="row">
@@ -139,7 +150,7 @@
                                     <div class="d-grid gap-2">
 
                                         <!-- Checkboxes -->
-                                        <div class="form-check">
+                                        <div class="form-check" wire:key="0">
                                             <input class="form-check-input" type="checkbox" value="all"
                                                    id="categoryCheckbox-0"
                                                    wire:model="selectedCategories"
@@ -149,10 +160,10 @@
                                             </label>
                                         </div>
                                         <!-- End Checkboxes -->
-                                        @foreach($categories as $category)
+                                        @foreach($categories as $key => $category)
 
                                             <!-- Checkboxes -->
-                                            <div class="form-check">
+                                            <div class="form-check" wire:key="{{ $key + 1 }}">
                                                 <input class="form-check-input" type="checkbox"
                                                        value="{{ $category->id }}"
                                                        id="categoryCheckbox-{{ $category->id }}"

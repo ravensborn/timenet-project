@@ -63,4 +63,10 @@ class Category extends Model
     {
         return $this->hasMany(Post::class);
     }
+
+    public function faqItems(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(FaqItem::class);
+    }
 }
+

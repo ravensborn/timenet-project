@@ -3,10 +3,12 @@
 namespace App\Http\Livewire\Dashboard\Products;
 
 use App\Models\CartItem;
+use App\Models\Category;
 use App\Models\Product;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
+use Rappasoft\LaravelLivewireTables\Views\Filters\MultiSelectFilter;
 
 class ProductsTable extends DataTableComponent
 {
@@ -14,6 +16,22 @@ class ProductsTable extends DataTableComponent
     use LivewireAlert;
 
     protected $model = Product::class;
+
+    public function filters(): array
+    {
+        return [
+            MultiSelectFilter::make('Category')
+                ->options(
+                    Category::query()
+                        ->where('model', $this->model)
+                        ->orderBy('name')
+                        ->get()
+                        ->keyBy('id')
+                        ->map(fn($category) => $category->name)
+                        ->toArray()
+                ),
+        ];
+    }
 
     public function configure(): void
     {

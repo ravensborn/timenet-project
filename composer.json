@@ -16,6 +16,7 @@
         "lwwcas/laravel-countries": "^3.3",
         "propaganistas/laravel-phone": "^5.0",
         "qirolab/laravel-bannable": "^3.0",
+        "rap2hpoutre/fast-excel": "^5.2",
         "rappasoft/laravel-livewire-tables": "^2.12",
         "shetabit/visitor": "^4.0",
         "spatie/image": "^2.2",

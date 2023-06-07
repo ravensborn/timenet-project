@@ -4,20 +4,34 @@ namespace App\Http\Controllers;
 
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\FaqItem;
 use App\Models\Menu;
 use App\Models\Order;
 use App\Models\Post;
 use App\Models\Product;
+use App\Models\SubscriberList;
+use App\Models\TeamMember;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Rap2hpoutre\FastExcel\FastExcel;
+use Shetabit\Visitor\Models\Visit;
 use Spatie\Activitylog\Models\Activity;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        return view('pages.dashboard.overview');
+        $statistics = [
+            [
+                'icon' => 'bi bi-clipboard-data',
+                'name' => 'Homepage visits',
+                'data' => Visit::where('url', route('home'))->count(),
+            ]
+        ];
+        return view('pages.dashboard.overview', [
+            'statistics' => $statistics
+        ]);
     }
 
     public function usersIndex()
@@ -189,14 +203,71 @@ class DashboardController extends Controller
         return view('pages.dashboard.promo-codes.create');
     }
 
-    public function menuBuilderIndex() {
+    public function menuBuilderIndex()
+    {
         return view('pages.dashboard.menu-builder.index');
     }
 
-    public function menuBuilderEdit(Menu $menu) {
+    public function menuBuilderEdit(Menu $menu)
+    {
         return view('pages.dashboard.menu-builder.edit', [
             'menu' => $menu
         ]);
+    }
+
+    public function teamMemberIndex()
+    {
+        return view('pages.dashboard.team-members.index');
+    }
+
+    public function teamMemberCreate()
+    {
+        return view('pages.dashboard.team-members.create');
+    }
+
+    public function teamMemberEdit(TeamMember $teamMember)
+    {
+        return view('pages.dashboard.team-members.edit', [
+            'teamMember' => $teamMember
+        ]);
+    }
+
+    public function downloadCenterIndex()
+    {
+        return view('pages.dashboard.download-center.index');
+    }
+
+    public function downloadCenterCreate()
+    {
+        return view('pages.dashboard.download-center.create');
+    }
+
+    public function faqItemIndex()
+    {
+        return view('pages.dashboard.faq-items.index');
+    }
+
+    public function faqItemCreate()
+    {
+        return view('pages.dashboard.faq-items.create');
+    }
+
+    public function faqItemEdit(FaqItem $faqItem)
+    {
+        return view('pages.dashboard.faq-items.edit', [
+            'faqItem' => $faqItem
+        ]);
+    }
+
+    public function subscriberListIndex()
+    {
+        return view('pages.dashboard.subscriber-list.index');
+    }
+
+    public function subscriberListDownload()
+    {
+        $list = SubscriberList::all();
+        return (new FastExcel($list))->download('subscriber-list.xlsx');
     }
 
 }

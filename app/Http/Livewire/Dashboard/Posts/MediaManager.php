@@ -23,7 +23,7 @@ class MediaManager extends Component
     public function updatedPhoto(): void
     {
         $this->validate([
-            'photo' => 'image|max:2048', // 2MB Max
+            'photo' => 'required|image|mimes:jpeg,jpg,png|max:2048', // 2MB Max
         ]);
 
         $name = time() . '_' . Str::random(5);

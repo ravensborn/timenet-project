@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\TeamMember;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -22,7 +23,12 @@ class PageController extends Controller
     }
 
     public function about() {
-       return view('pages.about');
+
+       $teamMembers = TeamMember::where('is_visible', true)->orderBy('order', 'asc')->get();
+
+       return view('pages.about', [
+           'teamMembers' => $teamMembers
+       ]);
     }
 
     public function banned() {

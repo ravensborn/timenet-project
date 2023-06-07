@@ -194,7 +194,7 @@
 
 
 
-                <li class="sidebar-item">
+                <li class="sidebar-item @if(request()->is('dashboard/menu-builder')) active @endif">
                     <a class="sidebar-link" href="{{ route('dashboard.menu-builder.index') }}">
                         <i class="align-middle" data-feather="menu"></i> <span class="align-middle">
                            Menu Builder
@@ -203,7 +203,7 @@
                 </li>
 
 
-                <li class="sidebar-item">
+                <li class="sidebar-item @if(request()->is('dashboard/promo-codes')) active @endif">
                     <a class="sidebar-link" href="{{ route('dashboard.promo-codes.index') }}">
                         <i class="align-middle" data-feather="percent"></i> <span class="align-middle">
                            Promo Codes
@@ -212,7 +212,7 @@
                 </li>
 
 
-                <li class="sidebar-item">
+                <li class="sidebar-item @if(request()->is('dashboard/categories')) active @endif">
                     <a class="sidebar-link" href="{{ route('dashboard.categories.index') }}">
                         <i class="align-middle" data-feather="list"></i> <span class="align-middle">
                            Categories
@@ -220,36 +220,44 @@
                     </a>
                 </li>
 
-                <li class="sidebar-item">
+                <li class="sidebar-item @if(request()->is('dashboard/brands')) active @endif">
                     <a class="sidebar-link" href="{{ route('dashboard.brands.index') }}">
-                        <i class="align-middle" data-feather="list"></i> <span class="align-middle">
+                        <i class="align-middle" data-feather="github"></i> <span class="align-middle">
                            Brands
                         </span>
                     </a>
                 </li>
 
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="#">
-                        <i class="align-middle" data-feather="list"></i> <span class="align-middle">
+                <li class="sidebar-item @if(request()->is('dashboard/team-members')) active @endif">
+                    <a class="sidebar-link" href="{{ route('dashboard.team-members.index') }}">
+                        <i class="align-middle" data-feather="users"></i> <span class="align-middle">
+                           Team Members
+                        </span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item @if(request()->is('dashboard/download-center')) active @endif">
+                    <a class="sidebar-link" href="{{ route('dashboard.download-center.index') }}">
+                        <i class="align-middle" data-feather="download"></i> <span class="align-middle">
                             Download Center
                         </span>
                     </a>
                 </li>
 
 
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="#">
-                        <i class="align-middle" data-feather="list"></i> <span class="align-middle">
+                <li class="sidebar-item @if(request()->is('dashboard/subscriber-list')) active @endif">
+                    <a class="sidebar-link" href="{{ route('dashboard.subscriber-list.index') }}">
+                        <i class="align-middle" data-feather="rss"></i> <span class="align-middle">
                             Subscriber List
                         </span>
                     </a>
                 </li>
 
 
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="#">
-                        <i class="align-middle" data-feather="list"></i> <span class="align-middle">
-                            FAQ
+                <li class="sidebar-item @if(request()->is('dashboard/faq-items')) active @endif">
+                    <a class="sidebar-link" href="{{ route('dashboard.faq-items.index') }}">
+                        <i class="align-middle" data-feather="help-circle"></i> <span class="align-middle">
+                            Manage FAQ
                         </span>
                     </a>
                 </li>
@@ -281,9 +289,9 @@
                         <div class="dropdown-menu dropdown-menu-end">
                             <a class="dropdown-item" href="{{ route('users.account.overview') }}">
                                 <i class="align-middle me-1" data-feather="user"></i> Account</a>
-                            <a class="dropdown-item" href="{{ route('home') }}">
+                            <a target="_blank" class="dropdown-item" href="{{ route('home') }}">
                                 <i class="align-middle me-1" data-feather="log-in"></i> View Website</a>
-                            <a class="dropdown-item" href="{{ route('store.index') }}">
+                            <a target="_blank" class="dropdown-item" href="{{ route('store.index') }}">
                                 <i class="align-middle me-1" data-feather="log-in"></i> View Store</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('logout') }}">Log out</a>

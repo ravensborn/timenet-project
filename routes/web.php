@@ -223,6 +223,37 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
         ->name('dashboard.menu-builder.edit');
 
 
+    Route::get('/dashboard/team-members', [DashboardController::class, 'teamMemberIndex'])
+        ->name('dashboard.team-members.index');
+
+    Route::get('/dashboard/team-members/create', [DashboardController::class, 'teamMemberCreate'])
+        ->name('dashboard.team-members.create');
+
+    Route::get('/dashboard/team-members/{teamMember}/edit', [DashboardController::class, 'teamMemberEdit'])
+        ->name('dashboard.team-members.edit');
+
+    Route::get('/dashboard/download-center', [DashboardController::class, 'downloadCenterIndex'])
+        ->name('dashboard.download-center.index');
+
+    Route::get('/dashboard/download-center/create', [DashboardController::class, 'downloadCenterCreate'])
+        ->name('dashboard.download-center.create');
+
+
+    Route::get('/dashboard/faq-items', [DashboardController::class, 'faqItemIndex'])
+        ->name('dashboard.faq-items.index');
+
+    Route::get('/dashboard/faq-items/create', [DashboardController::class, 'faqItemCreate'])
+        ->name('dashboard.faq-items.create');
+
+    Route::get('/dashboard/faq-items/{faq_item}/edit', [DashboardController::class, 'faqItemEdit'])
+        ->name('dashboard.faq-items.edit');
+
+    Route::get('/dashboard/subscriber-list', [DashboardController::class, 'subscriberListIndex'])
+        ->name('dashboard.subscriber-list.index');
+
+    Route::get('/dashboard/subscriber-list-download', [DashboardController::class, 'subscriberListDownload'])
+        ->name('dashboard.subscriber-list.download');
+
 });
 
 
