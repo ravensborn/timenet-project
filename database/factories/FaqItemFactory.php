@@ -18,8 +18,9 @@ class FaqItemFactory extends Factory
      */
     public function definition()
     {
+       static $i = 0;
         return [
-            'order' => 1,
+            'order' => ++$i,
             'category_id' => $this->faker->randomElement(Category::where('model', FaqItem::class)->get()),
             'title' => $this->faker->name,
             'description' => $this->faker->paragraph,

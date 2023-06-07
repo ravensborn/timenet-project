@@ -66,7 +66,7 @@ class Category extends Model
 
     public function faqItems(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(FaqItem::class);
+        return $this->hasMany(FaqItem::class)->orderBy('order');
     }
 }
 

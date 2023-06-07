@@ -32,6 +32,16 @@ class Create extends Component
 
         $validated = $this->validate($rules);
 
+        $order = 1;
+
+        $firstFaqItem = FaqItem::orderBy('order', 'desc')->first();
+
+        if ($firstFaqItem) {
+            $order = $firstFaqItem->order + 1;
+        }
+
+        $validated['order'] = $order;
+
         $faqItem = new FaqItem;
         $faqItem = $faqItem->create($validated);
 

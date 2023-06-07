@@ -47,7 +47,7 @@ class FaqItemsTable extends DataTableComponent
     public function builder(): \Illuminate\Database\Eloquent\Builder
     {
         return FaqItem::query()
-            ->orderBy('created_at', 'desc');
+            ->orderBy('order');
     }
 
     public function columns(): array
@@ -69,11 +69,51 @@ class FaqItemsTable extends DataTableComponent
 
                 $deleteBtn = '<button wire:click="triggerDeleteItem(' . $file->id . ')"  class="btn btn-danger btn-sm me-1"><i class="bi bi-trash"></i></button>';
                 $editBtn = '<a href="' . route('dashboard.faq-items.edit', $value) . '" class="btn btn-warning btn-sm me-1"><i class="bi bi-pen"></i></a>';
+//                $moveUpBtn = '<button wire:click="moveUp(' . $value . ')" class="btn btn-info btn-sm me-1"><i class="bi bi-arrow-up"></i></button>';
+//                $moveDownBtn = '<button wire:click="moveDown(' . $value . ')"  class="btn btn-info btn-sm me-1"><i class="bi bi-arrow-down"></i></button>';
 
-                return  $editBtn . $deleteBtn;
+//                return $moveUpBtn . $moveDownBtn . $editBtn . $deleteBtn;
+                return $editBtn . $deleteBtn;
             })->html(),
 
         ];
+    }
+
+    public function moveUp($faqItemId): void
+    {
+        $faqItem = FaqItem::find($faqItemId);
+        if ($faqItem) {
+            $previousFaqItem = FaqItem::where('order', '<', $faqItem->order)
+                ->orderBy('order', 'desc')
+                ->first();
+
+            if ($previousFaqItem) {
+                $this->swapOrder($faqItem, $previousFaqItem);
+            }
+        }
+    }
+
+    public function moveDown($faqItemId): void
+    {
+        $faqItem = FaqItem::find($faqItemId);
+        if ($faqItem) {
+            $nextFaqItem = FaqItem::where('order', '>', $faqItem->order)
+                ->orderBy('order')
+                ->first();
+
+            if ($nextFaqItem) {
+                $this->swapOrder($faqItem, $nextFaqItem);
+            }
+        }
+    }
+
+    private function swapOrder($faqItem1, $faqItem2): void
+    {
+        $order1 = $faqItem1->order;
+        $order2 = $faqItem2->order;
+
+        $faqItem1->update(['order' => $order2]);
+        $faqItem2->update(['order' => $order1]);
     }
 
     public $itemToBeDeleted = null;

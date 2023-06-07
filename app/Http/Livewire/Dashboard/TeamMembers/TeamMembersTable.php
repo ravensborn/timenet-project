@@ -28,7 +28,7 @@ class TeamMembersTable extends DataTableComponent
     public function builder(): \Illuminate\Database\Eloquent\Builder
     {
         return TeamMember::query()
-            ->orderBy('order', 'asc');
+            ->orderBy('order');
     }
 
     public function columns(): array
@@ -46,8 +46,6 @@ class TeamMembersTable extends DataTableComponent
                 ->searchable(),
 
             Column::make("Actions", "id")->format(function ($id, $row, $column) {
-
-
 
                 $deleteBtn = '<button wire:click="triggerDeleteItem(' . $id . ')"  class="btn btn-danger btn-sm me-1"><i class="bi bi-trash"></i></button>';
                 $editBtn = '<a href="' . route('dashboard.team-members.edit', $id) . '" class="btn btn-warning btn-sm me-1"><i class="bi bi-pen"></i></a>';
