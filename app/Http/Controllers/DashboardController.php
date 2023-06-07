@@ -26,7 +26,7 @@ class DashboardController extends Controller
             [
                 'icon' => 'bi bi-clipboard-data',
                 'name' => 'Homepage visits',
-                'data' => Visit::where('url', route('home'))->count(),
+                'data' => number_format(Visit::where('url', route('home'))->count()),
             ]
         ];
         return view('pages.dashboard.overview', [

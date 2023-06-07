@@ -58,7 +58,7 @@ class ProductsTable extends DataTableComponent
             Column::make("#", "id"),
             Column::make("Name", "name")
                 ->searchable(),
-            Column::make("View Count", "id")
+            Column::make("Views", "id")
                 ->format(function ($value, $row, $column) {
                     return count($row->visitLogs);
                 }),

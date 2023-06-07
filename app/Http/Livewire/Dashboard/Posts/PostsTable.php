@@ -65,7 +65,7 @@ class PostsTable extends DataTableComponent
                 ->format(function ($value, $row, $column) {
                     return $value ? 'Yes' : 'No';
                 })->searchable(),
-            Column::make("View Count", "id")
+            Column::make("Views", "id")
                 ->format(function ($value, $row, $column) {
                     return count($row->visitLogs);
                 }),

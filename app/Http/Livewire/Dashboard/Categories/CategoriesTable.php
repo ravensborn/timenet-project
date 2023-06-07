@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Dashboard\Categories;
 
 use App\Models\Category;
+use App\Models\FaqItem;
 use App\Models\Post;
 use App\Models\Product;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
@@ -50,6 +51,10 @@ class CategoriesTable extends DataTableComponent
                     return $category->posts->count();
                 }
 
+                if($category->model == FaqItem::class) {
+                    return $category->faqItems->count();
+                }
+
                 return 0;
 
             }),
@@ -92,7 +97,7 @@ class CategoriesTable extends DataTableComponent
     {
         if ($this->itemToBeDeleted) {
 
-            if($this->itemToBeDeleted->posts->count() || $this->itemToBeDeleted->products->count()) {
+            if($this->itemToBeDeleted->posts->count() || $this->itemToBeDeleted->products->count() || $this->itemToBeDeleted->faqItems->count()) {
                 $this->alert('error', 'This category has items assigned to it, can not be deleted.');
             } else {
                 $this->itemToBeDeleted->delete();
