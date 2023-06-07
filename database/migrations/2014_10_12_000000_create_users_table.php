@@ -20,8 +20,6 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->timestamp('banned_at')->nullable();
-            $table->json('properties')->nullable();
-            $table->boolean('store_welcome_message')->default(true);
             $table->rememberToken();
             $table->timestamps();
         });
