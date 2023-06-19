@@ -51,8 +51,6 @@
             background-size: cover;
         }
 
-
-
     </style>
 
 

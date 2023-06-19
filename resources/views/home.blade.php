@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <div class="content-space-b-1 homepage-main-banner">
+    <div class="content-space-b-1 homepage-main-banner" style="background-image: {{ $banner['backgroundOverlay'] }} url('{{ $banner['image'] }}'); background-position: {{ $banner['backgroundPosition'] }};">
 
         <div
             class="container d-md-flex align-items-md-center vh-md-70 content-space-t-4 content-space-b-3 content-space-md-0">

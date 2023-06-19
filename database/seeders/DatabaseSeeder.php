@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\EnabledCountry;
-use App\Models\Order;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -101,6 +100,7 @@ class DatabaseSeeder extends Seeder
             TimeNetMenuSeeder::class, //Articles
             TimeNetTeamMemberSeeder::class, //Team Members
             TimeNetFakeFAQSeeder::class,
+            TimeNetDefaultWebsiteThemeSeeder::class,
         ]);
 
 //        Order::factory(100)->create();

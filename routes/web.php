@@ -254,6 +254,9 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
     Route::get('/dashboard/subscriber-list-download', [DashboardController::class, 'subscriberListDownload'])
         ->name('dashboard.subscriber-list.download');
 
+    Route::get('/dashboard/website-theme', [DashboardController::class, 'manageWebsiteThemeIndex'])
+        ->name('dashboard.manage-website-theme.index');
+
 });
 
 

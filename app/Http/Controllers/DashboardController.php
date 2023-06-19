@@ -270,4 +270,8 @@ class DashboardController extends Controller
         return (new FastExcel($list))->download('subscriber-list.xlsx');
     }
 
+    public function manageWebsiteThemeIndex() {
+        return view('pages.dashboard.manage-website-theme.index');
+    }
+
 }

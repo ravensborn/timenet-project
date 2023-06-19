@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Dashboard\Categories;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\EnabledCountry;
+use App\Models\FaqItem;
 use App\Models\Post;
 use App\Models\Product;
 use Illuminate\Contracts\Auth\Authenticatable;
@@ -50,6 +51,10 @@ class Create extends Component
             [
                 'name' => 'Product',
                 'class' => Product::class,
+            ],
+            [
+                'name' => 'FAQ',
+                'class' => FaqItem::class,
             ],
         ];
         $this->user = auth()->user();

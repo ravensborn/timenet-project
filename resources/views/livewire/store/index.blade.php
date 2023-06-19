@@ -1,7 +1,7 @@
 <div>
 
 
-    <div class="content-space-b-1 store-main-banner">
+    <div class="content-space-b-1 store-main-banner" style="background-image: {{ $bannerArray['backgroundOverlay'] }} url('{{ $bannerArray['image'] }}'); background-position: {{ $bannerArray['backgroundPosition'] }};">
         <div
             class="container d-md-flex align-items-md-center vh-md-70 content-space-t-4 content-space-b-3 content-space-md-0">
             <div class="mt-5">

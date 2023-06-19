@@ -194,6 +194,14 @@
 
 
 
+                <li class="sidebar-item @if(request()->is('dashboard/manage-website-theme')) active @endif">
+                    <a class="sidebar-link" href="{{ route('dashboard.manage-website-theme.index') }}">
+                        <i class="align-middle" data-feather="loader"></i> <span class="align-middle">
+                            Website Theme
+                        </span>
+                    </a>
+                </li>
+
                 <li class="sidebar-item @if(request()->is('dashboard/menu-builder')) active @endif">
                     <a class="sidebar-link" href="{{ route('dashboard.menu-builder.index') }}">
                         <i class="align-middle" data-feather="menu"></i> <span class="align-middle">
