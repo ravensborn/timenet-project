@@ -52,9 +52,10 @@
                                     <li class="list-group-item">
                                         <div class="d-flex">
                                             <div class="flex-shrink-0">
-                                                <img class="avatar avatar-xl avatar-4x3"
-                                                     src="{{ $item->product->getMedia('images')->where('uuid', $item->product->cover_uuid)->first()->getFullUrl() }}"
-                                                     alt="Image Description">
+{{--                                                <img class="avatar avatar-xl avatar-4x3"--}}
+{{--                                                     src="{{ $item->product->getMedia('images')->where('uuid', $item->product->cover_uuid)->first()->getFullUrl() }}"--}}
+{{--                                                     alt="Image Description">--}}
+                                                <i class="bi bi-box"></i>
                                             </div>
 
                                             <div class="flex-grow-1 ms-3">
