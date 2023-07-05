@@ -124,8 +124,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
 //Post routes
 Route::get('/posts/{grid_type}/{slug}', [PostController::class, 'index'])
     ->name('posts.index');
+
 Route::get('/posts/{slug}', [PostController::class, 'show'])
     ->name('posts.show');
+
 Route::post('/posts/{slug}/comment', [CommentController::class, 'store'])
     ->name('posts.comments.store')
     ->middleware(['auth', 'verified']);
