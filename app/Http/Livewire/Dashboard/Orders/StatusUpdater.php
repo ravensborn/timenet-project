@@ -23,7 +23,7 @@ class StatusUpdater extends Component
 
             if($this->status_id == Order::STATUS_CANCELLED) {
 
-                $items = $this->order->items;
+                $items = $this->order->orderItems;
 
                 foreach ($items as $item) {
                     $product = $item->product;
