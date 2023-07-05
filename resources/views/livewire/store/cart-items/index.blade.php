@@ -53,7 +53,7 @@
                                         <div class="d-flex">
                                             <div class="flex-shrink-0">
                                                 <img class="avatar avatar-xl avatar-4x3"
-                                                     src="{{ $item->product->getMedia('images')->where('uuid', $uuid)->first()->getFullUrl() }}"
+                                                     src="{{ $item->product->getMedia('images')->where('uuid', $item->product->cover_uuid)->first()->getFullUrl() }}"
                                                      alt="Image Description">
                                             </div>
 
