@@ -45,7 +45,7 @@ class StatusUpdater extends Component
 
             } else {
 
-                $this->status_id = $this->order->status_id;
+                $this->status_id = $this->order->status;
                 $this->alert('error', 'Cannot change the status of cancelled orders.');
             }
 
