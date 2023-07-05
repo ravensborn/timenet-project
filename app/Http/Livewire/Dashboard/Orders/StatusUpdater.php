@@ -21,24 +21,32 @@ class StatusUpdater extends Component
 
         if (in_array($this->status_id, $this->statusArray)) {
 
-            if($this->status_id == Order::STATUS_CANCELLED) {
+            if($this->order->status != Order::STATUS_CANCELLED) {
 
-                $items = $this->order->orderItems;
+                if($this->status_id == Order::STATUS_CANCELLED) {
 
-                foreach ($items as $item) {
-                    $product = $item->product;
-                    if($product) {
-                        $product->update([
-                            'stock' => ($product->stock + $item->quantity)
-                        ]);
+                    $items = $this->order->orderItems;
+
+                    foreach ($items as $item) {
+                        $product = $item->product;
+                        if($product) {
+                            $product->update([
+                                'stock' => ($product->stock + $item->quantity)
+                            ]);
+                        }
                     }
+
                 }
+
+                $this->order->update([
+                    'status' => $this->status_id,
+                ]);
+                $this->alert('success', 'Successfully updated order status.');
+
+            } else {
+                $this->alert('error', 'Cannot change the status of cancelled orders.');
             }
 
-            $this->order->update([
-                'status' => $this->status_id,
-            ]);
-            $this->alert('success', 'Successfully updated order status.');
         }
     }
 
