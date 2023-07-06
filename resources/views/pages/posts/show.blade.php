@@ -57,22 +57,25 @@
 
                     <div class="row align-items-sm-center mb-5">
                         <div class="col-sm-7 mb-4 mb-sm-0">
-                            <!-- Media -->
-                            <div class="d-flex align-items-center">
-                                <div class="flex-shrink-0">
-                                    <img class="avatar avatar-circle" src="{{ asset('images/user.png') }}"
-                                         alt="Image Description">
-                                </div>
+                            @if(in_array($post->category->id, [\App\Models\Category::CATEGORY_ARTICLE]))
+                                <!-- Media -->
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-shrink-0">
+                                        <img class="avatar avatar-circle" src="{{ asset('images/user.png') }}"
+                                             alt="Image Description">
+                                    </div>
 
-                                <div class="flex-grow-1 ms-3">
-                                    <h5 class="mb-0">
-                                        <a class="text-dark"
-                                           href="{{ route('posts.show', $post->slug) }}">{{ ucfirst($post->author->name) }}</a>
-                                    </h5>
-                                    <span class="d-block small">{{ $post->created_at->diffForHumans() }}</span>
+                                    <div class="flex-grow-1 ms-3">
+                                        <h5 class="mb-0">
+                                            <a class="text-dark"
+                                               href="{{ route('posts.show', $post->slug) }}">{{ ucfirst($post->author->name) }}</a>
+                                        </h5>
+                                        <span class="d-block small">{{ $post->created_at->diffForHumans() }}</span>
+                                    </div>
+
                                 </div>
-                            </div>
-                            <!-- End Media -->
+                                <!-- End Media -->
+                            @endif
                         </div>
                         <!-- End Col -->
 
@@ -133,7 +136,8 @@
                                                 <div class="flex-grow-1 ms-3">
                                                     <div class="d-flex justify-content-between align-items-center">
                                                         <h6>{{ $comment->user->name }}</h6>
-                                                        <span class="d-block small text-muted">{{ $comment->created_at->diffForHumans() }}</span>
+                                                        <span
+                                                            class="d-block small text-muted">{{ $comment->created_at->diffForHumans() }}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -192,14 +196,13 @@
                                 </div>
                             </form>
 
-
                         @else
 
                             <hr class="pb-5">
 
 
                             <h5>You need to <a href="{{ route('login') }}">login</a> or <a
-                                        href="{{ route('register') }}">register</a> to comment on this post.</h5>
+                                    href="{{ route('register') }}">register</a> to comment on this post.</h5>
 
                         @endif
                     @endif
