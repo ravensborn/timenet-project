@@ -575,7 +575,7 @@
             @foreach($partners as $partner)
                 <div class="col-4 col-sm-3 col-md-2 py-3">
                     <img class="avatar avatar-lg avatar-4x3 avatar-centered"
-                         src="{{ $brand->getFirstMediaUrl('image') }}" alt="Logo">
+                         src="{{ $partner->getFirstMediaUrl('image') }}" alt="Logo">
                 </div>
             @endforeach
         </div>
