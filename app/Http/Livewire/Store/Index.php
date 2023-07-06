@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Store;
 
-use App\Models\Brand;
+use App\Models\Partner;
 use App\Models\WebsiteTheme;
 use Illuminate\Support\Collection;
 use Livewire\Component;
@@ -11,11 +11,8 @@ use Livewire\Component;
 class Index extends Component
 {
 
-    public Collection $brands;
+    public Collection $partners;
     public $bannerArray;
-
-
-
 
     public function mount(): void
     {
@@ -45,7 +42,7 @@ class Index extends Component
 
         }
 
-        $this->brands = Brand::where('is_displayable_on_website', true)->get();
+        $this->partners = Partner::where('is_visible', true)->orderBy('order')->get();
     }
 
     public function render()

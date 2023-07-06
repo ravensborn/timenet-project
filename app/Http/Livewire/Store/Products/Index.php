@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Store\Products;
 use App\Models\Brand;
 use App\Models\CartItem;
 use App\Models\Category;
+use App\Models\Partner;
 use App\Models\Product;
 use App\Models\User;
 use App\Models\Wishlist;
@@ -34,7 +35,7 @@ class Index extends Component
 
     public Collection $categories;
     public Collection $brands;
-    public Collection $displayedBrands;
+    public Collection $partners;
 
     public array $selectedCategories = [];
     public array $selectedBrands = [];
@@ -98,7 +99,7 @@ class Index extends Component
     {
         $this->categories = Category::where('model', Product::class)->get();
         $this->brands = Brand::all();
-        $this->displayedBrands = $this->brands->where('is_displayable_on_website', true);
+        $this->partners = Partner::where('is_visible', true)->orderBy('order')->get();
 
         if (auth()->check()) {
             $this->user = auth()->user();

@@ -572,10 +572,10 @@
     <!-- Clients -->
     <div class="container content-space-2">
         <div class="row">
-            @foreach($displayedBrands as $brand)
+            @foreach($partners as $partner)
                 <div class="col-4 col-sm-3 col-md-2 py-3">
                     <img class="avatar avatar-lg avatar-4x3 avatar-centered"
-                         src="{{ $brand->getFirstMediaUrl('icon') }}" alt="Logo">
+                         src="{{ $brand->getFirstMediaUrl('image') }}" alt="Logo">
                 </div>
             @endforeach
         </div>

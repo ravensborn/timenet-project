@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Brand;
+use App\Models\Partner;
 use App\Models\Post;
 use App\Models\WebsiteTheme;
 use Illuminate\Http\Request;
@@ -22,8 +22,7 @@ class HomeController extends Controller
             ->where('is_hidden', false)
             ->limit(3)->get();
 
-        $brands = Brand::where('is_displayable_on_website', true)
-            ->get();
+        $partners = Partner::where('is_visible', true)->orderBy('order')->get();
 
         $websiteTheme = WebsiteTheme::where('is_selected', true)->first();
 
@@ -51,7 +50,7 @@ class HomeController extends Controller
         return view('home', [
             'features' => $features,
             'articles' => $articles,
-            'brands' => $brands,
+            'partners' => $partners,
             'banner' => $bannerArray,
         ]);
     }
