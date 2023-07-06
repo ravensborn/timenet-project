@@ -19,15 +19,20 @@
                         <label for="icon" class="d-block form-label">Upload Brand Icon <small class="text-muted">(optional)</small></label>
                         <input type="file" id="icon" class="form-control-file" wire:model="icon">
                         @error('icon')
-                        <small class="text-danger">{{ $message }}</small>
+                        <div>
+                            <small class="text-danger">{{ $message }}</small>
+                        </div>
                         @enderror
                     </div>
-                    <div>
-                        @if ($icon)
+
+                    @if ($icon)
+                        <div class="mt-3">
                             Photo Preview:
-                            <img src="{{ $icon->temporaryUrl() }}" class="img-fluid" style="width: 200px; height: auto;">
-                        @endif
-                    </div>
+                            <img src="{{ $icon->temporaryUrl() }}" class="img-fluid" style="width: 200px; height: auto;"
+                                 alt="Brand Photo">
+                        </div>
+                    @endif
+
                 </div>
             </div>
             <div class="row mt-4">

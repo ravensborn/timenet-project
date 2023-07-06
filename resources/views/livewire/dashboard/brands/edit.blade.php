@@ -17,26 +17,34 @@
         <div class="row mt-3">
             <div class="col-12">
                 <div>
-                   <div>
-                       <label for="icon" class="d-block form-label">Upload Brand Icon <small class="text-muted">(optional)</small></label>
-                       <input type="file" id="icon" class="form-control-file" wire:model="icon">
-                   </div>
+                    <div>
+                        <label for="icon" class="d-block form-label">Upload Brand Icon <small class="text-muted">(optional)</small></label>
+                        <input type="file" id="icon" class="form-control-file" wire:model="icon">
+                    </div>
                     @error('icon')
-                    <small class="text-danger">{{ $message }}</small>
+                        <div>
+                            <small class="text-danger">{{ $message }}</small>
+                        </div>
                     @enderror
                 </div>
-                <div>
-                    @if ($currentIcon)
+
+                @if ($currentIcon)
+                    <div class="mt-3">
                         Current Icon Preview:
-                        <img src="{{ $currentIcon }}" class="img-fluid" style="width: 200px; height: auto;" alt="Brand Icon">
-                    @endif
-                </div>
-                <div>
-                    @if ($icon)
+                        <img src="{{ $currentIcon }}" class="img-fluid" style="width: 200px; height: auto;"
+                             alt="Brand Icon">
+                    </div>
+                @endif
+
+
+                @if ($icon)
+                    <div class="mt-3">
                         Icon Preview:
-                        <img src="{{ $icon->temporaryUrl() }}" class="img-fluid" style="width: 200px; height: auto;" alt="Brand Icon">
-                    @endif
-                </div>
+                        <img src="{{ $icon->temporaryUrl() }}" class="img-fluid" style="width: 200px; height: auto;"
+                             alt="Brand Icon">
+                    </div>
+                @endif
+
             </div>
         </div>
         <div class="row mt-4">

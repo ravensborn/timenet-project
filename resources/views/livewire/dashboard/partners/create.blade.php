@@ -24,12 +24,15 @@
                         </div>
                         @enderror
                     </div>
-                    <div>
-                        @if ($image)
+
+                    @if ($image)
+                        <div class="mt-3">
                             Preview:
-                            <img src="{{ $image->temporaryUrl() }}" class="img-fluid" style="width: 200px; height: auto;" alt="Partner Image">
-                        @endif
-                    </div>
+                            <img src="{{ $image->temporaryUrl() }}" class="img-fluid"
+                                 style="width: 200px; height: auto;" alt="Partner Image">
+                        </div>
+                    @endif
+
                 </div>
             </div>
             <div class="row mt-4">

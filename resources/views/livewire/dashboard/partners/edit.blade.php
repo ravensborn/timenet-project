@@ -17,26 +17,30 @@
         <div class="row mt-3">
             <div class="col-12">
                 <div>
-                   <div>
-                       <label for="image" class="d-block form-label">Upload Partner Image</label>
-                       <input type="file" id="image" class="form-control-file" wire:model="image">
-                   </div>
+                    <div>
+                        <label for="image" class="d-block form-label">Upload Partner Image</label>
+                        <input type="file" id="image" class="form-control-file" wire:model="image">
+                    </div>
                     @error('image')
-                    <small class="text-danger">{{ $message }}</small>
+                        <div>
+                            <small class="text-danger">{{ $message }}</small>
+                        </div>
                     @enderror
                 </div>
-                <div class="mt-3">
-                    @if ($currentImage)
+                @if ($currentImage)
+                    <div class="mt-3">
                         Current Image Preview:
-                        <img src="{{ $currentImage }}" class="img-fluid" style="width: 200px; height: auto;" alt="Partner Icon">
-                    @endif
-                </div>
-                <div class="mt-3">
-                    @if ($image)
+                        <img src="{{ $currentImage }}" class="img-fluid" style="width: 200px; height: auto;"
+                             alt="Partner Icon">
+                    </div>
+                @endif
+                @if ($image)
+                    <div class="mt-3">
                         Image Preview:
-                        <img src="{{ $image->temporaryUrl() }}" class="img-fluid" style="width: 200px; height: auto;" alt="Partner Icon">
-                    @endif
-                </div>
+                        <img src="{{ $image->temporaryUrl() }}" class="img-fluid" style="width: 200px; height: auto;"
+                             alt="Partner Icon">
+                    </div>
+                @endif
             </div>
         </div>
         <div class="row mt-4">
