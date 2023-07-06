@@ -1,6 +1,4 @@
 <div>
-
-
     <div id="fake-form">
 
         <div class="row">

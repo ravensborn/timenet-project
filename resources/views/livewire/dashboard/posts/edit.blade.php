@@ -69,7 +69,7 @@
 
                         xhr.onload = () => {
                             if (xhr.status === 403) {
-                                reject({ message: 'HTTP Error: ' + xhr.status, remove: true });
+                                reject({message: 'HTTP Error: ' + xhr.status, remove: true});
                                 return;
                             }
 
@@ -101,7 +101,7 @@
                     tinymce.init({
                         selector: 'textarea#default-editor',
                         image_class_list: [
-                            {title: 'img-responsive', value: 'img-responsive'},
+                            {title: 'Image Responsive', value: 'img-fluid object-fit-contain'},
                         ],
                         height: 500,
                         plugins: [
@@ -118,7 +118,8 @@
                                 editor.save();
                             });
                             editor.on('change', function (e) {
-                            @this.set('content', editor.getContent());
+                                @this.
+                                set('content', editor.getContent());
                             });
                         },
                     });
