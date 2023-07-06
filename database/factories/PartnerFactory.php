@@ -3,8 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-
-class BrandFactory extends Factory
+class PartnerFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -15,6 +14,7 @@ class BrandFactory extends Factory
     {
         return [
             'name' => $this->faker->word,
+            'is_visible' => true,
         ];
     }
 }

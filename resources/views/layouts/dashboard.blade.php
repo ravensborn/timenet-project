@@ -236,6 +236,14 @@
                     </a>
                 </li>
 
+                <li class="sidebar-item @if(request()->is('dashboard/partners')) active @endif">
+                    <a class="sidebar-link" href="{{ route('dashboard.partners.index') }}">
+                        <i class="align-middle" data-feather="briefcase"></i> <span class="align-middle">
+                           Partners
+                        </span>
+                    </a>
+                </li>
+
                 <li class="sidebar-item @if(request()->is('dashboard/team-members')) active @endif">
                     <a class="sidebar-link" href="{{ route('dashboard.team-members.index') }}">
                         <i class="align-middle" data-feather="users"></i> <span class="align-middle">

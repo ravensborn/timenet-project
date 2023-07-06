@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\FaqItem;
 use App\Models\Menu;
 use App\Models\Order;
+use App\Models\Partner;
 use App\Models\Post;
 use App\Models\Product;
 use App\Models\SubscriberList;
@@ -185,6 +186,25 @@ class DashboardController extends Controller
 
         return view('pages.dashboard.brands.edit', [
             'brand' => $brand
+        ]);
+    }
+
+
+    public function partnersIndex()
+    {
+        return view('pages.dashboard.partners.index');
+    }
+
+    public function partnersCreate()
+    {
+        return view('pages.dashboard.partners.create');
+    }
+
+    public function partnersEdit(Partner $partner)
+    {
+
+        return view('pages.dashboard.partners.edit', [
+            'partner' => $partner
         ]);
     }
 

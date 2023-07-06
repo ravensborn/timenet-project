@@ -201,6 +201,15 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
     Route::get('/dashboard/brands/{slug}/edit', [DashboardController::class, 'brandsEdit'])
         ->name('dashboard.brands.edit');
 
+    Route::get('/dashboard/partners', [DashboardController::class, 'partnersIndex'])
+        ->name('dashboard.partners.index');
+
+    Route::get('/dashboard/partners/create', [DashboardController::class, 'partnersCreate'])
+        ->name('dashboard.partners.create');
+
+    Route::get('/dashboard/partners/{partner}/edit', [DashboardController::class, 'partnersEdit'])
+        ->name('dashboard.partners.edit');
+
 
     Route::get('/dashboard/comments', [DashboardController::class, 'commentsIndex'])
         ->name('dashboard.comments.index');
