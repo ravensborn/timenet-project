@@ -30,7 +30,8 @@ Route::get('/', [HomeController::class, 'index'])
     ->name('home');
 
 //Static page routes
-
+Route::get('/support', [PageController::class, 'support'])
+    ->name('support');
 Route::get('/faq', [PageController::class, 'faq'])
     ->name('faq');
 Route::get('/downloads', [PageController::class, 'downloads'])

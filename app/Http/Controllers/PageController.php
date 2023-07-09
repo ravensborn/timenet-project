@@ -10,7 +10,11 @@ use Illuminate\Http\Request;
 class PageController extends Controller
 {
 
-   public function faq() {
+    public function support() {
+        return view('pages.support');
+    }
+
+    public function faq() {
        return view('pages.faq');
    }
 
