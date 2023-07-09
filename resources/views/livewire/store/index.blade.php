@@ -252,7 +252,7 @@
                     @livewire('global-components.subscribe-box', ['type' => 2])
 
                     <p class="small">You can unsubscribe at any time. Read our <a class="text-dark"
-                                                                                  href="{{ route('soon') }}">privacy
+                                                                                  href="{{ route('privacy-and-policy') }}">privacy
                             policy</a></p>
                 </div>
             </div>

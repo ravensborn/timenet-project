@@ -35,4 +35,12 @@ class PageController extends Controller
 
         return view('pages.banned');
     }
+
+    public function privacyAndPolicy() {
+       return view('pages.privacy-and-policy');
+    }
+
+    public function termsAndConditions() {
+        return view('pages.terms-and-conditions');
+    }
 }

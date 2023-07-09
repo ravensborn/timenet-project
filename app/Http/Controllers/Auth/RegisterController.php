@@ -4,12 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\EnabledCountry;
-use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Lwwcas\LaravelCountries\Models\Country;
 use Propaganistas\LaravelPhone\Rules\Phone;
 
 class RegisterController extends Controller
@@ -49,7 +47,6 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -64,8 +61,8 @@ class RegisterController extends Controller
             $this->allowedCountry = $country->iso_alpha_2;
         }
 
-//        $phone = phone($data['phone_number'], $this->allowedCountry)->formatE164();
-//        $data['phone_number'] = $phone;
+        //        $phone = phone($data['phone_number'], $this->allowedCountry)->formatE164();
+        //        $data['phone_number'] = $phone;
 
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
@@ -81,7 +78,6 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param array $data
      * @return \App\Models\User
      */
     protected function create(array $data)
@@ -93,7 +89,7 @@ class RegisterController extends Controller
             'phone_number' => phone($data['phone_number'], $this->allowedCountry, 'E164'),
             'lc_country_id' => $data['country_id'],
             'password' => Hash::make($data['password']),
-//            'email_verified_at' => now(),
+            //            'email_verified_at' => now(),
         ]);
     }
 }

@@ -90,7 +90,7 @@
                 <!-- Check -->
                 <p>
                     By submitting this form you have read and acknowledged the <a class="text-dark"
-                                                                                  href="{{ route('soon') }}">Privacy
+                                                                                  href="{{ route('privacy-and-policy') }}">Privacy
                         Policy</a>
                 </p>
                 <!-- End Check -->

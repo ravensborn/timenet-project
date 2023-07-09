@@ -43,15 +43,15 @@ class LoginController extends Controller
     public function showLoginForm()
     {
         session()->put('_previous_url', url()->previous());
+
         return view('auth.login');
     }
 
     protected function authenticated(Request $request, $user)
     {
-        if(session()->has('_previous_url')) {
+        if (session()->has('_previous_url')) {
             return redirect()->to(session()->get('_previous_url'));
         }
 
     }
-
 }

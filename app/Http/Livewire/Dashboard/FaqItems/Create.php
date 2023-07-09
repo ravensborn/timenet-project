@@ -25,7 +25,7 @@ class Create extends Component
     public function create()
     {
         $rules = [
-            'title' => 'required|string|min:1|max:20',
+            'title' => 'required|string|min:1|max:500',
             'description' => 'required|string|min:1|max:50000',
             'category_id' => 'required|integer|exists:categories,id',
         ];

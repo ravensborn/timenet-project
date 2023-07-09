@@ -40,6 +40,12 @@ Route::get('/coming-soon', [PageController::class, 'soon'])
 Route::get('/about-us', [PageController::class, 'about'])
     ->name('about');
 
+Route::get('/privacy-and-policy', [PageController::class, 'privacyAndPolicy'])
+    ->name('privacy-and-policy');
+
+Route::get('/terms-and-conditions', [PageController::class, 'termsAndConditions'])
+    ->name('terms-and-conditions');
+
 Route::get('/banned', [PageController::class, 'banned'])
     ->middleware('auth')
     ->name('user-banned');

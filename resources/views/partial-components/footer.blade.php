@@ -94,13 +94,13 @@
                 <!-- Socials -->
                 <ul class="list-inline list-separator list-separator-light mb-0">
                     <li class="list-inline-item">
-                        <a class="link-sm link-light" href="{{ route('soon') }}">Privacy & Policy</a>
+                        <a class="link-sm link-light" href="{{ route('privacy-and-policy') }}">Privacy & Policy</a>
                     </li>
                     <li class="list-inline-item">
-                        <a class="link-sm link-light" href="{{ route('soon') }}">Terms</a>
+                        <a class="link-sm link-light" href="{{ route('terms-and-conditions') }}">Terms</a>
                     </li>
                     <li class="list-inline-item">
-                        <a class="link-sm link-light" href="{{ route('soon') }}">Site Map</a>
+                        <a class="link-sm link-light" href="{{ asset('sitemap.xml') }}">Site Map</a>
                     </li>
                 </ul>
                 <!-- End Socials -->

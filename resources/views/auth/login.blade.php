@@ -32,7 +32,7 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <label class="form-label" for="password">Password</label>
 
-                        <a class="form-label-link text-dark" href="{{ route('soon') }}" tabindex="-1">Forgot Password?</a>
+                        <a class="form-label-link text-dark" href="{{ route('password.request') }}" tabindex="-1">Forgot Password?</a>
                     </div>
 
                     <div class="input-group input-group-merge">

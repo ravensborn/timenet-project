@@ -547,21 +547,10 @@
                     </div>
                     <!-- End Heading -->
 
-                    <form method="get" action="{{ route('soon') }}">
-                        <!-- Input Card -->
-                        <div class="input-card input-card-pill input-card-sm border mb-3">
-                            <div class="input-card-form">
-                                <label for="subscribeForm" class="form-label visually-hidden">Enter email</label>
-                                <input type="text" class="form-control form-control-lg" id="subscribeForm"
-                                       placeholder="Enter email" aria-label="Enter email">
-                            </div>
-                            <button type="submit" class="btn btn-dark btn-lg">Subscribe</button>
-                        </div>
-                        <!-- End Input Card -->
-                    </form>
+                    @livewire('global-components.subscribe-box', ['type' => 2])
 
                     <p class="small">You can unsubscribe at any time. Read our <a class="text-dark"
-                                                                                  href="{{ route('soon') }}">privacy
+                                                                                  href="{{ route('privacy-and-policy') }}">privacy
                             policy</a></p>
                 </div>
             </div>

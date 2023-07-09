@@ -1,6 +1,4 @@
 <div>
-
-
     <!-- Form -->
     <form action="">
         <div class="mb-2">
@@ -19,6 +17,4 @@
         </div>
     </form>
     <!-- End Form -->
-
-
 </div>
