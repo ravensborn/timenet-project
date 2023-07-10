@@ -33,9 +33,9 @@
                 <label for="locale" class="form-label">Language</label>
                 <select id="locale" class="form-control" wire:model="locale">
                     <option value="0"> -- Select a language --</option>
-                    @foreach(config('app.available_locales') as $item)
-                        <option value="{{ $item }}">
-                            {{ $item }}
+                    @foreach(config('app.available_locales') as $code => $item)
+                        <option value="{{ $code }}">
+                            {{ $item['name'] }}
                         </option>
                     @endforeach
                 </select>
