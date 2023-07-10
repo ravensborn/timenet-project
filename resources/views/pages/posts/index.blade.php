@@ -8,7 +8,15 @@
         <div class="container py-4">
             <div class="row">
                 <div class="col-sm">
-                    <h4 class="mb-0">{{  $category->name }}</h4>
+                    <h4 class="mb-0">
+
+                        @if(\Illuminate\Support\Facades\Lang::has('website.categories.' . $category->name, session()->get('locale')))
+
+                            {{  __('website.categories.' . $category->name ) }}
+                        @else
+                            {{  $category->name }}
+                        @endif
+                    </h4>
                 </div>
                 <!-- End Col -->
 
@@ -20,7 +28,12 @@
                                 <a href="{{ route('home') }}">{{ config('env.APP_NAME') }}</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                {{  $category->name }}
+                                @if(\Illuminate\Support\Facades\Lang::has('website.categories.' . $category->name, session()->get('locale')))
+
+                                    {{  __('website.categories.' . $category->name ) }}
+                                @else
+                                    {{  $category->name }}
+                                @endif
                             </li>
                         </ol>
                     </nav>
@@ -38,14 +51,17 @@
     <div class="container content-space-2 content-space-lg-1">
         <!-- Heading -->
         <div class="text-center mx-md-auto mb-5">
-            <h2>{{ $category->name }}</h2>
+            <h2>
+                @if(\Illuminate\Support\Facades\Lang::has('website.categories.' . $category->name, session()->get('locale')))
+
+                    {{  __('website.categories.' . $category->name ) }}
+                @else
+                    {{  $category->name }}
+                @endif
+            </h2>
 
             <p>
-                We are a network of professionals dedicated to providing you with the best
-                services and solutions. Our team of experts is committed to delivering high-quality content, including
-                posts and articles, that will help you stay informed and up-to-date on the latest trends and
-                developments in our industry. Whether you’re looking for information on our services or solutions, or
-                simply want to learn more about what we do, we’re here to help.
+                {{ __('website.posts.index.main_paragraph') }}
             </p>
 
             <hr>

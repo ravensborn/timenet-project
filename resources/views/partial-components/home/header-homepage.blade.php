@@ -4,7 +4,7 @@
         <nav class="js-mega-menu navbar-nav-wrap">
 
             <a class="navbar-brand" href="{{ route('home') }}" aria-label="Front">
-                <h3 class="text-white">TimeNet ISP</h3>
+                <h3 class="text-white">{{ __('website.menu.left_text') }}</h3>
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"

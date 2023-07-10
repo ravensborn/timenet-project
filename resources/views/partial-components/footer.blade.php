@@ -23,7 +23,7 @@
 
                 <!-- List -->
                 <ul class="list-unstyled list-py-1">
-                    <li><a class="link-sm link-light" href="#"><i class="bi-geo-alt-fill me-1"></i> Erbil, Kurdistan Region of Iraq</a></li>
+                    <li><a class="link-sm link-light" href="#"><i class="bi-geo-alt-fill me-1"></i> {{ __('website.footer.address') }}</a></li>
                     <li><a class="link-sm link-light" href="tel:+9647503807676"><i class="bi-telephone-inbound-fill me-1"></i> +964 (750) 380-7676</a></li>
                 </ul>
                 <!-- End List -->
@@ -32,53 +32,53 @@
             <!-- End Col -->
 
             <div class="col-6 col-sm mb-7 mb-sm-0">
-                <h5 class="text-white mb-3">Company</h5>
+                <h5 class="text-white mb-3">{{ __('website.footer.company') }}</h5>
 
                 <!-- List -->
                 <ul class="list-unstyled list-py-1 mb-0">
-                    <li><a class="link-sm link-light" href="{{ route('about') }}">About</a></li>
-                    <li><a class="link-sm link-light" href="{{ route('posts.index', ['grid_type' => 'grid', 'slug' => 'services']) }}">Services</a></li>
-                    <li><a class="link-sm link-light" href="{{ route('posts.index', ['grid_type' => 'grid', 'slug' => 'solutions']) }}">Solutions</a></li>
-                    <li><a class="link-sm link-light" href="{{ route('posts.index', ['grid_type' => 'grid', 'slug' => 'product-catalog']) }}">Catalog</a></li>
-                    <li><a class="link-sm link-light" href="tel:9647503807676">Contact us</a></li>
+                    <li><a class="link-sm link-light" href="{{ route('about') }}">{{ __('website.footer.about') }}</a></li>
+                    <li><a class="link-sm link-light" href="{{ route('posts.index', ['grid_type' => 'grid', 'slug' => 'services']) }}">{{ __('website.footer.services') }}</a></li>
+                    <li><a class="link-sm link-light" href="{{ route('posts.index', ['grid_type' => 'grid', 'slug' => 'solutions']) }}">{{ __('website.footer.solutions') }}</a></li>
+                    <li><a class="link-sm link-light" href="{{ route('posts.index', ['grid_type' => 'grid', 'slug' => 'product-catalog']) }}">{{ __('website.footer.catalog') }}</a></li>
+                    <li><a class="link-sm link-light" href="tel:9647503807676">{{ __('website.footer.contact_us') }}</a></li>
                 </ul>
                 <!-- End List -->
             </div>
             <!-- End Col -->
 
             <div class="col-6 col-sm mb-7 mb-sm-0">
-                <h5 class="text-white mb-3">Features</h5>
+                <h5 class="text-white mb-3">{{ __('website.footer.features') }}</h5>
 
                 <!-- List -->
                 <ul class="list-unstyled list-py-1 mb-0">
-                    <li><a class="link-sm link-light" href="{{ route('store.index') }}">Store</a></li>
-                    <li><a class="link-sm link-light" href="{{ route('store.products.index') }}">Available Products</a></li>
+                    <li><a class="link-sm link-light" href="{{ route('store.index') }}">{{ __('website.footer.store') }}</a></li>
+                    <li><a class="link-sm link-light" href="{{ route('store.products.index') }}">{{ __('website.footer.available_products') }}</a></li>
                 </ul>
                 <!-- End List -->
             </div>
             <!-- End Col -->
 
             <div class="col-6 col-sm mb-7 mb-sm-0">
-                <h5 class="text-white mb-3">Documentation</h5>
+                <h5 class="text-white mb-3">{{ __('website.footer.documentation') }}</h5>
 
                 <!-- List -->
                 <ul class="list-unstyled list-py-1 mb-0">
-                    <li><a class="link-sm link-light" href="{{ route('downloads') }}">Downloads</a></li>
-                    <li><a class="link-sm link-light" href="{{ route('faq') }}">FAQ</a></li>
+                    <li><a class="link-sm link-light" href="{{ route('downloads') }}">{{ __('website.footer.downloads') }}</a></li>
+                    <li><a class="link-sm link-light" href="{{ route('faq') }}">{{ __('website.footer.faq') }}</a></li>
                 </ul>
                 <!-- End List -->
             </div>
             <!-- End Col -->
 
             <div class="col-6 col-sm">
-                <h5 class="text-white mb-3">Resources</h5>
+                <h5 class="text-white mb-3">{{ __('website.footer.resources') }}</h5>
 
                 <!-- List -->
                 <ul class="list-unstyled list-py-1 mb-5">
-                    <li><a class="link-sm link-light" href="{{ route('soon') }}"><i class="bi-question-circle-fill me-1"></i> Help</a></li>
-                    <li><a class="link-sm link-light" href="{{ route('users.account.overview') }}"><i class="bi-person-circle me-1"></i> Your Account</a></li>
+                    <li><a class="link-sm link-light" href="{{ route('soon') }}"><i class="bi-question-circle-fill me-1"></i> {{ __('website.footer.help')  }}</a></li>
+                    <li><a class="link-sm link-light" href="{{ route('users.account.overview') }}"><i class="bi-person-circle me-1"></i> {{ __('website.footer.your_account') }}</a></li>
                     @if(auth()->check() && auth()->user()->hasRole('admin'))
-                        <li><a class="link-sm link-light" href="{{ route('dashboard.overview') }}"><i class="bi-person-circle me-1"></i> Administrator</a></li>
+                        <li><a class="link-sm link-light" href="{{ route('dashboard.overview') }}"><i class="bi-lightning-charge me-1"></i> Administrator</a></li>
                     @endif
                 </ul>
                 <!-- End List -->
@@ -94,13 +94,13 @@
                 <!-- Socials -->
                 <ul class="list-inline list-separator list-separator-light mb-0">
                     <li class="list-inline-item">
-                        <a class="link-sm link-light" href="{{ route('privacy-and-policy') }}">Privacy & Policy</a>
+                        <a class="link-sm link-light" href="{{ route('privacy-and-policy') }}">{{ __('website.footer.privacy_and_policy') }}</a>
                     </li>
                     <li class="list-inline-item">
-                        <a class="link-sm link-light" href="{{ route('terms-and-conditions') }}">Terms</a>
+                        <a class="link-sm link-light" href="{{ route('terms-and-conditions') }}">{{ __('website.footer.terms') }}</a>
                     </li>
                     <li class="list-inline-item">
-                        <a class="link-sm link-light" href="{{ asset('sitemap.xml') }}">Site Map</a>
+                        <a class="link-sm link-light" href="{{ asset('sitemap.xml') }}">{{ __('website.footer.sitemap') }}</a>
                     </li>
                 </ul>
                 <!-- End Socials -->
@@ -138,24 +138,20 @@
                         <div class="btn-group">
                             <button type="button" class="btn btn-soft-light btn-xs dropdown-toggle" id="footerDarkSelectLanguage" data-bs-toggle="dropdown" aria-expanded="false" data-bs-dropdown-animation>
                 <span class="d-flex align-items-center">
-                  <img class="avatar avatar-xss avatar-circle me-2" src="{{ asset('themes/front/assets/vendor/flag-icon-css/flags/1x1/us.svg') }}" alt="Image description" width="16"/>
-                  <span>English (US)</span>
+                  <img class="avatar avatar-xss avatar-circle me-2" src="{{ config('app.available_locales')[app()->currentLocale()]['icon'] }}" alt="Image description" width="16"/>
+                  <span>{{ config('app.available_locales')[app()->currentLocale()]['name'] }}</span>
                 </span>
                             </button>
 
                             <div class="dropdown-menu" aria-labelledby="footerDarkSelectLanguage">
-                                <a class="dropdown-item d-flex align-items-center active" href="{{ route('home') }}">
-                                    <img class="avatar avatar-xss avatar-circle me-2" src="{{ asset('themes/front/assets/vendor/flag-icon-css/flags/1x1/us.svg') }}" alt="Image description" width="16"/>
-                                    <span>English (US)</span>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center active" href="{{ route('soon') }}">
-                                    <img class="avatar avatar-xss avatar-circle me-2" src="{{ asset('images/kurdistan-flag.svg') }}" alt="Image description" width="16"/>
-                                    <span>Kurdish (کوردی)</span>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center active" href="{{ route('soon') }}">
-                                    <img class="avatar avatar-xss avatar-circle me-2" src="{{ asset('themes/front/assets/vendor/flag-icon-css/flags/1x1/iq.svg') }}" alt="Image description" width="16"/>
-                                    <span>Arabic (العربیة)</span>
-                                </a>
+
+                                @foreach(config('app.available_locales') as $code => $language)
+                                    <a class="dropdown-item d-flex align-items-center active" href="{{ route('set-language', $code) }}">
+                                        <img class="avatar avatar-xss avatar-circle me-2" src="{{ $language['icon'] }}" alt="Image description" width="16"/>
+                                        <span>{{ $language['name'] }}</span>
+                                    </a>
+                                @endforeach
+
                             </div>
                         </div>
                         <!-- End Button Group -->
@@ -167,8 +163,8 @@
 
         <!-- Copyright -->
         <div class="w-md-85 text-lg-center mx-lg-auto">
-            <p class="text-white-50 small">&copy; {{ date('Y') }} TimeNet. All rights reserved.</p>
-            <p class="text-white-50 small">When you visit or interact with our sites, services or tools, we or our authorised service providers may use cookies for storing information to help provide you with a better, faster and safer experience and for marketing purposes.</p>
+            <p class="text-white-50 small">{!! __('website.footer.copyright') !!}</p>
+            <p class="text-white-50 small">{{ __('website.footer.cookie_warning') }}</p>
         </div>
         <!-- End Copyright -->
     </div>

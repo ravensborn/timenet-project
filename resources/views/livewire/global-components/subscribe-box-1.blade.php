@@ -12,7 +12,8 @@
             @endif
         </div>
         <div class="d-grid">
-            <button type="button" class="btn btn-dark" wire:loading.attr="disabled" wire:click.prevent="add">Subscribe
+            <button type="button" class="btn btn-dark" wire:loading.attr="disabled" wire:click.prevent="add">
+                {{ __('website.components.subscribe_box.subscribe_button') }}
             </button>
         </div>
     </form>

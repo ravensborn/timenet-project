@@ -52,18 +52,19 @@ Route::get('/banned', [PageController::class, 'banned'])
     ->name('user-banned');
 
 
-//Set Locale
-use Illuminate\Support\Facades\App;
 
-Route::get('/greeting/{locale}', function (string $locale) {
-    if (!in_array($locale, ['en', 'es', 'fr'])) {
+Route::get('/set-language/{locale}', function (string $locale) {
+
+    if (!in_array($locale, ['en', 'ku', 'ar'])) {
         abort(400);
     }
 
-    App::setLocale($locale);
+    app()->setLocale($locale);
+    session()->put('locale', $locale);
 
     return redirect()->back();
-});
+
+})->name('set-language');
 
 
 //Register, login, and logout

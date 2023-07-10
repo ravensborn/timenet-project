@@ -8,7 +8,7 @@
         <div class="container py-4">
             <div class="row">
                 <div class="col-sm">
-                    <h4 class="mb-0">About TimeNet</h4>
+                    <h4 class="mb-0">{{ __('website.about.about_timenet') }}</h4>
                 </div>
                 <!-- End Col -->
 
@@ -20,7 +20,7 @@
                                 <a href="{{ route('home') }}">{{ config('env.APP_NAME') }}</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                About Us
+                                {{ __('website.about.about_us') }}
                             </li>
                         </ol>
                     </nav>
@@ -38,13 +38,9 @@
         <div class="w-lg-75 text-center mx-lg-auto">
             <!-- Heading -->
             <div class="mb-5 mb-md-10">
-                <h1 class="display-4">About Us</h1>
+                <h1 class="display-4">{{ __('website.about.about_us') }}</h1>
                 <p class="lead mt-5">
-                    Welcome to TimeNet, your fast and reliable internet service provider. Our state-of-the-art network
-                    infrastructure ensures the fastest speeds and most reliable connections. We also offer a range of
-                    networking products and services, including tools and equipment. Trust us to provide hassle-free
-                    service and exceptional customer support. Choose TimeNet as your internet service provider and stay
-                    connected with ease.
+                    {{ __('website.about.paragraph_1') }}
                 </p>
             </div>
             <!-- End Heading -->
@@ -101,17 +97,9 @@
 
             <div class="col-lg-12">
 
-                <h2 class="mb-4">Tools should adapt to the user, not the other way around.</h2>
+                <h2 class="mb-4">{{ __('website.about.paragraph_2') }}</h2>
 
-                <p>Things can get really complex, really quickly, and a pragmatic, synthetic and clear vision is
-                    essential to be able to create something that, after all, is meant to be used. Emotions also have a
-                    big role to play and developing clear and beautiful aesthetics is of the utmost importance to create
-                    a pleasant environment in which the user actually enjoys the time spent in it. In the end, we're all
-                    suckers for beautiful things that just work</p>
-
-                <p>Since 2007, we have helped 25 companies launch over 1k incredible products. We believe the best
-                    digital solutions are built at the intersection of business strategy, available technology, and real
-                    user's needs.</p>
+                {!! __('website.about.paragraph_3') !!}
             </div>
             <!-- End Col -->
         </div>
@@ -119,7 +107,7 @@
             <div class="col-sm-4 col-lg-3 mb-7 mb-sm-0">
                 <div class="text-center">
                     <h2 class="display-4">17</h2>
-                    <p class="fw-bold fs-4">Years in business</p>
+                    <p class="fw-bold fs-4">{{ __('website.about.years_in') }}</p>
                 </div>
             </div>
             <!-- End Col -->
@@ -127,7 +115,7 @@
             <div class="col-sm-4 col-lg-3 mb-7 mb-sm-0">
                 <div class="text-center">
                     <h2 class="display-4">1,200</h2>
-                    <p class="fw-bold fs-4">Clients</p>
+                    <p class="fw-bold fs-4">{{ __('website.about.clients') }}</p>
                 </div>
             </div>
             <!-- End Col -->
@@ -135,7 +123,7 @@
             <div class="col-sm-4 col-lg-3">
                 <div class="text-center">
                     <h2 class="display-4">100%</h2>
-                    <p class="fw-bold fs-4">Happy customers</p>
+                    <p class="fw-bold fs-4">{{ __('website.about.happy_customers') }}</p>
                 </div>
             </div>
             <!-- End Col -->
@@ -150,9 +138,9 @@
         <!-- Heading -->
         <div class="w-md-75 w-lg-50 text-center mx-md-auto mb-5 mb-md-9">
 
-            <h2>TimeNet's Team</h2>
+            <h2>{{ __('website.about.time_net_team_headline') }}</h2>
             <p>
-                TimeNet's team is made up of highly skilled professionals who are passionate about providing top-quality service to our customers. We pride ourselves on our friendly and knowledgeable support staff, who are always ready to assist with any issues or questions you may have. Our team is committed to ensuring that you have the best possible experience with our internet and networking services.
+                ({{ __('website.about.time_net_team_description') }}
             </p>
         </div>
         <!-- End Heading -->
