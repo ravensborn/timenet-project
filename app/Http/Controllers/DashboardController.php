@@ -338,9 +338,15 @@ class DashboardController extends Controller
         return view('pages.dashboard.support-request-items.index');
     }
 
+    function visitorLogGenerator() {
+        foreach (Visit::cursor() as $list) {
+            yield $list;
+        }
+    }
+
     public function visitorLogDownload() {
-        $list = Visit::all();
-        return (new FastExcel($list))->download('visitor-log-'. date('Y-m-d') .'.xlsx');
+
+        return (new FastExcel($this->visitorLogGenerator()))->download('visitor-log-'. date('Y-m-d') .'.xlsx');
     }
 
 
