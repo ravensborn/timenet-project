@@ -87,15 +87,15 @@ return [
     'available_locales' => [
         'en' => [
             'name' => 'English (US)',
-            'icon' => asset('themes/front/assets/vendor/flag-icon-css/flags/1x1/us.svg'),
+            'icon' => '/themes/front/assets/vendor/flag-icon-css/flags/1x1/us.svg',
         ],
         'ku' => [
             'name' => 'Kurdish (کوردی)',
-            'icon' => asset('images/kurdistan-flag.svg'),
+            'icon' => '/images/kurdistan-flag.svg',
         ],
         'ar' => [
             'name' => 'Arabic (العربیة)',
-            'icon' => asset('themes/front/assets/vendor/flag-icon-css/flags/1x1/iq.svg'),
+            'icon' => '/themes/front/assets/vendor/flag-icon-css/flags/1x1/iq.svg',
         ]
     ],
 

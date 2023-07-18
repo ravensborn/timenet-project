@@ -84,9 +84,61 @@
                         </div>
                         <div class="col-12 mt-3">
                             <hr>
-                            <button class="btn btn-primary px-5" wire:click="updateBanners">Save</button>
+                            <button class="btn btn-primary px-5" wire:click="updateBanners">Save Settings</button>
                             <a href="#" wire:click.prevent="restoreDefaultCovers()">Restore default settings.</a>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">
+                        <span>Article Side Images</span>
+                    </h5>
+                </div>
+                <div class="card-body">
+
+                    <div class="row">
+
+                        <div class="col-12">
+                            <div class="row">
+                                @foreach($articleSideImages as $image)
+                                   <div class="col-6 mt-3 mt-md-0 col-md-3 text-center">
+                                       <div class="me-3">
+                                           <img src="{{ $image->getFullUrl() }}" alt="Article Side Image" class="img-thumbnail img-fluid" style="width: 200px; height: 200px; object-fit: contain;">
+                                       </div>
+                                       <div class="mt-1">
+                                           <a wire:click.prevent="deleteArticleSideImage('{{ $image->uuid }}')">
+                                               <i class="bi bi-x"></i>
+                                               delete
+                                           </a>
+                                       </div>
+                                   </div>
+                                @endforeach
+                            </div>
+                            <div class="mt-3">
+                                <div>
+                                    <div wire:loading.remove wire:target="articleSideImage">
+                                        <label for="articleSideImage" class="form-label">Select images to upload <small class="text-muted">(2MB Max)</small></label>
+                                        <input type="file" class="form-control" id="articleSideImage" wire:model="articleSideImage">
+                                        @error('articleSideImage')
+                                        <div class="text-danger mt-3">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div wire:loading wire:target="articleSideImage">
+                                        Uploading Photo...
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

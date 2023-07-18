@@ -19,7 +19,6 @@ class Edit extends Component
 
     public string $title = '';
     public string $description = '';
-    public int $category_id = 0;
     public Collection $categories;
 
 
@@ -28,7 +27,6 @@ class Edit extends Component
         $rules = [
             'title' => 'required|string|min:1|max:500',
             'description' => 'required|string|min:1|max:50000',
-            'category_id' => 'required|integer|exists:categories,id',
         ];
 
         $validated = $this->validate($rules);
@@ -37,21 +35,15 @@ class Edit extends Component
         return redirect()->route('dashboard.faq-items.index');
     }
 
-    public function loadCategories(): void
-    {
-        $this->categories = Category::where('model', FaqItem::class)->get();
-    }
+
 
     public function mount(FaqItem $faqItem): void
     {
-
-        $this->loadCategories();
         $this->user = auth()->user();
 
         $this->faqItem = $faqItem;
         $this->title = $faqItem->title;
         $this->description = $faqItem->description;
-        $this->category_id = $faqItem->category_id;
 
 
     }

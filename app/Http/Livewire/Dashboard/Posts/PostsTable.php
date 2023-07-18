@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Dashboard\Posts;
 
 use App\Models\Category;
 use App\Models\Post;
+use Illuminate\Database\Eloquent\Builder;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
@@ -28,7 +29,9 @@ class PostsTable extends DataTableComponent
                         ->keyBy('id')
                         ->map(fn($category) => $category->name)
                         ->toArray()
-                ),
+                )->filter(function (Builder $builder, $value) {
+                    $builder->whereIn('category_id', $value);
+                }),
         ];
     }
 

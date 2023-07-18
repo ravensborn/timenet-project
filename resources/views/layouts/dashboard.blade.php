@@ -55,17 +55,20 @@
             border: var(--bs-pagination-border-width) solid var(--bs-pagination-border-color);
             transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
         }
+
         @media (prefers-reduced-motion: reduce) {
             .page-link {
                 transition: none;
             }
         }
+
         .page-link:hover {
             z-index: 2;
             color: var(--bs-pagination-hover-color);
             background-color: var(--bs-pagination-hover-bg);
             border-color: var(--bs-pagination-hover-border-color);
         }
+
         .page-link:focus {
             z-index: 3;
             color: var(--bs-pagination-focus-color);
@@ -73,12 +76,14 @@
             outline: 0;
             box-shadow: var(--bs-pagination-focus-box-shadow);
         }
+
         .page-link.active, .active > .page-link {
             z-index: 3;
             color: var(--bs-pagination-active-color);
             background-color: var(--bs-pagination-active-bg);
             border-color: var(--bs-pagination-active-border-color);
         }
+
         .page-link.disabled, .disabled > .page-link {
             color: var(--bs-pagination-disabled-color);
             pointer-events: none;
@@ -89,10 +94,12 @@
         .page-item:not(:first-child) .page-link {
             margin-left: calc(var(--bs-border-width) * -1);
         }
+
         .page-item:first-child .page-link {
             border-top-left-radius: var(--bs-pagination-border-radius);
             border-bottom-left-radius: var(--bs-pagination-border-radius);
         }
+
         .page-item:last-child .page-link {
             border-top-right-radius: var(--bs-pagination-border-radius);
             border-bottom-right-radius: var(--bs-pagination-border-radius);
@@ -123,7 +130,8 @@
 
     </style>
 
-    <script src="https://cdn.tiny.cloud/1/ycbz6be5vk3fikr7hmwobxq2skbcb0jhs31tk3aos1965ss2/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/ycbz6be5vk3fikr7hmwobxq2skbcb0jhs31tk3aos1965ss2/tinymce/6/tinymce.min.js"
+            referrerpolicy="origin"></script>
 
     @livewireStyles
 </head>
@@ -141,6 +149,8 @@
                     Modules
                 </li>
 
+                @role('admin|moderator')
+
                 <li class="sidebar-item @if(request()->is('dashboard')) active @endif">
                     <a class="sidebar-link" href="{{ route('dashboard.overview') }}">
                         <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">
@@ -149,6 +159,10 @@
                     </a>
                 </li>
 
+                @endrole
+
+
+                @role('admin')
                 <li class="sidebar-item @if(request()->is('dashboard/users')) active @endif">
                     <a class="sidebar-link" href="{{ route('dashboard.users.index') }}">
                         <i class="align-middle" data-feather="users"></i> <span class="align-middle">Users</span>
@@ -163,6 +177,10 @@
                     </a>
                 </li>
 
+                @endrole
+
+
+                @role('admin|moderator')
                 <li class="sidebar-item @if(request()->is('dashboard/products')) active @endif">
                     <a class="sidebar-link" href="{{ route('dashboard.products.index') }}">
                         <i class="align-middle" data-feather="file-text"></i> <span class="align-middle">
@@ -186,13 +204,24 @@
                         </span>
                     </a>
                 </li>
+                @endrole
+                @role('admin')
+                <li class="sidebar-item @if(request()->is('dashboard/support-request-items')) active @endif">
+                    <a class="sidebar-link" href="{{ route('dashboard.support-request-items') }}">
+                        <i class="align-middle" data-feather="mail"></i> <span class="align-middle">
+                            Support Requests
+                        </span>
+                    </a>
+                </li>
 
+                @endrole
+
+
+                @role('admin')
 
                 <li class="sidebar-header">
                     Module Settings
                 </li>
-
-
 
                 <li class="sidebar-item @if(request()->is('dashboard/manage-website-theme')) active @endif">
                     <a class="sidebar-link" href="{{ route('dashboard.manage-website-theme.index') }}">
@@ -278,6 +307,8 @@
                     </a>
                 </li>
 
+                @endrole
+
             </ul>
 
         </div>
@@ -320,7 +351,7 @@
         <main class="content">
             <div class="container-fluid p-0">
 
-               @yield('content')
+                @yield('content')
 
             </div>
         </main>

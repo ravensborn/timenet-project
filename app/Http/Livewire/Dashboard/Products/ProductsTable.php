@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Dashboard\Products;
 use App\Models\CartItem;
 use App\Models\Category;
 use App\Models\Product;
+use Illuminate\Database\Eloquent\Builder;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
@@ -29,7 +30,9 @@ class ProductsTable extends DataTableComponent
                         ->keyBy('id')
                         ->map(fn($category) => $category->name)
                         ->toArray()
-                ),
+                )->filter(function (Builder $builder, $value) {
+                    $builder->whereIn('category_id', $value);
+                }),
         ];
     }
 

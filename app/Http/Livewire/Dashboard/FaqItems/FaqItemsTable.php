@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Dashboard\FaqItems;
 
 use App\Models\Category;
 use App\Models\FaqItem;
+use Illuminate\Database\Eloquent\Builder;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
@@ -28,7 +29,9 @@ class FaqItemsTable extends DataTableComponent
                         ->keyBy('id')
                         ->map(fn($category) => $category->name)
                         ->toArray()
-                ),
+                )->filter(function (Builder $builder, $value) {
+                    $builder->whereIn('category_id', $value);
+                }),
         ];
     }
 
@@ -69,11 +72,10 @@ class FaqItemsTable extends DataTableComponent
 
                 $deleteBtn = '<button wire:click="triggerDeleteItem(' . $file->id . ')"  class="btn btn-danger btn-sm me-1"><i class="bi bi-trash"></i></button>';
                 $editBtn = '<a href="' . route('dashboard.faq-items.edit', $value) . '" class="btn btn-warning btn-sm me-1"><i class="bi bi-pen"></i></a>';
-//                $moveUpBtn = '<button wire:click="moveUp(' . $value . ')" class="btn btn-info btn-sm me-1"><i class="bi bi-arrow-up"></i></button>';
-//                $moveDownBtn = '<button wire:click="moveDown(' . $value . ')"  class="btn btn-info btn-sm me-1"><i class="bi bi-arrow-down"></i></button>';
+                $moveUpBtn = '<button wire:click="moveUp(' . $value . ')" class="btn btn-info btn-sm me-1"><i class="bi bi-arrow-up"></i></button>';
+                $moveDownBtn = '<button wire:click="moveDown(' . $value . ')"  class="btn btn-info btn-sm me-1"><i class="bi bi-arrow-down"></i></button>';
 
-//                return $moveUpBtn . $moveDownBtn . $editBtn . $deleteBtn;
-                return $editBtn . $deleteBtn;
+                return $moveUpBtn . $moveDownBtn . $editBtn . $deleteBtn;
             })->html(),
 
         ];
@@ -83,7 +85,8 @@ class FaqItemsTable extends DataTableComponent
     {
         $faqItem = FaqItem::find($faqItemId);
         if ($faqItem) {
-            $previousFaqItem = FaqItem::where('order', '<', $faqItem->order)
+            $previousFaqItem = FaqItem::where('category_id', $faqItem->category_id)
+                ->where('order', '<', $faqItem->order)
                 ->orderBy('order', 'desc')
                 ->first();
 
@@ -97,7 +100,8 @@ class FaqItemsTable extends DataTableComponent
     {
         $faqItem = FaqItem::find($faqItemId);
         if ($faqItem) {
-            $nextFaqItem = FaqItem::where('order', '>', $faqItem->order)
+            $nextFaqItem = FaqItem::where('category_id', $faqItem->category_id)
+                ->where('order', '>', $faqItem->order)
                 ->orderBy('order')
                 ->first();
 

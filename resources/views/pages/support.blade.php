@@ -70,7 +70,7 @@
     <div class="container">
         <hr>
     </div>
-    <div class="container content-space-b-2">
+    <div class="container content-space-b-2" id="support-form">
         <div class="bg-dark rounded-2"
              style="background-image: url('{{ asset('themes/front/assets/svg/components/wave-pattern-light.svg') }}');">
             <div class="container-xl container-fluid content-space-1 content-space-md-2 px-4 px-md-8 px-lg-10">
@@ -104,12 +104,18 @@
                         <div class="card card-lg">
                             <div class="card-body">
                                 <div class="mb-4">
-                                    <h3 class="card-title">Fill out the form and we'll be in touch as soon as
+                                    @if(session()->has('success_message'))
+                                        <div class="alert alert-success">
+                                            TimeNet has received your message.
+                                        </div>
+                                    @endif
+                                    <h3 class="card-title">Fill out the form, and we'll be in touch as soon as
                                         possible.</h3>
                                 </div>
 
                                 <!-- Form -->
-                                <form>
+                                <form method="POST" action="{{ route('support-send-email') }}">
+                                    @csrf
                                     <div class="row gx-3">
                                         <div class="col-sm-12">
                                             <!-- Form -->
@@ -117,6 +123,9 @@
                                                 <label class="form-label visually-hidden" for="name">Name</label>
                                                 <input type="text" class="form-control form-control-lg" name="name"
                                                        id="name" placeholder="Name" aria-label="Name">
+                                                @error('name')
+                                                <small class="text-danger">{{ $message }}</small>
+                                                @enderror
                                             </div>
                                             <!-- End Form -->
                                         </div>
@@ -134,6 +143,9 @@
                                                 <input type="email" class="form-control form-control-lg" name="email"
                                                        id="email" placeholder="email@site.com"
                                                        aria-label="email@site.com">
+                                                @error('email')
+                                                <small class="text-danger">{{ $message }}</small>
+                                                @enderror
                                             </div>
                                             <!-- End Form -->
                                         </div>
@@ -146,9 +158,12 @@
                                     <div class="mb-3">
                                         <label class="form-label visually-hidden"
                                                for="hireUsFormDetails">Details</label>
-                                        <textarea class="form-control form-control-lg" name="hireUsFormNameDetails"
+                                        <textarea class="form-control form-control-lg" name="message"
                                                   id="hireUsFormDetails" placeholder="Tell us about your project"
                                                   aria-label="Tell us about your project" rows="4"></textarea>
+                                        @error('message')
+                                        <small class="text-danger">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                     <!-- End Form -->
 

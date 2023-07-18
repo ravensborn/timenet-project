@@ -3,10 +3,13 @@
 namespace App\Http\Livewire\Store\Products;
 
 use App\Models\CartItem;
+use App\Models\Post;
 use App\Models\Product;
 use App\Models\Wishlist;
+use Illuminate\Support\Collection;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 
 class Show extends Component
@@ -15,6 +18,7 @@ class Show extends Component
     use LivewireAlert;
 
     public Product $product;
+    public Collection $relatedProducts;
 
     public int $quantity = 1;
 
@@ -150,9 +154,6 @@ class Show extends Component
 
     public function mount($slug): void
     {
-        $product = Product::where('slug', $slug)
-            ->firstOrFail();
-
         $user = auth()->user();
 
         if (auth()->check() && $user->hasRole('admin')) {
@@ -165,6 +166,27 @@ class Show extends Component
                 ->firstOrFail();
         }
 
+        $this->relatedProducts = Product::where('category_id', $product->category_id)
+            ->where('slug', '!=', $slug)
+            ->limit(4)
+            ->inRandomOrder()
+            ->get()
+            ->map(function ($item) {
+
+                $coverImage = Media::where('model_type', Product::class)
+                    ->where('model_id', $item->id)
+                    ->where('uuid', $item->cover_image)
+                    ->first();
+
+                if ($coverImage) {
+                    $item['image'] = $coverImage->getFullUrl();
+                } else {
+                    $item['image'] = asset('images/logo-dark.png');
+                }
+
+                return $item;
+            });
+
         $this->product = $product;
 
         if ($user) {
@@ -173,8 +195,6 @@ class Show extends Component
         }
 
         visitor()->visit($product);
-
-
     }
 
     public function render()

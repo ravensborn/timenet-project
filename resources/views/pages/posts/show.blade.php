@@ -241,12 +241,24 @@
                     @endforeach
 
                 </div>
+
+                <div class="mb-7">
+                    <div class="mb-3">
+                        <h3>Offers</h3>
+
+                        @foreach($article_side_images as $image)
+                          <div class="mb-2">
+                              <img src="{{ $image->getFullUrl() }}" alt="Image" class="img-fluid" style="width: 100%; height: auto; object-fit: contain;">
+                          </div>
+                        @endforeach
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
 
-    </div>
     <!-- End Article Description -->
 
     @if($related_posts)
@@ -278,10 +290,10 @@
                                             </a>
                                         </h4>
                                         <p>
-                                            @if(strlen($post->short_content) > 40)
-                                                {!!  substr($post->short_content, 0, 40) . '...'  !!}
+                                            @if(strlen($post->content) > 40)
+                                                {!!  substr($post->content, 0, 40) . '...'  !!}
                                             @else
-                                                {!! $post->short_content !!}
+                                                {!! $post->content !!}
                                             @endif
 
                                         </p>

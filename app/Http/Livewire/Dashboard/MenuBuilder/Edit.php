@@ -202,8 +202,15 @@ class Edit extends Component
     public function saveItems(): void
     {
 
+        //Resetting indexes.
+        $items = [];
+        foreach ($this->items as $item) {
+            $items[] = $item;
+        }
+
+        //Saving
         $this->menu->update([
-            'items' => $this->items
+            'items' => $items
         ]);
     }
 

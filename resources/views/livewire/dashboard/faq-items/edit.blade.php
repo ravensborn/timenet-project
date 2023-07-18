@@ -3,22 +3,6 @@
 
     <div id="fake-form">
 
-        <div class="row">
-            <div class="col-12">
-                <div>
-                    <label for="category_id" class="form-label">Category</label>
-                    <select id="category_id" class="form-control" wire:model="category_id">
-                        @foreach($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-                        @endforeach
-                    </select>
-                    @error('category_id')
-                    <small class="text-danger">{{ $message }}</small>
-                    @enderror
-                </div>
-            </div>
-        </div>
-
         <div class="row mt-3">
             <div class="col-12">
                 <div>

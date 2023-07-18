@@ -22,9 +22,10 @@ class DatabaseSeeder extends Seeder
         $this->call([
             TimeNetPaymentMethodSeeder::class, //Payment Methods
             TimeNetCountrySeeder::class, //Countries
+            TimeNetRoleSeeder::class
         ]);
 
-        $role = Role::create(['name' => 'admin']);
+
 
         $user = User::factory()->create([
             'name' => 'TimeNet Admin',
@@ -38,7 +39,7 @@ class DatabaseSeeder extends Seeder
 //            'lc_country_id' => EnabledCountry::COUNTRY_IRAQ,
 //        ]);
 
-        $user->assignRole($role);
+        $user->assignRole('admin');
         //1
         $postProductCatalogCategory = \App\Models\Category::factory([
             'name' => 'Product Catalog',

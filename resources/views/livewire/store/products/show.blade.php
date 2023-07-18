@@ -91,7 +91,53 @@
                         <!-- End Swiper Thumb Slider -->
                     </div>
                 </div>
+                <div class="mt-5 d-none d-md-block">
+
+                    <div class="row">
+                        @foreach($relatedProducts as $product)
+                            <div class="col-md-6">
+                                <!-- Card -->
+                                <div class="border-bottom h-100 py-5">
+                                    <div class="row">
+
+                                        <div class="col-6">
+                                            <span class="text-cap">{{ ucfirst($product->category->name) }}</span>
+                                            <h4 class="mb-0">
+                                                <a class="text-dark"
+                                                   href="{{ route('store.products.show', $product->slug) }}">
+                                                    @if(strlen($product->name) > 35)
+                                                        {{ substr($product->name, 0, 35) . '...' }}
+                                                    @else
+                                                        {{ $product->name }}
+                                                    @endif
+                                                </a>
+                                            </h4>
+                                            <p>
+                                                @if(strlen($product->description) > 40)
+                                                    {!!  substr($product->description, 0, 40) . '...'  !!}
+                                                @else
+                                                    {!! $product->description !!}
+                                                @endif
+
+                                            </p>
+                                        </div>
+                                        <!-- End Col -->
+
+                                        <div class="col-5">
+                                            <img class="img-fluid rounded" src="{{ $product->image }}"
+                                                 alt="Product Cover">
+                                        </div>
+                                        <!-- End Col -->
+                                    </div>
+                                    <!-- End Row -->
+                                </div>
+                                <!-- End Card -->
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
             </div>
+
             <!-- End Col -->
 
             <div class="col-md-5">
@@ -256,7 +302,7 @@
                             @endif
                         @else
                             <a class="btn btn-dark btn-transition rounded-pill"
-                                    href="mailto:info@time-net.net">
+                               href="mailto:info@time-net.net">
                                 <i class="bi bi-envelope me-1"></i>
                                 Contact Us
                             </a>

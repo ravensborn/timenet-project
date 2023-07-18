@@ -34,7 +34,7 @@ class Create extends Component
 
         $order = 1;
 
-        $firstFaqItem = FaqItem::orderBy('order', 'desc')->first();
+        $firstFaqItem = FaqItem::where('category_id', $this->category_id)->orderBy('order', 'desc')->first();
 
         if ($firstFaqItem) {
             $order = $firstFaqItem->order + 1;

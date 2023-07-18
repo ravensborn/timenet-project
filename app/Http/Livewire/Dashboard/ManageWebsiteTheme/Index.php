@@ -26,6 +26,7 @@ class Index extends Component
     {
         $this->loadCurrentTheme();
         $this->loadCoverSettings();
+        $this->loadArticleSideImages();
     }
 
     public function loadCoverSettings(): void
@@ -133,6 +134,55 @@ class Index extends Component
         $this->loadCoverSettings();
         $this->alert('success', 'Successfully restored default settings.');
 
+    }
+
+    public $articleSideImages;
+    public $articleSideImage;
+
+    public function updatedArticleSideImage(): void
+    {
+
+        $rules = [
+            'articleSideImage' => 'required|image|mimes:png,jpg,jpeg|max:2048',
+        ];
+
+        $this->validate($rules);
+
+        $image = $this->articleSideImage;
+
+        $name = time() . '_' . Str::random(5);
+        $this->currentTheme->addMedia($image)
+            ->usingName($name)
+            ->usingFileName($name . '.' . $image->getClientOriginalExtension())
+            ->toMediaCollection('article_side_images');
+
+
+        $this->articleSideImage = null;
+        $this->loadCurrentTheme();
+        $this->loadArticleSideImages();
+    }
+
+    public function loadArticleSideImages(): void
+    {
+
+        $this->articleSideImages = $this->currentTheme->getMedia('article_side_images');
+    }
+
+    public function deleteArticleSideImage($uuid): void
+    {
+
+        $image = $this->currentTheme->getMedia('article_side_images')
+            ->where('uuid', $uuid)
+            ->first();
+
+        if ($uuid) {
+            $image->delete();
+        }
+
+        $this->alert('success', 'Successfully deleted image.');
+
+        $this->loadCurrentTheme();
+        $this->loadArticleSideImages();
     }
 
     public function render()

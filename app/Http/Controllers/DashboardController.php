@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\FaqItem;
 use App\Models\Menu;
 use App\Models\Order;
@@ -11,6 +12,7 @@ use App\Models\Partner;
 use App\Models\Post;
 use App\Models\Product;
 use App\Models\SubscriberList;
+use App\Models\SupportRequestItem;
 use App\Models\TeamMember;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -23,12 +25,50 @@ class DashboardController extends Controller
 {
     public function index()
     {
+
+        $orders = Order::all();
+
         $statistics = [
             [
                 'icon' => 'bi bi-clipboard-data',
                 'name' => 'Homepage visits',
                 'data' => number_format(Visit::where('url', route('home'))->count()),
-            ]
+            ],
+            [
+                'icon' => 'bi bi-clipboard-data',
+                'name' => 'System Orders',
+                'data' => number_format($orders->count()),
+            ],
+            [
+                'icon' => 'bi bi-clipboard-data',
+                'name' => 'Pending Orders',
+                'data' => number_format($orders->where('status', Order::STATUS_PENDING)->count()),
+            ],
+            [
+                'icon' => 'bi bi-clipboard-data',
+                'name' => 'Unapproved Comments',
+                'data' => number_format(Comment::where('is_approved', false)->count()),
+            ],
+            [
+                'icon' => 'bi bi-clipboard-data',
+                'name' => 'Products',
+                'data' => number_format(Product::count()),
+            ],
+            [
+                'icon' => 'bi bi-clipboard-data',
+                'name' => 'Posts',
+                'data' => number_format(Post::count()),
+            ],
+            [
+                'icon' => 'bi bi-clipboard-data',
+                'name' => 'Unread Support Letters',
+                'data' => number_format(SupportRequestItem::where('read', false)->count()),
+            ],
+            [
+                'icon' => 'bi bi-clipboard-data',
+                'name' => 'Subscribers',
+                'data' => number_format(SubscriberList::count()),
+            ],
         ];
         return view('pages.dashboard.overview', [
             'statistics' => $statistics
@@ -287,11 +327,21 @@ class DashboardController extends Controller
     public function subscriberListDownload()
     {
         $list = SubscriberList::all();
-        return (new FastExcel($list))->download('subscriber-list.xlsx');
+        return (new FastExcel($list))->download('subscriber-list-'. date('Y-m-d') .'.xlsx');
     }
 
     public function manageWebsiteThemeIndex() {
         return view('pages.dashboard.manage-website-theme.index');
     }
+
+    public function supportRequestItems() {
+        return view('pages.dashboard.support-request-items.index');
+    }
+
+    public function visitorLogDownload() {
+        $list = Visit::all();
+        return (new FastExcel($list))->download('visitor-log-'. date('Y-m-d') .'.xlsx');
+    }
+
 
 }

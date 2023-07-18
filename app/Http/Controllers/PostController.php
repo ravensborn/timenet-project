@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Product;
+use App\Models\WebsiteTheme;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -57,12 +58,20 @@ class PostController extends Controller
             ->get();
 
         $categories = Category::whereIn('model', [Post::class, Product::class])->get();
+        $selectedWebsiteTheme = WebsiteTheme::where('is_selected', true)->first();
+
+        $articleSideImages = collect();
+
+        if ($selectedWebsiteTheme) {
+            $articleSideImages = $selectedWebsiteTheme->getMedia('article_side_images');
+        }
 
         return view('pages.posts.show', [
             'post' => $post,
             'comments' => $comments,
             'related_posts' => $related_posts,
             'categories' => $categories,
+            'article_side_images' => $articleSideImages
         ]);
 
     }

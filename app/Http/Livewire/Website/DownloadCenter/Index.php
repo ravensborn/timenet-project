@@ -24,6 +24,8 @@ class Index extends Component
 
         if($this->search) {
             $this->files = DownloadableFile::where('name', 'LIKE', '%' . $this->search . '%')->get();
+        } else {
+            $this->files = DownloadableFile::orderBy('created_at', 'desc')->limit(3)->get();
         }
 
         return view('livewire.website.download-center.index')->extends('layouts.master')->section('content');
