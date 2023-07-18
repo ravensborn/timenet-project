@@ -242,18 +242,21 @@
 
                 </div>
 
-                <div class="mb-7">
-                    <div class="mb-3">
-                        <h3>Offers</h3>
+                @if($article_side_images->count() > 0)
+                    <div class="mb-7">
+                        <div class="mb-3">
+                            <h3>Offers</h3>
 
-                        @foreach($article_side_images as $image)
-                          <div class="mb-2">
-                              <img src="{{ $image->getFullUrl() }}" alt="Image" class="img-fluid" style="width: 100%; height: auto; object-fit: contain;">
-                          </div>
-                        @endforeach
+                            @foreach($article_side_images as $image)
+                                <div class="mb-2">
+                                    <img src="{{ $image->getFullUrl() }}" alt="Image" class="img-fluid"
+                                         style="width: 100%; height: auto; object-fit: contain;">
+                                </div>
+                            @endforeach
 
+                        </div>
                     </div>
-                </div>
+                @endif
             </div>
         </div>
     </div>
