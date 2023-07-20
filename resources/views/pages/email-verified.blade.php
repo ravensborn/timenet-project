@@ -14,28 +14,24 @@
                     <i class="bi bi-check2-circle display-1 text-dark"></i>
 
                     <div class="mb-5">
-                        <h1 class="h2">E-Mail Verification Completed!</h1>
+                        <h1 class="h2">{{ __('website.verify_email.title') }}</h1>
                         <p>
-                            Congratulations! Your email address has been successfully verified. Thank you for taking
-                            this important step to ensure the security and privacy of your account. You can now access
-                            all the features and services available on our website. If you have any questions or
-                            concerns, please do not hesitate to contact our customer support team.
+                            {{ __('website.verify_email.description') }}
                         </p>
                     </div>
                     <a class="btn btn-dark btn-transition rounded-pill px-6"
-                       href="{{ route('home') }}">Continue
-                        to TimeNet</a>
+                       href="{{ route('home') }}"> {{ __('website.verify_email.continue') }}</a>
 
 
                     <div class="mt-4"></div>
 
                     <a class="link text-muted d-block" href="{{ route('users.account.overview') }}">
                         <i class="bi-chevron-left small ms-1"></i>
-                        User Account
+                        {{ __('website.verify_email.user_account') }}
                     </a>
                     <a class="link text-muted d-block" href="{{ route('store.index') }}">
                         <i class="bi-chevron-left small ms-1"></i>
-                        TimeNet Store
+                        {{ __('website.verify_email.timenet_store') }}
                     </a>
 
                 </div>

@@ -16,46 +16,46 @@
                     <!-- End Avatar -->
 
                     <!-- Nav -->
-                    <span class="text-cap">Account</span>
+                    <span class="text-cap">{{ __('website.user_section.account') }}</span>
 
                     <!-- List -->
                     <ul class="nav nav-sm nav-tabs nav-vertical mb-4">
                         <li class="nav-item">
                             <a @class(['nav-link',  'active' => ($navbarPage == 'overview')]) href="{{ route('users.account.overview') }}">
-                                <i class="bi-person-badge nav-icon"></i> Personal info
+                                <i class="bi-person-badge nav-icon"></i> {{ __('website.user_section.personal_info') }}
                             </a>
                         </li>
                         <li class="nav-item">
                             <a @class(['nav-link',  'active' => ($navbarPage == 'security')]) href="{{ route('users.account.security') }}">
-                                <i class="bi-shield-shaded nav-icon"></i> Security
+                                <i class="bi-shield-shaded nav-icon"></i> {{ __('website.user_section.security') }}
                             </a>
                         </li>
                         <li class="nav-item">
                             <a @class(['nav-link',  'active' => ($navbarPage == 'notifications')]) href="{{ route('users.account.notifications') }}">
-                                <i class="bi-bell nav-icon"></i> Notifications
+                                <i class="bi-bell nav-icon"></i> {{ __('website.user_section.notifications') }}
                                 {{--                                <span class="badge bg-soft-dark text-dark rounded-pill nav-link-badge">1</span>--}}
                             </a>
                         </li>
                         <li class="nav-item">
                             <a @class(['nav-link',  'active' => ($navbarPage == 'preferences')]) href="{{ route('users.account.preferences') }}">
-                                <i class="bi-sliders nav-icon"></i> Preferences
+                                <i class="bi-sliders nav-icon"></i> {{ __('website.user_section.preferences') }}
                             </a>
                         </li>
                     </ul>
                     <!-- End List -->
 
-                    <span class="text-cap">Store</span>
+                    <span class="text-cap">{{ __('website.user_section.store') }}</span>
 
                     <!-- List -->
                     <ul class="nav nav-sm nav-tabs nav-vertical mb-4">
                         <li class="nav-item">
                             <a @class(['nav-link',  'active' => ($navbarPage == 'orders')]) href="{{ route('users.store.orders.index') }}">
-                                <i class="bi-basket nav-icon"></i> Your orders
+                                <i class="bi-basket nav-icon"></i> {{ __('website.user_section.your_orders') }}
                             </a>
                         </li>
                         <li class="nav-item">
                             <a @class(['nav-link',  'active' => ($navbarPage == 'wishlist')]) href="{{ route('users.store.wishlist') }}">
-                                <i class="bi-heart nav-icon"></i> Wishlist
+                                <i class="bi-heart nav-icon"></i> {{ __('website.user_section.wishlist') }}
 {{--                                <span class="badge bg-soft-dark text-dark rounded-pill nav-link-badge">2</span>--}}
                             </a>
                         </li>
@@ -69,7 +69,7 @@
                         <ul class="nav nav-sm nav-tabs nav-vertical">
                             <li class="nav-item">
                                 <a class="nav-link" href="#">
-                                    <i class="bi-box-arrow-right nav-icon"></i> Log out
+                                    <i class="bi-box-arrow-right nav-icon"></i> {{ __('website.user_section.logout') }}
                                 </a>
                             </li>
                         </ul>

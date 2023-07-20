@@ -15,12 +15,12 @@
                     <!-- Card -->
                     <div class="card">
                         <div class="card-header border-bottom">
-                            <h4 class="card-header-title">Wishlist</h4>
+                            <h4 class="card-header-title">{{ __('website.user_section.wishlist') }}</h4>
                         </div>
 
                         <div class="card-body">
                             @if($items->count())
-                                <h5>Items</h5>
+                                <h5><h5>{{ __('website.user_section.items') }}</h5></h5>
                             @endif
                             <ul class="list-group">
                                 @forelse($items as $item)
@@ -29,7 +29,7 @@
                                             <div class="d-flex justify-content-start align-items-center">
 
                                                 <a href="{{ route('store.products.show', $item->product->slug) }}">
-                                                    <img src="{{ $item->product->getFirstMediaUrl('cover') }}"
+                                                    <img src="{{ $item->product->getCover() }}"
                                                          style="width: 64px;" alt="Item image"
                                                          class="img-thumbnail">
                                                 </a>
@@ -48,7 +48,7 @@
                                                         wire:click="removeFromWishlist({{ $item->id }})">
                                                     <i class="d-block bi bi-trash me-1"></i>
                                                     <div>
-                                                        Remove
+                                                        {{ __('website.user_section.remove') }}
                                                     </div>
                                                 </span>
                                             </div>
@@ -57,11 +57,7 @@
                                 @empty
                                     <div>
                                         <p>
-                                            We're sorry, but currently, our wishlist page does not have any products
-                                            available. However, we are always working to provide you with the latest and
-                                            greatest items that will meet your needs and exceed your expectations.
-                                            <a class="d-block mt-3" href="{{ route('store.index') }}">Click to navigate
-                                                to available products.</a>
+                                            {!! __('website.user_section.wishlist_no_items') !!}
                                         </p>
                                     </div>
                                 @endforelse

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}"
+      @if( config('app.available_locales')[app()->getLocale()]['rtl'] ) dir="rtl" @endif>
 <head>
     <!-- Required Meta Tags Always Come First -->
     <meta charset="utf-8">
@@ -51,8 +52,28 @@
             background-size: cover;
         }
 
+
+
+
     </style>
 
+    @if( config('app.available_locales')[app()->getLocale()]['rtl'] )
+
+        <style>
+            .rtl-mode-direction {
+                direction: rtl !important;
+            }
+
+            .rtl-mode-text-left {
+                text-align: left !important;
+            }
+
+            .breadcrumb, .breadcrumb-item, .list-inline-item {
+                direction: ltr;
+            }
+        </style>
+
+    @endif
 
     @livewireStyles
 </head>
@@ -133,7 +154,7 @@
             history: false,
         });
 
-        var shopProductSwiper = new Swiper('.js-swiper-shop-product',{
+        var shopProductSwiper = new Swiper('.js-swiper-shop-product', {
 
             autoplay: true,
             loop: true,
@@ -169,14 +190,14 @@
 
 <!--Start of Tawk.to Script-->
 <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-        s1.async=true;
-        s1.src='https://embed.tawk.to/64aa7865cc26a871b0274225/1h4sucjkp';
-        s1.charset='UTF-8';
-        s1.setAttribute('crossorigin','*');
-        s0.parentNode.insertBefore(s1,s0);
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    (function () {
+        var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+        s1.async = true;
+        s1.src = 'https://embed.tawk.to/64aa7865cc26a871b0274225/1h4sucjkp';
+        s1.charset = 'UTF-8';
+        s1.setAttribute('crossorigin', '*');
+        s0.parentNode.insertBefore(s1, s0);
     })();
 </script>
 <!--End of Tawk.to Script-->

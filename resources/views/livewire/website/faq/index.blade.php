@@ -3,8 +3,8 @@
          style="background-image: url({{ asset('themes/front/assets/svg/components/card-11.svg') }});">
         <div class="container content-space-t-3 content-space-t-lg-5 content-space-b-2">
             <div class="w-md-75 w-lg-50 text-center mx-md-auto">
-                <h1>FAQ</h1>
-                <p>Search our FAQ for answers to anything you might ask.</p>
+                <h1>{{ __('website.faq.faq') }}</h1>
+                <p>{{ __('website.faq.faq_description') }}</p>
             </div>
         </div>
     </div>
@@ -20,8 +20,8 @@
 
                         @if($search)
                             <div class="mb-3">
-                                <h4>{{ $faqItemsCount }} Results <span
-                                        class="text-body small">for "{{ $search }}"</span></h4>
+                                <h4>{{ $faqItemsCount }} {{ __('website.faq.results') }} <span
+                                        class="text-body small">{{ __('website.faq.for') }} "{{ $search }}"</span></h4>
                             </div>
                         @endif
 
@@ -29,14 +29,13 @@
                             <!-- Input Card -->
                             <div class="input-card border">
                                 <div class="input-card-form">
-                                    <label for="searchAppsForm" class="form-label visually-hidden">Search for
-                                        files</label>
+                                    <label for="searchAppsForm" class="form-label visually-hidden">{{ __('website.faq.search_for_questions') }}</label>
                                     <div class="input-group input-group-merge">
           <span class="input-group-prepend input-group-text">
             <i class="bi-search"></i>
           </span>
                                         <input type="text" class="form-control" id="searchAppsForm"
-                                               placeholder="Search for files" aria-label="Search for apps"
+                                               placeholder="{{ __('website.faq.search_for_questions') }}" aria-label="Search for questions"
                                                wire:model="search">
                                     </div>
                                 </div>

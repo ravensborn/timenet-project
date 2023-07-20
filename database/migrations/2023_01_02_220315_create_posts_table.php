@@ -25,7 +25,7 @@ return new class extends Migration {
 
             $table->unsignedBigInteger('category_id');
 
-            $table->string('locale')->default(config()->get('app.available_locales')[0]);
+            $table->string('locale')->default(config()->get('app.locale'));
 
             $table->foreign('category_id')
                 ->references('id')

@@ -15,12 +15,12 @@
                     <!-- Card -->
                     <div class="card">
                         <div class="card-header border-bottom">
-                            <h4 class="card-header-title">Notifications</h4>
+                            <h4 class="card-header-title">{{ __('website.user_section.notifications') }}</h4>
                         </div>
 
                         <div class="card-body">
                             <p>
-                                No new notifications at this moment.
+                                {{ __('website.user_section.no_notifications') }}
                             </p>
                         </div>
                     </div>

@@ -12,27 +12,23 @@
                     <i class="bi bi-person-lock display-1 text-dark"></i>
 
                     <div class="mb-5">
-                        <h1 class="h2">Your account is suspended!</h1>
+                        <h1 class="h2">{{ __('website.ban_page.title') }}</h1>
                         <p>
-                            Your account has been suspended due to multiple violations of our website guidelines.
-                            We take these violations seriously in order to maintain a safe and respectful environment for
-                            all users. We encourage you to review our guidelines to better understand which rule(s) were
-                            broken.
+                            {{ __('website.ban_page.description_1') }}
                         </p>
                         <p>
-                             If you have any questions or would like to discuss the suspension further, please
-                            contact our customer support team for assistance.
+                            {{ __('website.ban_page.description_2') }}
                         </p>
                     </div>
                     <a class="btn btn-dark btn-transition rounded-pill px-6"
-                       href="{{ route('home') }}">Return Home</a>
+                       href="{{ route('home') }}">{{ __('website.ban_page.return_home') }}</a>
 
 
                     <div class="mt-4"></div>
 
                     <a class="link text-muted d-block" href="{{ route('logout') }}">
                         <i class="bi-chevron-left small ms-1"></i>
-                        Logout
+                        {{ __('website.ban_page.logout') }}
                     </a>
 
                 </div>

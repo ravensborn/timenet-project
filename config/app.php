@@ -88,14 +88,17 @@ return [
         'en' => [
             'name' => 'English (US)',
             'icon' => '/themes/front/assets/vendor/flag-icon-css/flags/1x1/us.svg',
+            'rtl' => false,
         ],
         'ku' => [
             'name' => 'Kurdish (کوردی)',
             'icon' => '/images/kurdistan-flag.svg',
+            'rtl' => true,
         ],
         'ar' => [
             'name' => 'Arabic (العربیة)',
             'icon' => '/themes/front/assets/vendor/flag-icon-css/flags/1x1/iq.svg',
+            'rtl' => true,
         ]
     ],
 

@@ -5,7 +5,7 @@
         <div class="container py-4">
             <div class="row">
                 <div class="col-sm">
-                    <h4 class="mb-0">TimeNet Store</h4>
+                    <h4 class="mb-0">{{ __('website.breadcrumb.timenet_store') }}</h4>
                 </div>
                 <!-- End Col -->
 
@@ -14,13 +14,13 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0">
                             <li class="breadcrumb-item">
-                                <a href="{{ route('home') }}">TimeNet</a>
+                                <a href="{{ route('home') }}">{{ __('website.breadcrumb.timenet') }}</a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="{{ route('store.index') }}">Store</a>
+                                <a href="{{ route('store.index') }}">{{ __('website.breadcrumb.store') }}</a>
                             </li>
                             <li class="breadcrumb-item active">
-                                Products
+                                {{ __('website.breadcrumb.products') }}
                             </li>
                         </ol>
                     </nav>
@@ -35,13 +35,13 @@
 
     <div class="container content-space-t-1">
         @if(!$user || ($user && $user->store_welcome_message))
-        <div class="row">
-            <div class="col">
-                <div class="alert alert-soft-dark" role="alert">
+            <div class="row">
+                <div class="col">
+                    <div class="alert alert-soft-dark" role="alert">
 
 
                         <div class="d-flex justify-content-between">
-                            <h3 class="alert-heading">Welcome to TimeNet Store!</h3>
+                            <h3 class="alert-heading">{{ __('website.store.pages.products.welcome_message_title') }}</h3>
                             <div class="col-6 text-end">
                                 <div style="cursor:pointer;" class="pb-2 pe-2" wire:click="dismissMessage">
                                     <i class="bi bi-x-lg"></i>
@@ -49,24 +49,10 @@
                             </div>
                         </div>
 
-
-
-                    <p>
-                        Welcome to TimeNet, your one-stop-shop for all your networking needs. We are a team of
-                        networking experts dedicated to providing you with the best possible service and support. Our
-                        mission is to help you stay connected and secure, no matter what your networking needs may be.
-                        We offer a wide range of network devices, tools and services, including routers, switches,
-                        firewalls, VPNs, and more. Our products are designed to meet the highest standards of quality
-                        and reliability, and we are committed to providing you with the best possible value for your
-                        money. Whether you’re a small business owner, a home user, or an IT professional, we’ve got you
-                        covered. So why wait? Start browsing our selection today and see what TimeNet can do for you.
-                    </p>
-                    <hr/>
-                    <p class="mb-0">Whenever you need to, you can always contact us at <a
-                            href="mailto:karzan@time-net.net" class="text-dark">info@time-net.net</a>.</p>
+                        {!! __('website.store.pages.products.welcome_message_description') !!}
+                    </div>
                 </div>
             </div>
-        </div>
         @endif
         @if(auth()->check())
 
@@ -91,7 +77,7 @@
                                 <div>
                                     <a class="btn btn-outline-dark btn-transition btn-sm rounded-pill mt-3"
                                        href="{{ route('store.cartItems.index') }}">
-                                        View your shopping cart
+                                        {{ __('website.store.view_cart') }}
                                     </a>
                                 </div>
                             </div>
@@ -100,7 +86,7 @@
 
                             <div>
                                 <i class="bi-cart"></i>
-                                Your shopping cart is empty.
+                                {{ __('website.store.cart_empty') }}
                             </div>
 
                         @endif
@@ -126,7 +112,7 @@
                                 data-bs-target="#navbarVerticalNavMenu" aria-label="Toggle navigation"
                                 aria-expanded="false" aria-controls="navbarVerticalNavMenu">
                 <span class="d-flex justify-content-between align-items-center">
-                  <span class="text-dark">Filter</span>
+                  <span class="text-dark">{{ __('website.store.filter') }}</span>
 
                   <span class="navbar-toggler-default">
                     <i class="bi-list"></i>
@@ -146,7 +132,7 @@
                             <!-- Form -->
                             <form>
                                 <div class="border-bottom pb-4 mb-4">
-                                    <h5>Categories</h5>
+                                    <h5>{{ __('website.store.filter_categories') }}</h5>
                                     <div class="d-grid gap-2">
 
                                         <!-- Checkboxes -->
@@ -182,7 +168,7 @@
                                 </div>
 
                                 <div class="border-bottom pb-4 mb-4">
-                                    <h5>Brands</h5>
+                                    <h5>{{ __('website.store.filter_brands') }}</h5>
 
                                     <div class="d-grid gap-2">
 
@@ -216,38 +202,12 @@
 
                                         @endforeach
                                     </div>
-
-                                    <!-- View More - Collapse -->
-                                    {{--                                    <div class="collapse" id="collapseBrand">--}}
-                                    {{--                                        <div class="d-grid gap-2">--}}
-                                    {{--                                            <!-- Checkboxes -->--}}
-                                    {{--                                            <div class="form-check">--}}
-                                    {{--                                                <input class="form-check-input" type="checkbox" value="" id="gucciCheckbox">--}}
-                                    {{--                                                <label class="form-check-label d-flex" for="gucciCheckbox">Gucci <span class="ms-auto">(5)</span></label>--}}
-                                    {{--                                            </div>--}}
-                                    {{--                                            <!-- End Checkboxes -->--}}
-
-                                    {{--                                            <!-- Checkboxes -->--}}
-                                    {{--                                            <div class="form-check">--}}
-                                    {{--                                                <input class="form-check-input" type="checkbox" value="" id="mangoCheckbox">--}}
-                                    {{--                                                <label class="form-check-label d-flex" for="mangoCheckbox">Mango <span class="ms-auto">(1)</span></label>--}}
-                                    {{--                                            </div>--}}
-                                    {{--                                            <!-- End Checkboxes -->--}}
-                                    {{--                                        </div>--}}
-                                    {{--                                    </div>--}}
-                                    {{--                                    <!-- End View More - Collapse -->--}}
-
-                                    {{--                                    <!-- Link -->--}}
-                                    {{--                                    <a class="link-sm link-collapse" href="#collapseBrand" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="collapseBrand">--}}
-                                    {{--                                        <span class="link-collapse-default">View more</span>--}}
-                                    {{--                                        <span class="link-collapse-active">View less</span>--}}
-                                    {{--                                    </a>--}}
-                                    {{--                                    <!-- End Link -->--}}
                                 </div>
 
 
                                 <div class="d-grid">
-                                    <button type="button" class="btn btn-white" wire:click="resetFilters">Clear all
+                                    <button type="button" class="btn btn-white"
+                                            wire:click="resetFilters">{{ __('website.store.clear_all') }}
                                     </button>
                                 </div>
                             </form>
@@ -274,7 +234,7 @@
                                 <input type="text" wire:model="search"
                                        wire:keydown.a="_updateSearch($event.target.value)"
                                        class="form-control form-control-sm"
-                                       placeholder="Search...">
+                                       placeholder="{{ __('website.store.search') }}">
 
                             </div>
                             <!-- End Select -->
@@ -283,9 +243,9 @@
                             <div class="mb-2 mb-sm-0 me-sm-2">
                                 <select class="form-select form-select-sm" wire:model="sorting_method"
                                         wire:change="_updateSortingMethod">
-                                    <option value="newest_top">Newest</option>
-                                    <option value="price_high_to_low">Price, high to low</option>
-                                    <option value="price_low_to_high">Price, low to high</option>
+                                    <option value="newest_top">{{ __('website.store.newest') }}</option>
+                                    <option value="price_high_to_low">{{ __('website.store.high_to_low') }}</option>
+                                    <option value="price_low_to_high">{{ __('website.store.low_to_high') }}</option>
                                 </select>
                             </div>
                             <!-- End Select -->
@@ -332,13 +292,16 @@
                                     <div class="card card-bordered shadow-none text-center h-100">
                                         <div class="card-pinned">
 
-                                            <img style="height: 200px; object-fit: cover;" class="card-img-top"
-                                                 src="{{ $product->getCover() }}"
-                                                 alt="Image Description">
+                                            <a href="{{ route('store.products.show', $product->slug) }}">
+                                                <img style="height: 200px; object-fit: cover;" class="card-img-top"
+                                                     src="{{ $product->getCover() }}"
+                                                     alt="Image Description">
+                                            </a>
 
                                             @if($product->created_at->isToday())
                                                 <div class="card-pinned-top-start">
-                                                    <span class="badge bg-success rounded-pill">New arrival</span>
+                                                    <span
+                                                        class="badge bg-success rounded-pill">{{ __('website.store.new_arrival') }}</span>
                                                 </div>
                                             @endif
 
@@ -406,14 +369,14 @@
                                                                 wire:key="{{ $product->id }}"
                                                                 wire:click="addToCart({{ $product->id }},1)">
                                                             <i class="bi bi-cart me-1"></i>
-                                                            Add to cart
+                                                            {{ __('website.store.add_to_cart') }}
                                                         </button>
                                                     @else
                                                         <div>
                                                             <button type="button"
                                                                     class="btn btn-outline-dark btn-sm">
                                                                 <i class="bi bi-box me-1"></i>
-                                                                Available Soon
+                                                                {{ __('website.store.available_soon') }}
                                                             </button>
                                                         </div>
                                                     @endif
@@ -422,15 +385,13 @@
                                                         <a href="mailto:info@time-net.net"
                                                            class="btn btn-outline-dark btn-sm">
                                                             <i class="bi bi-envelope me-1"></i>
-                                                            Contact Us
+                                                            {{ __('website.store.contact_us') }}
                                                         </a>
                                                     </div>
                                                 @endif
                                             @else
                                                 <div>
-                                                    You must be <a href="{{ route('login') }}">logged in</a> to add item
-                                                    to your
-                                                    cart.
+                                                    {!! __('website.store.must_be_logged_in') !!}
                                                 </div>
                                             @endif
                                         </div>
@@ -442,9 +403,11 @@
                                     <div class="card card-flush">
                                         <div class="row align-items-md-center">
                                             <div class="col-md-3">
-                                                <img class="card-img rounded-2"
-                                                     src="{{ $product->getFirstMediaUrl('cover') }}"
-                                                     alt="Image Cover">
+                                                <a href="{{ route('store.products.show', $product->slug) }}">
+                                                    <img class="card-img rounded-2"
+                                                         src="{{ $product->getCover() }}"
+                                                         alt="Image Cover">
+                                                </a>
                                             </div>
                                             <div class="col-md-9">
                                                 <div class="card-body">
@@ -452,55 +415,94 @@
 
                                                     <div class="row">
                                                         <div class="col-8">
-                                                            <span
-                                                                class="card-subtitle">{{ $product->category->name }}</span>
+                                                            <a class="link-secondary link-sm" href="{{ route('store.products.show', $product->slug) }}">
+                                                                <span
+                                                                    class="card-subtitle">{{ $product->category->name }}</span>
+                                                            </a>
                                                             @if($product->created_at->isToday())
                                                                 <div class="card-pinned-top-start">
-                                                                    <span class="badge bg-success rounded-pill">New arrival</span>
+                                                                    <span
+                                                                        class="badge bg-success rounded-pill">{{ __('website.store.new_arrival') }}</span>
                                                                 </div>
                                                             @endif
                                                             <h4 class="card-title">
                                                                 <a class="text-dark">
-                                                                    {{ $product->name }}
+                                                                    <a class="link-secondary link-sm fw-bold text-dark" href="{{ route('store.products.show', $product->slug) }}">
+                                                                        {{ $product->name }}
+                                                                    </a>
                                                                 </a>
                                                             </h4>
 
                                                             <div>
                                                                 @if(auth()->check())
-                                                                    <button type="button"
-                                                                            class="btn btn-outline-dark btn-sm"
-                                                                            wire:key="{{ $product->id }}"
-                                                                            wire:click="addToCart({{ $product->id }},1)">
-                                                                        <i class="bi bi-cart"></i>
-                                                                        &nbsp;
-                                                                        Add to cart
-                                                                    </button>
+                                                                    @if($product->is_purchasable_online)
+                                                                        @if($product->checkIfPurchasable())
+                                                                            <button type="button"
+                                                                                    class="btn btn-outline-dark btn-sm"
+                                                                                    wire:key="{{ $product->id }}"
+                                                                                    wire:click="addToCart({{ $product->id }},1)">
+                                                                                <i class="bi bi-cart me-1"></i>
+                                                                                {{ __('website.store.add_to_cart') }}
+                                                                            </button>
+                                                                        @else
+                                                                            <div>
+                                                                                <button type="button"
+                                                                                        class="btn btn-outline-dark btn-sm">
+                                                                                    <i class="bi bi-box me-1"></i>
+                                                                                    {{ __('website.store.available_soon') }}
+                                                                                </button>
+                                                                            </div>
+                                                                        @endif
+                                                                    @else
+                                                                        <div>
+                                                                            <a href="mailto:info@time-net.net"
+                                                                               class="btn btn-outline-dark btn-sm">
+                                                                                <i class="bi bi-envelope me-1"></i>
+                                                                                {{ __('website.store.contact_us') }}
+                                                                            </a>
+                                                                        </div>
+                                                                    @endif
                                                                 @else
                                                                     <div>
-                                                                        You must be <a href="{{ route('login') }}">logged
-                                                                            in</a> to add item to your
-                                                                        cart.
+                                                                        {!! __('website.store.must_be_logged_in') !!}
                                                                     </div>
                                                                 @endif
                                                             </div>
                                                         </div>
                                                         <div class="col-4">
                                                             <div>
-                                                                <p class="card-text text-dark fw-bold">
-                                                                    ${{ number_format($product->price, 2) }}</p>
+                                                                @if($product->is_purchasable_online && $product->checkIfPurchasable())
+                                                                    @if($product->previous_price)
+                                                                        <p class="card-text">
+                                                <span class="text-decoration-line-through text-muted me-1">
+                                                    ${{ number_format($product->previous_price, 2) }}
+                                                </span>
+                                                                            <span class="fw-bold text-dark">
+                                                    ${{ number_format($product->price, 2) }}
+                                                </span>
+                                                                        </p>
+                                                                    @else
+                                                                        <p class="card-text text-dark fw-bold">
+
+                                                                            ${{ number_format($product->price, 2) }}
+                                                                        </p>
+                                                                    @endif
+                                                                @endif
+
+
                                                             </div>
                                                             @if($user && $user->wishlist()->where('product_id', $product->id)->first())
                                                                 <a class="link-sm link-secondary small text-danger"
                                                                    style="cursor:pointer;"
                                                                    wire:click="toWishlist({{ $product->id }}, 'remove')">
                                                                     <i class="bi-heart-fill text-danger me-1"></i>
-                                                                    Save for later
+                                                                    {{ __('website.store.save_for_later') }}
                                                                 </a>
                                                             @else
                                                                 <a class="link-sm link-secondary small"
                                                                    style="cursor:pointer;"
                                                                    wire:click="toWishlist({{ $product->id }}, 'add')">
-                                                                    <i class="bi-heart me-1"></i> Save for later
+                                                                    <i class="bi-heart me-1"></i> {{ __('website.store.save_for_later') }}
                                                                 </a>
                                                             @endif
                                                         </div>
@@ -515,7 +517,7 @@
                             <div class="row">
                                 <div class="col text-center">
                                     <div class="alert alert-soft-dark">
-                                        No products found with your current settings.
+                                        {{ __('website.store.bad_search') }}
                                     </div>
                                 </div>
                             </div>
@@ -543,15 +545,13 @@
                     <!-- Heading -->
                     <div class="mb-5">
                         {{--                        <span class="text-cap">Subscribe</span>--}}
-                        <h2>Get the latest from Front</h2>
+                        <h2>{{ __('website.components.subscribe_box.title') }}</h2>
                     </div>
                     <!-- End Heading -->
 
                     @livewire('global-components.subscribe-box', ['type' => 2])
 
-                    <p class="small">You can unsubscribe at any time. Read our <a class="text-dark"
-                                                                                  href="{{ route('privacy-and-policy') }}">privacy
-                            policy</a></p>
+                    {!! __('website.components.subscribe_box.read_privacy_policy')  !!}
                 </div>
             </div>
         </div>

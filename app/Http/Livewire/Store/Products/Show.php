@@ -166,26 +166,7 @@ class Show extends Component
                 ->firstOrFail();
         }
 
-        $this->relatedProducts = Product::where('category_id', $product->category_id)
-            ->where('slug', '!=', $slug)
-            ->limit(4)
-            ->inRandomOrder()
-            ->get()
-            ->map(function ($item) {
-
-                $coverImage = Media::where('model_type', Product::class)
-                    ->where('model_id', $item->id)
-                    ->where('uuid', $item->cover_image)
-                    ->first();
-
-                if ($coverImage) {
-                    $item['image'] = $coverImage->getFullUrl();
-                } else {
-                    $item['image'] = asset('images/logo-dark.png');
-                }
-
-                return $item;
-            });
+        $this->getRelatedProducts($product, $slug);
 
         $this->product = $product;
 
@@ -195,6 +176,32 @@ class Show extends Component
         }
 
         visitor()->visit($product);
+    }
+
+    public function getRelatedProducts($product, $slug): void
+    {
+        $this->relatedProducts = Product::where('category_id', $product->category_id)
+            ->where('slug', '!=', $slug)
+            ->limit(4)
+            ->inRandomOrder()
+            ->get();
+//            ->map(function ($item) {
+//
+////                $coverImage = Media::where('model_type', Product::class)
+////                    ->where('model_id', $item->id)
+////                    ->where('uuid', $item->cover_image)
+////                    ->first();
+////
+////                if ($coverImage) {
+////                    $item['image'] = $coverImage->getFullUrl();
+////                } else {
+////                    $item['image'] = asset('images/logo-dark.png');
+////                }
+//
+//                $item['image'] = Product::find($item->id)->getCover(asset('images/logo-dark.png'));
+//
+//                return $item;
+//            });
     }
 
     public function render()

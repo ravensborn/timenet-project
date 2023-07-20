@@ -21,10 +21,17 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0">
                             <li class="breadcrumb-item">
-                                <a href="{{ route('home') }}">{{ config('env.APP_NAME') }}</a>
+                                <a href="{{ route('home') }}">{{ __('website.breadcrumb.timenet') }}</a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="">{{ $post->category->name }}</a>
+                                <a href="#">
+                                    @if(\Illuminate\Support\Facades\Lang::has('website.categories.' . $post->category->name, session()->get('locale')))
+
+                                        {{  __('website.categories.' . $post->category->name ) }}
+                                    @else
+                                        {{  $post->category->name }}
+                                    @endif
+                                </a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 @if(strlen($post->title) > 15)
@@ -81,7 +88,7 @@
 
                         <div class="col-sm-5">
                             <div class="d-flex justify-content-sm-end align-items-center">
-                                <span class="text-cap mb-0 me-2">Share:</span>
+                                <span class="text-cap mb-0 me-2">{{ __('website.posts.show.share') }}:</span>
 
                                 <div class="d-flex gap-2">
                                     <a class="btn btn-soft-secondary btn-sm btn-icon rounded-circle" href="#">
@@ -112,11 +119,11 @@
 
                             <div class="border-top pt-5">
                                 @if($comments->count() == 1)
-                                    <h5>1 comment</h5>
+                                    <h5>1 {{ __('website.posts.show.comment') }}</h5>
                                 @elseif($comments->count() > 1)
-                                    <h5>{{ $comments->count() }} comments</h5>
+                                    <h5>{{ $comments->count() }} {{ __('website.posts.show.comments') }}</h5>
                                 @else
-                                    <h5>Be first to share your thoughts.</h5>
+                                    <h5>{{ __('website.posts.show.write_comment') }}</h5>
                                 @endif
                             </div>
 
@@ -157,7 +164,7 @@
 
                             @if(session()->has('comment_created'))
                                 <div class="alert alert-soft-success">
-                                    Your comment has been sent for review, once approved it will appear publicly.
+                                    {{ __('website.posts.show.comment_sent_for_review') }}
                                 </div>
                             @endif
 
@@ -167,21 +174,21 @@
                                 @csrf
 
                                 <div class="mb-3">
-                                    <label class="form-label" for="name">Name</label>
+                                    <label class="form-label" for="name">{{ __('website.globals.name') }}</label>
                                     <input type="text" id="name" value="{{ auth()->user()->name }}" class="form-control"
                                            disabled>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label class="form-label" for="email">Email</label>
+                                    <label class="form-label" for="email">{{ __('website.globals.email') }}</label>
                                     <input type="email" id="email" value="{{ auth()->user()->email }}"
                                            class="form-control"
                                            disabled>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label" for="content">Comment</label>
+                                    <label class="form-label" for="content">{{ __('website.posts.show.comment_ucfirst') }}</label>
                                     <textarea id="content" class="form-control" name="content"
-                                              placeholder="Write your thoughts." rows="4"
+                                              placeholder="{{ __('website.posts.show.write_thoughts') }}" rows="4"
                                               maxlength="2500"></textarea>
                                     @error('content')
                                     <div class="text-danger mt-1">
@@ -191,7 +198,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <button type="submit" class="btn btn-dark btn-sm">
-                                        Post Comment
+                                        {{ __('website.posts.show.post_comment') }}
                                     </button>
                                 </div>
                             </form>
@@ -201,8 +208,7 @@
                             <hr class="pb-5">
 
 
-                            <h5>You need to <a href="{{ route('login') }}">login</a> or <a
-                                    href="{{ route('register') }}">register</a> to comment on this post.</h5>
+                            <h5>{!! __('website.posts.show.register_to_comment') !!}</h5>
 
                         @endif
                     @endif
@@ -212,29 +218,39 @@
             <div class="col-12 order-0 col-md-3 order-md-1">
                 <div class="mb-7">
                     <div class="mb-3">
-                        <h3>Newsletter</h3>
+                        <h3>{{ __('website.posts.show.newsletter') }}</h3>
                     </div>
 
                     @livewire('global-components.subscribe-box')
 
-                    <p class="form-text">Get special offers on the latest developments from TimeNet.</p>
+                    <p class="form-text">{{ __('website.posts.show.newsletter_description') }}</p>
                 </div>
 
                 <div class="mb-7">
                     <div class="mb-3">
-                        <h3>Categories</h3>
+                        <h3>{{ __('website.categories.categories') }}</h3>
                     </div>
 
                     @foreach($categories as $category)
                         @if($category->model == \App\Models\Post::class)
                             <a class="btn btn-soft-secondary btn-xs mb-1"
                                href="{{ route('posts.index', ['grid_type' => 'grid', 'slug' => $category->slug]) }}">
-                                {{ $category->name }}
+                                @if(\Illuminate\Support\Facades\Lang::has('website.categories.' . $category->name, session()->get('locale')))
+
+                                    {{  __('website.categories.' . $category->name ) }}
+                                @else
+                                    {{  $category->name }}
+                                @endif
                             </a>
                         @else
                             <a class="btn btn-soft-secondary btn-xs mb-1"
                                href="{{ route('store.products.index')  }}">
-                                {{ $category->name }}
+                                @if(\Illuminate\Support\Facades\Lang::has('website.categories.' . $category->name, session()->get('locale')))
+
+                                    {{  __('website.categories.' . $category->name ) }}
+                                @else
+                                    {{  $category->name }}
+                                @endif
                             </a>
                         @endif
 
@@ -270,7 +286,7 @@
             <div class="border-top pt-5">
                 <!-- Heading -->
                 <div class="mb-3 mb-sm-5">
-                    <h3>Related articles</h3>
+                    <h3>{{ __('website.posts.show.related_articles') }}</h3>
                 </div>
                 <!-- End Heading -->
 
@@ -282,7 +298,7 @@
                             <div class="border-bottom h-100 py-5">
                                 <div class="row">
                                     <div class="col-6">
-                                        <span class="text-cap">{{ ucfirst($post->category->name) }}</span>
+                                        <span class="text-cap">{{ __('website.categories.' . $post->category->name) }}</span>
                                         <h4 class="mb-0">
                                             <a class="text-dark" href="{{ route('posts.show', $post->slug) }}">
                                                 @if(strlen($post->title) > 35)

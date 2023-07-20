@@ -74,11 +74,11 @@ class PageController extends Controller
 
     public function privacyAndPolicy()
     {
-        return view('pages.privacy-and-policy');
+        return view('pages.privacy-and-policy-' . app()->getLocale());
     }
 
     public function termsAndConditions()
     {
-        return view('pages.terms-and-conditions');
+        return view('pages.terms-and-conditions-' . app()->getLocale());
     }
 }

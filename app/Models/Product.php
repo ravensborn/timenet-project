@@ -90,16 +90,20 @@ class Product extends Model implements HasMedia
         return [];
     }
 
-    public function getCover()
+    public function getCover($replaceDefaultImageUrl = null): string
     {
 
         $media = $this->getMedia('images')
             ->where('uuid', $this->cover_image)
             ->first();
         if ($media) {
+
             return $media->getFullUrl();
         }
 
+        if ($replaceDefaultImageUrl) {
+            return $replaceDefaultImageUrl;
+        }
 
         return 'https://dummyimage.com/1000x700/ccc/111';
     }
@@ -115,13 +119,14 @@ class Product extends Model implements HasMedia
             $productInCart = CartItem::where('user_id', auth()->user()->id)
                 ->where('product_id', $this->id)
                 ->first();
-            if($productInCart) {
+            if ($productInCart) {
                 $stock = $stock - $productInCart->quantity;
             }
         }
 
         return $stock;
     }
+
     public function checkIfPurchasable($extraQuantity = 0): bool
     {
         return ($this->calculateAvailableStock() - $extraQuantity) > 0;

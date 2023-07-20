@@ -15,7 +15,7 @@
                     <!-- Card -->
                     <div class="card">
                         <div class="card-header border-bottom">
-                            <h4 class="card-header-title">User Password</h4>
+                            <h4 class="card-header-title">{{ __('website.user_section.user_password') }}</h4>
                         </div>
 
                         <!-- Body -->
@@ -23,7 +23,7 @@
                             <form>
                                 <!-- Form -->
                                 <div class="row mb-4">
-                                    <label for="currentPassword" class="col-sm-3 col-form-label form-label">Current Password</label>
+                                    <label for="currentPassword" class="col-sm-3 col-form-label form-label">{{ __('website.user_section.current_password') }}</label>
                                     <div class="col-sm-9">
                                         <div class="input-group">
                                             <input type="password" class="form-control" wire:model="currentPassword" id="currentPassword">
@@ -37,7 +37,7 @@
 
                                 <!-- Form -->
                                 <div class="row mb-4">
-                                    <label for="newPassword" class="col-sm-3 col-form-label form-label">New Password</label>
+                                    <label for="newPassword" class="col-sm-3 col-form-label form-label">{{ __('website.user_section.new_password') }}</label>
                                     <div class="col-sm-9">
                                         <div class="input-group">
                                             <input type="password" class="form-control" wire:model="newPassword" id="newPassword">
@@ -51,7 +51,7 @@
 
                                 <!-- Form -->
                                 <div class="row mb-4">
-                                    <label for="newPassword_confirmation" class="col-sm-3 col-form-label form-label">Confirm New Password</label>
+                                    <label for="newPassword_confirmation" class="col-sm-3 col-form-label form-label">{{ __('website.user_section.confirm_new_password') }}</label>
                                     <div class="col-sm-9">
                                         <div class="input-group">
                                             <input type="password" class="form-control" wire:model="newPassword_confirmation" id="newPassword_confirmation">
@@ -70,8 +70,8 @@
                         <!-- Footer -->
                         <div class="card-footer pt-0">
                             <div class="d-flex justify-content-end gap-3">
-                                <a class="btn btn-white" href="javascript:;" wire:click="resetFields">Cancel</a>
-                                <a class="btn btn-dark" href="javascript:;" wire:click="updatePassword">Save changes</a>
+                                <a class="btn btn-white" href="javascript:;" wire:click="resetFields">{{ __('website.user_section.cancel') }}</a>
+                                <a class="btn btn-dark" href="javascript:;" wire:click="updatePassword">{{ __('website.user_section.save_changes') }}</a>
                             </div>
                         </div>
                         <!-- End Footer -->

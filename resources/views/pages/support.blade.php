@@ -8,7 +8,7 @@
         <div class="container py-4">
             <div class="row">
                 <div class="col-sm">
-                    <h4 class="mb-0">Support</h4>
+                    <h4 class="mb-0">{{ __('website.breadcrumb.support') }}</h4>
                 </div>
                 <!-- End Col -->
 
@@ -17,10 +17,10 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0">
                             <li class="breadcrumb-item">
-                                <a href="{{ route('home') }}">{{ config('env.APP_NAME') }}</a>
+                                <a href="{{ route('home') }}">{{ __('website.breadcrumb.timenet') }}</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                Support
+                                {{ __('website.breadcrumb.support') }}
                             </li>
                         </ol>
                     </nav>
@@ -36,12 +36,10 @@
     <div class="container content-space-t-2">
         <!-- Heading -->
         <div class="text-center mx-md-auto mb-5">
-            <h2>Get Expert Support</h2>
+            <h2>{{ __('website.support.get_expert_support') }}</h2>
 
             <p>
-                Thank you for choosing our products/services, and we appreciate your trust in us. We look forward to
-                assisting you and making sure you have a smooth and enjoyable experience. Don't hesitate to reach out to
-                us – we're here to help!
+                {{ __('support_description') }}
             </p>
 
             <p>
@@ -60,7 +58,7 @@
         </div>
 
         <div>
-            <p class="text-center">Locate Us on the Map</p>
+            <p class="text-center">{{ __('website.support.locate_us_on_map') }}</p>
             <iframe
                 src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12874.275909137674!2d43.9963447!3d36.2256701!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x400718ae16e4dc03%3A0x65a2a5aa8ee81a5c!2sTime%20Net!5e0!3m2!1sen!2siq!4v1688945043584!5m2!1sen!2siq"
                 width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
@@ -77,8 +75,8 @@
                 <div class="row justify-content-lg-between align-items-lg-center">
                     <div class="col-md-10 col-lg-5 mb-9 mb-lg-0">
                         <!-- Info -->
-                        <h1 class="text-white">Get Support</h1>
-                        <p class="text-white-70">Whatever your goal - we will get your there.</p>
+                        <h1 class="text-white">{{ __('website.support.get_support') }}</h1>
+                        <p class="text-white-70">{{ __('website.support.form_text_1') }}</p>
                         <!-- End Info -->
 
                         <div class="border-top border-white-10 my-5" style="max-width: 10rem;"></div>
@@ -91,8 +89,7 @@
                             </div>
 
                             <blockquote class="blockquote blockquote-light">
-                                Need assistance? Fill out the form below and our support team will get back to you as
-                                soon as possible. We're here to help you with any questions or concerns you may have.
+                                {{ __('website.support.form_text_2') }}
                             </blockquote>
 
                         </figure>
@@ -106,11 +103,10 @@
                                 <div class="mb-4">
                                     @if(session()->has('success_message'))
                                         <div class="alert alert-success">
-                                            TimeNet has received your message.
+                                            {{ __('website.support.message_received') }}
                                         </div>
                                     @endif
-                                    <h3 class="card-title">Fill out the form, and we'll be in touch as soon as
-                                        possible.</h3>
+                                    <h3 class="card-title">{{ __('website.support.fill_out_the_form') }}</h3>
                                 </div>
 
                                 <!-- Form -->
@@ -120,9 +116,9 @@
                                         <div class="col-sm-12">
                                             <!-- Form -->
                                             <div class="mb-3">
-                                                <label class="form-label visually-hidden" for="name">Name</label>
+                                                <label class="form-label visually-hidden" for="name">{{ __('website.support.name') }}</label>
                                                 <input type="text" class="form-control form-control-lg" name="name"
-                                                       id="name" placeholder="Name" aria-label="Name">
+                                                       id="name" placeholder="{{ __('website.support.name') }}" aria-label="Name">
                                                 @error('name')
                                                 <small class="text-danger">{{ $message }}</small>
                                                 @enderror
@@ -138,8 +134,7 @@
                                         <div class="col-sm-12">
                                             <!-- Form -->
                                             <div class="mb-3">
-                                                <label class="form-label visually-hidden" for="email">Email
-                                                    address</label>
+                                                <label class="form-label visually-hidden" for="email">{{ __('website.support.email') }}</label>
                                                 <input type="email" class="form-control form-control-lg" name="email"
                                                        id="email" placeholder="email@site.com"
                                                        aria-label="email@site.com">
@@ -157,9 +152,9 @@
                                     <!-- Form -->
                                     <div class="mb-3">
                                         <label class="form-label visually-hidden"
-                                               for="hireUsFormDetails">Details</label>
+                                               for="hireUsFormDetails">{{ __('website.support.details') }}</label>
                                         <textarea class="form-control form-control-lg" name="message"
-                                                  id="hireUsFormDetails" placeholder="Tell us about your project"
+                                                  id="hireUsFormDetails" placeholder="{{ __('website.support.details_placeholder') }}"
                                                   aria-label="Tell us about your project" rows="4"></textarea>
                                         @error('message')
                                         <small class="text-danger">{{ $message }}</small>
@@ -169,7 +164,7 @@
 
 
                                     <div class="d-grid">
-                                        <button type="submit" class="btn btn-dark btn-lg">Send inquiry</button>
+                                        <button type="submit" class="btn btn-dark btn-lg">{{ __('website.support.send') }}</button>
                                     </div>
                                 </form>
                                 <!-- End Form -->

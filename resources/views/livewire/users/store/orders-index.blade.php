@@ -15,20 +15,16 @@
                     <!-- Card -->
                     <div class="card">
                         <div class="card-header border-bottom">
-                            <h4 class="card-header-title">Orders</h4>
+                            <h4 class="card-header-title">{{ __('website.user_section.orders') }}</h4>
                         </div>
 
                         <div class="card-body">
                             <p>
-                                Here you can view all the orders you have previously placed with us. You'll see a list
-                                of your past orders, including the order date, item(s) ordered, and order status. You
-                                can click on any order to view more details, such as shipping information and tracking
-                                numbers. If you need to make changes to an existing order, please contact our customer
-                                support team and we will do our best to assist you.
+                               {{ __('website.user_section.orders_description') }}
                             </p>
 
                             <h5>
-                                Latest orders
+                                {{__('website.user_section.latest_orders') }}
                             </h5>
 
                             @forelse($orders as $order)
@@ -57,7 +53,7 @@
                                                 </small>
                                                 <div>
                                                     <span class="text-capitalize">
-                                                        Invoice
+                                                        {{ __('website.user_section.invoice') }}
                                                     </span>
                                                 </div>
                                             </div>
@@ -81,9 +77,7 @@
 
                             @empty
                                 <p>
-                                    You dont have any orders at the moment.
-                                    <a class="d-block" href="{{ route('store.products.index') }}">Visit our store to see
-                                        our products.</a>
+                                    {{ __('website.user_section.no_orders') }}
                                 </p>
                             @endforelse
 

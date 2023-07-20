@@ -17,10 +17,10 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0">
                             <li class="breadcrumb-item">
-                                <a href="{{ route('home') }}">{{ config('env.APP_NAME') }}</a>
+                                <a href="{{ route('home') }}">{{ __('website.breadcrumb.timenet') }}</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                {{ __('website.about.about_us') }}
+                                {{ __('website.breadcrumb.about_us') }}
                             </li>
                         </ol>
                     </nav>

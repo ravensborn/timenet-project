@@ -7,7 +7,7 @@
 
                 @if($search)
                     <div class="mb-3">
-                        <h4>{{ $files->count() }} Results <span class="text-body small">for "{{ $search }}"</span></h4>
+                        <h4>{{ $files->count() }} {{ __('website.downloads.results') }} <span class="text-body small">{{ __('website.downloads.for') }} "{{ $search }}"</span></h4>
                     </div>
                     @endif
 
@@ -15,14 +15,13 @@
                     <!-- Input Card -->
                     <div class="input-card border">
                         <div class="input-card-form">
-                            <label for="searchAppsForm" class="form-label visually-hidden">Search for
-                                files</label>
+                            <label for="searchAppsForm" class="form-label visually-hidden">{{ __('website.downloads.search_for_files') }}</label>
                             <div class="input-group input-group-merge">
           <span class="input-group-prepend input-group-text">
             <i class="bi-search"></i>
           </span>
                                 <input type="text" class="form-control" id="searchAppsForm"
-                                       placeholder="Search for files" aria-label="Search for apps" wire:model="search">
+                                       placeholder="{{ __('website.downloads.search_for_files') }}" aria-label="Search for files" wire:model="search">
                             </div>
                         </div>
                         <button class="btn btn-primary" wire:click.prevent="">

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}" @if( config('app.available_locales')[app()->getLocale()]['rtl'] ) dir="rtl" @endif>
 <head>
-
     <meta charset="utf-8">
     <meta name="description"
           content="TimeNet Company a network expertise company works in the fields of providing internet access">
@@ -40,6 +39,24 @@
         }
 
     </style>
+
+    @if( config('app.available_locales')[app()->getLocale()]['rtl'] )
+
+        <style>
+            .rtl-mode-direction {
+                direction: rtl !important;
+            }
+
+            .rtl-mode-text-left {
+                text-align: left !important;
+            }
+
+            .breadcrumb, .breadcrumb-item .list-inline-item {
+                direction: ltr;
+            }
+        </style>
+
+    @endif
 
     @livewireStyles
 </head>

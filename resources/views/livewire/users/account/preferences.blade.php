@@ -15,12 +15,12 @@
                     <!-- Card -->
                     <div class="card">
                         <div class="card-header border-bottom">
-                            <h4 class="card-header-title">Preferences</h4>
+                            <h4 class="card-header-title">{{ __('website.user_section.preferences') }}</h4>
                         </div>
 
                         <div class="card-body">
                             <p>
-                                There are no preferences available for you at the moment.
+                                {{ __('website.user_section.no_preferences') }}
                             </p>
                         </div>
                     </div>

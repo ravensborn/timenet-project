@@ -7,7 +7,7 @@
         <div class="card card-lg">
             <!-- Header -->
             <div class="card-header bg-dark py-sm-10">
-                <h1 class="card-title h2 text-white">Privacy &amp; Policy</h1>
+                <h1 class="card-title h2 text-white">Terms & Conditions</h1>
                 <p class="card-text text-white">Last modified: July 06, 2023</p>
             </div>
             <!-- End Header -->
@@ -15,7 +15,7 @@
             <!-- Card Body -->
             <div class="card-body">
 
-                <h1>Terms and Conditions</h1>
+                <h1>Terms & Conditions</h1>
 
                 <p>Please read these Terms and Conditions ("Agreement") carefully before using TimeNet ("the Service") operated by TimeNet ("us", "we", or "our"). This Agreement sets forth the legally binding terms and conditions for your use of the Service.</p>
 

@@ -15,54 +15,54 @@
                     <!-- Card -->
                     <div class="card">
                         <div class="card-header border-bottom d-flex justify-content-between">
-                            <h4 class="card-header-title">Order #{{ $order->number  }}</h4>
+                            <h4 class="card-header-title">{{ __('website.user_section.order') }} #{{ $order->number  }}</h4>
                             <div>
                                 <a href="{{ route('users.store.orders.invoice', $order->id) }}" target="_blank" class="text-dark">
                                     <i class="bi bi-receipt"></i>
-                                    Print Invoice
+                                    {{ __('website.user_section.print_invoice') }}
                                 </a>
                             </div>
                         </div>
 
                         <div class="card-body">
-                            <h5>Order Details</h5>
+                            <h5>{{ __('website.user_section.order_details') }}</h5>
                             <ul class="list-group">
                                 <li class="list-group-item">
-                                    <span class="fw-bold">Status:</span>
+                                    <span class="fw-bold">{{ __('website.user_section.status') }}:</span>
                                     <div class="d-inline badge bg-secondary">
                                         {{ $order->getStatusName() }}
                                     </div>
                                 </li>
                                 <li class="list-group-item">
-                                    <span class="fw-bold">Payment:</span>
+                                    <span class="fw-bold">{{ __('website.user_section.payment') }}:</span>
                                     {{ $order->paymentMethod->name}}
                                 </li>
                                 <li class="list-group-item">
-                                    <span class="fw-bold">Total:</span>
+                                    <span class="fw-bold">{{ __('website.user_section.total') }}:</span>
                                     ${{ number_format($order->total, 2)}}
                                 </li>
                             </ul>
 
                             <div class="mt-5"></div>
 
-                            <h5>Shipping & Billing Address</h5>
+                            <h5>{{ __('website.user_section.shipping_and_billing_address') }}</h5>
                             <ul class="list-group">
                                 <li class="list-group-item">
-                                    <span class="fw-bold">Name:</span>
+                                    <span class="fw-bold">{{ __('website.user_section.name') }}:</span>
                                     {{ $order->shipping_address['first_name'] }}
                                     {{ $order->shipping_address['last_name'] }}
                                 </li>
                                 <li class="list-group-item">
-                                    <span class="fw-bold">Email:</span>
+                                    <span class="fw-bold">{{ __('website.user_section.email') }}:</span>
                                     {{ $order->shipping_address['email'] }}
                                 </li>
                                 <li class="list-group-item">
-                                    <span class="fw-bold">Phone Numbers:</span>
+                                    <span class="fw-bold">{{ __('website.user_section.phone_numbers') }}:</span>
                                     {{ $order->shipping_address['primary_phone_number'] }} -
                                     {{ $order->shipping_address['secondary_phone_number'] }}
                                 </li>
                                 <li class="list-group-item">
-                                    <span class="fw-bold">Address:</span>
+                                    <span class="fw-bold">{{ __('website.user_section.address') }}:</span>
                                     {{ $order->country->iso_alpha_3 }},
                                     {{ $order->shipping_address['address'] }}
                                 </li>
@@ -70,7 +70,7 @@
 
                             @if($order->note)
                                 <div class="mt-5"></div>
-                                <h5>Order Notes</h5>
+                                <h5>{{ __('website.user_section.note') }}</h5>
                                 <p>
                                     {{ $order->note }}
                                 </p>
@@ -78,7 +78,7 @@
 
                             <div class="mt-5"></div>
 
-                            <h5>Items</h5>
+                            <h5>{{ __('website.user_section.items') }}</h5>
                             <ul class="list-group">
                                 @foreach($order->orderItems as $item)
                                     <li class="list-group-item">
@@ -86,7 +86,7 @@
                                             <div class="d-flex justify-content-start align-items-center">
 
                                                 <a href="{{ route('store.products.show', $item->product->slug) }}">
-                                                    <img src="{{ $item->product->getFirstMediaUrl('cover') }}"
+                                                    <img src="{{ $item->product->getCover() }}"
                                                          style="width: 64px;" alt="Item image"
                                                          class="img-thumbnail">
                                                 </a>

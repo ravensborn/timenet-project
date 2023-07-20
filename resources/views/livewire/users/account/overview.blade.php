@@ -15,7 +15,7 @@
                     <!-- Card -->
                     <div class="card">
                         <div class="card-header border-bottom">
-                            <h4 class="card-header-title">Basic info</h4>
+                            <h4 class="card-header-title">{{ __('website.user_section.basic_info') }}</h4>
                         </div>
 
                         <!-- Body -->
@@ -23,11 +23,11 @@
                             <form>
                                 <!-- Form -->
                                 <div class="row mb-4">
-                                    <label for="name" class="col-sm-3 col-form-label form-label">Full name</label>
+                                    <label for="name" class="col-sm-3 col-form-label form-label">{{ __('website.user_section.full_name') }}</label>
 
                                     <div class="col-sm-9">
                                         <div class="input-group">
-                                            <input type="text" class="form-control" wire:model="userName" id="name" placeholder="Yad Hoshyar">
+                                            <input type="text" class="form-control" wire:model="userName" id="name" placeholder="{{ __('website.user_section.full_name') }}">
                                             @error('userName')
                                             <small class="text-danger"> {{ $message }} </small>
                                             @enderror
@@ -38,7 +38,7 @@
 
                                 <!-- Form -->
                                 <div class="row mb-4">
-                                    <label for="emailLabel" class="col-sm-3 col-form-label form-label">Email</label>
+                                    <label for="emailLabel" class="col-sm-3 col-form-label form-label">{{ __('website.user_section.email') }}</label>
 
                                     <div class="col-sm-9">
                                         <input type="email" class="form-control" wire:model="userEmail" id="emailLabel" placeholder="user@example.com">
@@ -51,7 +51,7 @@
 
                                 <!-- Form -->
                                 <div class="row mb-4">
-                                    <label for="countryLabel" class="col-sm-3 col-form-label form-label">Country</label>
+                                    <label for="countryLabel" class="col-sm-3 col-form-label form-label">{{ __('website.user_section.country') }}</label>
 
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" id="countryLabel" value="{{ $user->country->name }}" disabled>
@@ -61,7 +61,7 @@
 
                                 <!-- Form -->
                                 <div class="row mb-4">
-                                    <label for="phoneNumberLabel" class="col-sm-3 col-form-label form-label">Phone Number</label>
+                                    <label for="phoneNumberLabel" class="col-sm-3 col-form-label form-label">{{ __('website.user_section.phone_number') }}</label>
 
                                     <div class="col-sm-9">
                                         <input type="tel" class="form-control" wire:model="userPhoneNumber" id="phoneNumberLabel" placeholder="7501234567">
@@ -79,8 +79,8 @@
                         <!-- Footer -->
                         <div class="card-footer pt-0">
                             <div class="d-flex justify-content-end gap-3">
-                                <a class="btn btn-white" href="javascript:;" wire:click="getUser">Cancel</a>
-                                <a class="btn btn-dark" href="javascript:;" wire:click="updateUser">Save changes</a>
+                                <a class="btn btn-white" href="javascript:;" wire:click="getUser">{{ __('website.user_section.cancel') }}</a>
+                                <a class="btn btn-dark" href="javascript:;" wire:click="updateUser">{{ __('website.user_section.save_changes') }}</a>
                             </div>
                         </div>
                         <!-- End Footer -->

@@ -5,7 +5,7 @@
         <div class="container py-4">
             <div class="row">
                 <div class="col-sm">
-                    <h4 class="mb-0">TimeNet Store</h4>
+                    <h4 class="mb-0">{{ __('website.breadcrumb.timenet_store') }}</h4>
                 </div>
                 <!-- End Col -->
 
@@ -14,12 +14,12 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0">
                             <li class="breadcrumb-item">
-                                <a href="{{ route('home') }}">TimeNet</a>
+                                <a href="{{ route('home') }}">{{ __('website.breadcrumb.timenet') }}</a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="{{ route('store.index') }}">Store</a>
+                                <a href="{{ route('store.index') }}">{{ __('website.breadcrumb.store') }}</a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Checkout</li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ __('website.breadcrumb.checkout') }}</li>
                         </ol>
                     </nav>
                     <!-- End Breadcrumb -->
@@ -36,15 +36,15 @@
             <div class="container content-space-1 content-space-lg-2">
                 <div class="row">
                     <div class="col-lg-8 mb-7 mb-lg-0">
-                        <h4 class="mb-3">Shipping address</h4>
+                        <h4 class="mb-3">{{ __('website.checkout.shipping_address') }}</h4>
 
                         <!-- Form -->
                         <form id="checkout-form">
                             <div class="row g-3">
                                 <div class="col-sm-6">
-                                    <label for="checkoutFirstName" class="form-label">First name</label>
+                                    <label for="checkoutFirstName" class="form-label">{{ __('website.checkout.first_name') }}</label>
                                     <input type="text" class="form-control form-control-lg" id="checkoutFirstName"
-                                           placeholder="First Name"
+                                           placeholder="{{ __('website.checkout.first_name') }}"
                                            wire:model="checkoutFirstName">
                                     @error('checkoutFirstName')
                                     <small class="text-danger mt-1">
@@ -55,9 +55,9 @@
                                 <!-- End Col -->
 
                                 <div class="col-sm-6">
-                                    <label for="checkoutLastName" class="form-label">Last name</label>
+                                    <label for="checkoutLastName" class="form-label">{{ __('website.checkout.last_name') }}</label>
                                     <input type="text" class="form-control form-control-lg" id="checkoutLastName"
-                                           placeholder="Last Name"
+                                           placeholder="{{ __('website.checkout.last_name') }}"
                                            wire:model="checkoutLastName">
                                     @error('checkoutLastName')
                                     <small class="text-danger mt-1">
@@ -68,7 +68,7 @@
                                 <!-- End Col -->
 
                                 <div class="col-12">
-                                    <label for="checkoutEmail" class="form-label">Email</label>
+                                    <label for="checkoutEmail" class="form-label">{{ __('website.checkout.email') }}</label>
                                     <input type="email" class="form-control form-control-lg" id="checkoutEmail"
                                            placeholder="you@example.com" wire:model="checkoutEmail">
                                     @error('checkoutEmail')
@@ -80,8 +80,7 @@
                                 <!-- End Col -->
 
                                 <div class="col-sm-6">
-                                    <label for="checkoutPrimaryPhoneNumber" class="form-label">First Phone
-                                        Number</label>
+                                    <label for="checkoutPrimaryPhoneNumber" class="form-label">{{ __('website.checkout.second_phone_number') }}</label>
                                     <input type="tel" class="form-control form-control-lg"
                                            id="checkoutPrimaryPhoneNumber"
                                            placeholder="+9647501234567" wire:model="checkoutPrimaryPhoneNumber">
@@ -94,8 +93,7 @@
                                 <!-- End Col -->
 
                                 <div class="col-sm-6">
-                                    <label for="checkoutSecondaryPhoneNumber" class="form-label">Second Phone
-                                        Number</label>
+                                    <label for="checkoutSecondaryPhoneNumber" class="form-label">{{ __('website.checkout.second_phone_number') }}</label>
                                     <input type="tel" class="form-control form-control-lg"
                                            id="checkoutSecondaryPhoneNumber"
                                            placeholder="+9647507654321" wire:model="checkoutSecondaryPhoneNumber">
@@ -108,7 +106,7 @@
                                 <!-- End Col -->
 
                                 <div class="col-12">
-                                    <label for="checkoutAddress" class="form-label">Address</label>
+                                    <label for="checkoutAddress" class="form-label">{{ __('website.checkout.address') }}</label>
                                     <input type="text" class="form-control form-control-lg" id="checkoutAddress"
                                            placeholder="Main Area, 44001, Erbil, KRI" wire:model="checkoutAddress">
                                     @error('checkoutAddress')
@@ -120,7 +118,7 @@
                                 <!-- End Col -->
 
                                 <div class="col-md-5">
-                                    <label for="checkoutCountry" class="form-label">Country</label>
+                                    <label for="checkoutCountry" class="form-label">{{ __('website.checkout.country') }}</label>
                                     <input type="text" class="form-control form-control-lg" id="checkoutCountry"
                                            value="{{ $user->country->name }}" readonly>
                                 </div>
@@ -136,16 +134,14 @@
                                 <div class="form-check">
                                     <input type="checkbox" class="form-check-input" id="sameAddressShopCheckout" checked
                                            onclick="event.preventDefault();" readonly>
-                                    <label class="form-check-label" for="sameAddressShopCheckout">Shipping address is
-                                        the
-                                        same as my billing address</label>
+                                    <label class="form-check-label" for="sameAddressShopCheckout">{{ __('website.checkout.shipping_address') }}</label>
                                 </div>
                                 <!-- End Check -->
                             </div>
 
                             <hr class="my-4">
 
-                            <h4 class="mb-3">Payment</h4>
+                            <h4 class="mb-3">{{ __('website.checkout.payment') }}</h4>
 
                             <div>
 
@@ -154,7 +150,7 @@
                                       <span class="spinner-border spinner-border-sm me-1" role="status"
                                             aria-hidden="true"></span>
                                     <span class="visually-hidden">Loading...</span>
-                                    Switching payment method please wait...
+                                    {{ __('website.checkout.payment_method_switch') }}
                                 </div>
 
                                 @foreach($paymentMethods as $payment)
@@ -177,7 +173,7 @@
 
                                                 <div class="badge text-body"
                                                      @class(['fw-bold' => ($selectedPaymentMethod->id == $payment->id), 'text-muted text-start' => true ]) style="width: 150px;">
-                                                    Payment Fee:
+                                                    {{ __('website.checkout.payment_method_fee') }}
                                                     @if($payment->fee_type == \App\Models\PaymentMethod::FEE_TYPE_PERCENTAGE)
                                                         {{ $payment->fee }}%
                                                     @else
@@ -203,7 +199,7 @@
                                                     <div>{{ $payment->name }}</div>
                                                 </div>
                                                 <div class="badge text-danger" style="width: 150px;">
-                                                    Currently disabled
+                                                    {{ __('website.checkout.payment_method_disabled') }}
                                                 </div>
                                             </div>
 
@@ -225,7 +221,7 @@
                             <div class="card card-sm shadow-sm mb-4">
                                 <div class="card-body">
                                     <div class="border-bottom pb-4 mb-4">
-                                        <h3 class="card-header-title">Order summary</h3>
+                                        <h3 class="card-header-title">{{ __('website.cart.order_summary') }}</h3>
                                     </div>
 
                                     <form>
@@ -233,14 +229,14 @@
                                         <div class="border-bottom pb-4 mb-4">
                                             <div class="d-grid gap-3">
                                                 <dl class="row">
-                                                    <dt class="col-sm-6">Item subtotal ({{ $cartItems->count() }})</dt>
+                                                    <dt class="col-sm-6">{{ __('website.checkout.item_subtotal') }} ({{ $cartItems->count() }})</dt>
                                                     <dd class="col-sm-6 text-sm-end mb-0">
                                                         ${{ number_format($cartTotal, 2) }}</dd>
                                                 </dl>
                                                 <!-- End Row -->
 
                                                 <dl class="row">
-                                                    <dt class="col-sm-6">Shipping Rate</dt>
+                                                    <dt class="col-sm-6">{{ __('website.checkout.shipping_address') }}</dt>
                                                     @if($shippingRate)
                                                         <dd class="col-sm-6 text-sm-end mb-0">${{ $shippingRate }}</dd>
                                                     @else
@@ -251,7 +247,7 @@
 
                                                 @if($selectedPaymentMethod)
                                                     <dl class="row">
-                                                        <dt class="col-sm-6">Payment Fee</dt>
+                                                        <dt class="col-sm-6">{{ __('website.checkout.payment_method_fee') }}</dt>
                                                         @if($selectedPaymentMethod->fee_type == \App\Models\PaymentMethod::FEE_TYPE_PERCENTAGE)
                                                             <dd class="col-sm-6 text-sm-end mb-0">
                                                                 {{ $selectedPaymentMethod->fee }}%
@@ -267,7 +263,7 @@
 
                                                 @if($promoCodeData)
                                                     <dl class="row">
-                                                        <dt class="col-sm-6">Promo Code
+                                                        <dt class="col-sm-6">{{ __('website.checkout.promo_code') }}
                                                         </dt>
                                                         <dd class="col-sm-6 text-sm-end mb-0 text-danger">
                                                             @if($promoCodeData->discount_type == \App\Models\PromoCode::DISCOUNT_TYPE_FIXED)
@@ -286,7 +282,7 @@
                                         <div class="d-grid gap-3 mb-4">
 
                                             <dl class="row">
-                                                <dt class="col-sm-6">Total</dt>
+                                                <dt class="col-sm-6">{{ __('website.checkout.total') }}</dt>
                                                 <dd class="col-sm-6 text-sm-end mb-0">
                                                     ${{ number_format($totalPay, 2) }}</dd>
                                             </dl>
@@ -301,10 +297,10 @@
                                                     <span class="spinner-grow spinner-grow-sm me-1" role="status"
                                                           aria-hidden="true"></span>
                                                     <span class="visually-hidden">Loading...</span>
-                                                    Placing Order
+                                                    {{ __('website.checkout.place_order') }}
                                                 </span>
                                                 <span wire:loading.remove wire:target="placeOrder">
-                                                    Place Order
+                                                    {{ __('website.checkout.placing_order') }}
                                                 </span>
                                             </button>
                                         </div>
@@ -313,28 +309,6 @@
                                 <!-- End Card -->
                             </div>
 
-                            <!-- Media -->
-                            <div class="d-flex align-items-center">
-                                <div class="flex-shrink-0">
-                                    <div class="svg-icon svg-icon-sm text-primary">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                  d="M22.1671 18.1421C22.4827 18.4577 23.0222 18.2331 23.0206 17.7868L23.0039 13.1053V5.52632C23.0039 4.13107 21.8729 3 20.4776 3H8.68815C7.2929 3 6.16183 4.13107 6.16183 5.52632V9H13C14.6568 9 16 10.3431 16 12V15.6316H19.6565L22.1671 18.1421Z"
-                                                  fill="#035A4B"></path>
-                                            <path opacity="0.3" fill-rule="evenodd" clip-rule="evenodd"
-                                                  d="M1.98508 18V13C1.98508 11.8954 2.88051 11 3.98508 11H11.9851C13.0896 11 13.9851 11.8954 13.9851 13V18C13.9851 19.1046 13.0896 20 11.9851 20H4.10081L2.85695 21.1905C2.53895 21.4949 2.01123 21.2695 2.01123 20.8293V18.3243C1.99402 18.2187 1.98508 18.1104 1.98508 18ZM5.99999 14.5C5.99999 14.2239 6.22385 14 6.49999 14H11.5C11.7761 14 12 14.2239 12 14.5C12 14.7761 11.7761 15 11.5 15H6.49999C6.22385 15 5.99999 14.7761 5.99999 14.5ZM9.49999 16C9.22385 16 8.99999 16.2239 8.99999 16.5C8.99999 16.7761 9.22385 17 9.49999 17H11.5C11.7761 17 12 16.7761 12 16.5C12 16.2239 11.7761 16 11.5 16H9.49999Z"
-                                                  fill="#035A4B"></path>
-                                        </svg>
-
-                                    </div>
-                                </div>
-                                <div class="flex-grow-1 ms-2">
-                                    <span class="small me-1">Need Help?</span>
-                                    <a class="link small" href="{{ route('soon') }}">Chat now</a>
-                                </div>
-                            </div>
-                            <!-- End Media -->
                         </div>
                     </div>
                     <!-- End Col -->
@@ -351,33 +325,34 @@
                             <i class="bi bi-check2-circle display-1 text-dark"></i>
 
                             <div class="mb-5">
-                                <h1 class="h2">Your order is completed!</h1>
-                                <p>Thank you for your order! Your order is being processed and will be completed within
-                                    3-6 hours. You will receive an email confirmation when your order is completed.</p>
+                                <h1 class="h2">{{ __('website.checkout.order_completed_title') }}</h1>
+                                <p>
+                                    {{ __('website.checkout.order_completed_description') }}
+                                </p>
                             </div>
                             <a class="btn btn-dark btn-transition rounded-pill px-6"
-                               href="{{ route('store.products.index') }}">Continue
-                                shopping</a>
-
+                               href="{{ route('store.products.index') }}">
+                                {{ __('website.cart.continue_shopping') }}
+                            </a>
 
                             <div class="mt-4"></div>
 
                             <span class="text-muted fw-bold">
-                                   Order #{{ $order->number }}
+                                   {{__('website.checkout.order')}} #{{ $order->number }}
                             </span>
 
                             <a class="link text-muted d-block"
                                href="{{ route('users.store.orders.invoice', $order->id) }}">
                                 <i class="bi-chevron-left small ms-1"></i>
-                                View Invoice
+                                {{ __('website.checkout.view_invoice') }}
                             </a>
                             <a class="link text-muted d-block" href="{{ route('users.store.orders.index') }}">
                                 <i class="bi-chevron-left small ms-1"></i>
-                                Navigate to my orders
+                                {{ __('website.checkout.navigate_to_my_orders') }}
                             </a>
                             <a class="link text-muted d-block" href="{{ route('home') }}">
                                 <i class="bi-chevron-left small ms-1"></i>
-                                Back to home
+                                {{ __('website.checkout.back_to_home') }}
                             </a>
 
                         </div>

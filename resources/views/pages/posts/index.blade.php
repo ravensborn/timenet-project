@@ -9,7 +9,6 @@
             <div class="row">
                 <div class="col-sm">
                     <h4 class="mb-0">
-
                         @if(\Illuminate\Support\Facades\Lang::has('website.categories.' . $category->name, session()->get('locale')))
 
                             {{  __('website.categories.' . $category->name ) }}
@@ -25,7 +24,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0">
                             <li class="breadcrumb-item">
-                                <a href="{{ route('home') }}">{{ config('env.APP_NAME') }}</a>
+                                <a href="{{ route('home') }}">{{  __('website.breadcrumb.timenet')}}</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 @if(\Illuminate\Support\Facades\Lang::has('website.categories.' . $category->name, session()->get('locale')))

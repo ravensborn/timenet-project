@@ -28,9 +28,9 @@ class Create extends Component
     public int $category_id = 0;
     public int $brand_id = 0;
     public string $description = '';
-    public float $price = 0.0;
-    public float $previous_price = 0.0;
-    public int $stock = 0;
+    public $price = 0.0;
+    public $previous_price = 0.0;
+    public $stock = 0;
     public string $promo_code = '';
     public bool $is_hidden = false;
     public bool $is_purchasable_online = true;
