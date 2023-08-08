@@ -28,7 +28,7 @@ class PostController extends Controller
             ]);
         }
 
-        return abort(404);
+         abort(404);
     }
 
 
@@ -66,12 +66,19 @@ class PostController extends Controller
             $articleSideImages = $selectedWebsiteTheme->getMedia('article_side_images');
         }
 
+        $openGraphData = [
+            'title' => $post->title,
+            'image' => $post->getFirstMediaUrl('cover') ?? asset('images/logo-dark.png'),
+            'description' => 'Read more on TimeNet website.',
+        ];
+
         return view('pages.posts.show', [
             'post' => $post,
             'comments' => $comments,
             'related_posts' => $related_posts,
             'categories' => $categories,
-            'article_side_images' => $articleSideImages
+            'article_side_images' => $articleSideImages,
+            'openGraphData' => $openGraphData
         ]);
 
     }

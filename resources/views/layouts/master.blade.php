@@ -2,16 +2,44 @@
 <html lang="{{ app()->getLocale() }}" @if( config('app.available_locales')[app()->getLocale()]['rtl'] ) dir="rtl" @endif>
 <head>
     <meta charset="utf-8">
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--Basic meta info -->
     <meta name="description"
           content="TimeNet Company a network expertise company works in the fields of providing internet access">
     <meta name="keywords" content="TimeNet, Internet, ISP, Store, Network Store, Network Devices, Switch, Router, Hub, Cable, Fiber">
     <meta name="author" content="Yad Hoshyar">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--OpenGraph meta -->
+    @if(isset($openGraphData))
+
+        <meta property="og:title" content="{{ $openGraphData['title'] }}"/>
+        <meta property="og:image" content="{{ $openGraphData['image'] }}"/>
+        <meta property="og:description" content="{{ $openGraphData['description'] }}"/>
+        <meta property="og:url" content="{{ config('env.APP_URL') }}"/>
+        <meta property="og:image:width" content="1000px" />
+        <meta property="og:image:height" content="auto"/>
+        <meta property="og:type" content="website"/>
+
+    @else
+
+        <meta property="og:title" content="TimeNet Company"/>
+        <meta property="og:image" content="{{ asset('images/logo-dark.png') }}"/>
+        <meta property="og:description" content="Internet Service Provider"/>
+        <meta property="og:url" content="{{ config('env.APP_URL') }}"/>
+        <meta property="og:image:width" content="1276" />
+        <meta property="og:image:height" content="539"/>
+        <meta property="og:type" content="website"/>
+
+    @endif
 
     <!-- Title -->
     <title>{{ isset($title) ? 'TimeNet | ' . $title : 'TimeNet Company' }}</title>
 
     <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
     <link rel="shortcut icon" href="{{ asset('images/logo.png') }}">
 
     <!-- Font -->

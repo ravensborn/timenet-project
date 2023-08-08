@@ -2,14 +2,28 @@
 <html lang="{{ app()->getLocale() }}"
       @if( config('app.available_locales')[app()->getLocale()]['rtl'] ) dir="rtl" @endif>
 <head>
-    <!-- Required Meta Tags Always Come First -->
     <meta charset="utf-8">
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--Basic meta info -->
+    <meta name="description"
+          content="TimeNet Company a network expertise company works in the fields of providing internet access">
+    <meta name="keywords" content="TimeNet, Internet, ISP, Store, Network Store, Network Devices, Switch, Router, Hub, Cable, Fiber">
+    <meta name="author" content="Yad Hoshyar">
+
+    <!--OpenGraph meta -->
+    <meta property="og:description" content="TimeNet Company a network expertise company works in the fields of providing internet access">
+    <meta property="og:title" content="TimeNet Company">
+    <meta property="og:image" content="{{ asset('images/logo.png') }}">
+    <meta property="og:url" content="{{ config('env.APP_URL') }}">
 
     <!-- Title -->
     <title>TimeNet Store</title>
 
     <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
     <link rel="shortcut icon" href="{{ asset('images/logo.png') }}">
 
     <!-- Font -->

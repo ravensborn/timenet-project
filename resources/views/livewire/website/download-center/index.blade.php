@@ -7,7 +7,7 @@
 
                 @if($search)
                     <div class="mb-3">
-                        <h4>{{ $files->count() }} {{ __('website.downloads.results') }} <span class="text-body small">{{ __('website.downloads.for') }} "{{ $search }}"</span></h4>
+                        <h4>{{ $loadedFiles->count() }} {{ __('website.downloads.results') }} <span class="text-body small">{{ __('website.downloads.for') }} "{{ $search }}"</span></h4>
                     </div>
                     @endif
 
@@ -35,7 +35,7 @@
         </div>
 
         <div class="row mb-5">
-          @foreach($files as $file)
+          @foreach($loadedFiles as $file)
                 <div class="col-4 mb-3 mb-sm-4">
                     <!-- Card -->
                     <a class="card card-sm card-bordered card-transition h-100" href="{{ $file->getFirstMediaUrl('files') }}">
@@ -61,6 +61,9 @@
                     <!-- End Card -->
                 </div>
           @endforeach
+            <div>
+                {{ $loadedFiles->links() }}
+            </div>
         </div>
         <!-- End Row -->
 

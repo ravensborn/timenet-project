@@ -1,4 +1,4 @@
-@extends('layouts.master', ['title' => $post->title])
+@extends('layouts.master', ['title' => $post->title, 'openGraphData' => $openGraphData])
 
 
 @section('content')
