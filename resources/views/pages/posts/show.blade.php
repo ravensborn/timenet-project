@@ -91,10 +91,10 @@
                                 <span class="text-cap mb-0 me-2">{{ __('website.posts.show.share') }}:</span>
 
                                 <div class="d-flex gap-2">
-                                    <a class="btn btn-soft-secondary btn-sm btn-icon rounded-circle" href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}">
+                                    <a class="btn btn-soft-secondary btn-sm btn-icon rounded-circle" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}">
                                         <i class="bi-facebook"></i>
                                     </a>
-                                    <a class="btn btn-soft-secondary btn-sm btn-icon rounded-circle" href="https://www.linkedin.com/sharing/share-offsite/?url={{ url()->current() }}">
+                                    <a class="btn btn-soft-secondary btn-sm btn-icon rounded-circle" target="_blank" href="https://www.linkedin.com/sharing/share-offsite/?url={{ url()->current() }}">
                                         <i class="bi-linkedin"></i>
                                     </a>
                                 </div>
