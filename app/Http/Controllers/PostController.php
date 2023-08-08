@@ -70,6 +70,7 @@ class PostController extends Controller
             'title' => $post->title,
             'image' => $post->getFirstMediaUrl('cover') ?? asset('images/logo-dark.png'),
             'description' => 'Read more on TimeNet website.',
+            'url' => url()->current(),
         ];
 
         return view('pages.posts.show', [

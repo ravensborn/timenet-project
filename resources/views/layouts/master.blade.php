@@ -8,7 +8,7 @@
 
     <!--Basic meta info -->
     <meta name="description"
-          content="TimeNet Company a network expertise company works in the fields of providing internet access">
+          content="TimeNet Company is a proficient network specialist, primarily dedicated to furnishing top-notch internet accessibility. Specializing in the provisioning of internet access, TimeNet has established itself as a reliable industry player. Their adept team and cutting-edge solutions ensure seamless connectivity, catering to diverse client needs. With a commitment to excellence, TimeNet remains at the forefront of innovative networking, consistently delivering reliable and high-speed internet solutions. Clients rely on TimeNet's expertise to navigate the intricate realm of connectivity, making them an indispensable partner in today's digital landscape. Through their relentless pursuit of quality, TimeNet continues to shape the future of internet provision.">
     <meta name="keywords" content="TimeNet, Internet, ISP, Store, Network Store, Network Devices, Switch, Router, Hub, Cable, Fiber">
     <meta name="author" content="Yad Hoshyar">
 
@@ -18,16 +18,14 @@
         <meta property="og:title" content="{{ $openGraphData['title'] }}"/>
         <meta property="og:image" content="{{ $openGraphData['image'] }}"/>
         <meta property="og:description" content="{{ $openGraphData['description'] }}"/>
-        <meta property="og:url" content="{{ config('env.APP_URL') }}"/>
-        <meta property="og:image:width" content="1000px" />
-        <meta property="og:image:height" content="auto"/>
+        <meta property="og:url" content="{{ $openGraphData['url'] }}"/>
         <meta property="og:type" content="website"/>
 
     @else
 
         <meta property="og:title" content="TimeNet Company"/>
         <meta property="og:image" content="{{ asset('images/logo-dark.png') }}"/>
-        <meta property="og:description" content="Internet Service Provider"/>
+        <meta property="og:description" content="TimeNet Company is a proficient network specialist, primarily dedicated to furnishing top-notch internet accessibility. Specializing in the provisioning of internet access, TimeNet has established itself as a reliable industry player. Their adept team and cutting-edge solutions ensure seamless connectivity, catering to diverse client needs. With a commitment to excellence, TimeNet remains at the forefront of innovative networking, consistently delivering reliable and high-speed internet solutions. Clients rely on TimeNet's expertise to navigate the intricate realm of connectivity, making them an indispensable partner in today's digital landscape. Through their relentless pursuit of quality, TimeNet continues to shape the future of internet provision."/>
         <meta property="og:url" content="{{ config('env.APP_URL') }}"/>
         <meta property="og:image:width" content="1276" />
         <meta property="og:image:height" content="539"/>
