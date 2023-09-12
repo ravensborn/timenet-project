@@ -39,7 +39,7 @@
             <h2>{{ __('website.support.get_expert_support') }}</h2>
 
             <p>
-                {{ __('support_description') }}
+              
             </p>
 
             <p>
