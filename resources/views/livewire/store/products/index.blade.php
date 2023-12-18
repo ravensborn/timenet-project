@@ -136,15 +136,15 @@
                                     <div class="d-grid gap-2">
 
                                         <!-- Checkboxes -->
-                                        <div class="form-check" wire:key="0">
-                                            <input class="form-check-input" type="checkbox" value="all"
-                                                   id="categoryCheckbox-0"
-                                                   wire:model="selectedCategories"
-                                                   wire:change="_updateSelectedCategories">
-                                            <label class="form-check-label d-flex" for="categoryCheckbox-0">
-                                                All
-                                            </label>
-                                        </div>
+{{--                                        <div class="form-check" wire:key="0">--}}
+{{--                                            <input class="form-check-input" type="checkbox" value="all"--}}
+{{--                                                   id="categoryCheckbox-0"--}}
+{{--                                                   wire:model="selectedCategories"--}}
+{{--                                                   wire:change="_updateSelectedCategories">--}}
+{{--                                            <label class="form-check-label d-flex" for="categoryCheckbox-0">--}}
+{{--                                                All--}}
+{{--                                            </label>--}}
+{{--                                        </div>--}}
                                         <!-- End Checkboxes -->
                                         @foreach($categories as $key => $category)
 
@@ -173,15 +173,15 @@
                                     <div class="d-grid gap-2">
 
                                         <!-- Checkboxes -->
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="all"
-                                                   id="BrandCheckbox-0"
-                                                   wire:model="selectedBrands"
-                                                   wire:change="_updateSelectedBrands">
-                                            <label class="form-check-label d-flex" for="BrandCheckbox-0">
-                                                All
-                                            </label>
-                                        </div>
+{{--                                        <div class="form-check">--}}
+{{--                                            <input class="form-check-input" type="checkbox" value="all"--}}
+{{--                                                   id="BrandCheckbox-0"--}}
+{{--                                                   wire:model="selectedBrands"--}}
+{{--                                                   wire:change="_updateSelectedBrands">--}}
+{{--                                            <label class="form-check-label d-flex" for="BrandCheckbox-0">--}}
+{{--                                                All--}}
+{{--                                            </label>--}}
+{{--                                        </div>--}}
                                         <!-- End Checkboxes -->
                                         @foreach($brands as $brand)
 

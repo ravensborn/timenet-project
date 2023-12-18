@@ -105,14 +105,6 @@ class Index extends Component
             $this->user = auth()->user();
             $this->getCartItems();
         }
-
-        $this->selectedCategories = [
-            0 => 'all'
-        ];
-
-        $this->selectedBrands = [
-            0 => 'all'
-        ];
     }
 
     public function addToCart($product_id, $quantity = 1)
@@ -189,16 +181,13 @@ class Index extends Component
 
         if (count($this->selectedCategories) > 0) {
 
-            if (!in_array('all', $this->selectedCategories)) {
-                $products->whereIn('category_id', $this->selectedCategories);
-            }
+            $products->whereIn('category_id', $this->selectedCategories);
         }
 
         if (count($this->selectedBrands) > 0) {
 
-            if (!in_array('all', $this->selectedBrands)) {
-                $products->whereIn('brand_id', $this->selectedBrands);
-            }
+            $products->whereIn('brand_id', $this->selectedBrands);
+
         }
 
         $this->products = $products->paginate(9);
@@ -207,12 +196,6 @@ class Index extends Component
 
     public function _updateSelectedCategories(): void
     {
-
-//        if(in_array('all', $this->selectedCategories)) {
-//            $this->selectedCategories = [
-//                0 => 'all'
-//            ];
-//        }
         $this->resetPage();
     }
 
@@ -237,12 +220,9 @@ class Index extends Component
     {
         $this->search = '';
         $this->sorting_method = 'newest_top';
-        $this->selectedCategories = [
-            0 => 'all'
-        ];
-        $this->selectedBrands = [
-            0 => 'all'
-        ];
+
+        $this->selectedCategories = [];
+        $this->selectedBrands = [];
 
         $this->getProducts();
 
