@@ -34,7 +34,7 @@
     @endif
 
     <!-- Title -->
-    <title>{{ isset($title) ? 'TimeNet | ' . $title : 'TimeNet' }}</title>
+    <title>{{ isset($title) ? 'TimeNet | ' . $title : 'TimeNet ISP' }}</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="{{ asset('images/logo-dark.png') }}">

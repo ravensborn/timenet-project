@@ -20,7 +20,7 @@
     <meta property="og:url" content="{{ config('env.APP_URL') }}">
 
     <!-- Title -->
-    <title>TimeNet Store</title>
+    <title>TimeNet ISP Store</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
