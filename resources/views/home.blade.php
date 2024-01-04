@@ -10,6 +10,7 @@
             <div class="mt-5">
                 <img width="350px" src="{{ asset('images/logo.png') }}"
                      alt="Logo Dark">
+                <h1 class="text-white">TimeNet ISP</h1>
                 <p class="lead text-white">{!! __('website.homepage.main_text') !!}</p>
             </div>
         </div>
@@ -20,7 +21,7 @@
     <div class="container content-space-1">
         <!-- Heading -->
         <div class="w-md-75 w-lg-50 text-center mx-md-auto mb-5">
-            <h2>{!! __('website.homepage.main_text') !!}</h2>
+            <span class="h2">{!! __('website.homepage.main_text') !!}</span>
         </div>
         <!-- End Heading -->
 
@@ -49,9 +50,9 @@
                                  alt="Image Description">
                         </div>
                         <div class="card-body">
-                            <h4 class="card-title text-center">
+                            <div class="h4 card-title text-center">
                                 {{ $post->title }}
-                            </h4>
+                            </div>
                         </div>
                     </div>
 
@@ -68,7 +69,7 @@
     <div class="container content-space-2">
         <!-- Heading -->
         <div class="w-md-75 w-lg-50 text-center mx-md-auto mb-6">
-            <h2>{{ __('website.homepage.who_works_with_us') }}</h2>
+            <span class="h2">{{ __('website.homepage.who_works_with_us') }}</span>
         </div>
         <!-- End Heading -->
 
@@ -89,7 +90,7 @@
              style="background-image: url({{ asset('images/wallpapers/7.jpg') }});">
             <div class="row align-items-md-center">
                 <div class="col-sm mb-3 mb-md-0">
-                    <h1 class="h4 mb-0">{{ __('website.homepage.store_slogan_1') }}</h1>
+                    <span class="h4 mb-0">{{ __('website.homepage.store_slogan_1') }}</span>
                 </div>
                 <!-- End Col -->
 
@@ -108,7 +109,7 @@
     <div class="container content-space-2">
         <!-- Heading -->
         <div class="w-md-75 w-lg-50 text-center mx-md-auto mb-5">
-            <h2>{{ __('website.homepage.article_section_headline') }}</h2>
+            <span class="h2">{{ __('website.homepage.article_section_headline') }}</span>
         </div>
         <!-- End Heading -->
 
@@ -125,7 +126,7 @@
                                  alt="Image Description">
                             <div class="card-body">
                                 <span class="card-subtitle text-body">{{ __('website.homepage.read_the_article') }}</span>
-                                <h4 class="card-title text-inherit">{{ $post->title }}</h4>
+                                <div class="h4 card-title text-inherit">{{ $post->title }}</div>
                                 <p class="card-text text-body">{{ $post->short_content }}</p>
                             </div>
                         </a>
@@ -157,7 +158,7 @@
              style="background-image: url({{ asset('images/wallpapers/10.jpg') }});">
             <div class="row align-items-md-center">
                 <div class="col-sm mb-3 mb-md-0">
-                    <h1 class="h4 mb-0">{{ __('website.homepage.store_slogan_2') }}</h1>
+                    <span class="h4 mb-0">{{ __('website.homepage.store_slogan_2') }}</span>
                 </div>
                 <!-- End Col -->
 
