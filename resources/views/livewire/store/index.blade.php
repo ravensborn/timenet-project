@@ -31,7 +31,7 @@
                                 <div class="row align-items-lg-center">
                                     <div class="col-lg-5 order-lg-2 mb-7 mb-lg-0">
                                         <div class="mb-6">
-                                            <h1 class="display-6 mb-4">{{ $slide['title'] }}</h1>
+                                            <div class="display-6 mb-4">{{ $slide['title'] }}</div>
                                             <p>
                                                 {{ $slide['description'] }}
                                             </p>
