@@ -23,7 +23,7 @@
     <meta property="og:type" content="website"/>
 
     <!-- Title -->
-    <title>TimeNet ISP Store</title>
+    <title>TimeNet Store: Your one-stop-shop for all your networking needs</title>
 
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon/apple-touch-icon.png') }}">
