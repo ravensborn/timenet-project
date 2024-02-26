@@ -9,22 +9,27 @@
 
     <!--Basic meta info -->
     <meta name="description"
-          content="TimeNet Company a network expertise company works in the fields of providing internet access">
-    <meta name="keywords" content="TimeNet, Internet, ISP, Store, Network Store, Network Devices, Switch, Router, Hub, Cable, Fiber">
+          content="TimeNet Store: Your one-stop-shop for all your networking needs.">
+    <meta name="keywords" content="TimeNet, Internet, ISP, Store, Network Store, Network Devices, Switch, Router, Hub, Cable, Fiber, Iraq Network, Kurdistan Network, Kurdistan Internet, Kurdistan Router, Kurdistan Network Devices">
     <meta name="author" content="Yad Hoshyar">
 
-    <!--OpenGraph meta -->
-    <meta property="og:description" content="TimeNet Company a network expertise company works in the fields of providing internet access">
-    <meta property="og:title" content="TimeNet Company">
-    <meta property="og:image" content="{{ asset('images/logo.png') }}">
-    <meta property="og:url" content="{{ config('env.APP_URL') }}">
+    <meta property="og:site_name" content="TimeNet Store: Your one-stop-shop for all your networking needs"/>
+    <meta property="og:title" content="TimeNet Store: Your one-stop-shop for all your networking needs"/>
+    <meta property="og:image" content="{{ asset('images/logo-dark.png') }}"/>
+    <meta property="og:description" content="TimeNet Store: Your one-stop-shop for all your networking needs."/>
+    <meta property="og:url" content="{{ route('store.index') }}"/>
+    <meta property="og:image:width" content="1276" />
+    <meta property="og:image:height" content="539"/>
+    <meta property="og:type" content="website"/>
 
     <!-- Title -->
     <title>TimeNet ISP Store</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
-    <link rel="shortcut icon" href="{{ asset('images/logo.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('favicon/site.webmanifest') }}">
 
     <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">

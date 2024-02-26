@@ -8,7 +8,7 @@
 
     <!--Basic meta info -->
     <meta name="description"
-          content="TimeNet Company is a proficient network specialist, primarily dedicated to furnishing top-notch internet accessibility. Specializing in the provisioning of internet access, TimeNet has established itself as a reliable industry player. Their adept team and cutting-edge solutions ensure seamless connectivity, catering to diverse client needs. With a commitment to excellence, TimeNet remains at the forefront of innovative networking, consistently delivering reliable and high-speed internet solutions. Clients rely on TimeNet's expertise to navigate the intricate realm of connectivity, making them an indispensable partner in today's digital landscape. Through their relentless pursuit of quality, TimeNet continues to shape the future of internet provision.">
+          content="TimeNet ISP: A network expertise company works in the fields of providing internet access.">
     <meta name="keywords" content="TimeNet, Internet, ISP, Store, Network Store, Network Devices, Switch, Router, Hub, Cable, Fiber, Iraq Network, Kurdistan Network, Kurdistan Internet, Kurdistan Router, Kurdistan Network Devices">
     <meta name="author" content="Yad Hoshyar">
 
@@ -22,23 +22,24 @@
         <meta property="og:type" content="website"/>
 
     @else
-
-        <meta property="og:title" content="TimeNet"/>
+        <meta property="og:site_name" content="TimeNet ISP: A network expertise company works in the fields of providing internet access"/>
+        <meta property="og:title" content="TimeNet ISP: A network expertise company works in the fields of providing internet access"/>
         <meta property="og:image" content="{{ asset('images/logo-dark.png') }}"/>
-        <meta property="og:description" content="TimeNet Company is a proficient network specialist, primarily dedicated to furnishing top-notch internet accessibility. Specializing in the provisioning of internet access, TimeNet has established itself as a reliable industry player. Their adept team and cutting-edge solutions ensure seamless connectivity, catering to diverse client needs. With a commitment to excellence, TimeNet remains at the forefront of innovative networking, consistently delivering reliable and high-speed internet solutions. Clients rely on TimeNet's expertise to navigate the intricate realm of connectivity, making them an indispensable partner in today's digital landscape. Through their relentless pursuit of quality, TimeNet continues to shape the future of internet provision."/>
+        <meta property="og:description" content="TimeNet ISP: A network expertise company works in the fields of providing internet access."/>
         <meta property="og:url" content="{{ config('env.APP_URL') }}"/>
         <meta property="og:image:width" content="1276" />
         <meta property="og:image:height" content="539"/>
         <meta property="og:type" content="website"/>
-
     @endif
 
     <!-- Title -->
-    <title>{{ isset($title) ? 'TimeNet | ' . $title : 'TimeNet ISP' }}</title>
+    <title>{{ isset($title) ? 'TimeNet ISP | ' . $title : 'TimeNet ISP' }}</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="{{ asset('images/logo-dark.png') }}">
-    <link rel="shortcut icon" href="{{ asset('images/logo-dark.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('favicon/site.webmanifest') }}">
 
     <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
