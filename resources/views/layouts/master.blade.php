@@ -33,7 +33,7 @@
     @endif
 
     <!-- Title -->
-    <title>{{ isset($title) ? 'TimeNet ISP | ' . $title : 'TimeNet ISP: A network expertise company works in the fields of providing internet access' }}</title>
+    <title>{{ isset($title) ? 'TimeNet ISP | ' . $title : 'TimeNet ISP: Providing Internet Access' }}</title>
 
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon/apple-touch-icon.png') }}">
