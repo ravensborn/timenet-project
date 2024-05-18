@@ -25,6 +25,7 @@ class Edit extends Component
     public Collection $countries;
 
 
+    public string|null $order = '';
     public string $name = '';
     public int $lc_country_id = 0;
     public int $category_id = 0;
@@ -42,6 +43,7 @@ class Edit extends Component
     public function updateProduct()
     {
         $rules = [
+            'order' => 'nullable|string',
             'name' => 'required|string|min:3|max:100',
             'description' => 'required|string|min:3|max:50000',
             'is_hidden' => 'required|boolean',
