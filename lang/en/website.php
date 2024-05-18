@@ -211,12 +211,15 @@ return [
         'Articles' => 'Articles',
         'Services' => 'Services',
         'Solutions' => 'Solutions',
-        'Product Catalog' => 'Product Catalog111',
+        'Product Catalog' => 'Product Catalog',
     ],
+
 
     'support' => [
         'support' => 'Support',
+        'contact_us' => 'Contact Us',
         'get_expert_support' => 'Get Expert Support',
+        'contact_us_now' => 'For inquiries and quotations please contact us.',
         'support_description' => 'Thank you for choosing our products/services, and we appreciate your trust in us. We look forward to
                 assisting you and making sure you have a smooth and enjoyable experience. Do not hesitate to reach out to
                 us – we are here to help!',
