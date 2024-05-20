@@ -76,7 +76,8 @@
 
                 <!-- List -->
                 <ul class="list-unstyled list-py-1 mb-5">
-                    <li><a class="link-sm link-light" href="{{ route('soon') }}"><i class="bi-question-circle-fill me-1"></i> {{ __('website.footer.help')  }}</a></li>
+                    <li><a class="link-sm link-light" href="{{ route('faq') }}"><i class="bi-question-circle me-1"></i> {{ __('website.footer.faq')  }}</a></li>
+                    <li><a class="link-sm link-light" href="{{ route('downloads') }}"><i class="bi-download me-1"></i> {{ __('website.footer.downloads')  }}</a></li>
                     <li><a class="link-sm link-light" href="{{ route('users.account.overview') }}"><i class="bi-person-circle me-1"></i> {{ __('website.footer.your_account') }}</a></li>
                     @if(auth()->check() && (auth()->user()->hasRole('admin') || auth()->user()->hasRole('moderator')))
                         <li><a class="link-sm link-light" href="{{ route('dashboard.overview') }}"><i class="bi-lightning-charge me-1"></i> Administrator</a></li>
@@ -110,6 +111,12 @@
             <div class="col-sm-auto">
                 <!-- Socials -->
                 <ul class="list-inline mb-0">
+
+                    <li class="list-inline-item">
+                        <a class="btn btn-soft-light btn-xs btn-icon" href="https://www.youtube.com/@Time.net2007">
+                            <i class="bi-youtube"></i>
+                        </a>
+                    </li>
 
                     <li class="list-inline-item">
                         <a class="btn btn-soft-light btn-xs btn-icon" href="https://www.linkedin.com/company/timenet/">
