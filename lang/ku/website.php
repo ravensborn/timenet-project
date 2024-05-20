@@ -120,6 +120,9 @@ return [
 
     'menu' => [
 
+        //header
+        'contact_us' => 'پەیوەندی',
+
         'left_text' => 'TimeNet ISP',
 
         'my_account' => 'هەژماری من',
@@ -361,11 +364,6 @@ return [
         'user_account' => 'هه‌ژماری به‌كارهێنه‌ر',
         'timenet_store' => 'ستۆری تایم نێت',
     ],
-
-
-    'website.menu' => [
-        'contact_us' => 'پەیوەندی',
-    ]
 
 
 ];

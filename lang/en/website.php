@@ -126,6 +126,9 @@ return [
 
     'menu' => [
 
+        //header
+        'contact_us' => 'Contact Us',
+
         'left_text' => 'TimeNet ISP',
 
         'my_account' => 'My Account',
@@ -370,10 +373,6 @@ return [
         'user_account' => 'User Account',
         'timenet_store' => 'TimeNet Store',
     ],
-
-    'website.menu' => [
-        'contact_us' => 'Contact Us',
-    ]
 
 
 ];
