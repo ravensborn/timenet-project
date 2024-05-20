@@ -363,4 +363,9 @@ return [
     ],
 
 
+    'website.menu' => [
+        'contact_us' => 'پەیوەندی',
+    ]
+
+
 ];

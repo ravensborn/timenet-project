@@ -362,4 +362,8 @@ return [
         'timenet_store' => 'متجر TimeNet',
     ],
 
+    'website.menu' => [
+        'contact_us' => 'اتصل بنا',
+    ]
+
 ];

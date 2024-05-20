@@ -371,5 +371,9 @@ return [
         'timenet_store' => 'TimeNet Store',
     ],
 
+    'website.menu' => [
+        'contact_us' => 'Contact Us',
+    ]
+
 
 ];
