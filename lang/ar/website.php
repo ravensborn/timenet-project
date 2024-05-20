@@ -122,7 +122,7 @@ return [
     'menu' => [
 
         //header
-        'contact_us' => 'Contact Us',
+        'contact_us' => 'اتصل بنا',
 
         'left_text' => 'TimeNet ISP',
 
@@ -365,9 +365,5 @@ return [
         'user_account' => 'حساب المستخدم',
         'timenet_store' => 'متجر TimeNet',
     ],
-
-    'website.menu' => [
-        'contact_us' => 'اتصل بنا',
-    ]
 
 ];
