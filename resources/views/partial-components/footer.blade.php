@@ -41,7 +41,7 @@
                     <li><a class="link-sm link-light" href="{{ route('posts.index', ['grid_type' => 'grid', 'slug' => 'services']) }}">{{ __('website.footer.services') }}</a></li>
                     <li><a class="link-sm link-light" href="{{ route('posts.index', ['grid_type' => 'grid', 'slug' => 'solutions']) }}">{{ __('website.footer.solutions') }}</a></li>
                     <li><a class="link-sm link-light" href="{{ route('posts.index', ['grid_type' => 'grid', 'slug' => 'product-catalog']) }}">{{ __('website.footer.catalog') }}</a></li>
-                    <li><a class="link-sm link-light" href="tel:9647503807676">{{ __('website.footer.contact_us') }}</a></li>
+                    <li><a class="link-sm link-light" href="{{ route('contact') }}">{{ __('website.footer.contact_us') }}</a></li>
                 </ul>
                 <!-- End List -->
             </div>
